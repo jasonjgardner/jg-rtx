@@ -1,0 +1,9 @@
+*.psd
+*.spp
+*.atn
+*.smpxd
+*.smpx
+*.mtl
+*.obj
+
+src/vanilla/*

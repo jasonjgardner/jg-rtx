@@ -1,0 +1,21 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Spiffy, customizable *creative* resource pack.",
+        "name": "JG RTX",
+        "uuid": "4b715b4d-c257-4ff3-b796-799ad0488bcc",
+        "version": [0, 2, 0],
+        "min_engine_version": [ 1, 15, 0 ]
+    },
+    "modules": [
+        {
+            "description": "Creative RTX resources",
+            "type": "resources",
+            "uuid": "e66bb76f-2e28-4a49-a0c5-5ea5b23d66b6",
+            "version": [0, 2, 0]
+        }
+    ],
+    "capabilities" : [
+        "raytraced"
+    ]
+}
