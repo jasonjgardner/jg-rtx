@@ -1,9 +1,16 @@
+# Exclude assets and binaries
 *.psd
 *.spp
 *.atn
 *.smpxd
 *.smpx
+*.painter_lock
 *.mtl
 *.obj
+*.glb
+*.fbx
+*.mdl
 
+# Exclude scripts until later release
 src/vanilla/*
+scripts/*
