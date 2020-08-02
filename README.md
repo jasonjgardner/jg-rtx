@@ -1,4 +1,4 @@
-![Pack Icon](assets/og-banner.jpg)
+![Pack Icon](dist/pack_icon.png)
 # JG RTX Blocks
 
 > Minecraft resource pack in development.
