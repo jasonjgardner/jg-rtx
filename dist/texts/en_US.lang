@@ -1,2 +1,4 @@
 ﻿pack.name=JG
 pack.description=Creative RTX resource pack
+## Oh, if only we could override block names like this...
+tile.bone_block.name=Lodestone

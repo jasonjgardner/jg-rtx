@@ -1,3 +1,6 @@
+# Exclude workspace
+.vscode
+
 # Exclude assets and binaries
 *.psd
 *.spp
@@ -10,6 +13,15 @@
 *.glb
 *.fbx
 *.mdl
+*.spj
+*.spt
+*.jpg
+*.gif
+*_SPEC.png
+*_AO.png
+*_DISP.png
+*_NORM.png
+assets/screenshots
 
 # Exclude scripts until later release
 src/vanilla/*
