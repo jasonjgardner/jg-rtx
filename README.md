@@ -16,12 +16,13 @@ Please use the following Google Drive link to download Photoshop and Substance P
 ---
 
 ## License
-![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
-These assets are licensed under [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). Knock yourself out.
+<em xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JG RTX</em> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
 
 ## Credits
-- Corrugated metal panel based on texture by Brandon Brice.
-- Blocks by [Jason](https://github.com/jasonjgardner/)
-
-❤
+- Made with Substance, ShaderMap, and Photoshop.
+	- Many of these textures were created using materials submitted to [Substance Share](https://share.substance3d.com/).
+	- Other textures may be derived from Pixar's RenderMan Asset Library or 3dtextures.me.
+- Block textures, code, videos, and cool stuff by [Jason](https://github.com/jasonjgardner/)

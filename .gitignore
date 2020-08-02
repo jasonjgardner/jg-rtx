@@ -1,3 +1,9 @@
+# Exclude releases
+*.mcpack
+*.mcfunction
+*.mcworld
+*.zip
+
 # Exclude workspace
 .vscode
 
