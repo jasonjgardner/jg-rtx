@@ -6,6 +6,7 @@
 
 # Exclude workspace
 .vscode
+*.code-workspace
 
 # Exclude assets and binaries
 *.psd
@@ -14,6 +15,7 @@
 *.smpxd
 *.smpx
 *.painter_lock
+*.sbsar
 *.mtl
 *.obj
 *.glb

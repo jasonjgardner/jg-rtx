@@ -2004,8 +2004,8 @@
       }
    },
    "smooth_quartz_stairs" : {
-      "sound" : "stone",
-      "textures" : "stair_smooth_quartz_block"
+     "textures": "quartz_block_top",
+     "sound": "stone"
    },
    "smooth_red_sandstone_stairs" : {
       "sound" : "stone",
