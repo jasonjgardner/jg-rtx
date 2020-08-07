@@ -1,17 +1,60 @@
 # Change Log
  
-## [Unreleased] - 2020-08-02
+## [Unreleased] - 2020-08-06
 - Scripts and build tools have not been added to the public repository.
+- Some blocks available on Google Drive have not yet been published on GitHub.
+
+## [0.4.0-alpha] - 2020-08-06
+New marble and fabric textures.
 
 ### Added
-- Bouncy castle texture has not been assigned to a block
+| Texture             	   | Assigned Block      		  |
+|------------------------- |----------------------------- |
+| basalt brick			   | brick						  |
+| antique wallpaper		   | magenta concrete			  |
+| alternate asphalt		   | black concrete powder		  |
+| cork cube pattern		   | brown concrete powder		  |
+| chrome tiles			   | light blue concrete powder	  |
+| sci-fi walls			   | lime concrete powder		  |
+| unfinished plaster wall  | white concrete powder		  |
+| red marble			   | brown terracotta			  |
+| art deco ceiling		   | chiseled quartz block (top)  |
+| black marble			   | diorite					  |
+| white marble			   | smooth diorite				  |
+| fluorescent hardystonite | glowstone					  |
+| snowy planks			   | striped spruce log			  |
+| Victorian fabric		   | blue wool					  |
+| Victorian wood ceiling   | yellow concrete			  |
+| etched ceiling		   | purple glazed terracotta	  |
+| cracked porcelain		   | blue glazed terracotta		  |
+| carbon fiber			   | glazed terracotta black	  |
+| orange flower fabric	   | orange wool				  |
+| red/gold floral fabric   | red wool					  |
+| wax flower fabric		   | silver wool				  |
+| yellow flower fabric	   | yellow wool				  |
+| privacy glass bricks	   | glass						  |
+| stained glass			   | red glass					  |
+| rainbow glass¹		   | orange glass				  |
+
+1. All glass textures still need panels created.
+
+### Changed
+
+| Minecraft Block         | Asset Name          	  |
+|------------------------ |-------------------------- |
+| orange terracotta		  | mood block		          |
+| iron bars				  | perforated corolla		  |
+
+### Fixed
+- Fixed missing quartz stair textures
+- Removed duplicate red tile texture and recovered mood block texture.
 
 ## [0.3.0-alpha] - 2020-08-01
 The release from those hot screenshots.
 
 ### Added
 
-| Texture             	  | Assigned Block      		      |
+| Texture             	  | Assigned Block      		  |
 |------------------------ |------------------------------ |
 | wet pavement            | green concrete                |
 | dripping wet wall       | green concrete powder         |
@@ -42,8 +85,8 @@ The release from those hot screenshots.
 
 ### Changed
 
-| Minecraft Block         | Asset Name          		  |
-|------------------------ |--------------------------	|
+| Minecraft Block         | Asset Name          	  |
+|------------------------ |-------------------------- |
 | pink glazed terracotta  | copper wire mesh          |
 
 - Block assignment list removed from README
