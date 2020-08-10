@@ -32,5 +32,5 @@
 assets/screenshots
 
 # Exclude scripts until later release
-src/vanilla/*
+src/*
 scripts/*

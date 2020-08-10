@@ -1,8 +1,69 @@
 # Change Log
  
-## [Unreleased] - 2020-08-06
+## [Unreleased] - 2020-08-09
 - Scripts and build tools have not been added to the public repository.
 - Some blocks available on Google Drive have not yet been published on GitHub.
+
+| Texture             	   |
+|------------------------- |
+| duct work				   |
+| art glass				   |
+| vine					   |
+| zen garden			   |
+
+## [0.5.0-alpha] - 2020-08-09
+
+Bring a towel!
+
+### Added
+
+| Texture             	   | Assigned Block      		  |
+|------------------------- |----------------------------- |
+| chintzy green fabric	   | green wool					  |
+| peacock fabric		   | cyan wool					  |
+| sexy-looking water	   | boring pixel water			  |
+| cracked wall			   | cracked stonebrick			  |
+| cliff tiles			   | mossy stonebrick			  |
+| neomorphic concrete	   | stone						  |
+| hideous mutation		   | wet sponge					  |
+| boneyard				   | soul sand					  |
+| beach sand			   | sand						  |
+| frogged bricks		   | purpur block				  |
+| fish scale pattern	   | rough prismarine			  |
+| parquet aremberg		   | jungle planks				  |
+| log cabin wall		   | birch planks				  |
+| obsidian				   | obsidian					  |
+| small cambridge bricks   | Nether brick				  |
+| magma					   | magma						  |
+| ornate mirror			   | ladder						  |
+| iron trapdoor			   | iron trapdoor				  |
+| mustard terrazzo cobble. | yellow terracotta			  |
+| black terrazzo cobble.   | gray terracotta			  |
+| teal terrazzo tile	   | cyan glazed terracotta		  |
+| grass block			   | grass block				  |
+| pink spike glass		   | pink glass					  |
+| louvered glass		   | gray glass					  |
+| screen door¹			   | iron door					  |
+| rainbow lights		   | pink coral					  |
+| LED lights			   | dead pink coral			  |
+| art deco cubes		   | silver concrete powder		  |
+| louvered steel		   | purple concrete powder		  |
+| wavy green steel		   | cyan concrete powder		  |
+| art deco scales		   | blue concrete powder		  |
+| pink concrete blocks	   | pink concrete				  |
+| mortar block			   | clay block					  |
+| bookshelf²			   | bookshelf					  |
+
+1. Texture is unfinished
+2. Top texture currently does not match
+
+### Changed
+
+| Minecraft Block         | Asset Name          	  |
+|------------------------ |-------------------------- |
+| stonebrick			  | chamfered church wall     |
+| gravel				  | stylized gravel			  |
+
 
 ## [0.4.0-alpha] - 2020-08-06
 New marble and fabric textures.
