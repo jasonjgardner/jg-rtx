@@ -17,10 +17,12 @@
 *.painter_lock
 *.sbsar
 *.mtl
+*.bin
 *.obj
 *.glb
 *.fbx
 *.mdl
+*.dn
 *.spj
 *.spt
 *.jpg
@@ -31,6 +33,15 @@
 *_NORM.png
 assets/screenshots
 
+# Exclude targa files for MERs and normals
+*_normal.tga
+*_mer.tga
+
 # Exclude scripts until later release
 src/*
 scripts/*
+!scripts/workflow
+
+# Exclude vendor directories
+node_modules/
+vendor/
