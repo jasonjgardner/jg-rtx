@@ -31,7 +31,13 @@
 *_AO.png
 *_DISP.png
 *_NORM.png
+*_CURVE.png
+*_CAV.png
+*_META.png
+*_ROUGH.png
+*.jsx
 assets/screenshots
+assets/
 
 # Exclude targa files for MERs and normals
 *_normal.tga
