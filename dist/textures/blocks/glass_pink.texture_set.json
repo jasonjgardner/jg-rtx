@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 {"format_version":"1.16.100","minecraft:texture_set":{"color":"glass_pink","metalness_emissive_roughness":"glass_pink_mer","normal":"glass_pink_normal"}}
+=======
+{
+    "format_version":  "1.16.100",
+    "minecraft:texture_set":  {
+                "color":  "glass_pink",
+                "metalness_emissive_roughness":  "glass_pink_mer",
+                "normal":  "glass_pink_normal"
+            }
+}
+
+>>>>>>> pr/3
