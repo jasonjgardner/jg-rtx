@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "seagrass_carried",
+        "metalness_emissive_roughness": "seagrass_carried_mer",
+        "normal": "seagrass_carried_normal"
+    }
+}

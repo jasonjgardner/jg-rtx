@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "tallgrass_carried",
+        "metalness_emissive_roughness": "tallgrass_carried_mer",
+        "normal": "tallgrass_carried_normal"
+    }
+}

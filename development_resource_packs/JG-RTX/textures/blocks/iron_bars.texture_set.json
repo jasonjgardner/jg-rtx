@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "perforated_corolla",
+        "metalness_emissive_roughness": "perforated_corolla_mer",
+        "normal": "perforated_corolla_normal"
+    }
+}

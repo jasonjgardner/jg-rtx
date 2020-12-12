@@ -1,9 +1,0 @@
-{
-    "format_version":  "1.16.100",
-    "minecraft:texture_set":  {
-                "color":  "boat_acacia",
-                "metalness_emissive_roughness":  "boat_acacia_mer",
-                "normal":  "boat_acacia_normal"
-            }
-}
-

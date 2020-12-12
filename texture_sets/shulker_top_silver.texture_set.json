@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "shulker_top_silver",
+        "metalness_emissive_roughness": "shulker_top_silver_mer",
+        "normal": "shulker_top_silver_normal"
+    }
+}
