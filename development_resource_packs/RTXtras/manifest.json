@@ -1,1 +1,21 @@
-{"format_version":2,"header":{"name":"RTXtras","description":"Weird blocks","uuid":"53d31aa0-39c0-11eb-a5c1-bbb44ee306e5","version":[0,1,0]},"modules":[{"type":"resources","uuid":"253386d0-39c0-11eb-a5c1-bbb44ee306e5","version":[0,0,1]}],"capabilities":["raytraced"]}
+{
+    "format_version": 2,
+    "header": {
+        "description": "Misfit blocks from JG RTX",
+        "name": "RTXtras",
+        "uuid": "3e09cf21-ca30-4d71-9448-5d89382d0807",
+        "version": [0, 1, 0],
+        "min_engine_version": [ 1, 16, 2 ]
+    },
+    "modules": [
+        {
+            "description": "RTX resources",
+            "type": "resources",
+            "uuid": "d2d4247a-0b78-4fe5-964b-d2913768cb28",
+            "version": [0, 1, 0]
+        }
+    ],
+    "capabilities" : [
+        "raytraced"
+    ]
+}
