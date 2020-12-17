@@ -7,6 +7,7 @@
 # Exclude workspace
 .vscode
 *.code-workspace
+.idea
 
 # Exclude assets and binaries
 *.psd
@@ -44,6 +45,7 @@ assets/
 *_mer.tga
 
 # Exclude scripts until later release
+cache
 src/*
 scripts/*
 !scripts/workflow
