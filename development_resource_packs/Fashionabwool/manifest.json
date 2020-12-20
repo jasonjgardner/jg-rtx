@@ -1,0 +1,21 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Fashion fabrics add-on pack",
+        "name": "Fashionabwool",
+        "uuid": "ba2e8ebd-3b88-4f27-8873-a1ec8ee5e8af",
+        "version": [0, 1, 0],
+        "min_engine_version": [ 1, 16, 2 ]
+    },
+    "modules": [
+        {
+            "description": "Fashion fabric wool textures",
+            "type": "resources",
+            "uuid": "dff91390-1b5c-4720-b6c6-e1b472df6066",
+            "version": [0, 1, 0]
+        }
+    ],
+    "capabilities" : [
+        "raytraced"
+    ]
+}
