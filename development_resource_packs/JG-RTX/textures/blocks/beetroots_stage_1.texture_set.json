@@ -1,0 +1,7 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "beetroots_stage_1",
+        "normal": "beetroots_stage_1_normal"
+    }
+}
