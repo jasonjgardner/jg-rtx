@@ -47,8 +47,7 @@ assets/
 # Exclude scripts until later release
 cache
 src/*
-scripts/*
-!scripts/workflow
+#scripts/*
 
 # Exclude vendor directories
 node_modules/

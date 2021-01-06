@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "deadbush",
+        "metalness_emissive_roughness": [0, 0, 255],
+        "normal": "deadbush_normal"
+    }
+}

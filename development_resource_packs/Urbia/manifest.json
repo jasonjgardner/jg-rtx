@@ -1,0 +1,18 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Urban/city textures",
+        "name": "Urbia",
+        "uuid": "bd8a74e2-865f-4ff3-87bd-4b23a8311f4b",
+        "version": [0, 1, 0],
+        "min_engine_version": [ 1, 16, 200 ]
+    },
+    "modules": [
+        {
+            "description": "Urban/city resource pack",
+            "type": "resources",
+            "uuid": "fbe1d451-ffee-4c4b-ab2b-0eb732baef21",
+            "version": [0, 1, 0]
+        }
+    ]
+}
