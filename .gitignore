@@ -1,6 +1,5 @@
 # Exclude releases
 *.mcpack
-*.mcfunction
 *.mcworld
 *.zip
 
@@ -8,6 +7,7 @@
 .vscode
 *.code-workspace
 .idea
+*.ini
 
 # Exclude assets and binaries
 *.psd
@@ -47,7 +47,9 @@ assets/
 # Exclude scripts until later release
 cache
 src/*
-#scripts/*
+scripts/*
+*.schema.json
+*.js
 
 # Exclude vendor directories
 node_modules/

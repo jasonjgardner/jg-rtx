@@ -20,27 +20,6 @@ __Like my work?__
 ## Try the textures in [Mineways](http://mineways.com)
 [Mineways 8.0](https://github.com/erich666/Mineways/releases/tag/v8.00) includes JG RTX. [It looks pretty damn good.](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)
 
-## Block Properties
-This is my general approach to assigning textures to blocks.
-
-__Concrete Powder__
-- Used as building-material textures, or as textures which are not intended to be used on ceilings.
-- Used for tileable textures.
-
-__Concrete__
-- Used for textures which do not appear correct if rotated.
-- Used for ceiling textures.
-
-__Terracotta__
-- Used for textures that can be rotated arbitrarily.
-
-__Glazed Terracotta__
-- Used for marble and terrazzo textures.
-
-__Education Blocks__
-- Used for creative or excess textures.
-- Noble gases are emissive.
-
 ## Download Assets
 Please use the following Google Drive link to download Photoshop and Substance Painter assets used in this project:
 
