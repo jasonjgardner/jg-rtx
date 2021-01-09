@@ -44,13 +44,6 @@ assets/
 *_normal.tga
 *_mer.tga
 
-# Exclude scripts until later release
-cache
-src/*
-scripts/*
-*.schema.json
-*.js
-
 # Exclude vendor directories
 node_modules/
 vendor/

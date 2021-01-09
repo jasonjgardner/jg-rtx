@@ -1,7 +1,7 @@
 ![Pack Icon](development_resource_packs/JG-RTX/pack_icon.png)
-# JG RTX Blocks
+# JG RTX
 
-> Minecraft resource pack in development.
+> Minecraft resource packs in development.
 
 __Like my work?__
 ~~Buy Me a Coffee~~ __[DONATE TO DOCTORS WITHOUT BORDERS](https://donate.doctorswithoutborders.org/monthly.cfm)__
@@ -20,10 +20,29 @@ __Like my work?__
 ## Try the textures in [Mineways](http://mineways.com)
 [Mineways 8.0](https://github.com/erich666/Mineways/releases/tag/v8.00) includes JG RTX. [It looks pretty damn good.](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)
 
-## Download Assets
-Please use the following Google Drive link to download Photoshop and Substance Painter assets used in this project:
+---
 
-[Google Drive](https://drive.google.com/drive/folders/1TtPpy-yjNDZpjd7pSJAcqL2FT-9k2Xtz?usp=sharing)
+## Texture Sets
+
+The [texture_sets](tree/master/texture_sets) directory contains _some_ premade, generated `.texture_set.json` files for copy/pasting convenience.
+
+## Resource Packs
+
+> **Please note:** This project is still hasn't hit beta. Textures will change. Sincerely sorry if updates mess up your creations.
+
+The main pack in this monrepo is [JG RTX](tree/master/development_resource_packs/JG-RTX). It's aimed to make generated worlds appear more realistic and to serve as a base for the more-stylized resource packs simutaneously **in development**:
+
+- [Victorian](tree/master/development_resource_packs/Victorian) - Ornate textures for a Victorian manor
+- [Urbia](tree/master/development_resource_packs/Urbia) - City, suburb, and modern textures
+- [Fashionabwool](tree/master/development_resource_packs/Fashionabwool) - Fun fabrics
+- [RTXtras](tree/master/development_resource_packs/RTXtras) - Experimental textures
+- [RT-Exes](tree/master/development_resource_packs/RT-Exes) - Textures from previous releases of JG RTX that were too far-out for the main pack, but too cool to part with.
+
+## Behavior Packs
+
+(Optional)
+
+- [chunk-funcs](tree/master/development_behavior_packs) One-chunk helper functions
 
 ---
 
@@ -34,14 +53,25 @@ Please use the following Google Drive link to download Photoshop and Substance P
 
 ## Credits
 - Made with Substance and Photoshop.
-	- Sourced from [Substance Share](https://share.substance3d.com/), [Substance Source](https://source.substance3d.com/), [GameTextures.com](https://gametextures.com/), [CC0 Textures](https://cc0textures.com/), [3D Textures](https://3dtextures.me/)
+	- Sourced from [Substance Share](https://share.substance3d.com/), [Substance Source](https://source.substance3d.com/), [GameTextures.com](https://gametextures.com/), [CC0 Textures](https://cc0textures.com/), [3D Textures](https://3dtextures.me/), and [Envato Elements](https://elements.envato.com/)
 - Block textures, code, videos, and cool stuff by [Jason](https://github.com/jasonjgardner/)
+
+### Thanks
+
+- Players
+- Substance material authors
+- [Contributors](https://github.com/jasonjgardner/jg-rtx/graphs/contributors) and [issue authors](https://github.com/jasonjgardner/jg-rtx/issues)
+- [Eric Haines](https://github.com/erich666)
+- [McMeddon](https://www.planetminecraft.com/member/mcmeddon/) for maps
+- Minecraft RTX [reddit](https://www.reddit.com/r/minecraftRTX/comments/iq3lkl/getting_startedhelpful_guidesresource_packs/) and [Discord](https://discord.gg/eKVKD3c) communities
+	- 👏 [KellyTheDerg](https://www.reddit.com/user/KellyTheDerg) for demonstrating how to customize Education blocks.
+	- 👏 [Doey](https://www.reddit.com/user/Doey62750)'s pack demonstrated hi-res, custom paintings
 
 ---
 
-### So, what's with the cat stuff?
+### What's with the cat stuff?
 
 ![Meow](development_resource_packs/JG-RTX/textures/blocks/mob_spawner.png)
 
 That's Carrots the Cat! She's an [Instagram influencer](https://instagram.com/jasonjgardner/). I think it's really amusing to include her in this resource pack.
-Don't worry, I'll replace the cat paintings soon.
+Don't worry, I'll replace the [cat paintings](https://www.instagram.com/p/CEvYkGXpwqy/) soon enough.
