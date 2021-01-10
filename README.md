@@ -24,25 +24,25 @@ __Like my work?__
 
 ## Texture Sets
 
-The [texture_sets](tree/master/texture_sets) directory contains _some_ premade, generated `.texture_set.json` files for copy/pasting convenience.
+The [texture_sets](texture_sets) directory contains _some_ premade, generated `.texture_set.json` files for copy/pasting convenience.
 
 ## Resource Packs
 
 > **Please note:** This project is still hasn't hit beta. Textures will change. Sincerely sorry if updates mess up your creations.
 
-The main pack in this monrepo is [JG RTX](tree/master/development_resource_packs/JG-RTX). It's aimed to make generated worlds appear more realistic and to serve as a base for the more-stylized resource packs simutaneously **in development**:
+The main pack in this monrepo is [JG RTX](development_resource_packs/JG-RTX). It's aimed to make generated worlds appear more realistic and to serve as a base for the more-stylized resource packs simutaneously **in development**:
 
-- [Victorian](tree/master/development_resource_packs/Victorian) - Ornate textures for a Victorian manor
-- [Urbia](tree/master/development_resource_packs/Urbia) - City, suburb, and modern textures
-- [Fashionabwool](tree/master/development_resource_packs/Fashionabwool) - Fun fabrics
-- [RTXtras](tree/master/development_resource_packs/RTXtras) - Experimental textures
-- [RT-Exes](tree/master/development_resource_packs/RT-Exes) - Textures from previous releases of JG RTX that were too far-out for the main pack, but too cool to part with.
+- [Victorian](development_resource_packs/Victorian) - Ornate textures for a Victorian manor
+- [Urbia](development_resource_packs/Urbia) - City, suburb, and modern textures
+- [Fashionabwool](development_resource_packs/Fashionabwool) - Fun fabrics
+- [RTXtras](development_resource_packs/RTXtras) - Experimental textures
+- [RT-Exes](development_resource_packs/RT-Exes) - Textures from previous releases of JG RTX that were too far-out for the main pack, but too cool to part with.
 
 ## Behavior Packs
 
 (Optional)
 
-- [chunk-funcs](tree/master/development_behavior_packs) One-chunk helper functions
+- [chunk-funcs](development_behavior_packs) One-chunk helper functions
 
 ---
 
