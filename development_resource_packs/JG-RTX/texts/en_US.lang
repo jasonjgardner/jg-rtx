@@ -1,5 +1,5 @@
-﻿pack.description=Creative RTX resource pack
-pack.name=JG
+﻿pack.description=Realistic, raytraced textures to improve the appearance of natural or generated worlds. (Development preview release.)
+pack.name=JG RTX
 
 tile.acaciaFence.name=Acacia Fence
 tile.acacia_fence_gate.name=Acacia Fence Gate
@@ -739,7 +739,7 @@ tile.wood.stripped.dark_oak.name=Stripped Dark Oak Wood
 
 tile.netherite_block.name=Block of Netherite
 tile.ancient_debris.name=Ancient Debris
-tile.nether_gold_ore.name=Nether Gold Ore
+tile.nether_gold_ore.name=Amethyst Crystal
 
 tile.respawn_anchor.name=Respawn Anchor
 tile.crying_obsidian.name=Crying Obsidian

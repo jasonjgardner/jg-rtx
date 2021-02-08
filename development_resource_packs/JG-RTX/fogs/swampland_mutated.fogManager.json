@@ -1,0 +1,80 @@
+/*
+ - Fog Definition Made by Biome & Fog Manager's Fog Editor
+ - Coded by @Traben from the Minecraft RTX Discord
+  */
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "managed:swampland_mutated_managed"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.86,
+        "fog_end": 1.0,
+        "fog_color": "#193540",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 12.0,
+        "fog_end": 24.0,
+        "fog_color": "#324B32",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 18.0,
+        "fog_end": 30.0,
+        "fog_color": "#4B627D",
+        "render_distance_type": "fixed"
+      },
+      "lava": {
+        "fog_start": 0.4,
+        "fog_end": 1.0,
+        "fog_color": "#7D1932",
+        "render_distance_type": "render"
+      },
+      "lava_resistance": {
+        "fog_start": 0.4,
+        "fog_end": 1.0,
+        "fog_color": "#684B32",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.67,
+          "max_density_height": 64,
+          "zero_density_height": 128
+        },
+        "water": {
+          "max_density": 0.3,
+          "max_density_height": 62,
+          "zero_density_height": 128
+        },
+        "lava": {
+          "max_density": 0.99,
+          "uniform": true
+        },
+        "lava_resistance": {
+          "max_density": 0.88,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [ 0.1000, 0.1640, 0.1000 ],
+          "absorption": [ 0.6000, 0.1000, 0.4000 ]
+        },
+        "water": {
+          "scattering": [ 0.1000, 0.3000, 0.2000 ],
+          "absorption": [ 0.1000, 0.1000, 0.3000 ]
+        },
+        "cloud": {
+          "scattering": [ 0.3000, 0.3000, 0.2000 ],
+          "absorption": [ 0.4000, 0.6000, 0.4000 ]
+        }
+      }
+    }
+  }
+}

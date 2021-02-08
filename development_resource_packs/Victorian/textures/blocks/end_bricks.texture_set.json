@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "chamfered_brick",
+        "metalness_emissive_roughness": "chamfered_brick_mer",
+        "normal": "chamfered_brick_normal"
+    }
+}

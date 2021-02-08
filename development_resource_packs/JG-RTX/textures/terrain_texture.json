@@ -1,5 +1,5 @@
 {
-  "resource_pack_name": "vanilla",
+  "resource_pack_name": "jgrtx",
   "texture_name": "atlas.terrain",
   "padding": 0,
   "num_mip_levels": 0,
@@ -127,7 +127,7 @@
     "grass_carried": {
       "textures": {
         "path": "textures/blocks/grass_side",
-        "overlay_color": "#79c05a"
+        "overlay_color": "#4fa824"
       }
     },
     "stone": {
@@ -656,7 +656,6 @@
     "stripped_spruce_log_side": {
       "textures": "textures/blocks/stripped_spruce_log"
     },
-
     "iron_block": {
       "textures": "textures/blocks/iron_block"
     },
@@ -1038,7 +1037,7 @@
       "textures": [
         {
           "path": "textures/blocks/waterlily",
-          "tint_color": "#208030"
+          "tint_color": "#38af4c"
         }
       ]
     },
@@ -1878,7 +1877,7 @@
       "quad": 1,
       "textures": {
         "path": "textures/blocks/lava_flow",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.19
       }
     },
     "wool": {
@@ -1946,7 +1945,7 @@
     "still_lava": {
       "textures": {
         "path": "textures/blocks/lava_still",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.22
       }
     },
     "cauldron_water": {
@@ -2125,7 +2124,7 @@
     "sea_lantern": {
       "textures": {
         "path": "textures/blocks/sea_lantern",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.21
       }
     },
     "sea_pickle": {
