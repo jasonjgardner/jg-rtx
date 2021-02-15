@@ -5,13 +5,13 @@
 {
   "biomes": {
     "default": {
-      "water_surface_color": "#7298B5",
-      "water_surface_transparency": 0.62,
+      "water_surface_color": "#3586C4",
+      "water_surface_transparency": 0.5,
       "fog_identifier": "managed:default_managed"
     },
     "desert": {
-      "water_surface_color": "#32A598",
-      "fog_identifier": "managed:desert_managed"
+      "water_surface_color": "#32A598"
+      /*"fog_identifier": "managed:desert_managed"*/
     },
     "desert_hills": {
       "water_surface_color": "#1A7AA1",
@@ -182,7 +182,7 @@
     },
     "swampland": {
       "water_surface_color": "#4C6559",
-      "water_surface_transparency": 0.21,
+      "water_surface_transparency": 0.25,
       "fog_identifier": "managed:swampland_managed"
     },
     "swampland_mutated": {

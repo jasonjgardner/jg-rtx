@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "flower_pink",
+        "metalness_emissive_roughness": "flower_pink_mer",
+        "normal": "flower_pink_normal"
+    }
+}

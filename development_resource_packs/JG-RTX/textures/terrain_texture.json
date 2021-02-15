@@ -525,17 +525,17 @@
     },
     "red_flower": {
       "textures": [
-        "textures/blocks/flower_rose",
+        "textures/blocks/custom/flower_canola",
         "textures/blocks/flower_blue_orchid",
         "textures/blocks/flower_allium",
         "textures/blocks/flower_houstonia",
-        "textures/blocks/flower_tulip_red",
-        "textures/blocks/flower_tulip_orange",
-        "textures/blocks/flower_tulip_white",
-        "textures/blocks/flower_tulip_pink",
+        "textures/blocks/custom/flower_meadow",
+        "textures/blocks/custom/flower_orange",
+        "textures/blocks/custom/flower_white",
+        "textures/blocks/custom/flower_pink",
         "textures/blocks/flower_oxeye_daisy",
         "textures/blocks/flower_cornflower",
-        "textures/blocks/flower_lily_of_the_valley"
+        "textures/blocks/custom/flower_dianthus"
       ]
     },
     "double_plant_bottom": {

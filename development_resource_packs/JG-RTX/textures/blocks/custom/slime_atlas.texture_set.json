@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "slime_atlas",
+        "metalness_emissive_roughness": "slime_atlas_mer",
+        "normal": "slime_atlas_normal"
+    }
+}
