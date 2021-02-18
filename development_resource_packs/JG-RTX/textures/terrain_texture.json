@@ -23,11 +23,11 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#59c93c"
+          "overlay_color": "#398a25"
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#55c93f"
+          "overlay_color": "#2c7c1c"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -39,7 +39,7 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#64c73f"
+          "overlay_color": "#749b66"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -127,7 +127,7 @@
     "grass_carried": {
       "textures": {
         "path": "textures/blocks/grass_side",
-        "overlay_color": "#4fa824"
+        "overlay_color": "#39791a"
       }
     },
     "stone": {
