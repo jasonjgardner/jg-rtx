@@ -521,7 +521,7 @@
       "textures": "textures/blocks/web"
     },
     "yellow_flower": {
-      "textures": "textures/blocks/flower_dandelion"
+      "textures": "textures/blocks/custom/buttercup"
     },
     "red_flower": {
       "textures": [
