@@ -1,0 +1,21 @@
+/*
+ - Fog Definition Made by Biome & Fog Manager's Fog Editor
+ - Coded by @Traben from the Minecraft RTX Discord
+  */
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "fx:low"
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.25,
+          "max_density_height": 64,
+          "zero_density_height": 80
+        }
+      }
+    }
+  }
+}

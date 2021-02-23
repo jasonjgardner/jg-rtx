@@ -1,0 +1,21 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Exaggerate sunrays with heavier volumetric fog.",
+        "name": "Cinematic Fogs",
+        "uuid": "09de24a1-1ad5-433d-9db0-c809f98f4b03",
+        "version": [1, 0, 0],
+        "min_engine_version": [ 1, 16, 2 ]
+    },
+    "modules": [
+        {
+            "description": "Volumetric fogs",
+            "type": "resources",
+            "uuid": "c37eb6e1-4f71-4035-a791-7da9f22380ea",
+            "version": [1, 0, 0]
+        }
+    ],
+    "capabilities" : [
+        "raytraced"
+    ]
+}

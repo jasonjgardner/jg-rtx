@@ -1,0 +1,53 @@
+/*
+ - Fog Definition Made by Biome & Fog Manager's Fog Editor
+ - Coded by @Traben from the Minecraft RTX Discord
+  */
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "managed:jungle_managed"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.0,
+        "fog_end": 1.0,
+        "fog_color": "#748C6F",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 1.0,
+        "fog_color": "#13474B",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.02,
+          "max_density_height": 59,
+          "zero_density_height": 80
+        },
+        "water": {
+          "max_density": 0.01,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [ 0.4497, 0.4127, 0.2275 ],
+          "absorption": [ 0, 0, 0 ]
+        },
+        "water": {
+          "scattering": [ 0.0316, 0.0947, 0.0053 ],
+          "absorption": [ 0.0263, 0.0053, 0.0737 ]
+        },
+        "cloud": {
+          "scattering": [ 0.2684, 0.2947, 0.2105 ],
+          "absorption": [ 0.0263, 0.0000, 0.0158 ]
+        }
+      }
+    }
+  }
+}
