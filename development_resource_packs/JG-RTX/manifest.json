@@ -4,7 +4,7 @@
         "description": "256px realistic, raytraced resource pack",
         "name": "JG RTX (Preview)",
         "uuid": "bd9caec4-00e3-421c-9a78-d93e4ebd0979",
-        "version": [0, 14, 0],
+        "version": [0, 14, 2],
         "min_engine_version": [ 1, 16, 2 ]
     },
     "modules": [
@@ -12,7 +12,7 @@
             "description": "RTX resources",
             "type": "resources",
             "uuid": "fdc3355e-f02f-4001-8fe1-b1332f4ca31c",
-            "version": [0, 14, 0]
+            "version": [0, 14, 2]
         }
     ],
     "capabilities" : [
