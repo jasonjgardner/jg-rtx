@@ -1,0 +1,14 @@
+{
+  "resource_pack_name": "cinematicfogs",
+  "texture_name": "atlas.terrain",
+  "padding": 0,
+  "num_mip_levels": 0,
+  "texture_data": {
+    "build_deny": {
+      "textures": "textures/blocks/custom/chroma_key"
+    },
+    "border": {
+      "textures": "textures/blocks/custom/mirror"
+    }
+  }
+}
