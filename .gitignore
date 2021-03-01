@@ -4,7 +4,6 @@
 *.zip
 
 # Exclude workspace
-.vscode
 *.code-workspace
 .idea
 *.ini
@@ -47,3 +46,4 @@ assets/
 # Exclude vendor directories
 node_modules/
 vendor/
+src/

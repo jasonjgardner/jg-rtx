@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "conduit_cage",
-        "metalness_emissive_roughness": "conduit_cage_mer",
-        "normal": "conduit_cage_normal"
-    }
-}

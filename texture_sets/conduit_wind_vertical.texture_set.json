@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "conduit_wind_vertical",
-        "metalness_emissive_roughness": "conduit_wind_vertical_mer",
-        "normal": "conduit_wind_vertical_normal"
-    }
-}

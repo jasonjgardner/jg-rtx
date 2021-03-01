@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "bubble_column_up_top_c",
-        "metalness_emissive_roughness": "bubble_column_up_top_c_mer",
-        "normal": "bubble_column_up_top_c_normal"
-    }
-}

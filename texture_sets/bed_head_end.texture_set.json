@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "bed_head_end",
-        "metalness_emissive_roughness": "bed_head_end_mer",
-        "normal": "bed_head_end_normal"
-    }
-}

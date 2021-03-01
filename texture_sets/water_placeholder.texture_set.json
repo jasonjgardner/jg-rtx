@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "water_placeholder",
-        "metalness_emissive_roughness": "water_placeholder_mer",
-        "normal": "water_placeholder_normal"
-    }
-}

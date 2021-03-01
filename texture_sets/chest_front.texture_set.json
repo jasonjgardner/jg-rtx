@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "chest_front",
-        "metalness_emissive_roughness": "chest_front_mer",
-        "normal": "chest_front_normal"
-    }
-}
