@@ -3,6 +3,6 @@
     "minecraft:texture_set": {
         "color": "furnace_front_on",
         "metalness_emissive_roughness": "furnace_front_on_mer",
-        "normal": "furnace_front_on_normal"
+        "normal": "furnace_front_off_normal"
     }
 }
