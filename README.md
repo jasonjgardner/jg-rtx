@@ -1,49 +1,46 @@
 ![Pack Icon](development_resource_packs/JG-RTX/pack_icon.png)
 # JG RTX
 
-> Minecraft resource packs in development.
+Minecraft resource packs in development.
 
 __Like my work?__
 ~~Buy Me a Coffee~~ __[DONATE TO DOCTORS WITHOUT BORDERS](https://donate.doctorswithoutborders.org/monthly.cfm)__
-
-## Screenshots
-[Watch JG RTX demos on the YouTubes](https://youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N)
-
-> ![JG RTX trailer clip](http://d26mkv3tdw1wgb.cloudfront.net/minecraft/demo1.gif)
-> 
-> *Stained-glass window timelapse*
-
-> ![JG RTX trailer clip](http://d26mkv3tdw1wgb.cloudfront.net/minecraft/demo2.gif)
->
-> *Mushroom biome*
 
 ## Try the textures in [Mineways](http://mineways.com)
 [Mineways 8.0](https://github.com/erich666/Mineways/releases/tag/v8.00) includes JG RTX. [It looks pretty damn good.](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)
 
 ---
 
-## Texture Sets
+# Installation Options
 
-The [texture_sets](texture_sets) directory contains _some_ premade, generated `.texture_set.json` files for copy/pasting convenience.
+## Stable Releases
+Download and open [latest release's](https://github.com/jasonjgardner/jg-rtx/releases) **.mcpack** archive.
 
-## Resource Packs
+## Latest Work
 
-> **Please note:** This project is still hasn't hit beta. Textures will change. Sincerely sorry if updates mess up your creations.
+Clone and copy resource packs into Minecraft's `development_resource_packs` directory with one of the following methods:
 
-The main pack in this monrepo is [JG RTX](development_resource_packs/JG-RTX). It's aimed to make generated worlds appear more realistic and to serve as a base for the more-stylized resource packs simutaneously **in development**:
+### Download Archive
+1. [Download repository .zip](https://github.com/jasonjgardner/jg-rtx/archive/master.zip)
+2. Extract contents of [development_resource_packs](development_resource_packs) directory from repository archive into your Windows 10 Minecraft installation directory:
+`%LocalAppData%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs`
 
-- [Victorian](development_resource_packs/Victorian) - Ornate textures for a Victorian manor
-- [Urbia](development_resource_packs/Urbia) - City, suburb, and modern textures
-- [Fashionabwool](development_resource_packs/Fashionabwool) - Fun fabrics
-- [RTXtras](development_resource_packs/RTXtras) - Experimental textures
-- [RT-Exes](development_resource_packs/RT-Exes) - Textures from previous releases of JG RTX that were too far-out for the main pack, but too cool to part with.
+### CLI
+```shell
+git clone https://github.com/jasonjgardner/jg-rtx.git
+```
 
-## Behavior Packs
+To install latest JG-RTX resources:
 
-(Optional)
+```shell
+xcopy /E /I jg-rtx\development_resource_packs\JG-RTX\ %LocalAppData%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs\JG-RTX
+```
 
-- [chunk-funcs](development_behavior_packs) One-chunk helper functions
+Or to install *all* development resource packs in this repository:
 
+```shell
+xcopy /E /I jg-rtx\development_resource_packs %LocalAppData%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs
+```
 ---
 
 ## License
