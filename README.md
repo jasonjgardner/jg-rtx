@@ -30,7 +30,7 @@ Clone and copy resource packs into Minecraft's `development_resource_packs` dire
 git clone https://github.com/jasonjgardner/jg-rtx.git
 ```
 
-To install latest JG-RTX resources:
+To install latest JG RTX resources:
 
 ```shell
 xcopy /E /I jg-rtx\development_resource_packs\JG-RTX\ %LocalAppData%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs\JG-RTX
