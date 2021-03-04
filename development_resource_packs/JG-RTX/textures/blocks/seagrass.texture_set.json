@@ -2,7 +2,6 @@
     "format_version": "1.16.100",
     "minecraft:texture_set": {
         "color": "seagrass",
-        "metalness_emissive_roughness": "seagrass_mer",
-        "normal": "seagrass_normal"
+        "metalness_emissive_roughness": [0, 0, 110]
     }
 }
