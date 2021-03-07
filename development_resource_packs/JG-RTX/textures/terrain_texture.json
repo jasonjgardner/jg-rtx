@@ -948,6 +948,9 @@
     "stonecutter2_saw": {
       "textures": "textures/blocks/stonecutter2_saw"
     },
+    "stone_button": {
+      "textures": "textures/blocks/custom/stone_button"
+    },
     "sponge": {
       "textures": [
         "textures/blocks/sponge",

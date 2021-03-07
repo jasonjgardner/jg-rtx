@@ -2146,7 +2146,7 @@
    },
    "stone_button" : {
       "sound" : "stone",
-      "textures" : "stone"
+      "textures" : "stone_button"
    },
    "stone_pressure_plate" : {
       "sound" : "stone",
