@@ -164,7 +164,7 @@
    },
    "birch_button" : {
       "sound" : "wood",
-      "textures" : "birch_planks"
+      "textures" : "birch_button"
    },
    "birch_door" : {
       "sound" : "wood",

@@ -951,6 +951,9 @@
     "stone_button": {
       "textures": "textures/blocks/custom/stone_button"
     },
+    "birch_button": {
+      "textures": "textures/blocks/custom/birch_button"
+    },
     "sponge": {
       "textures": [
         "textures/blocks/sponge",
@@ -1244,11 +1247,20 @@
     "soul_sand": {
       "textures": "textures/blocks/soul_sand"
     },
+    "soul_torch": {
+      "textures": {
+        "path": "textures/blocks/soul_torch",
+        "pbr_emissive": 0.15
+      }
+    },
     "skull": {
       "textures": "textures/blocks/soul_sand"
     },
     "glowstone": {
-      "textures": "textures/blocks/glowstone"
+      "textures": {
+        "path": "textures/blocks/glowstone",
+        "pbr_emissive": 0.666
+      }
     },
     "piston_top": {
       "textures": [
