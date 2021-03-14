@@ -34,7 +34,6 @@
 *_CURVE.png
 *_CAV.png
 *_META.png
-*_ROUGH.png
 *.jsx
 assets/screenshots
 assets/
@@ -42,6 +41,8 @@ assets/
 # Exclude targa files for MERs and normals
 *_normal.tga
 *_mer.tga
+*_carried_mer.png
+*_carried_normal.png
 
 # Exclude vendor directories
 node_modules/
