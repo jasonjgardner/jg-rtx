@@ -149,15 +149,15 @@
     },
     "cobblestone_wall": {
       "textures": [
-        "textures/blocks/cobblestone",
-        "textures/blocks/cobblestone_mossy",
+        "textures/blocks/custom/cobblestone_wall",
+        "textures/blocks/custom/cobblestone_mossy_wall",
         "textures/blocks/stone_granite",
         "textures/blocks/stone_diorite",
         "textures/blocks/stone_andesite",
         "textures/blocks/sandstone_normal",
         "textures/blocks/brick",
         "textures/blocks/stonebrick",
-        "textures/blocks/stonebrick_mossy",
+        "textures/blocks/custom/stonebrick_mossy_wall",
         "textures/blocks/nether_brick",
         "textures/blocks/end_bricks",
         "textures/blocks/prismarine_rough",
