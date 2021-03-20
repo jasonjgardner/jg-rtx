@@ -3,8 +3,7 @@
 *.mcworld
 *.zip
 
-# Exclude workspace
-*.code-workspace
+# Exclude some workspace or file system files
 .idea
 *.ini
 
@@ -47,5 +46,8 @@ assets/
 # Exclude vendor directories
 node_modules/
 vendor/
+
+# Exclude excess/duplicate textures
 src/*
 !src/bakery
+src/bakery/output
