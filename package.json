@@ -1,0 +1,41 @@
+{
+  "name": "jg-rtx",
+  "version": "0.15.0",
+  "description": "Minecraft raytracing-enabled resource pack pipeline",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonjgardner/jg-rtx.git"
+  },
+  "keywords": [
+    "minecraft",
+    "rtx",
+    "raytracing",
+    "pipeline",
+    "resource-pack",
+    "jg-rtx"
+  ],
+  "author": "Jason J. Gardner",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/jasonjgardner/jg-rtx/issues"
+  },
+  "homepage": "https://github.com/jasonjgardner/jg-rtx#readme",
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  },
+  "dependencies": {
+    "archiver": "^5.3.0",
+    "canvas": "^2.7.0",
+    "colors": "^1.4.0",
+    "glob": "^7.1.6",
+    "merge-images": "^2.0.0"
+  }
+}

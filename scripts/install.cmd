@@ -1,0 +1,1 @@
+xcopy /E /I ..\development_resource_packs\JG-RTX\ %LocalAppData%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs\JG-RTX

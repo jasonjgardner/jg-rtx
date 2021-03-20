@@ -47,4 +47,5 @@ assets/
 # Exclude vendor directories
 node_modules/
 vendor/
-src/
+src/*
+!src/bakery
