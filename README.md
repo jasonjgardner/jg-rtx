@@ -19,7 +19,7 @@ Downloading the entire repository will include build scripts and excess textures
 # Installation Options
 
 ## Download resource pack archive (Recommended)
-Download and open [latest release's](https://github.com/jasonjgardner/jg-rtx/releases) **.mcpack** archive.
+Download and open [latest release's](/releases) **.mcpack** archive.
 
 ## Download repository (For latest work)
 
@@ -60,9 +60,9 @@ If you've previously installed JG RTX:
 
 ![Screenshot of uninstalling an old release](http://d26mkv3tdw1wgb.cloudfront.net/minecraft/uninstall.gif)
 
-Open Minecraft → Settings → General → Storage → Resource Packs → Find _JG RTX (Preview)_ versions below [latest tag](/tags).
+Open Minecraft → Settings → General → Storage → Resource Packs → Find _JG RTX (Preview)_ versions below [latest tag](https://github.com/jasonjgardner/jg-rtx/tags).
 
-> New releases come with new UUIDs. This makes .mcpack installation easier and allows players to keep older versions of resouce packs installed. [But there's a catch...](/discussions/17)
+> New releases come with new UUIDs. This makes .mcpack installation easier and allows players to keep older versions of resouce packs installed. [But there's a catch...](https://github.com/jasonjgardner/jg-rtx/discussions/17)
 
 ---
 
