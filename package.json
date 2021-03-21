@@ -4,7 +4,8 @@
   "description": "Minecraft raytracing-enabled resource pack pipeline",
   "private": true,
   "scripts": {
-    "build": "node scripts/index.js"
+    "build": "node scripts/index.js",
+    "manifest": "node scripts/manifest/task.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "canvas": "^2.7.0",
     "colors": "^1.4.0",
     "glob": "^7.1.6",
-    "merge-images": "^2.0.0"
+    "merge-images": "^2.0.0",
+    "uuid": "^8.3.2"
   }
 }
