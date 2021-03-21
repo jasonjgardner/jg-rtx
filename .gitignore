@@ -49,5 +49,6 @@ vendor/
 
 # Exclude excess/duplicate textures
 src/*
+!src/*.md
 !src/bakery
 src/bakery/output

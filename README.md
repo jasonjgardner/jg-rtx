@@ -8,18 +8,18 @@ __Like my work?__
 
 ---
 
-![Cloned sheep](http://d26mkv3tdw1wgb.cloudfront.net/minecraft/clones.png)
+![Cloned sheep](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/clones.png)
 
 ## Read before cloning:
 
-__You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases/tag/0.14.2-alpha)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
+__You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
 
 Downloading the entire repository will include build scripts and excess textures, which are not required to play or install the resouce pack.
 
 # Installation Options
 
 ## Download resource pack archive (Recommended)
-Download and open [latest release's](https://github.com/jasonjgardner/jg-rtx/releases/tag/0.14.2-alpha) **.mcpack** archive.
+Download and open [latest release's](https://github.com/jasonjgardner/jg-rtx/releases) **.mcpack** archive.
 
 ## Download repository (For latest work)
 
@@ -58,7 +58,7 @@ If you've previously installed JG RTX:
 1. Way to go
 2. Uninstall older versions:
 
-![Screenshot of uninstalling an old release](http://d26mkv3tdw1wgb.cloudfront.net/minecraft/uninstall.gif)
+![Screenshot of uninstalling an old release](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/uninstall.gif)
 
 Open Minecraft → Settings → General → Storage → Resource Packs → Find _JG RTX (Preview)_ versions below [latest tag](https://github.com/jasonjgardner/jg-rtx/tags).
 
