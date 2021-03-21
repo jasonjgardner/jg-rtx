@@ -12,14 +12,14 @@ __Like my work?__
 
 ## Read before cloning:
 
-__You're probably looking for the [.mcpack of the latest release](/releases)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
+__You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases/tag/0.14.2-alpha)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
 
 Downloading the entire repository will include build scripts and excess textures, which are not required to play or install the resouce pack.
 
 # Installation Options
 
 ## Download resource pack archive (Recommended)
-Download and open [latest release's](/releases) **.mcpack** archive.
+Download and open [latest release's](https://github.com/jasonjgardner/jg-rtx/releases/tag/0.14.2-alpha) **.mcpack** archive.
 
 ## Download repository (For latest work)
 
