@@ -28,7 +28,7 @@ const DIR_ROOT = path.dirname(__dirname)
  * Texture files source directory
  * @type {string}
  */
-const DIR_SRC = path.join(DIR_ROOT, '/src/bakery')
+const DIR_SRC = path.join(DIR_ROOT, '/src')
 
 module.exports = {
   colors,
@@ -49,17 +49,17 @@ module.exports = {
    * Texture set base layer files
    * @type {string}
    */
-  DIR_BASE: path.join(DIR_SRC, '/unbaked'),
+  DIR_BASE: path.join(DIR_SRC, '/bakery/unbaked'),
   /**
    * Baked/2D texture set base layer files
    * @type {string}
    */
-  DIR_BAKED: path.join(DIR_SRC, '/baked'),
+  DIR_BAKED: path.join(DIR_SRC, '/bakery/baked'),
   /**
    * Half-baked and/or optimized texture set base layer files
    * @type {string}
    */
-  DIR_OUTPUT: path.join(DIR_SRC, '/output'),
+  DIR_OUTPUT: path.join(DIR_SRC, '/bakery/output'),
   /**
    * Texture size in pixels. Clamped between 128px and 1024px. Defaults to 256px
    * @type {number}
