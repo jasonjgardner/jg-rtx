@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "build": "node scripts/index.js",
-    "manifest": "node scripts/manifest/task.js"
+    "manifest": "node scripts/manifest/task.js",
+    "mineways:channelmixer": ".\\bin\\TileMaker\\ChannelMixer.exe -i .\\dist\\JG-RTX -o .\\dist\\JG-RTX-channelmixer",
+    "mineways:tilemaker": ".\\bin\\TileMaker\\TileMaker.exe -i .\\bin\\TileMaker\\terrainBase.png  -d .\\dist\\JG-RTX-channelmixer -o .\\dist\\JG-RTX-mineways\\terrainExt_JG-RTX.png -t 256",
+    "mineways": "npm run mineways:channelmixer & npm run mineways:tilemaker"
   },
   "repository": {
     "type": "git",

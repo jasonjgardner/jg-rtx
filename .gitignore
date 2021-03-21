@@ -3,6 +3,9 @@
 *.mcworld
 *.zip
 
+# Exclude output files
+dist
+
 # Exclude some workspace or file system files
 .idea
 *.ini
@@ -52,3 +55,7 @@ src/*
 !src/*.md
 !src/bakery
 src/bakery/output
+
+# Ignore TileMaker and ChannelMixer in bin directory
+# These executables can be downloaded from http://mineways.com/
+bin/TileMaker
