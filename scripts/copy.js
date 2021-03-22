@@ -12,7 +12,7 @@ const { DIR_OUTPUT, asyncGlob } = require('./config')
  */
 const deployTo = (src, dirs) => new Promise((resolve, reject) => {
   [...new Set(dirs)].forEach(dir => {
-    const dest = path.join(dir, '/textures/blocks/', path.basename(src))
+    const dest = path.join(dir, '/textures/blocks/', src.replace(DIR_OUTPUT, ''))
 
     fs.copyFile(src, dest, err => err ? reject(err) : resolve(dest))
   })
@@ -23,7 +23,7 @@ const deployTo = (src, dirs) => new Promise((resolve, reject) => {
  * @param  {string[]} dirs List of directories to which textures will be copied
  */
 async function copyOutput (...dirs) {
-  const textures = await asyncGlob(`${DIR_OUTPUT}/*.{png,tga}`)
+  const textures = await asyncGlob(`${DIR_OUTPUT}/**/*.{png,tga}`)
 
   textures.map(file => deployTo(file, dirs))
 }

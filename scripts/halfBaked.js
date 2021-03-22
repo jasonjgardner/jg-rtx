@@ -64,7 +64,7 @@ async function getImagesPairs () {
   })
 
   return baseImages.map(img => {
-    const filename = path.basename(img)
+    const filename = img.replace(DIR_BASE, '')
     return [filename, [img, path.resolve(`${DIR_BAKED}/${filename}`)]]
   })
 }

@@ -51,10 +51,9 @@ node_modules/
 vendor/
 
 # Exclude excess/duplicate textures
-src/*
-!src/*.md
-!src/bakery
+src/textures
 src/bakery/output
+src/ui
 
 # Ignore TileMaker and ChannelMixer in bin directory
 # These executables can be downloaded from http://mineways.com/

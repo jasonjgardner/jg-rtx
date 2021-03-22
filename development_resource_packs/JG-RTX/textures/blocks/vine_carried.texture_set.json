@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "vine_carried",
-        "metalness_emissive_roughness": "vine_carried_mer",
-        "normal": "vine_carried_normal"
-    }
-}
