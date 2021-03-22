@@ -39,4 +39,12 @@ async function pack (packName) {
   return await archive.finalize()
 }
 
-module.exports = pack
+(async () => {
+  const packName = process.env.PACK_NAME || 'JG-RTX'
+
+  try {
+    await pack(packName)
+  } catch {
+    console.error('Failed packing %s', packName)
+  }
+})()

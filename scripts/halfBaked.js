@@ -69,12 +69,7 @@ async function getImagesPairs () {
   })
 }
 
-/**
- * Start baking process
- * @async
- * @returns {void}
- */
-async function init () {
+(async () => {
   console.log(colors.yellow('Initializing image blending...'))
 
   const pairs = await getImagesPairs()
@@ -100,6 +95,4 @@ async function init () {
       console.error(colors.italic(err))
     }
   }
-}
-
-module.exports = init
+})()
