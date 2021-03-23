@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-const path = require('path')
-const fs = require('fs')
-const mergeImages = require('merge-images')
-const { Canvas, Image } = require('canvas')
-
-const { DIR_BASE, DIR_BAKED, DIR_OUTPUT, SIZE, colors, asyncGlob } = require('./config')
+import { resolve } from 'path'
+import { writeFile } from 'fs'
+import mergeImages from 'merge-images'
+import Canvas from 'canvas/lib/canvas.js'
+import Image from 'canvas/lib/image.js'
+import colors from 'colors/safe.js'
+import { DIR_BASE, DIR_BAKED, DIR_OUTPUT, SIZE, asyncGlob } from './config.js'
 
 /**
  * Save base64-encoded data to an image file
@@ -13,8 +14,8 @@ const { DIR_BASE, DIR_BAKED, DIR_OUTPUT, SIZE, colors, asyncGlob } = require('./
  * @param {String} base64 Base64-encoded data
  * @returns {Promise} Results of `fs.writeFile`
  */
-const saveImage = (dest, base64) => new Promise((resolve, reject) => {
-  fs.writeFile(dest, base64.replace(/^data:image\/png;base64,/, ''), 'base64', err => err ? reject(err) : resolve(dest))
+const saveImage = (dest, base64) => new Promise((res, rej) => {
+  writeFile(dest, base64.replace(/^data:image\/png;base64,/, ''), 'base64', err => err ? rej(err) : res(dest))
 })
 
 /**
@@ -65,7 +66,7 @@ async function getImagesPairs () {
 
   return baseImages.map(img => {
     const filename = img.replace(DIR_BASE, '')
-    return [filename, [img, path.resolve(`${DIR_BAKED}/${filename}`)]]
+    return [filename, [img, resolve(`${DIR_BAKED}/${filename}`)]]
   })
 }
 
@@ -73,25 +74,19 @@ async function getImagesPairs () {
   console.log(colors.yellow('Initializing image blending...'))
 
   const pairs = await getImagesPairs()
-  const found = pairs.length
 
-  if (!found) {
-    console.error(colors.error('No image pairs found!'))
-    return
-  }
-
-  console.log(colors.verbose('Found %i image pairs'), found)
+  console.log(colors.cyan('Found %i image pairs'), pairs.length)
 
   for (const [key, imgs] of pairs) {
-    const dest = path.resolve(`${DIR_OUTPUT}/${key}`)
+    const dest = resolve(`${DIR_OUTPUT}/${key}`)
 
     try {
       const result = await bake(dest, imgs)
 
-      console.log(colors.success(key))
-      console.log(colors.info(`${result}\n`))
+      console.log(colors.green(key))
+      console.log(colors.cyan(`${result}\n`))
     } catch (err) {
-      console.log(colors.error(key))
+      console.log(colors.red(key))
       console.error(colors.italic(err))
     }
   }

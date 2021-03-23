@@ -32,7 +32,7 @@ Clone and copy resource packs into Minecraft's `development_resource_packs` dire
 
 ### CLI
 ```shell
-git clone https://github.com/jasonjgardner/jg-rtx.git
+git clone --depth 1 https://github.com/jasonjgardner/jg-rtx.git
 ```
 
 To install latest JG RTX resources:

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-const fs = require('fs')
-const path = require('path')
-const { colors, DIR_ROOT, DIR_DEV } = require('./config')
-const archiver = require('archiver')
+import { createWriteStream } from 'fs'
+import { join } from 'path'
+import { DIR_ROOT, DIR_DEV } from './config.js'
+import archiver from 'archiver'
+import colors from 'colors/safe.js'
 
 /**
  * Create .mcpack archive
@@ -11,17 +12,17 @@ const archiver = require('archiver')
  */
 async function pack (packName) {
   const archive = archiver('zip')
-  const dest = path.join(DIR_ROOT, `/dist/${packName}.mcpack`)
-  const output = fs.createWriteStream(dest)
+  const dest = join(DIR_ROOT, `/dist/${packName}.mcpack`)
+  const output = createWriteStream(dest)
 
   output.on('close', () => {
-    console.log(colors.info('%i total bytes'), archive.pointer())
-    console.log(colors.inverse('Created resource pack: %s\n'), dest)
+    console.log(colors.blue('%i total bytes'), archive.pointer())
+    console.log(colors.green('Created resource pack: %s\n'), dest)
   })
 
   archive.on('warning', err => {
     if (err.code === 'ENOENT') {
-      console.warn(colors.warn(err))
+      console.warn(colors.yellow(err))
       return
     }
 
@@ -34,7 +35,7 @@ async function pack (packName) {
 
   archive.pipe(output)
 
-  archive.directory(path.join(DIR_DEV, `/${packName}`), false)
+  archive.directory(join(DIR_DEV, `/${packName}`), false)
 
   return await archive.finalize()
 }

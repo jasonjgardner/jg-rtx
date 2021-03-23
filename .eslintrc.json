@@ -5,11 +5,15 @@
         "node": true
     },
     "extends": [
-        "standard"
+        "eslint:recommended",
+        "plugin:node/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 12
     },
     "rules": {
+        "node/no-callback-literal": "error",
+        "node/no-deprecated-api": "warning",
+        "node/shebang": "warning"
     }
 }
