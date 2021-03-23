@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createWriteStream } from 'fs'
 import { join } from 'path'
-import { DIR_ROOT, DIR_DEV } from './config.js'
+import { DIR_ROOT, DIR_DIST } from './config.js'
 import archiver from 'archiver'
 import colors from 'colors/safe.js'
 
@@ -35,7 +35,7 @@ async function pack (packName) {
 
   archive.pipe(output)
 
-  archive.directory(join(DIR_DEV, `/${packName}`), false)
+  archive.directory(DIR_DIST, false)
 
   return await archive.finalize()
 }
