@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 import { readFile, writeFileSync } from 'fs'
 import { join, resolve } from 'path'
-import { DIR_DIST, DIR_SRC } from './config.js'
+import { DIR_PACK, DIR_SRC } from './config.js'
 import { v4 as uuidv4 } from 'uuid'
+import JSON5 from 'json5'
+
+const args = process.argv.slice(2)
+const regenerateId = args.includes('-u')
 
 const readJson = filePath => new Promise((res, rej) => {
   readFile(filePath, 'utf8', (err, data) => {
@@ -12,8 +16,9 @@ const readJson = filePath => new Promise((res, rej) => {
     }
 
     try {
-      res(JSON.parse(data))
-    } catch {
+      res(JSON5.parse(data))
+    } catch (err) {
+      console.error('JSON parse error: %s', err)
       rej('Failed parsing JSON data')
     }
   })
@@ -30,17 +35,24 @@ const getVersion = async () => {
 }
 
 const mergeManifests = async packName => {
-  const { header: { description, name } } = await readJson(join(DIR_SRC, '/manifests/', `${packName}.json`))
+  const { header } = await readJson(join(DIR_SRC, '/manifests/', `${packName}.json5`))
   const pkgVersion = await getVersion()
 
+  let uuid = header.uuid
+
+  if (regenerateId || !uuid.length) {
+    uuid = uuidv4()
+    console.log('Assigned new UUID: %s', uuid)
+  }
+  
   return {
     format_version: 2,
     header: {
-      name,
-      description,
+      uuid,
+      name: header.name,
+      description: header.description,
       version: pkgVersion,
-      min_engine_version: [1, 16, 2],
-      uuid: uuidv4()
+      min_engine_version: header.min_engine_version || [1, 16, 2],
     },
     modules: [
       {
@@ -59,11 +71,11 @@ const mergeManifests = async packName => {
 (async () => {
   const packName = process.env.PACK_NAME || 'JG-RTX'
   const merged = await mergeManifests(packName)
-  const dest = join(DIR_DIST, '/manifest.json')
+  const dest = join(DIR_PACK, '/manifest.json')
 
   try {
-    writeFileSync(dest, JSON.stringify(merged))
-    console.log('Manifest file written to %s', dest)
+    writeFileSync(dest, JSON.stringify(merged, null, 2))
+    console.log('Manifest file written to:\n%s', dest)
   } catch (err) {
     console.error(err)
   }
