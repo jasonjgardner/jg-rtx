@@ -38,7 +38,9 @@
     "url": "https://github.com/jasonjgardner/jg-rtx/issues"
   },
   "homepage": "https://github.com/jasonjgardner/jg-rtx#readme",
-  "os": ["win32"],
+  "os": [
+    "win32"
+  ],
   "engines": {
     "node": "^15.7.0",
     "vscode": "^1.22.0"

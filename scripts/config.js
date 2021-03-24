@@ -24,10 +24,17 @@ export const DIR_ROOT = dirname(__dirname)
 export const DIR_SRC = join(DIR_ROOT, '/src')
 
 /**
- * .mcpack source directory
+ * Directory containing distributable output
  * @type {string}
  */
-export const DIR_DIST = join(DIR_ROOT, '/development_resource_packs/', process.env.PACK_NAME || 'JG-RTX')
+export const DIR_DIST = join(DIR_ROOT, '/dist')
+
+/**
+ * .mcpack source directory
+ * (The directory that will be distributed, despite being named "development_...")
+ * @type {string}
+ */
+export const DIR_PACK = join(DIR_ROOT, '/development_resource_packs/', process.env.PACK_NAME || 'JG-RTX')
 
 /**
  * Minecraft development_resource_packs directory

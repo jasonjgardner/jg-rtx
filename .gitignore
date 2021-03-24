@@ -5,6 +5,7 @@
 
 # Exclude output files
 dist
+logs
 
 # Exclude some workspace or file system files
 .idea
