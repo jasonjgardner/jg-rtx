@@ -1,3 +1,7 @@
+#### [🍕 Download JG RTX v0.15.1-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.15.1-alpha/JG-RTX_0.15.1.mcpack)
+
+---
+
 ![Pack Icon](development_resource_packs/JG-RTX/pack_icon.png)
 # JG RTX
 
