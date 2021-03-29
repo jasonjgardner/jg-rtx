@@ -1070,7 +1070,7 @@
    "grass_path" : {
       "isotropic" : {
          "down" : true,
-         "up" : true
+         "up" : false
       },
       "sound" : "grass",
       "textures" : {
@@ -1443,7 +1443,7 @@
       "textures" : "magenta_glazed_terracotta"
    },
    "magma" : {
-      "isotropic" : true,
+      "isotropic" : false,
       "sound" : "stone",
       "textures" : "magma"
    },
@@ -1560,7 +1560,7 @@
    },
    "obsidian" : {
       "brightness_gamma" : 2.0,
-      "isotropic" : true,
+      "isotropic" : false,
       "sound" : "stone",
       "textures" : "obsidian"
    },
@@ -2142,7 +2142,14 @@
       "textures" : "stone"
    },
    "stone_brick_stairs" : {
-      "textures" : "stonebrick"
+      "textures" : {
+         "down" : "stone_slab_top",
+         "north": "stone_slab_side",
+         "south": "stone_slab_side",
+         "east": "stonebrick_stairs",
+         "west" : "stonebrick_stairs",
+         "up" : "stonebrick_stairs"
+      }
    },
    "stone_button" : {
       "sound" : "stone",
