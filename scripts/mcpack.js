@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createWriteStream } from 'fs'
 import { join } from 'path'
-import { DIR_ROOT, DIR_DIST } from './config.js'
+import { DIR_ROOT, DIR_DIST, DIR_PACK } from './config.js'
 import archiver from 'archiver'
 import colors from 'colors/safe.js'
 
@@ -12,7 +12,7 @@ import colors from 'colors/safe.js'
  */
 async function pack (packName) {
   const archive = archiver('zip')
-  const dest = join(DIR_ROOT, `/dist/${packName}.mcpack`)
+  const dest = join(DIR_DIST, `/${packName}.mcpack`)
   const output = createWriteStream(dest)
 
   output.on('close', () => {
@@ -35,7 +35,7 @@ async function pack (packName) {
 
   archive.pipe(output)
 
-  archive.directory(DIR_DIST, false)
+  archive.directory(DIR_PACK, false)
 
   return await archive.finalize()
 }

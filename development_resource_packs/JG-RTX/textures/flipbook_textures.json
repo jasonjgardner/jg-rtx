@@ -1,11 +1,5 @@
 [
   {
-    "flipbook_texture": "textures/blocks/custom/slime_atlas",
-    "atlas_tile": "slime_atlas",
-    "frames": [ 0, 1, 2, 3 ],
-    "ticks_per_frame": 15
-  },
-  {
     "flipbook_texture": "textures/blocks/huge_fungus/crimson_log_side",
     "atlas_tile": "crimson_log_side",
     "ticks_per_frame": 15

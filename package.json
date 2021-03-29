@@ -14,7 +14,8 @@
     "release": "npm run update & npm run pack",
     "mineways:channelmixer": ".\\bin\\TileMaker\\ChannelMixer.exe -i .\\development_resource_packs\\JG-RTX -o .\\dist\\JG-RTX-channelmixer",
     "mineways:tilemaker": ".\\bin\\TileMaker\\TileMaker.exe -i .\\bin\\TileMaker\\terrainBase.png  -d .\\dist\\JG-RTX-channelmixer -o .\\dist\\JG-RTX-mineways\\terrainExt_JG-RTX.png -t 256",
-    "mineways": "npm run mineways:channelmixer & npm run mineways:tilemaker"
+    "mineways": "npm run mineways:channelmixer & npm run mineways:tilemaker",
+    "log:mineways": "npm run mineways > logs/mineways.log"
   },
   "repository": {
     "type": "git",

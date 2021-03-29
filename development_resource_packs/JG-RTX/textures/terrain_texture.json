@@ -173,6 +173,9 @@
         "textures/blocks/stonebrick_carved"
       ]
     },
+    "stonebrick_stairs": {
+      "textures": "textures/blocks/custom/stonebrick_stairs"
+    },
     "monster_egg": {
       "textures": [
         "textures/blocks/cobblestone",
@@ -512,7 +515,7 @@
       "textures": "textures/blocks/tnt_side"
     },
     "bookshelf_top": {
-      "textures": "textures/blocks/planks_oak"
+      "textures": "textures/blocks/custom/bookshelf_top"
     },
     "bookshelf": {
       "textures": "textures/blocks/bookshelf"
@@ -528,7 +531,7 @@
         "textures/blocks/custom/flower_canola",
         "textures/blocks/flower_blue_orchid",
         "textures/blocks/flower_allium",
-        "textures/blocks/flower_houstonia",
+        "textures/blocks/custom/flower_lilac",
         "textures/blocks/custom/flower_meadow",
         "textures/blocks/custom/flower_orange",
         "textures/blocks/custom/flower_white",
@@ -2139,7 +2142,7 @@
     "sea_lantern": {
       "textures": {
         "path": "textures/blocks/sea_lantern",
-        "pbr_emissive": 0.21
+        "pbr_emissive": 0.2
       }
     },
     "sea_pickle": {
@@ -2159,13 +2162,13 @@
       "textures": "textures/blocks/beacon"
     },
     "beacon_core": {
-      "textures": "textures/blocks/beacon"
+      "textures": "textures/blocks/custom/beacon_core"
     },
     "beacon_base": {
-      "textures": "textures/blocks/obsidian"
+      "textures": "textures/blocks/custom/beacon_base"
     },
     "beacon_shell": {
-      "textures": "textures/blocks/glass"
+      "textures": "textures/blocks/custom/beacon_shell"
     },
     "conduit": {
       "textures": "textures/blocks/conduit_base"

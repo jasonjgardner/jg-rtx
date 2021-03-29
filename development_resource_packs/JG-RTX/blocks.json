@@ -1026,7 +1026,7 @@
       "textures" : "glowing_obsidian"
    },
    "glowstone" : {
-      "isotropic" : true,
+      "isotropic" : false,
       "sound" : "glass",
       "textures" : "glowstone"
    },
@@ -2006,7 +2006,7 @@
    },
    "snow" : {
       "brightness_gamma" : 0.450,
-      "isotropic" : true,
+      "isotropic" : false,
       "sound" : "snow",
       "textures" : "snow"
    },

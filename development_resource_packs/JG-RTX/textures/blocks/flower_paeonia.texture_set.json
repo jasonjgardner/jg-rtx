@@ -1,8 +1,8 @@
 {
     "format_version": "1.16.100",
     "minecraft:texture_set": {
-        "color": "flower_hydrangea",
-        "metalness_emissive_roughness": [0, 0, 200],
-        "normal": "flower_hydrangea_normal"
+        "color": "flower_paeonia",
+        "metalness_emissive_roughness": "flower_paeonia_mer",
+        "normal": "flower_paeonia_normal"
     }
 }
