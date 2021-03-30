@@ -1895,7 +1895,7 @@
       "quad": 1,
       "textures": {
         "path": "textures/blocks/lava_flow",
-        "pbr_emissive": 0.19
+        "pbr_emissive": 0.1
       }
     },
     "wool": {
@@ -1944,13 +1944,13 @@
     "fire_0": {
       "textures": {
         "path": "textures/blocks/fire_0",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.15
       }
     },
     "fire_1": {
       "textures": {
         "path": "textures/blocks/fire_1",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.16
       }
     },
     "still_water_grey": {
@@ -1963,7 +1963,7 @@
     "still_lava": {
       "textures": {
         "path": "textures/blocks/lava_still",
-        "pbr_emissive": 0.22
+        "pbr_emissive": 0.1
       }
     },
     "cauldron_water": {
@@ -2142,7 +2142,7 @@
     "sea_lantern": {
       "textures": {
         "path": "textures/blocks/sea_lantern",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.12
       }
     },
     "sea_pickle": {
@@ -2544,7 +2544,7 @@
     "campfire_fire": {
       "textures": {
         "path": "textures/blocks/campfire",
-        "pbr_emissive": 0.2
+        "pbr_emissive": 0.09
       }
     },
     "campfire_log": {

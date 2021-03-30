@@ -1988,10 +1988,6 @@
          "west" : "smoker_side"
       }
    },
-   "smooth_quartz_stairs" : {
-      "sound" : "stone",
-      "textures" : "stair_smooth_quartz_block"
-   },
    "smooth_red_sandstone_stairs" : {
       "sound" : "stone",
       "textures" : "smooth_red_sandstone"
