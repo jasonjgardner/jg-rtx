@@ -2,7 +2,7 @@
     "format_version": "1.16.100",
     "minecraft:texture_set": {
         "color": "sweet_berry_bush_stage3",
-        "metalness_emissive_roughness": "sweet_berry_bush_stage3_mer",
+        "metalness_emissive_roughness": [0, 0, 100],
         "normal": "sweet_berry_bush_stage3_normal"
     }
 }

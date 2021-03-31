@@ -704,6 +704,9 @@
         "textures/blocks/quartz_block_top"
       ]
     },
+    "stair_smooth_quartz_block" : {
+      "textures" : "textures/blocks/quartz_block_bottom"
+   },
     "stair_quartz_block_top": {
       "textures": "textures/blocks/quartz_block_top"
     },
