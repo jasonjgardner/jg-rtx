@@ -93,7 +93,7 @@ function createArchive() {
 //     }))
 // }
 
-exports.textureSets = parallel(writeTextureSets)
+//exports.textureSets = parallel(writeTextureSets)
 
 exports.zip = series(createArchive)
 exports.clean = series(purgeDirectory)
