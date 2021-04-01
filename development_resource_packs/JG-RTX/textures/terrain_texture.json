@@ -1921,6 +1921,26 @@
         "textures/blocks/wool_colored_black"
       ]
     },
+    "carpet": {
+      "textures": [
+        "textures/blocks/custom/carpet_colored_white",
+        "textures/blocks/custom/carpet_colored_orange",
+        "textures/blocks/custom/carpet_colored_magenta",
+        "textures/blocks/custom/carpet_colored_light_blue",
+        "textures/blocks/custom/carpet_colored_yellow",
+        "textures/blocks/custom/carpet_colored_lime",
+        "textures/blocks/custom/carpet_colored_pink",
+        "textures/blocks/custom/carpet_colored_gray",
+        "textures/blocks/custom/carpet_colored_silver",
+        "textures/blocks/custom/carpet_colored_cyan",
+        "textures/blocks/custom/carpet_colored_purple",
+        "textures/blocks/custom/carpet_colored_blue",
+        "textures/blocks/custom/carpet_colored_brown",
+        "textures/blocks/custom/carpet_colored_green",
+        "textures/blocks/custom/carpet_colored_red",
+        "textures/blocks/custom/carpet_colored_black"
+      ]
+    },
     "hardened_clay": {
       "textures": "textures/blocks/hardened_clay"
     },
