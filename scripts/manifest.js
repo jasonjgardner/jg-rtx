@@ -49,7 +49,7 @@ const mergeManifests = async packName => {
     format_version: 2,
     header: {
       uuid,
-      name: header.name.replace('(Preview)', pkgVersion),
+      name: header.name.replace('(Preview)', pkgVersion.join('.')),
       description: header.description,
       version: pkgVersion,
       min_engine_version: header.min_engine_version || [1, 16, 2],

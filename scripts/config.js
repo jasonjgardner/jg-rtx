@@ -1,90 +1,58 @@
 #!/usr/bin/env node
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
-import glob from 'glob'
+const { join, dirname } = require('path')
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const PACK_NAME = process.env.PACK_NAME || 'JG-RTX'
 
 /**
  * Minecraft Windows install directory
  * @type {string}
  */
-export const DIR_MINECRAFT = join(process.env.LocalAppData, '/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang')
+const DIR_MINECRAFT = join(process.env.LocalAppData, '/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang')
 
 /**
  * Workspace directory
  * @type {string}
  */
-export const DIR_ROOT = dirname(__dirname)
+const DIR_ROOT = '.'
 
 /**
  * Texture files source directory
  * @type {string}
  */
-export const DIR_SRC = join(DIR_ROOT, '/src')
+const DIR_SRC = join(DIR_ROOT, '/src')
 
 /**
  * Directory containing distributable output
  * @type {string}
  */
-export const DIR_DIST = join(DIR_ROOT, '/dist')
+const DIR_DIST = join(DIR_ROOT, '/dist')
 
-/**
- * .mcpack source directory
- * (The directory that will be distributed, despite being named "development_...")
- * @type {string}
- */
-export const DIR_PACK = join(DIR_ROOT, '/development_resource_packs/', process.env.PACK_NAME || 'JG-RTX')
+const DIR_DEV_PACKS = './development_resource_packs'
 
 /**
  * Minecraft development_resource_packs directory
  * @type {string}
  */
-export const DIR_DEV = join(DIR_MINECRAFT, '/development_resource_packs')
+const DIR_DEV = join(DIR_MINECRAFT, '/development_resource_packs')
 
-/**
-   * Texture set base layer files
-   * @type {string}
-   */
-export const DIR_BASE = join(DIR_SRC, '/bakery/unbaked')
+const DIR_RP_SRC = join(DIR_DEV_PACKS, '/', PACK_NAME, '/')
 
-/**
- * Baked/2D texture set base layer files
- * @type {string}
- */
-export const DIR_BAKED = join(DIR_SRC, '/bakery/baked')
-
-/**
- * Half-baked and/or optimized texture set base layer files
- * @type {string}
- */
-export const DIR_OUTPUT = join(DIR_SRC, '/bakery/output')
+const DIR_RP_DIST = join(DIR_DIST, '/', PACK_NAME, '/')
 
 /**
  * Texture size in pixels. Clamped between 128px and 1024px. Defaults to 256px
  * @type {number}
  */
-export const SIZE = Math.max(128, Math.min(1024, process.env.SIZE || 256))
+const SIZE = Math.max(128, Math.min(1024, process.env.SIZE || 256))
 
-/**
- * Asyncronous glob helper
- * @param {String} pattern Glob pattern
- * @param {glob.IOptions} options Glob configuration
- * @returns {Promise<String|glob.IGlob>} Matches or error message
- */
-export const asyncGlob = (pattern, options = {}) => new Promise((resolve, reject) => glob(
-  pattern,
-  {
-    nosort: true,
-    nodir: true,
-    realpath: true,
-    ...options
-  },
-  /**
-   * Callback for async
-   * @param {string} err Glob error message
-   * @param {glob.IGlob} matches List of files matched by glob pattern
-   * @returns {mixed}
-   */
-  (err, matches) => err ? reject(err) : resolve(matches)
-))
+module.exports = {
+  DIR_DIST,
+  DIR_ROOT,
+  DIR_SRC,
+  DIR_DEV,
+  DIR_DEV_PACKS,
+  DIR_RP_SRC,
+  DIR_RP_DIST,
+  PACK_NAME,
+  SIZE
+}
