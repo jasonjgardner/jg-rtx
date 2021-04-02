@@ -46,6 +46,7 @@ const DIR_RP_DIST = join(DIR_DIST, '/', PACK_NAME, '/')
 const SIZE = Math.max(128, Math.min(1024, process.env.SIZE || 256))
 
 module.exports = {
+  DIR_MINECRAFT,
   DIR_DIST,
   DIR_ROOT,
   DIR_SRC,

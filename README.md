@@ -20,6 +20,18 @@ __You're probably looking for the [.mcpack of the latest release](https://github
 
 Downloading the entire repository will include build scripts and excess textures, which are not required to play or install the resouce pack.
 
+# Screenshots and Videos
+
+- 🆕 Follow [**@merncurft** on Instagram](https://www.instagram.com/merncurft/)
+- [Watch the demo reel on YouTube](https://www.youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N). It's fun to watch, even if some of the textures featured in the earlier videos are no longer in the resource pack.
+- [Contribute your own screenshots](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
+
+![Quartz pillars](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/jgrtx_pillars.jpg)
+
+![Nature textures](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/jgrtx_nature.jpg)
+
+![Desert tomb](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/jgrtx_tomb.jpg)
+
 # Installation Options
 
 ## Download resource pack archive (Recommended)
