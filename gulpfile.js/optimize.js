@@ -11,11 +11,12 @@ function optimizeImages() {
     })
         .pipe(imagemin([
             imagemin.optipng({
-                optimizationLevel: 4,
+                optimizationLevel: 1,
                 bitDepthReduction: false,
                 colorTypeReduction: false,
                 paletteReduction: false,
-                interlaced: false
+                interlaced: false,
+                verbose: true
             })
         ]))
     .pipe(dest(DIR_RP_DIST))
