@@ -5,5 +5,14 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"json.schemas": [
+			{
+				"fileMatch": [
+					"development_resource_packs/**/*.json"
+				],
+				"url": "https://aexer0e.github.io/bedrock-schema/"
+			}
+		]
+	}
 }
