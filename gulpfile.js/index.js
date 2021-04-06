@@ -6,6 +6,7 @@ const { copyLanguageFiles, copyBaked, copyRtx, reloadFromDist, reloadFromSrc } =
 const { zip } = require('./zip.js')
 const { DIR_RP_DIST, DIR_RP_SRC } = require('../scripts/config.js')
 const { pipeTextures, createTextureSets, listTextures } = require('./textureSet.js')
+const { pipeAtlasTextures, stitchAtlas } = require('./atlas.js')
 
 function includeNonOptimized() {
     return src(join(DIR_RP_SRC, '**/*.tga'), {
@@ -22,6 +23,8 @@ exports.textureList = series(pipeTextures, listTextures)
  * Generate .texture_set.json files
  */
 exports.textureSet = series(pipeTextures, createTextureSets)
+
+exports.atlas = series(pipeAtlasTextures, stitchAtlas)
 
 /**
  * Copy source files into Minecraft's development_resource_packs directory

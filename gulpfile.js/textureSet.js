@@ -19,6 +19,9 @@ const sanitize = name => `${name}`.replace(/\\+/g, '/') //.replace(/\.(png|tga|j
  */
 const getTextureNames = () => [...filenames.get('textures')].map(sanitize)
 
+/**
+ * Cache texture file list
+ */
 function pipeTextures() {
     const blocksDir = join(DIR_RP_SRC, 'textures/blocks')
 
@@ -28,13 +31,18 @@ function pipeTextures() {
         .pipe(filenames('textures'))
 }
 
+/**
+ * Create textures_list.json
+ */
 function listTextures(cb) {
     writeFileSync(join(DIR_RP_SRC, '/textures/textures_list.json'), JSON.stringify(getTextureNames(), null, 2))
     cb()
 }
 
-
-
+/**
+ * Create list of texture names to traverse
+ * @returns {Object} List of base textures and list of normal maps + MERs
+ */
 function parseTextures() {
     const nameExceptions = ['piston_top_normal', 'rail_normal', 'red_sandstone_normal', 'sandstone_normal']
     const allTextures = getTextureNames().map(stripExtension)
@@ -49,12 +57,15 @@ function parseTextures() {
     }
 }
 
+/**
+ * Generate missing texture_set.json files
+ */
 function createTextureSets(cb) {
     const { baseTextures, shaderTextures } = parseTextures()
 
     baseTextures.forEach(
         /**
-         * 
+         * Generate texture_set.json
          * @param {string} textureName Texture name which may include subdirectory
          */
         textureName => {
