@@ -1,8 +1,8 @@
 {
   "resource_pack_name": "jgrtx",
   "texture_name": "atlas.terrain",
-  "padding": 0,
-  "num_mip_levels": 0,
+  "padding": 4,
+  "num_mip_levels": 2,
   "texture_data": {
     "missing": {
       "textures": "textures/misc/missing_texture"
@@ -1264,8 +1264,7 @@
     },
     "glowstone": {
       "textures": {
-        "path": "textures/blocks/glowstone",
-        "pbr_emissive": 0.666
+        "path": "textures/blocks/glowstone"
       }
     },
     "piston_top": {
