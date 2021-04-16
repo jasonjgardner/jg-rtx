@@ -100,7 +100,7 @@
         "fog_identifier" : "minecraft:fog_default",
         "water_fog_color" : "#2e94d8",
         "water_fog_distance" : 15,
-        "water_surface_color" : "#44a0f5",
+        "water_surface_color" : "#2a467a",
         "water_surface_transparency" : 0.650
      },
      "desert" : {
