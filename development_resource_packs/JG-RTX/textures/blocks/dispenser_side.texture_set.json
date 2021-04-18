@@ -1,0 +1,8 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:texture_set": {
+    "color": "dispenser_side",
+    "metalness_emissive_roughness": "dispenser_side_mer",
+    "normal": "dispenser_side_normal"
+  }
+}

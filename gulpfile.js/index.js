@@ -30,8 +30,13 @@ exports.atlas = series(pipeAtlasTextures, stitchAtlas)
  * Copy source files into Minecraft's development_resource_packs directory
  */
 exports.reload = series(
-    parallel(copyBaked, copyRtx),
+
     reloadFromSrc
+)
+
+exports.copy = series(
+    parallel(copyBaked, copyRtx),
+    series(pipeTextures, createTextureSets)
 )
 
 /**
@@ -55,7 +60,8 @@ exports.build = series(
     pipeTextures,
     parallel(listTextures, createTextureSets),
     series(pipeTextures, createTextureSets),
-    parallel(includeNonOptimized, minifyJson, copyLanguageFiles), optimizeImages
+    parallel(includeNonOptimized, minifyJson, copyLanguageFiles),
+    optimizeImages
 )
 
 /**

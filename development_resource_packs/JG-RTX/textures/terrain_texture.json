@@ -176,6 +176,9 @@
     "stonebrick_stairs": {
       "textures": "textures/blocks/custom/stonebrick_stairs"
     },
+    "stone_stairs": {
+      "textures": "textures/blocks/custom/stone_stairs"
+    },
     "monster_egg": {
       "textures": [
         "textures/blocks/cobblestone",
@@ -2094,10 +2097,10 @@
       "textures": "textures/blocks/dispenser_front_vertical"
     },
     "dispenser_top": {
-      "textures": "textures/blocks/furnace_top"
+      "textures": "textures/blocks/dispenser_top"
     },
     "dispenser_side": {
-      "textures": "textures/blocks/furnace_side"
+      "textures": "textures/blocks/dispenser_side"
     },
     "dropper_front_horizontal": {
       "textures": "textures/blocks/dropper_front_horizontal"

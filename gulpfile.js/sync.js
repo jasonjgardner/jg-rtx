@@ -10,19 +10,19 @@ function copyLanguageFiles() {
 }
 
 function copyBaked() {
-    const bakedTextures = join(DIR_SRC, 'textures/blocks/baked')
+    const base = join(DIR_SRC, 'textures/blocks/')
 
-    return src(join(bakedTextures, '/**/*.png'), {
-        base: bakedTextures
-    })
-    .pipe(dest(join(DIR_DEV_PACKS, `/${PACK_NAME}_rtxoff/textures/blocks`)))
+    return src(join(base, '**/*_carried.png'), { base })
+        .pipe(dest(join(DIR_DEV_PACKS, `/${PACK_NAME}_rtxoff/textures/blocks`)))
 }
 
 function copyRtx() {
     const base = join(DIR_SRC, 'textures/blocks/')
     const rtxTextures = [
-        join(base, '**/*.{png,tga}'),
-        `!${join(DIR_SRC, 'textures/blocks/baked/**')}`
+        join(base, '**/*_mer.png'),
+        join(base, '**/*_normal.png'),
+        join(base, '**/*.{tga,png}'),
+        `!${join(base, '**/*_carried.{tga,png}')}`
     ]
 
     return src(rtxTextures, { base })

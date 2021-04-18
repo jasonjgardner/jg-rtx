@@ -1533,7 +1533,7 @@
    },
    "normal_stone_stairs" : {
       "sound" : "stone",
-      "textures" : "stone"
+      "textures" : "stone_stairs"
    },
    "noteblock" : {
       "sound" : "wood",
@@ -1782,7 +1782,7 @@
       "textures" : "mushroom_red"
    },
    "red_mushroom_block" : {
-      "sound" : "wood",
+      "sound" : "metal",
       "textures" : {
          "down" : "mushroom_red_bottom",
          "east" : "mushroom_red_east",
