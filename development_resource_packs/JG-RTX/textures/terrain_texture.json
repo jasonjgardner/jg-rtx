@@ -1,8 +1,8 @@
 {
   "resource_pack_name": "jgrtx",
   "texture_name": "atlas.terrain",
-  "padding": 4,
-  "num_mip_levels": 2,
+  "padding": 2,
+  "num_mip_levels": 0,
   "texture_data": {
     "missing": {
       "textures": "textures/misc/missing_texture"
@@ -11,11 +11,11 @@
       "textures": [
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#79c05a"
+          "overlay_color": "#376623"
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#8ab689"
+          "overlay_color": "#496e49"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -31,7 +31,7 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#88bb66"
+          "overlay_color": "#619042"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -43,19 +43,19 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#86b783"
+          "overlay_color": "#548152"
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#83b593"
+          "overlay_color": "#396146"
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#80b497"
+          "overlay_color": "#367452"
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#91bd59"
+          "overlay_color": "#4c7913"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -63,7 +63,7 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#8eb971"
+          "overlay_color": "#729e54"
         },
         {
           "path": "textures/blocks/grass_side",
@@ -71,7 +71,7 @@
         },
         {
           "path": "textures/blocks/grass_side",
-          "overlay_color": "#507a32"
+          "overlay_color": "#365c1c"
         },
         "textures/blocks/grass_side_snowed"
       ]
@@ -2166,8 +2166,7 @@
     },
     "sea_lantern": {
       "textures": {
-        "path": "textures/blocks/sea_lantern",
-        "pbr_emissive": 0.12
+        "path": "textures/blocks/sea_lantern"
       }
     },
     "sea_pickle": {

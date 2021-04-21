@@ -98,10 +98,10 @@
      "default" : {
         "fog_color" : "#bcdbff",
         "fog_identifier" : "minecraft:fog_default",
-        "water_fog_color" : "#2e94d8",
+        "water_fog_color" : "#064f80",
         "water_fog_distance" : 15,
         "water_surface_color" : "#2a467a",
-        "water_surface_transparency" : 0.650
+        "water_surface_transparency" : 0.69
      },
      "desert" : {
         "fog_identifier" : "minecraft:fog_desert",
