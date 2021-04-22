@@ -1899,8 +1899,7 @@
     "flowing_lava": {
       "quad": 1,
       "textures": {
-        "path": "textures/blocks/lava_flow",
-        "pbr_emissive": 0.1
+        "path": "textures/blocks/lava_flow"
       }
     },
     "wool": {
