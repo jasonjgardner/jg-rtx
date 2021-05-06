@@ -683,6 +683,9 @@
     "redstone_block": {
       "textures": "textures/blocks/redstone_block"
     },
+    "gold_plate": {
+      "textures": "textures/blocks/custom/gold_plate"
+    },
     "quartz_block_top": {
       "textures": [
         "textures/blocks/quartz_block_top",
