@@ -1,7 +1,7 @@
 {
     "format_version": "1.16.100",
     "minecraft:texture_set": {
-        "color": "#ffe29b",
+        "color": "gold_plate",
         "metalness_emissive_roughness": "gold_plate_mer",
         "normal": "gold_plate_normal"
     }
