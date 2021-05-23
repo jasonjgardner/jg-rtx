@@ -693,7 +693,8 @@
    },
    "dark_oak_pressure_plate" : {
       "sound" : "wood",
-      "textures" : "dark_oak_planks"
+      "carried_textures": "dark_oak_plate_carried",
+      "textures" : "dark_oak_plate"
    },
    "dark_oak_stairs" : {
       "sound" : "wood",

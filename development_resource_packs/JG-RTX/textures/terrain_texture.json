@@ -686,6 +686,12 @@
     "gold_plate": {
       "textures": "textures/blocks/custom/gold_plate"
     },
+    "dark_oak_plate": {
+      "textures": "textures/blocks/custom/dark_oak_plate"
+    },
+    "dark_oak_plate_carried": {
+      "textures": "textures/blocks/custom/dark_oak_plate_carried"
+    },
     "quartz_block_top": {
       "textures": [
         "textures/blocks/quartz_block_top",
