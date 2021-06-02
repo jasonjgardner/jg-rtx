@@ -4,17 +4,6 @@
   "description": "Minecraft raytracing-enabled resource pack",
   "private": true,
   "type": "commonjs",
-  "scripts": {
-    "clean": "node scripts/delete.js",
-    "build": "gulp sync && npm run clean && gulp",
-    "build:dev": "gulp sync && npm run clean && gulp build",
-    "copy": "cd scripts & install.cmd",
-    "manifest": "node scripts/manifest.js",
-    "mineways:channelmixer": ".\\bin\\TileMaker\\ChannelMixer.exe -i .\\development_resource_packs\\JG-RTX -o .\\dist\\JG-RTX-channelmixer",
-    "mineways:tilemaker": ".\\bin\\TileMaker\\TileMaker.exe -i .\\bin\\TileMaker\\terrainBase.png  -d .\\dist\\JG-RTX-channelmixer -o .\\dist\\JG-RTX-mineways\\terrainExt_JG-RTX.png -t 256",
-    "mineways": "npm run mineways:channelmixer & npm run mineways:tilemaker",
-    "log:mineways": "npm run mineways > logs/mineways.log"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jasonjgardner/jg-rtx.git"
@@ -43,26 +32,17 @@
   "engines": {
     "vscode": "^1.22.0"
   },
-  "devDependencies": {
-    "canvas": "^2.8.0",
-    "del": "^6.0.0",
-    "eslint": "^7.26.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "gulp": "^4.0.2",
-    "gulp-filenames": "^4.0.1",
-    "gulp-filter": "^6.0.0",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-zip": "^5.1.0",
+  "dependencies": {
+    "@actions/core": "^1.3.0",
+    "@actions/github": "^5.0.0",
+    "@actions/glob": "^0.1.2",
+    "@actions/tool-cache": "^1.6.1",
     "json5": "^1.0.1",
-    "merge-images": "^2.0.0",
-    "through2": "^2.0.5",
     "uuid": "^8.3.2"
   },
-  "peerDependencies": {
-    "hosted-git-info": ">=2.8.9",
-    "minimist": ">=1.2.3"
+  "config": {
+    "uuid": {
+      "JG-RTX": "87c22664-8881-4ee0-8527-56c99f452f34"
+    }
   }
 }
