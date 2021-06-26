@@ -1,0 +1,50 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:fog_soulsand_valley"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 10.0,
+        "fog_end": 96.0,
+        "fog_color": "#1B404E",
+        "render_distance_type": "fixed"
+      },
+      "water": {
+        "fog_start": 1.0,
+        "fog_end": 15.0,
+        "fog_color": "#905957",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 10.0,
+        "fog_end": 96.0,
+        "fog_color": "#1B4745",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.2,
+          "uniform": true
+        },
+        "water": {
+          "max_density": 0.3,
+          "uniform": true
+        },
+        "lava": {
+          "max_density": 0.3,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [ 0.3857, 0.1534, 0.3127 ],
+          "absorption": [ 0.5926, 0.2333, 0.1005 ]
+        }
+      }
+    }
+  }
+}

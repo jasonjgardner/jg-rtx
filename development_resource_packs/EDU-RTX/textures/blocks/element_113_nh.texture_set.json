@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "hue_purple",
-        "metalness_emissive_roughness": [255, 0, 0],
-        "normal": "convex_normal"
-    }
-}

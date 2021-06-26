@@ -9,7 +9,7 @@
 		"json.schemas": [
 			{
 				"fileMatch": [
-					"development_resource_packs/**/*.json"
+					"RP/**/*.json"
 				],
 				"url": "https://aexer0e.github.io/bedrock-schema/"
 			}

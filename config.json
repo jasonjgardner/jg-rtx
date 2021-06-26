@@ -1,0 +1,12 @@
+{
+	"type": "minecraftBedrock",
+	"name": "JG-RTX",
+	"namespace": "jgrtx",
+	"author": "Jason Gardner",
+	"targetVersion": "1.16.220",
+	"description": "JG RTX",
+	"capabilities": [],
+	"packs": {
+		"resourcePack": "./RP"
+	}
+}
