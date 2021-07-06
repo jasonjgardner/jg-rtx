@@ -18,3 +18,9 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install zip
           zip -r JG-RTX.mcpack ${GITHUB_WORKSPACE}/RP
+          
+      - name: Upload .mcpack artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mcpack
+          path: JG-RTX.mcpack
