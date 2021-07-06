@@ -1,0 +1,20 @@
+name: mcpack
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build mcpack archive
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install zip
+          zip -r JG-RTX.mcpack ${GITHUB_WORKSPACE}/RP
