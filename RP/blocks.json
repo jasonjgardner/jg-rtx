@@ -400,7 +400,7 @@
    },
    "carpet": {
       "sound": "cloth",
-      "textures": "wool"
+      "textures": "carpet"
    },
    "carrots": {
       "sound": "grass",
@@ -809,7 +809,11 @@
    "cut_copper_stairs": {
       "isotropic": false,
       "sound": "copper",
-      "textures": "cut_copper"
+      "textures": {
+         "down": "copper_stairs",
+         "side": "cut_copper",
+         "up": "cut_copper"
+      }
    },
    "cyan_glazed_terracotta": {
       "sound": "stone",
@@ -1661,8 +1665,9 @@
       "textures": "light_blue_glazed_terracotta"
    },
    "light_weighted_pressure_plate": {
+      "carried_texture": "gold_plate_carried",
       "sound": "metal",
-      "textures": "gold_block"
+      "textures": "gold_plate"
    },
    "lightning_rod": {
       "isotropic": false,
@@ -2592,15 +2597,15 @@
       "textures": "stone"
    },
    "stone_brick_stairs": {
-      "textures": "stonebrick"
+      "textures": "stonebrick_stairs"
    },
    "stone_button": {
       "sound": "stone",
-      "textures": "stone"
+      "textures": "stone_button"
    },
    "stone_pressure_plate": {
       "sound": "stone",
-      "textures": "stone"
+      "textures": "smooth_stone"
    },
    "stone_slab": {
       "sound": "stone",

@@ -38,8 +38,6 @@ logs
 *_CAV.png
 *_META.png
 *.jsx
-assets/screenshots
-assets/
 
 # Exclude targa files for MERs and normals
 *_normal.tga
@@ -47,16 +45,8 @@ assets/
 *_carried_mer.png
 *_carried_normal.png
 
-# Exclude vendor directories
-node_modules/
-vendor/
-
-# Exclude excess/duplicate textures
-src/textures/blocks/*
-
 # Exclude texture source files
 src/materials/
 
-# Ignore TileMaker and ChannelMixer in bin directory
-# These executables can be downloaded from http://mineways.com/
-bin/TileMaker
+.bridge/openedFiles_*.json
+.bridge/recentFiles.json

@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "stone_wall",
+        "metalness_emissive_roughness": "stone_wall_mer",
+        "normal": "stone_wall_normal"
+    }
+}

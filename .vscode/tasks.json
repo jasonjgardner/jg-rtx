@@ -2,15 +2,16 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "Install JG RTX",
+        "label": "Push to development resource packs",
         "type": "shell",
         "windows": {
             "command": "xcopy",
             "args": [
                 "/E",
                 "/I",
-                "${workspaceFolder}\\development_resource_packs\\JG-RTX",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\JG-RTX"
+                "/F",
+                "${workspaceFolder}\\RP",
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} RP"
             ],
         },
         "group": "build",
@@ -20,15 +21,34 @@
         }
       },
       {
-        "label": "Install all development resource packs",
+        "label": "Pull from development resource packs",
         "type": "shell",
         "windows": {
             "command": "xcopy",
             "args": [
                 "/E",
                 "/I",
-                "${workspaceFolder}\\development_resource_packs",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs"
+                "/F",
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} RP",
+                "${workspaceFolder}\\RP"
+            ],
+        },
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        }
+      },
+      {
+        "label": "Push to development behavior packs",
+        "type": "shell",
+        "windows": {
+            "command": "xcopy",
+            "args": [
+                "/E",
+                "/I",
+                "${workspaceFolder}\\BP",
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} BP"
             ],
         },
         "group": "build",
