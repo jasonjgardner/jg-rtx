@@ -27,9 +27,10 @@ jobs:
         with:
           tag: ${{ github.ref }}
           artifacts: ${{ github.workspace }}/JG-RTX.mcpack
-          artifactErrorsFailBuild: true,
+          artifactErrorsFailBuild: true
           artifactContentType: application/zip
           #bodyFile: CHANGELOG.md
-          draft: true,
+          draft: true
           prerelease: true
+          allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
