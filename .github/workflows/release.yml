@@ -18,6 +18,7 @@ jobs:
       - name: Create mcpack with release
         uses: ncipollo/release-action@v1.8.6
         with:
+          commit: main
           artifacts: ${{ github.workspace }}/RP
           artifactErrorsFailBuild: true,
           artifactContentType: application/zip
