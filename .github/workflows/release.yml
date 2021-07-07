@@ -13,14 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build mcpack archive
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install zip
-          zip -r JG-RTX.mcpack ${GITHUB_WORKSPACE}/RP
-          
-      - name: Upload .mcpack artifact
+
+      - name: Create mcpack artifact
         uses: actions/upload-artifact@v2
         with:
-          name: mcpack
-          path: JG-RTX.mcpack
+          name: JG-RTX.mcpack
+          path: ${{ github.workspace }}/RP
