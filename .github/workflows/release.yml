@@ -1,21 +1,27 @@
-name: mcpack
+name: Create release
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    tags:
+      - '*'
+      
   workflow_dispatch:
 
 jobs:
   build:
+    name: Release .mcpack
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Create mcpack artifact
-        uses: actions/upload-artifact@v2
+      - name: Checkout resource pack contents
+        uses: actions/checkout@v2
+        
+      - name: Create mcpack with release
+        uses: ncipollo/release-action@v1.8.6
         with:
-          name: JG-RTX.mcpack
-          path: ${{ github.workspace }}/RP
+          artifacts: ${{ github.workspace }}/RP
+          artifactErrorsFailBuild: true,
+          artifactContentType: application/zip
+          #bodyFile: CHANGELOG.md
+          draft: true,
+          prerelease: true
+          token: ${{ secrets.GITHUB_TOKEN }}
