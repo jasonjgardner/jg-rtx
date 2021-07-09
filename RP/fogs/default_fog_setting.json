@@ -39,9 +39,9 @@
     "volumetric": {
       "density": {
         "air": {
-          "max_density": 0.001,
-          "max_density_height": 250,
-          "zero_density_height": 80
+          "max_density": 0.01,
+          "max_density_height": 65,
+          "zero_density_height": 78
         }
       },
       "media_coefficients": {

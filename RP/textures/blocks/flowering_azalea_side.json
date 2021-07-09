@@ -2,7 +2,7 @@
     "format_version": "1.16.100",
     "minecraft:texture_set": {
         "color": "flowering_azalea_side",
-        "metalness_emissive_roughness": "azalea_leaves_flowers_mer",
-        "normal": "azalea_leaves_flowers_normal"
+        "metalness_emissive_roughness": "flowering_azalea_side_mer",
+        "normal": "flowering_azalea_side_normal"
     }
 }
