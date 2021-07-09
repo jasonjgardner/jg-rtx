@@ -1,0 +1,36 @@
+name: Create release
+
+on:
+  push:
+    tags:
+      - '*'
+      
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Release .mcpack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout resource pack contents
+        uses: actions/checkout@v2
+        
+      - name: Build mcpack archive
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install zip
+          cd ${GITHUB_WORKSPACE}
+          zip -r -0 JG-RTX.mcpack ./RP
+        
+      - name: Create mcpack with release
+        uses: ncipollo/release-action@v1.8.6
+        with:
+          tag: ${{ github.ref }}
+          artifacts: ${{ github.workspace }}/JG-RTX.mcpack
+          artifactErrorsFailBuild: true
+          artifactContentType: application/zip
+          #bodyFile: CHANGELOG.md
+          draft: true
+          prerelease: true
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
