@@ -1,4 +1,4 @@
-#### [Download JG RTX v0.17.0-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.17.0-alpha/JG-RTX.mcpack)
+#### [Download JG RTX v0.18.0-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.18.0-alpha/JG-RTX.mcpack)
 
 ---
 
@@ -22,6 +22,7 @@ __You're probably looking for the [.mcpack of the latest release](https://github
 
 - Follow [**@merncurft** on Instagram](https://www.instagram.com/merncurft/)
 - [Watch the demo reel on YouTube](https://www.youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N). It's fun to watch, even if some of the textures featured in the earlier videos are no longer in the resource pack.
+- See [JG RTX Screenshot Gallery on Flickr](https://www.flickr.com/photos/jasongardner/albums/72157719469112264)
 - [Contribute your own screenshots](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
 
 ---
