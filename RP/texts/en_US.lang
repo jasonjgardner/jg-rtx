@@ -1,4 +1,4 @@
-﻿pack.description=Realistic, raytraced textures to improve the appearance of natural or generated worlds. (Development preview release.)
+pack.description=Realistic, raytraced textures to improve the appearance of natural or generated worlds. (Development preview release.)
 pack.name=JG RTX
 
 tile.acaciaFence.name=Acacia Fence
@@ -290,15 +290,15 @@ tile.warped_roots.warpedRoots.name=Warped Roots
 tile.red_flower.allium.name=Allium
 tile.red_flower.blueOrchid.name=Blue Orchid
 tile.red_flower.cornflower.name=Cornflower
-tile.red_flower.houstonia.name=Lilac
+tile.red_flower.houstonia.name=Houstonia
 tile.red_flower.name=Flower
 tile.red_flower.lilyOfTheValley.name=Dianthus
 tile.red_flower.oxeyeDaisy.name=Oxeye Daisy
 tile.red_flower.poppy.name=Canola
-tile.red_flower.tulipOrange.name=Orange Meadow Flower
-tile.red_flower.tulipPink.name=Pink Meadow Flower
-tile.red_flower.tulipRed.name=Red Meadow Flower
-tile.red_flower.tulipWhite.name=White Meadow Flower
+tile.red_flower.tulipOrange.name=Orange Tulip
+tile.red_flower.tulipPink.name=Pink Tulip
+tile.red_flower.tulipRed.name=Red Tulip
+tile.red_flower.tulipWhite.name=White Tulip
 tile.wither_rose.name=Wither Rose
 tile.furnace.name=Furnace
 tile.glass.name=Glass

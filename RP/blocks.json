@@ -2597,7 +2597,8 @@
       "textures": "stone"
    },
    "stone_brick_stairs": {
-      "textures": "stonebrick_stairs"
+      "sound": "stone",
+      "textures": "stonebrick"
    },
    "stone_button": {
       "sound": "stone",

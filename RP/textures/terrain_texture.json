@@ -3056,7 +3056,7 @@
       "textures": [
         {
           "path": "textures/blocks/waterlily",
-          "tint_color": "#208030"
+          "tint_color": "#38af4c"
         }
       ]
     },
@@ -3183,14 +3183,17 @@
     "copper_stairs": {
       "textures": "textures/blocks/custom/copper_stairs"
     },
-    "stonebrick_stairs": {
-      "textures": "textures/blocks/custom/stonebrick_stairs"
-    },
     "stone_stairs": {
       "textures": "textures/blocks/custom/stone_stairs"
     },
     "stone_button": {
       "textures": "textures/blocks/custom/stone_button"
+    },
+    "gold_plate": {
+      "textures": "textures/blocks/custom/gold_plate"
+    },
+    "gold_plate_carried": {
+      "textures": "textures/blocks/custom/gold_plate_carried"
     }
   }
 }
