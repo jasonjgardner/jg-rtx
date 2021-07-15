@@ -3183,6 +3183,9 @@
     "copper_stairs": {
       "textures": "textures/blocks/custom/copper_stairs"
     },
+    "stonebrick_stairs": {
+      "textures": "textures/blocks/custom/stonebrick_stairs"
+    },
     "stone_stairs": {
       "textures": "textures/blocks/custom/stone_stairs"
     },
