@@ -1884,7 +1884,7 @@
    },
    "normal_stone_stairs": {
       "sound": "stone",
-      "textures": "stone"
+      "textures": "stone_stairs"
    },
    "noteblock": {
       "sound": "wood",
