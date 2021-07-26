@@ -1492,6 +1492,7 @@
       }
    },
    "iron_block": {
+      "carried_textures": "iron_block_carried",
       "sound": "metal",
       "textures": "iron_block"
    },
