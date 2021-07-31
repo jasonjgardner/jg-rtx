@@ -1,4 +1,5 @@
 # Exclude releases
+builds/
 *.mcpack
 *.mcworld
 *.zip
@@ -10,6 +11,7 @@ logs
 # Exclude some workspace or file system files
 .idea
 *.ini
+.bridge/
 
 # Exclude assets and binaries
 *.psd
@@ -46,7 +48,7 @@ logs
 *_carried_normal.png
 
 # Exclude texture source files
-src/materials/
+src/*
 
 .bridge/openedFiles_*.json
 .bridge/recentFiles.json
