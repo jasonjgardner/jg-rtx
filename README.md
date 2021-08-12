@@ -1,4 +1,4 @@
-#### [Download JG RTX v0.18.0-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.18.0-alpha/JG-RTX.mcpack)
+### [Download JG RTX v0.18.0-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.18.0-alpha/JG-RTX.mcpack)
 
 ---
 
@@ -16,14 +16,20 @@ __Like my work?__
 
 __You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
 
+### 🆕 [Download .mcpack from workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
+
+A .mcpack artifact is generated with each commit to the [main](https://github.com/jasonjgardner/jg-rtx/tree/main) branch! Check the [workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml) to try new textures as soon as they're available.
+
 ---
 
 ## Screenshots and Videos
 
 - Follow [**@merncurft** on Instagram](https://www.instagram.com/merncurft/)
-- [Watch the demo reel on YouTube](https://www.youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N). It's fun to watch, even if some of the textures featured in the earlier videos are no longer in the resource pack.
+- Join the [JG RTX Discord server](https://discord.gg/nJmKSgmqyY) for sneak peeks and extra content
 - See [JG RTX Screenshot Gallery on Flickr](https://www.flickr.com/photos/jasongardner/albums/72157719469112264)
+- [Watch the demo reel on YouTube](https://www.youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N). It's fun to watch, even if some of the textures featured in the earlier videos are no longer in the resource pack.
 - [Contribute your own screenshots](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
+  - Check out [markom58 on YouTube](https://www.youtube.com/c/markom58/search?query=JG%20RTX) for videos featuring JG RTX and other RTX texture packs.
 
 ---
 
