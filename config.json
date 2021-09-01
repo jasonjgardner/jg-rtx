@@ -3,7 +3,7 @@
 	"name": "JG-RTX",
 	"namespace": "jgrtx",
 	"author": "Jason Gardner",
-	"targetVersion": "1.17.0",
+	"targetVersion": "1.17.11",
 	"description": "JG RTX",
 	"capabilities": ["raytraced"],
 	"packs": {

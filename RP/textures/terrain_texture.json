@@ -1359,6 +1359,9 @@
     "iron_block": {
       "textures": "textures/blocks/iron_block"
     },
+    "iron_block_carried": {
+      "textures": "textures/blocks/custom/iron_block_carried"
+    },
     "iron_ore": {
       "textures": "textures/blocks/iron_ore"
     },
@@ -3184,7 +3187,7 @@
       "textures": "textures/blocks/custom/copper_stairs"
     },
     "stone_stairs": {
-      "textures": "textures/blocks/custom/stone_stairs"
+      "textures": "textures/blocks/custom/stonebrick_stairs"
     },
     "stone_button": {
       "textures": "textures/blocks/custom/stone_button"
