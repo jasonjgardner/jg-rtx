@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "flower_dianthus",
-        "metalness_emissive_roughness": "flower_dianthus_mer",
-        "normal": "flower_dianthus_normal"
-    }
-}

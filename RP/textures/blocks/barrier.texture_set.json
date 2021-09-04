@@ -1,7 +1,6 @@
 {
     "format_version": "1.16.100",
     "minecraft:texture_set": {
-        "color": "barrier",
-        "metalness_emissive_roughness": [0, 10, 255]
+        "color": "barrier"
     }
 }
