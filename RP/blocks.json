@@ -876,10 +876,7 @@
       "textures": "deadbush"
    },
    "deepslate": {
-      "isotropic": {
-         "down": true,
-         "up": true
-      },
+      "isotropic": false,
       "sound": "deepslate",
       "textures": {
          "down": "deepslate_top",
