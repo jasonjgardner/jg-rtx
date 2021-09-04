@@ -1,4 +1,4 @@
-### [Download JG RTX v0.18.0-alpha .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.18.0-alpha/JG-RTX.mcpack)
+### [Download JG RTX v0.19.0 .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.19.0/JG-RTX.mcpack)
 
 ---
 
@@ -19,6 +19,10 @@ __You're probably looking for the [.mcpack of the latest release](https://github
 ### 🆕 [Download .mcpack from workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
 
 A .mcpack artifact is generated with each commit to the [main](https://github.com/jasonjgardner/jg-rtx/tree/main) branch! Check the [workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml) to try new textures as soon as they're available.
+
+__Download the artifact .zip from GitHub and extract the .mcpack to install.__
+
+> *.mcpacks produced by workflow runs are not always tested, and can not be guaranteed to work.*
 
 ---
 
