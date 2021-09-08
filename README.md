@@ -1,4 +1,4 @@
-### [Download JG RTX v0.19.0 .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.19.0/JG-RTX.mcpack)
+### [Download JG RTX v0.19.1 .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.19.1/JG-RTX.mcpack)
 
 ---
 
