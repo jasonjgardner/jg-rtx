@@ -1,0 +1,23 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:birch_forest_hills"
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.0125,
+          "max_density_height": 33,
+          "zero_density_height": 74
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [ 0.0529, 0.037, 0.0688 ],
+          "absorption": [ 0.1429, 0.0794, 0.0741 ]
+        }
+      }
+    }
+  }
+}
