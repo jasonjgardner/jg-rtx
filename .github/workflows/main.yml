@@ -1,4 +1,4 @@
-name: Create .mcpack from RP directory in repository
+name: .mcpack
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Create .mcpack
+    name: Create .mcpack from RP directory in repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout resource pack contents
