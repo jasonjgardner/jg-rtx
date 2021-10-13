@@ -1,4 +1,4 @@
-### [Download JG RTX v0.19.1 .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.19.1/JG-RTX.mcpack)
+### [Download JG RTX v0.20.0 .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.20.0/JG-RTX.mcpack)
 
 ---
 
@@ -16,7 +16,9 @@ __Like my work?__
 
 __You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
 
-### 🆕 [Download .mcpack from workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
+### [Download .mcpack from workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
+
+[![.mcpack](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml/badge.svg)](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
 
 A .mcpack artifact is generated with each commit to the [main](https://github.com/jasonjgardner/jg-rtx/tree/main) branch! Check the [workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml) to try new textures as soon as they're available.
 
