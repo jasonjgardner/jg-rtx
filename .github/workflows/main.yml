@@ -1,4 +1,4 @@
-name: .mcpack
+name: Workflow Release
 
 on:
   push:
