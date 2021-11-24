@@ -1,30 +1,13 @@
-### [Download JG RTX .mcpack](https://github.com/jasonjgardner/jg-rtx/releases/download/0.20.1/JG-RTX.mcpack)
+> #### [Download](https://github.com/jasonjgardner/jg-rtx/releases):
+> 
+> [![Latest release](https://github.com/jasonjgardner/jg-rtx/actions/workflows/release.yml/badge.svg?branch=main&event=release)](https://github.com/jasonjgardner/jg-rtx/actions/workflows/release.yml) [![Workflow Release](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml/badge.svg)](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
 
 ---
 
 ![Pack Icon](RP/pack_icon.png)
 # JG RTX
 
-__Like my work?__
-~~Buy Me a Coffee~~ __[DONATE TO DOCTORS WITHOUT BORDERS](https://donate.doctorswithoutborders.org/monthly.cfm)__
-
----
-
-![Cloned sheep](https://d26mkv3tdw1wgb.cloudfront.net/minecraft/clones.png)
-
-## Read before cloning:
-
-__You're probably looking for the [.mcpack of the latest release](https://github.com/jasonjgardner/jg-rtx/releases)__. A resource pack archive is attached to each release (under _Assets_ section). Download __JG-RTX.mcpack__ to use textures in Minecraft.
-
-### [Download .mcpack from workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
-
-[![.mcpack](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml/badge.svg)](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml)
-
-A .mcpack artifact is generated with each commit to the [main](https://github.com/jasonjgardner/jg-rtx/tree/main) branch! Check the [workflow runs](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml) to try new textures as soon as they're available.
-
-__Download the artifact .zip from GitHub and extract the .mcpack to install.__
-
-> *.mcpacks produced by workflow runs are not always tested, and can not be guaranteed to work.*
+__Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO THE CLIMATE REALITY PROJECT](https://www.climaterealityproject.org/donate/donate-climate-reality-project)__
 
 ---
 
@@ -36,11 +19,12 @@ __Download the artifact .zip from GitHub and extract the .mcpack to install.__
 - [Watch the demo reel on YouTube](https://www.youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N). It's fun to watch, even if some of the textures featured in the earlier videos are no longer in the resource pack.
 - [Contribute your own screenshots](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
   - Check out [markom58 on YouTube](https://www.youtube.com/c/markom58/search?query=JG%20RTX) for videos featuring JG RTX and other RTX texture packs.
+  - [Visit *Vokselia*](https://photos.app.goo.gl/nffv8T79YA4bwkzP8) by [Eric Haines](https://github.com/erich666)
 
 ---
 
-## Try the textures in [Mineways](http://mineways.com)
-[Mineways](https://github.com/erich666/Mineways/releases/tag/v8.00) includes JG RTX. [It looks pretty damn good.](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)
+## Used in [Mineways](http://mineways.com)
+[Mineways](https://github.com/erich666/Mineways/) [includes JG RTX](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)! Export your builds in Universal Scene Description format using Mineways and bring the results into [NVIDIA Omniverse](https://www.nvidia.com/en-us/omniverse/) or other software with USD support. 
 
 ---
 
@@ -53,4 +37,4 @@ __Download the artifact .zip from GitHub and extract the .mcpack to install.__
 - This project is built with [bridge.](https://bridge-core.github.io/)
 - Textures designed using [Adobe Substance 3D](https://www.adobe.com/creativecloud/3d-augmented-reality.html)
 - __See [CREDITS.md](CREDITS.md) for complete list of attributions.__
-- _JG RTX_ by [Jason Gardner](https://jasongardner.co) 
+- _JG RTX_ by [Jason Gardner](https://jasongardner.dev) 
