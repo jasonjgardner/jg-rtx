@@ -6,14 +6,14 @@
     },
     "distance": {
       "air": {
-        "fog_start": 0.6,
+        "fog_start": 0.59,
         "fog_end": 0.99,
         "fog_color": "#B8D0F0",
         "render_distance_type": "render"
       },
       "water": {
-        "fog_start": 0.125,
-        "fog_end": 0.9,
+        "fog_start": 0.33,
+        "fog_end": 0.92,
         "fog_color": "#1c4c8b",
         "render_distance_type": "render"
       },
@@ -27,9 +27,9 @@
     "volumetric": {
       "density": {
         "air": {
-          "max_density": 0.0124,
+          "max_density": 0.00889,
           "max_density_height": 1,
-          "zero_density_height": 120
+          "zero_density_height": 118
         }
       },
       "media_coefficients": {
