@@ -987,6 +987,7 @@
       }
    },
    "diamond_block": {
+      "isotropic": true,
       "sound": "metal",
       "textures": "diamond_block"
    },
@@ -1182,27 +1183,27 @@
       }
    },
    "exposed_copper": {
-      "isotropic": false,
+      "isotropic": true,
       "sound": "copper",
       "textures": "exposed_copper"
    },
    "exposed_cut_copper": {
-      "isotropic": false,
+      "isotropic": true,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "exposed_cut_copper_slab": {
-      "isotropic": false,
+      "isotropic": true,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "exposed_cut_copper_stairs": {
-      "isotropic": false,
+      "isotropic": true,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "exposed_double_cut_copper_slab": {
-      "isotropic": false,
+      "isotropic": true,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
@@ -1323,11 +1324,11 @@
       "textures": "glowing_obsidian"
    },
    "glowstone": {
-      "isotropic": true,
       "sound": "glass",
       "textures": "glowstone"
    },
    "gold_block": {
+      "isotropic": true,
       "sound": "metal",
       "textures": "gold_block"
    },
@@ -1656,6 +1657,7 @@
       "textures": "light_blue_glazed_terracotta"
    },
    "light_weighted_pressure_plate": {
+      "isotropic": true,
       "carried_texture": "gold_plate_carried",
       "sound": "metal",
       "textures": "gold_plate"
@@ -1769,7 +1771,7 @@
       "textures": "magenta_glazed_terracotta"
    },
    "magma": {
-      "isotropic": true,
+      "isotropic": false,
       "sound": "stone",
       "textures": "magma"
    },
@@ -1832,7 +1834,6 @@
       }
    },
    "nether_brick": {
-      "brightness_gamma": 0.80,
       "sound": "nether_brick",
       "textures": "nether_brick"
    },
@@ -1897,8 +1898,7 @@
       }
    },
    "obsidian": {
-      "brightness_gamma": 2.0,
-      "isotropic": true,
+      "isotropic": false,
       "sound": "stone",
       "textures": "obsidian"
    },
@@ -2031,6 +2031,10 @@
       "textures": "polished_blackstone"
    },
    "polished_blackstone_slab": {
+      "isotropic": {
+         "up": true,
+         "down": true
+      },
       "sound": "stone",
       "textures": "polished_blackstone"
    },
@@ -2216,12 +2220,10 @@
       }
    },
    "red_nether_brick": {
-      "brightness_gamma": 0.80,
       "sound": "nether_brick",
       "textures": "red_nether_brick"
    },
    "red_nether_brick_stairs": {
-      "brightness_gamma": 0.80,
       "sound": "nether_brick",
       "textures": "red_nether_brick"
    },
@@ -2250,10 +2252,12 @@
       }
    },
    "redstone_block": {
+      "isotropic": true,
       "sound": "stone",
       "textures": "redstone_block"
    },
    "redstone_lamp": {
+      "isotropic": true,
       "sound": "glass",
       "textures": "redstone_lamp_off"
    },
@@ -2302,13 +2306,13 @@
       }
    },
    "sand": {
-      "brightness_gamma": 0.550,
+      "brightness_gamma": 0.5,
       "isotropic": true,
       "sound": "sand",
       "textures": "sand"
    },
    "sandstone": {
-      "brightness_gamma": 0.70,
+      "brightness_gamma": 0.7,
       "isotropic": {
          "down": true,
          "up": true
@@ -2345,6 +2349,7 @@
       }
    },
    "seaLantern": {
+      "isotropic": true,
       "sound": "glass",
       "textures": "sea_lantern"
    },
@@ -2776,6 +2781,10 @@
       "textures": "tallgrass"
    },
    "target": {
+      "isotropic": {
+         "down": true,
+         "up": true
+      },
       "sound": "grass",
       "textures": {
          "down": "target_top",
@@ -3004,127 +3013,102 @@
       "textures": "waterlily"
    },
    "waxed_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "copper_block"
    },
    "waxed_cut_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "cut_copper"
    },
    "waxed_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "cut_copper"
    },
    "waxed_cut_copper_stairs": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "cut_copper"
    },
    "waxed_double_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "cut_copper"
    },
    "waxed_exposed_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "exposed_copper"
    },
    "waxed_exposed_cut_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "waxed_exposed_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "waxed_exposed_cut_copper_stairs": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "waxed_exposed_double_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "exposed_cut_copper"
    },
    "waxed_oxidized_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "oxidized_copper"
    },
    "waxed_oxidized_cut_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "oxidized_cut_copper"
    },
    "waxed_oxidized_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "oxidized_cut_copper"
    },
    "waxed_oxidized_cut_copper_stairs": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "oxidized_cut_copper"
    },
    "waxed_oxidized_double_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "oxidized_cut_copper"
    },
    "waxed_weathered_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_copper"
    },
    "waxed_weathered_cut_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "waxed_weathered_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "waxed_weathered_cut_copper_stairs": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "waxed_weathered_double_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "weathered_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_copper"
    },
    "weathered_cut_copper": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "weathered_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "weathered_cut_copper_stairs": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
    "weathered_double_cut_copper_slab": {
-      "isotropic": false,
       "sound": "copper",
       "textures": "weathered_cut_copper"
    },
