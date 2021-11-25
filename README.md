@@ -14,11 +14,19 @@ __Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO THE CLIMATE REALITY PROJECT](
 ---
 
 ### Screenshots + Videos
+
 - [JG RTX Screenshot Gallery on Flickr](https://www.flickr.com/photos/jasongardner/albums/72157719469112264)
 - [*Vokselia* on Google Photos](https://photos.app.goo.gl/nffv8T79YA4bwkzP8) by [Eric Haines](https://github.com/erich666)
 - [markom58 on YouTube](https://www.youtube.com/c/markom58/search?query=JG%20RTX) demos RTX resource packs
+- [Contribute screenshots](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
 
-[Contributions welcome!](https://github.com/jasonjgardner/jg-rtx/discussions/categories/screenshots)
+#### In-game examples from [Inspiration Island](https://www.minecraft.net/en-us/marketplace/pdp?id=d81708d9-0b92-4781-9296-573da94d0063)
+
+> ![Pickaxe lights screenshot](https://user-images.githubusercontent.com/1903667/143460470-7a7788d7-a292-4db2-a73b-e44d3934b256.jpg)
+> Redstone lights
+
+> ![Screenshot of diamond pickaxe build](https://user-images.githubusercontent.com/1903667/143461532-e0f5744e-9979-4392-862c-4f9810f73a95.jpg)
+> Diamond pickaxe build
 
 ### Instagram
 [Follow **@merncurft**](https://www.instagram.com/merncurft/) for JG RTX previews, IRay renders, and artsy edits of Minecraft screenshots.
