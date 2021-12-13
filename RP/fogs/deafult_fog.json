@@ -6,36 +6,48 @@
     },
     "distance": {
       "air": {
-        "fog_start": 0.59,
-        "fog_end": 0.99,
-        "fog_color": "#B8D0F0",
+        "fog_start": 0.63,
+        "fog_end": 1.0,
+        "fog_color": "#b1d3ff",
         "render_distance_type": "render"
       },
       "water": {
-        "fog_start": 0.33,
-        "fog_end": 0.92,
-        "fog_color": "#1c4c8b",
+        "fog_start": 0.01,
+        "fog_end": 0.69,
+        "fog_color": "#0f326b",
         "render_distance_type": "render"
       },
       "weather": {
-        "fog_start": 0.55,
-        "fog_end": 0.89,
-        "fog_color": "#44616B",
+        "fog_start": 0.1,
+        "fog_end": 0.42,
+        "fog_color": "#748388",
         "render_distance_type": "render"
       }
     },
     "volumetric": {
       "density": {
         "air": {
-          "max_density": 0.00889,
-          "max_density_height": 1,
-          "zero_density_height": 118
+          "max_density": 0.1,
+          "max_density_height": 60,
+          "zero_density_height": 64
+        },
+        "water": {
+          "max_density": 0.02,
+          "uniform": true
         }
       },
       "media_coefficients": {
+        "cloud": {
+          "absorption": [0.01, 0.01, 0.01],
+          "scattering": [0.25, 0.25, 0.25]
+        },
         "air": {
-          "scattering": "#456582",
-          "absorption": "#14120c"
+          "absorption": [0.51, 0.52, 0.52],
+          "scattering": [0.025, 0.025, 0.033]
+        },
+        "water": {
+          "absorption": [0.25, 0.05, 0.051],
+          "scattering": [0.0125, 0.015, 0.025]
         }
       }
     }
