@@ -2,29 +2,28 @@
   "format_version": "1.16.100",
   "minecraft:fog_settings": {
     "description": {
-      "identifier": "jgrtx:sunflower_plains"
+      "identifier": "jgrtx:plains"
     },
     "distance": {
       "air": {
-        "fog_start": 0.36,
-        "fog_end": 0.95,
-        "fog_color": "#4797e7",
+        "fog_start": 0.24,
+        "fog_end": 0.97,
+        "fog_color": "#61a3e6",
         "render_distance_type": "render"
       },
       "water": {
-        "fog_start": 0.01,
-        "fog_end": 16.666,
-        "fog_color": "#2d5cb3",
+        "fog_start": 0,
+        "fog_end": 20,
+        "fog_color": "#3a97d4",
         "render_distance_type": "fixed"
       }
     },
     "volumetric": {
       "density": {
         "air": {
-          "max_density": 0.08,
-          "max_density_height": 15,
-          "zero_density_height": 67,
-          "uniform": true
+          "max_density": 0.07,
+          "max_density_height": 1,
+          "zero_density_height": 68.5
         },
         "water": {
           "max_density": 0.125,
