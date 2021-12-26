@@ -2,22 +2,22 @@
   "format_version": "1.16.100",
   "minecraft:fog_settings": {
     "description": {
-      "identifier": "jgrtx:warm_ocean"
+      "identifier": "jgrtx:jungle"
     },
     "distance": {
       "water": {
         "fog_start": 0.0,
-        "fog_end": 66.666,
-        "fog_color": "#02a4d5",
+        "fog_end": 15.5,
+        "fog_color": "#179cbd",
         "render_distance_type": "fixed"
       }
     },
     "volumetric": {
       "density": {
-        "water": {
-          "max_density": 0.1,
-          "max_density_height": 4.2,
-          "zero_density_height": 63.5
+        "air": {
+          "max_density": 0.0333,
+          "max_density_height": 0.1,
+          "zero_density_height": 90
         }
       }
     }
