@@ -1,0 +1,31 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:beach"
+    },
+    "distance": {
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 66.666,
+        "fog_color": "#51a2c7",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "water": {
+          "max_density": 0.00145,
+          "max_density_height": 0,
+          "zero_density_height": 1
+        }
+      },
+      "media_coefficients": {
+        "water": {
+          "absorption": [0.0333, 0.0666, 0.069],
+          "scattering": [0.0, 0.01, 0.03666]
+        }
+      }
+    }
+  }
+}

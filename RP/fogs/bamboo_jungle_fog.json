@@ -1,0 +1,37 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:bamboo_jungle"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 36,
+        "fog_end": 500,
+        "fog_color": "#b9dad5",
+        "render_distance_type": "fixed"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 19.5,
+        "fog_color": "#179cbd",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.000666,
+          "max_density_height": 0,
+          "zero_density_height": 1
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "absorption": [0.0033, 0.00125, 0.000125],
+          "scattering": [0.0066, 0.0025, 0.001]
+        }
+      }
+    }
+  }
+}

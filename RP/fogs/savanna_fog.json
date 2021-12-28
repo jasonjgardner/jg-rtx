@@ -28,8 +28,8 @@
       "density": {
         "air": {
           "max_density": 0.03,
-          "max_density_height": 0.1,
-          "zero_density_height": 80
+          "max_density_height": 0,
+          "zero_density_height": 1.5
         }
       },
       "media_coefficients": {

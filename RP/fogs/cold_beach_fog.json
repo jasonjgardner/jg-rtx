@@ -1,0 +1,16 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:cold_beach"
+    },
+    "distance": {
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 61.25,
+        "fog_color": "#0c5994",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}

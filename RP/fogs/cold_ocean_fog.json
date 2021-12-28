@@ -1,0 +1,30 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:cold_ocean"
+    },
+    "distance": {
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 55,
+        "fog_color": "#0c4685",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "water": {
+          "max_density": 0.125,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "water": {
+          "absorption": [0.0425, 0.025, 0.0125],
+          "scattering": [0.001, 0.0125, 0.025]
+        }
+      }
+    }
+  }
+}

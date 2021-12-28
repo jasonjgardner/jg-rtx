@@ -2,41 +2,140 @@
   "biomes": {
     "default": {
       "fog_identifier": "jgrtx:default",
-      "water_surface_transparency": 0.65
+      "fog_ids_to_merge": ["jgrtx:default"],
+      "inherit_from_prior_fog": false,
+      "remove_all_prior_fog": false,
+      "water_surface_color": "#3e5c9e",
+      "water_surface_transparency": 0.648
+    },
+    "bamboo_jungle": {
+      "fog_identifier": "jgrtx:bamboo_jungle",
+      "fog_ids_to_merge": ["jgrtx:bamboo_jungle"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#1da5c7"
+    },
+    "bamboo_jungle_hills": {
+      "fog_identifier": "jgrtx:bamboo_jungle",
+      "fog_ids_to_merge": ["jgrtx:bamboo_jungle"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#1bbcd8"
+    },
+    "basalt_deltas": {
+      "fog_identifier": "jgrtx:basalt_deltas",
+      "fog_ids_to_merge": ["jgrtx:basalt_deltas"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#2c53a1"
+    },
+    "beach": {
+      "fog_identifier": "jgrtx:beach",
+      "fog_ids_to_merge": ["jgrtx:beach"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#2c82aa"
+    },
+    "birch_forest": {
+      "fog_identifier": "jgrtx:birch_forest",
+      "fog_ids_to_merge": ["jgrtx:birch_forest"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#0f81d8"
+    },
+    "birch_forest_hills": {
+      "fog_identifier": "jgrtx:birch_forest",
+      "fog_ids_to_merge": ["jgrtx:birch_forest"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#0a74c4"
+    },
+    "cold_beach": {
+      "fog_identifier": "jgrtx:cold_beach",
+      "fog_ids_to_merge": ["jgrtx:cold_beach"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#2e587a"
+    },
+    "cold_ocean": {
+      "fog_identifier": "jgrtx:cold_ocean",
+      "fog_ids_to_merge": ["jgrtx:cold_ocean"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#3271a1",
+      "water_surface_transparency": 0.651
+    },
+    "cold_taiga": {
+      "fog_identifier": "jgrtx:cold_taiga",
+      "fog_ids_to_merge": ["jgrtx:cold_taiga"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#205e83"
+    },
+    "cold_taiga_hills": {
+      "fog_identifier": "jgrtx:cold_taiga",
+      "fog_ids_to_merge": ["jgrtx:cold_taiga"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#1e4b64"
+    },
+    "cold_taiga_mutated": {
+      "fog_identifier": "jgrtx:cold_taiga",
+      "fog_ids_to_merge": ["jgrtx:cold_taiga"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#2d6f95"
+    },
+    "crimson_forest": {
+      "fog_identifier": "jgrtx:crimson_forest",
+      "fog_ids_to_merge": ["jgrtx:crimson_forest"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#7c3735"
     },
     "river": {
-      "fog_identifier": "jgrtx:default"
+      "fog_identifier": "jgrtx:default",
+      "water_surface_transparency": 0.64
     },
     "forest": {
-      "fog_identifier": "jgrtx:forest"
+      "fog_identifier": "jgrtx:forest",
+      "water_surface_transparency": 0.65
+    },
+    "swampland": {
+      "fog_identifier": "jgrtx:swampland",
+      "water_surface_transparency": 0.6
+    },
+    "swampland_mutated": {
+      "fog_identifier": "jgrtx:swampland",
+      "fog_ids_to_merge": ["jgrtx:swampland"],
+      "water_surface_transparency": 0.61
     },
     "savanna": {
       "fog_identifier": "jgrtx:savanna",
       "water_surface_transparency": 0.651
     },
     "desert": {
-      "fog_identifier": "jgrtx:default"
+      "fog_identifier": "jgrtx:default",
+      "water_surface_transparency": 0.66
     },
     "desert_hills": {
-      "fog_identifier": "jgrtx:default"
+      "fog_identifier": "jgrtx:default",
+      "water_surface_transparency": 0.65
     },
     "warm_ocean": {
-      "fog_identifier": "jgrtx:default"
+      "fog_identifier": "jgrtx:default",
+      "water_surface_transparency": 0.65
     },
     "plains": {
-      "fog_identifier": "jgrtx:plains"
+      "fog_identifier": "jgrtx:plains",
+      "water_surface_transparency": 0.65
     },
     "sunflower_plains": {
-      "fog_identifier": "jgrtx:plains"
+      "fog_identifier": "jgrtx:plains",
+      "water_surface_transparency": 0.65
     },
     "jungle": {
-      "fog_identifier": "jgrtx:jungle"
+      "fog_identifier": "jgrtx:jungle",
+      "water_surface_transparency": 0.64
     },
-    "bamboo_jungle": {
-      "fog_identifier": "jgrtx:jungle"
-    },
+
     "forest_hills": {
-      "fog_identifier": "jgrtx:forest"
+      "fog_identifier": "jgrtx:forest",
+      "water_surface_transparency": 0.65
+    },
+    "warped_forest": {
+      "fog_identifier": "jgrtx:warped_forest",
+      "fog_ids_to_merge": ["jgrtx:warped_forest"],
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#835790"
     }
   }
 }
