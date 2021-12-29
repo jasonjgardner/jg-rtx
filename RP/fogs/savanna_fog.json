@@ -6,7 +6,7 @@
     },
     "distance": {
       "air": {
-        "fog_start": 0.45,
+        "fog_start": 0.55,
         "fog_end": 1.0,
         "fog_color": "#e2e7b8",
         "render_distance_type": "render"
@@ -29,13 +29,13 @@
         "air": {
           "max_density": 0.03,
           "max_density_height": 0,
-          "zero_density_height": 1.5
+          "zero_density_height": 4.5
         }
       },
       "media_coefficients": {
         "air": {
-          "absorption": [0.011, 0.011, 0.018],
-          "scattering": [0.02, 0.019, 0.02]
+          "absorption": [0.0011, 0.0011, 0.0018],
+          "scattering": [0.002, 0.0019, 0.002]
         }
       }
     }

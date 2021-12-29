@@ -6,7 +6,7 @@
     },
     "distance": {
       "air": {
-        "fog_start": 0.175,
+        "fog_start": 0.5,
         "fog_end": 1.0,
         "fog_color": "#b1d3ff",
         "render_distance_type": "render"
@@ -42,7 +42,7 @@
           "scattering": [0.021, 0.02, 0.0201]
         },
         "water": {
-          "absorption": [0.18, 0.075, 0.0825],
+          "absorption": [0.16, 0.075, 0.0825],
           "scattering": [0.015, 0.01, 0.02]
         },
         "cloud": {

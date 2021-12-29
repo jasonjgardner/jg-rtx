@@ -1,0 +1,25 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:plateau"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.666,
+        "fog_end": 1,
+        "fog_color": "#a1c6eb",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.0125,
+          "max_density_height": 0,
+          "zero_density_height": 2.25
+        }
+      }
+    }
+  }
+}

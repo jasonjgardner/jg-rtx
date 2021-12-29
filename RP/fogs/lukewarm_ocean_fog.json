@@ -1,0 +1,25 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:lukewarm_ocean"
+    },
+    "distance": {
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 60.425,
+        "fog_color": "#1592cc",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "water": {
+          "max_density": 0.0125,
+          "max_density_height": 0,
+          "zero_density_height": 70
+        }
+      }
+    }
+  }
+}

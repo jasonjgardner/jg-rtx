@@ -1,0 +1,29 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:extreme_hills"
+    },
+    "distance": {
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 61.25,
+        "fog_color": "#0879eb",
+        "render_distance_type": "fixed"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.0125,
+          "zero_density_height": 11,
+          "max_density_height": 0.125
+        },
+        "water": {
+          "max_density": 0.025,
+          "uniform": true
+        }
+      }
+    }
+  }
+}

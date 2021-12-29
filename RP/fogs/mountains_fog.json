@@ -1,0 +1,21 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:mountains"
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.0125,
+          "zero_density_height": 7.5,
+          "max_density_height": 1
+        },
+        "water": {
+          "max_density": 0.025,
+          "uniform": true
+        }
+      }
+    }
+  }
+}
