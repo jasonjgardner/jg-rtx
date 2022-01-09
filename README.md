@@ -12,6 +12,12 @@
 __Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO THE CLIMATE REALITY PROJECT](https://www.climaterealityproject.org/donate/donate-climate-reality-project)__
 
 ---
+![Built with bridge.](https://user-images.githubusercontent.com/1903667/148700768-ed1b0b60-a594-4add-8c8f-97aacd79762f.png)
+
+Built with [bridge.](https://bridge-core.github.io/) / Made with [Substance](https://www.adobe.com/creativecloud/3d-augmented-reality.html)
+> _See [CREDITS.md](CREDITS.md) for materials attributions_
+
+---
 
 ### Screenshots + Videos
 > ![JG RTX screenshot with color presets](https://user-images.githubusercontent.com/1903667/148662037-ae8e98f9-e865-49bc-a32d-347149ccfd49.jpg)
@@ -59,10 +65,3 @@ Join the [JG RTX Discord server](https://discord.gg/nJmKSgmqyY) for sneak peeks 
 
 > ![Sketchfab screenshot](https://user-images.githubusercontent.com/1903667/143307109-eaa3dd53-effe-41f4-a73c-4772d3eeb9ba.jpg)
 > [*JG RTX USD test* on Sketchfab](https://skfb.ly/oq9zu)
-
----
-
-## Credits
-- This project is built with [bridge.](https://bridge-core.github.io/)
-- Textures designed using [Adobe Substance 3D](https://www.adobe.com/creativecloud/3d-augmented-reality.html)
-- __See [CREDITS.md](CREDITS.md) for attributions.__
