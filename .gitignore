@@ -12,6 +12,7 @@ logs
 .idea
 *.ini
 .bridge/
+node_modules/
 
 # Exclude assets and binaries
 *.psd
@@ -49,6 +50,8 @@ logs
 
 # Exclude texture source files
 src/*
+!src/**.js
+!src/**.ts
 
 .bridge/openedFiles_*.json
 .bridge/recentFiles.json
