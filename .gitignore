@@ -48,10 +48,7 @@ node_modules/
 *_carried_mer.png
 *_carried_normal.png
 
-# Exclude texture source files
-src/*
-!src/**.js
-!src/**.ts
-
 .bridge/openedFiles_*.json
 .bridge/recentFiles.json
+
+bin/
