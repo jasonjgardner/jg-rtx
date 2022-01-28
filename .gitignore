@@ -12,7 +12,10 @@ logs
 .idea
 *.ini
 .bridge/
-node_modules/
+.bridge/openedFiles_*.json
+.bridge/recentFiles.json
+
+bin/
 
 # Exclude assets and binaries
 *.psd
@@ -24,13 +27,9 @@ node_modules/
 *.sbsar
 *.mtl
 *.bin
-*.obj
-*.glb
-*.fbx
 *.mdl
 *.dn
 *.spj
-*.spt
 *.jpg
 *.gif
 *_SPEC.png
@@ -47,8 +46,3 @@ node_modules/
 *_mer.tga
 *_carried_mer.png
 *_carried_normal.png
-
-.bridge/openedFiles_*.json
-.bridge/recentFiles.json
-
-bin/

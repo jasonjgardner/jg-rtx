@@ -1,18 +1,8 @@
 {
-	"folders": [
-		{
-			"name": "Repository",
-			"path": "."
-		}
-	],
-	"settings": {
-		"json.schemas": [
-			{
-				"fileMatch": [
-					"RP/**/*.json"
-				],
-				"url": "https://aexer0e.github.io/bedrock-schema/"
-			}
-		]
-	}
+  "folders": [
+    {
+      "name": "Repository",
+      "path": "."
+    }
+  ]
 }
