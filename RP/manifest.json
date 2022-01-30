@@ -5,7 +5,7 @@
         "description": "256px realistic, raytraced resource pack",
         "version": [
             0,
-            22,
+            23,
             0
         ],
         "min_engine_version": [
@@ -22,7 +22,7 @@
             "uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
             "version": [
                 0,
-                22,
+                23,
                 0
             ]
         }
