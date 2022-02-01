@@ -14,7 +14,7 @@
                 "/Q",
                 "/Y",
                 "${workspaceFolder}\\RP",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} RP"
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP"
             ],
         },
         "group": "build",
@@ -32,26 +32,24 @@
                 "/E",
                 "/I",
                 "/F",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} RP",
-                "${workspaceFolder}\\RP"
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP",
+                "${workspaceFolder}\\dist\\RP"
             ],
         },
         "group": "build",
         "presentation": {
           "reveal": "always",
           "panel": "new"
-        }
+        },
       },
       {
-        "label": "Push to development behavior packs",
+        "label": "Remove from production",
         "type": "shell",
         "windows": {
-            "command": "xcopy",
+            "command": "rmdir",
             "args": [
-                "/E",
-                "/I",
-                "${workspaceFolder}\\BP",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename} BP"
+                "/s",
+                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\${workspaceFolderBasename}"
             ],
         },
         "group": "build",
