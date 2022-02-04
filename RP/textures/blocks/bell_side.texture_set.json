@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "bell_side",
+		"metalness_emissive_roughness": "bell_side_mer",
+		"normal": "bell_side_normal"
+	}
+}
