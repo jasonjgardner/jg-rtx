@@ -2,7 +2,7 @@
   "resource_pack_name": "jgrtx",
   "texture_name": "atlas.terrain",
   "padding": 2,
-  "num_mip_levels": 1,
+  "num_mip_levels": 0,
   "texture_data": {
     "acacia_planks": {
       "textures": "textures/blocks/planks_acacia"
