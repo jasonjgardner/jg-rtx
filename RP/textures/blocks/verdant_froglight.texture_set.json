@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "verdant_froglight",
+		"metalness_emissive_roughness": "froglight_mer",
+		"normal": "froglight_normal"
+	}
+}
