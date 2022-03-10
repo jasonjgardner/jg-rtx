@@ -792,7 +792,6 @@
    },
    "crying_obsidian": {
       "brightness_gamma": 2.0,
-      "isotropic": true,
       "sound": "stone",
       "textures": "crying_obsidian"
    },

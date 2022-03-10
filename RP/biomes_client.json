@@ -3,7 +3,7 @@
     "default": {
       "fog_identifier": "jgrtx:default",
       "fog_ids_to_merge": ["jgrtx:default"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "remove_all_prior_fog": false,
       "water_surface_color": "#3e5c9e",
       "water_surface_transparency": 0.648
@@ -11,83 +11,83 @@
     "bamboo_jungle": {
       "fog_identifier": "jgrtx:bamboo_jungle",
       "fog_ids_to_merge": ["jgrtx:bamboo_jungle"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1da5c7"
     },
     "bamboo_jungle_hills": {
       "fog_identifier": "jgrtx:bamboo_jungle",
       "fog_ids_to_merge": ["jgrtx:bamboo_jungle", "jgrtx:hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1bbcd8"
     },
     "basalt_deltas": {
       "fog_identifier": "jgrtx:basalt_deltas",
       "fog_ids_to_merge": ["jgrtx:basalt_deltas"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2c53a1"
     },
     "beach": {
       "fog_identifier": "jgrtx:beach",
       "fog_ids_to_merge": ["jgrtx:beach"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2c82aa"
     },
     "birch_forest": {
       "fog_identifier": "jgrtx:birch_forest",
       "fog_ids_to_merge": ["jgrtx:birch_forest", "jgrtx:forest"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0f81d8"
     },
     "birch_forest_hills": {
       "fog_identifier": "jgrtx:birch_forest",
       "fog_ids_to_merge": ["jgrtx:birch_forest", "jgrtx:forest", "jgrtx:hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0a74c4"
     },
     "cold_beach": {
       "fog_identifier": "jgrtx:cold_beach",
       "fog_ids_to_merge": ["jgrtx:cold_beach"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2e587a"
     },
     "cold_ocean": {
       "fog_identifier": "jgrtx:cold_ocean",
       "fog_ids_to_merge": ["jgrtx:cold_ocean", "jgrtx:ocean"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#3271a1",
       "water_surface_transparency": 0.651
     },
     "cold_taiga": {
       "fog_identifier": "jgrtx:cold_taiga",
       "fog_ids_to_merge": ["jgrtx:cold_taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#205e83",
       "water_surface_transparency": 0.625
     },
     "cold_taiga_hills": {
       "fog_identifier": "jgrtx:cold_taiga",
       "fog_ids_to_merge": ["jgrtx:cold_taiga", "jgrtx:hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1e4b64",
       "water_surface_transparency": 0.6333
     },
     "cold_taiga_mutated": {
       "fog_identifier": "jgrtx:cold_taiga",
       "fog_ids_to_merge": ["jgrtx:cold_taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2d6f95",
       "water_surface_transparency": 0.6333
     },
     "crimson_forest": {
       "fog_identifier": "jgrtx:crimson_forest",
       "fog_ids_to_merge": ["jgrtx:crimson_forest", "jgrtx:forest"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#7c3735"
     },
     "deep_cold_ocean": {
       "fog_identifier": "jgrtx:deep_cold_ocean",
       "fog_ids_to_merge": ["jgrtx:deep_cold_ocean", "jgrtx:deep_ocean"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0b5d9c",
       "water_surface_transparency": 0.6125
     },
@@ -98,7 +98,7 @@
         "jgrtx:frozen",
         "jgrtx:deep_ocean"
       ],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#19538a",
       "water_surface_transparency": 0.59
     },
@@ -109,84 +109,84 @@
         "jgrtx:lukewarm_ocean",
         "jgrtx:deep_ocean"
       ],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0D96DB",
       "water_surface_transparency": 0.646
     },
     "deep_ocean": {
       "fog_identifier": "jgrtx:deep_ocean",
       "fog_ids_to_merge": ["jgrtx:deep_ocean", "jgrtx:ocean"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1a74c8",
       "water_surface_transparency": 0.645
     },
     "deep_warm_ocean": {
       "fog_identifier": "jgrtx:deep_warm_ocean",
       "fog_ids_to_merge": ["jgrtx:deep_warm_ocean", "jgrtx:deep_ocean"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0ca8d8",
       "water_surface_transparency": 0.649
     },
     "desert": {
       "fog_identifier": "jgrtx:desert",
       "fog_ids_to_merge": ["jgrtx:desert"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#329ba5",
       "water_surface_transparency": 0.651
     },
     "desert_hills": {
       "fog_identifier": "jgrtx:desert_hills",
       "fog_ids_to_merge": ["jgrtx:desert_hills", "jgrtx:desert", "jgrtx:hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#137297",
       "water_surface_transparency": 0.645
     },
     "extreme_hills": {
       "fog_identifier": "jgrtx:extreme_hills",
       "fog_ids_to_merge": ["jgrtx:extreme_hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0377eb",
       "water_surface_transparency": 0.6425
     },
     "extreme_hills_edge": {
       "fog_identifier": "jgrtx:extreme_hills",
       "fog_ids_to_merge": ["jgrtx:extreme_hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#0e5ece",
       "water_surface_transparency": 0.64125
     },
     "extreme_hills_mutated": {
       "fog_identifier": "jgrtx:extreme_hills",
       "fog_ids_to_merge": ["jgrtx:extreme_hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#136cb9",
       "water_surface_transparency": 0.6405
     },
     "extreme_hills_plus_trees": {
       "fog_identifier": "jgrtx:extreme_hills",
       "fog_ids_to_merge": ["jgrtx:extreme_hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#136cbb",
       "water_surface_transparency": 0.645
     },
     "extreme_hills_plus_trees_mutated": {
       "fog_identifier": "jgrtx:extreme_hills",
       "fog_ids_to_merge": ["jgrtx:extreme_hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1462a7",
       "water_surface_transparency": 0.642
     },
     "flower_forest": {
       "fog_identifier": "jgrtx:forest",
       "fog_ids_to_merge": ["jgrtx:forest"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2eaacf",
       "water_surface_transparency": 0.625
     },
     "forest": {
       "fog_identifier": "jgrtx:forest",
       "fog_ids_to_merge": ["jgrtx:forest"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1e8add",
       "water_surface_transparency": 0.6333
     },
@@ -212,13 +212,13 @@
     "hell": {
       "fog_identifier": "jgrtx:hell",
       "fog_ids_to_merge": ["jgrtx:hell"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#5d0b00"
     },
     "ice_mountains": {
       "fog_identifier": "jgrtx:ice_mountains",
       "fog_ids_to_merge": ["jgrtx:ice_mountains", "jgrtx:mountains"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#10519c",
       "water_surface_transparency": 0.57
     },
@@ -235,20 +235,20 @@
         "jgrtx:plains",
         "jgrtx:frozen"
       ],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#1d5ea3",
       "water_surface_transparency": 0.5825
     },
     "jungle": {
       "fog_identifier": "jgrtx:jungle",
       "fog_ids_to_merge": ["jgrtx:jungle"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2388c2",
       "water_surface_transparency": 0.64
     },
     "jungle_edge": {
       "fog_ids_to_merge": ["jgrtx:jungle", "jgrtx:default"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#208ddb",
       "water_surface_transparency": 0.61
     },
@@ -260,7 +260,7 @@
     },
     "jungle_mutated": {
       "fog_ids_to_merge": ["jgrtx:jungle", "jgrtx:default"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#279dcf",
       "water_surface_transparency": 0.625
     },
@@ -274,84 +274,84 @@
     "mega_spruce_taiga": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#29626b",
       "water_surface_transparency": 0.6
     },
     "mega_spruce_taiga_mutated": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#357680",
       "water_surface_transparency": 0.6
     },
     "mega_taiga": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#226069",
       "water_surface_transparency": 0.6
     },
     "mega_taiga_hills": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga", "jgrtx:hills"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2a6c85",
       "water_surface_transparency": 0.6
     },
     "mega_taiga_mutated": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga", "jgrtx:mountains"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2e7883",
       "water_surface_transparency": 0.6
     },
     "mesa": {
       "fog_identifier": "jgrtx:mesa",
       "fog_ids_to_merge": ["jgrtx:mesa"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#3f7577",
       "water_surface_transparency": 0.65
     },
     "mesa_bryce": {
       "fog_identifier": "jgrtx:mesa",
       "fog_ids_to_merge": ["jgrtx:mesa"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#588ba5",
       "water_surface_transparency": 0.65
     },
     "mesa_mutated": {
       "fog_identifier": "jgrtx:mesa",
       "fog_ids_to_merge": ["jgrtx:mesa", "jgrtx:mountains"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#3c6f88",
       "water_surface_transparency": 0.65
     },
     "mesa_plateau": {
       "fog_identifier": "jgrtx:mesa",
       "fog_ids_to_merge": ["jgrtx:mesa", "jgrtx:plateau"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#4b799b",
       "water_surface_transparency": 0.65
     },
     "mesa_plateau_stone": {
       "fog_identifier": "jgrtx:mesa",
       "fog_ids_to_merge": ["jgrtx:mesa", "jgrtx:plateau"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#52758f",
       "water_surface_transparency": 0.65
     },
     "mushroom_island": {
       "fog_identifier": "jgrtx:mushroom_island",
       "fog_ids_to_merge": ["jgrtx:mushroom_island"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#9593a5",
       "water_surface_transparency": 0.5666
     },
     "mushroom_island_shore": {
       "fog_identifier": "jgrtx:mushroom_island",
       "fog_ids_to_merge": ["jgrtx:mushroom_island"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#9797a7",
       "water_surface_transparency": 0.54
     },
@@ -364,21 +364,21 @@
     "roofed_forest": {
       "fog_identifier": "jgrtx:forest",
       "fog_ids_to_merge": ["jgrtx:forest", "jgrtx:default"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2c57ac",
       "water_surface_transparency": 0.61
     },
     "savanna": {
       "fog_identifier": "jgrtx:savanna",
       "fog_ids_to_merge": ["jgrtx:savanna"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#3698aa",
       "water_surface_transparency": 0.651
     },
     "savanna_mutated": {
       "fog_identifier": "fog:savanna",
       "fog_ids_to_merge": ["fog:savanna"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2d96ad",
       "water_surface_transparency": 0.64
     },
@@ -391,19 +391,19 @@
     "soulsand_valley": {
       "fog_identifier": "jgrtx:soulsand_valley",
       "fog_ids_to_merge": ["jgrtx:soulsand_valley"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#754949"
     },
     "stone_beach": {
       "fog_identifier": "jgrtx:stone_beach",
       "fog_ids_to_merge": ["jgrtx:stone_beach"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#176ebe"
     },
     "sunflower_plains": {
       "fog_identifier": "jgrtx:plains",
       "fog_ids_to_merge": ["jgrtx:plains"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#3aa0e4",
       "water_surface_transparency": 0.61
     },
@@ -419,7 +419,7 @@
     "taiga": {
       "fog_identifier": "jgrtx:taiga",
       "fog_ids_to_merge": ["jgrtx:taiga"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#2b6c7c"
     },
     "taiga_hills": {
@@ -440,23 +440,25 @@
       "water_surface_transparency": 0.6425
     },
     "warm_ocean": {
-      "fog_identifier": "jgrtx:default",
+      "fog_ids_to_merge": ["jgrtx:ocean", "jgrtx:default"],
+      "inherit_from_prior_fog": true,
       "water_surface_transparency": 0.65
     },
     "plains": {
       "fog_identifier": "jgrtx:plains",
+      "inherit_from_prior_fog": true,
       "water_surface_transparency": 0.65
     },
     "the_end": {
       "fog_identifier": "jgrtx:end",
       "fog_ids_to_merge": ["jgrtx:end"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#534195"
     },
     "warped_forest": {
       "fog_identifier": "jgrtx:warped_forest",
       "fog_ids_to_merge": ["jgrtx:warped_forest", "jgrtx:forest"],
-      "inherit_from_prior_fog": false,
+      "inherit_from_prior_fog": true,
       "water_surface_color": "#835790"
     }
   }
