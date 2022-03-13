@@ -8,8 +8,8 @@
       "density": {
         "air": {
           "max_density": 0.0125,
-          "zero_density_height": 7.5,
-          "max_density_height": 1
+          "zero_density_height": 2,
+          "max_density_height": 0.5
         },
         "water": {
           "max_density": 0.025,

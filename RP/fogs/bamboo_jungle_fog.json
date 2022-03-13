@@ -23,34 +23,6 @@
         "fog_color": "#d3d3d3",
         "render_distance_type": "fixed"
       }
-    },
-    "volumetric": {
-      "density": {
-        "air": {
-          "max_density": 0.06,
-          "max_density_height": 0.01,
-          "zero_density_height": 2
-        },
-        "water": {
-          "max_density": 0.0925,
-          "max_density_height": 0.25,
-          "zero_density_height": 6
-        }
-      },
-      "media_coefficients": {
-        "air": {
-          "absorption": [
-            0.00333,
-            0.00125,
-            0.00125
-          ],
-          "scattering": [
-            0.00666,
-            0.0025,
-            0.001
-          ]
-        }
-      }
     }
   }
 }

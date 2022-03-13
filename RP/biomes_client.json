@@ -4,11 +4,11 @@
       "fog_identifier": "jgrtx:default",
       "fog_ids_to_merge": ["jgrtx:default"],
       "inherit_from_prior_fog": true,
-      "remove_all_prior_fog": false,
+      "remove_all_prior_fog": true,
       "water_surface_color": "#3e5c9e",
       "water_surface_transparency": 0.648
     },
-    "bamboo_jungle": {
+    /*"bamboo_jungle": {
       "fog_identifier": "jgrtx:bamboo_jungle",
       "fog_ids_to_merge": ["jgrtx:bamboo_jungle"],
       "inherit_from_prior_fog": true,
@@ -19,7 +19,7 @@
       "fog_ids_to_merge": ["jgrtx:bamboo_jungle", "jgrtx:hills"],
       "inherit_from_prior_fog": true,
       "water_surface_color": "#1bbcd8"
-    },
+    },*/
     "basalt_deltas": {
       "fog_identifier": "jgrtx:basalt_deltas",
       "fog_ids_to_merge": ["jgrtx:basalt_deltas"],
@@ -27,20 +27,20 @@
       "water_surface_color": "#2c53a1"
     },
     "beach": {
-      "fog_identifier": "jgrtx:beach",
-      "fog_ids_to_merge": ["jgrtx:beach"],
+      "fog_identifier": "jgrtx:default",
+      "fog_ids_to_merge": ["jgrtx:default"],
       "inherit_from_prior_fog": true,
       "water_surface_color": "#2c82aa"
     },
     "birch_forest": {
-      "fog_identifier": "jgrtx:birch_forest",
-      "fog_ids_to_merge": ["jgrtx:birch_forest", "jgrtx:forest"],
+      "fog_identifier": "jgrtx:default",
+      "fog_ids_to_merge": ["jgrtx:default", "jgrtx:forest"],
       "inherit_from_prior_fog": true,
       "water_surface_color": "#0f81d8"
     },
     "birch_forest_hills": {
-      "fog_identifier": "jgrtx:birch_forest",
-      "fog_ids_to_merge": ["jgrtx:birch_forest", "jgrtx:forest", "jgrtx:hills"],
+      "fog_identifier": "jgrtx:default",
+      "fog_ids_to_merge": ["jgrtx:default", "jgrtx:forest", "jgrtx:hills"],
       "inherit_from_prior_fog": true,
       "water_surface_color": "#0a74c4"
     },
@@ -460,6 +460,6 @@
       "fog_ids_to_merge": ["jgrtx:warped_forest", "jgrtx:forest"],
       "inherit_from_prior_fog": true,
       "water_surface_color": "#835790"
-    }
+    }*/
   }
 }

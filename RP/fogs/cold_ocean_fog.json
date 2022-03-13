@@ -18,12 +18,6 @@
           "max_density": 0.125,
           "uniform": true
         }
-      },
-      "media_coefficients": {
-        "water": {
-          "absorption": [0.0425, 0.025, 0.0125],
-          "scattering": [0.001, 0.0125, 0.025]
-        }
       }
     }
   }
