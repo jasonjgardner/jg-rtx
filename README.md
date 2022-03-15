@@ -20,6 +20,10 @@ Built with [bridge.](https://bridge-core.github.io/) / Made with [Substance](htt
 ---
 
 ### Screenshots + Videos
+> ![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/158374332-3fb4fe04-1350-408a-98ca-e14a22adf0fe.png)
+> Shared by **campanaro99** in Minecraft RTX Discord
+
+
 > ![JG RTX screenshot with color presets](https://user-images.githubusercontent.com/1903667/148662037-ae8e98f9-e865-49bc-a32d-347149ccfd49.jpg)
 > ![JG RTX screenshot with color presets](https://user-images.githubusercontent.com/1903667/148662038-98266398-7794-4596-bae9-a50f1e09ec7d.jpg)
 > JG RTX w/ [color preset by Alegzzis](https://discord.com/channels/691547840463241267/919021996271108108/920208551069229056).
@@ -30,7 +34,7 @@ Built with [bridge.](https://bridge-core.github.io/) / Made with [Substance](htt
 > ![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/148661809-9c45f5a7-54af-4a2d-bd59-c567eae80a20.jpg)
 > ![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/148661811-35ad539e-2bfc-4e1d-8468-94768cfa5098.jpg)
 > ![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/148661812-2df0936d-6f49-4b9c-a245-f9458cfacfd4.jpg)
-> Shared by **Ngārara Ariki** in Minecraft RTX Discord
+> Shared by [**Ngārara Ariki**](https://github.com/Tui-Vao) in Minecraft RTX Discord
 
 > ![Screenshot of glowing snowman with JG RTX textures](https://user-images.githubusercontent.com/1903667/148662162-b01762d7-3334-4806-8766-6a5ebf7c4c57.jpg)
 > ⛄
