@@ -3,10 +3,12 @@ import { ensureDir } from "https://deno.land/std@0.122.0/fs/mod.ts";
 import { Image } from "https://deno.land/x/imagescript/mod.ts";
 
 const DIR_ATLAS = join(Deno.cwd(), "src", "atlases");
+const DIR_FLIPBOOKS = join(DIR_ATLAS, "flipbooks");
+const DIR_PARTICLES = join(DIR_ATLAS, "particles");
 
-export async function getFlipbookFrames() {
+export async function getAtlasImages(dir: string) {
   const files: { [key: string]: string[] } = {};
-  for await (const dirEntry of Deno.readDir(DIR_ATLAS)) {
+  for await (const dirEntry of Deno.readDir(dir)) {
     if (!dirEntry.isDirectory) {
       continue;
     }
@@ -16,7 +18,7 @@ export async function getFlipbookFrames() {
     }
 
     for await (const fileEntry of Deno.readDir(
-      join(DIR_ATLAS, dirEntry.name)
+      join(dir, dirEntry.name)
     )) {
       if (fileEntry.isFile) {
         files[dirEntry.name].push(fileEntry.name);
@@ -27,9 +29,18 @@ export async function getFlipbookFrames() {
   return files;
 }
 
-export async function makeAtlases() {
-  const size = 256;
-  const atlasGroups = await getFlipbookFrames();
+/**
+ * Stitch together atlas textures
+ * @param {string} [parentDir] Parent directory path
+ * @param {boolean} [ltr=false] Make atlas left-to-right layout
+ * @param {number} [size=256] Texture size
+ */
+export async function makeAtlases(
+  parentDir?: string,
+  ltr: boolean = false,
+  size: number = 256
+): Promise<void> {
+  const atlasGroups = await getAtlasImages(parentDir ?? DIR_ATLAS)
 
   for (const key in atlasGroups) {
     const group = [...atlasGroups[key]].filter((name: string) =>
@@ -48,8 +59,8 @@ export async function makeAtlases() {
       console.warn("Truncating group %s", key);
     }
 
-    const atlasOutput = new Image(size, size * len);
-    const groupDir = join(DIR_ATLAS, key);
+    const atlasOutput = ltr ? new Image(size * len, size) : new Image(size, size * len);
+    const groupDir = join(parentDir ?? DIR_ATLAS, key);
 
     for (let itr = 0; itr < len; itr++) {
       if (group[itr] === undefined) {
@@ -60,17 +71,19 @@ export async function makeAtlases() {
 
       const res = await fetch(toFileUrl(filepath).href);
 
+      const offset = itr * size;
+
       atlasOutput.composite(
         (await Image.decode(new Uint8Array(await res.arrayBuffer()))).resize(
-          256,
-          256
+          size,
+          size
         ),
-        0,
-        itr * size
+        ltr ? offset : 0,
+        ltr ? 0 : offset
       );
     }
 
-    const outputDir = join(groupDir, "dist")
+    const outputDir = join(groupDir, "dist");
 
     await ensureDir(outputDir);
 
@@ -79,4 +92,12 @@ export async function makeAtlases() {
       await atlasOutput.encode(0)
     );
   }
+}
+
+export async function makeFlipbooks() {
+  await makeAtlases(DIR_FLIPBOOKS, false);
+}
+
+export async function makeParticles() {
+  await makeAtlases(DIR_PARTICLES, true);
 }
