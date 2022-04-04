@@ -9,7 +9,7 @@
 
 ##### Free, open-source ray-trancing enabled resource pack for Bedrock Minecraft
 
-__Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO DOCTORS WITHOUT BORDERS](https://www.doctorswithoutborders.org/) or [UNICEF](https://www.unicefusa.org/)__
+__Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO UNICEF](https://www.unicefusa.org/)__
 
 ---
 ![Built with bridge.](https://user-images.githubusercontent.com/1903667/148700768-ed1b0b60-a594-4add-8c8f-97aacd79762f.png)
