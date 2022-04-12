@@ -22,3 +22,7 @@ __Like my work?__ ~~Buy Me a Coffee~~ __[DONATE TO UNICEF](https://www.unicefusa
 ---
 
 > _See [CREDITS.md](CREDITS.md) for materials attributions_
+
+---
+
+![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/162947177-f8569d31-254a-4f99-9836-4b54fde6a8ca.jpg)
