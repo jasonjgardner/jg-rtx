@@ -5,8 +5,8 @@
         "description": "256x realistic, raytracing-enabled resource pack",
         "version": [
             0,
-            24,
-            1
+            25,
+            0
         ],
         "min_engine_version": [
             1,
@@ -22,8 +22,8 @@
             "uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
             "version": [
                 0,
-                24,
-                1
+                25,
+                0
             ]
         }
     ],
