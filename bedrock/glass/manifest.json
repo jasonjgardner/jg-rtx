@@ -1,0 +1,22 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "JG RTX Glass Variety",
+        "description": "Glass options to compliment JG RTX",
+        "uuid": "3b0a3218-f4c8-4874-a804-a400098bed50",
+        "version": [1, 0, 0]
+    },
+    "modules": [{
+        "type": "resources",
+        "uuid": "de87add0-7102-4942-9ee8-a24a595a1d94",
+        "version": [1, 0, 0]
+    }],
+    "capabilities": ["raytraced"],
+    "subpacks": [
+        {
+        "folder_name": "medieval_glass",
+        "name": "Medieval Glass Variety",
+        "memory_tier": 0
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:texture_set": {
+        "color": "birch_button",
+        "metalness_emissive_roughness": "birch_button_mer",
+        "normal": "birch_button_normal"
+    }
+}

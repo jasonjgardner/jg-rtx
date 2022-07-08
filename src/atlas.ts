@@ -53,6 +53,7 @@ export async function makeAtlases(
       continue;
     }
 
+    // FIXME: Truncating frames does not make correctly-sized canvas
     if (len > 25) {
       group.length = 25;
       len = 25;
