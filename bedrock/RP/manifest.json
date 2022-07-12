@@ -19,17 +19,5 @@
       "uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
       "version": [0, 27, 0]
     }
-  ],
-  "subpacks": [
-    {
-      "folder_name": "sd",
-      "name": "Standard Definition",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "hd",
-      "name": "High Definition",
-      "memory_tier": 1
-    }
   ]
 }

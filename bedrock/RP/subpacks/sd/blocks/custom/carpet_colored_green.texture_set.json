@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "carpet_colored_green",
-        "metalness_emissive_roughness": "carpet_colored_green_mer",
-        "normal": "carpet_colored_green_normal"
-    }
-}

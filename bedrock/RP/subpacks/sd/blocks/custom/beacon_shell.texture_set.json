@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "beacon_shell",
-        "metalness_emissive_roughness": "beacon_shell_mer",
-        "normal": "beacon_shell_normal"
-    }
-}

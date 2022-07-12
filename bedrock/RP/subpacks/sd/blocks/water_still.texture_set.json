@@ -1,8 +1,0 @@
-{
-  "format_version": "1.16.100",
-  "minecraft:texture_set": {
-    "color": "water_still",
-    "metalness_emissive_roughness": [0, 0, 0],
-    "normal": "water_still_normal"
-  }
-}
