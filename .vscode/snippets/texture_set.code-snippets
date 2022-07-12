@@ -2,7 +2,7 @@
 	/// Create new texture_set.json file for textures sets which follow the "_mer" and "_normal" naming convention
 	"New texture set": {
 		"scope": "json",
-		"prefix": ["texture_set_json", "txtset"],
+		"prefix": ["txtset"],
 		"body": [
 			"{\n\t\"format_version\": \"${2:1.16.100}\",",
 			"\t\"minecraft:texture_set\": {",
@@ -15,7 +15,7 @@
 	/// Create a new texture_set.json file, using the file name as the texture base name
 	"New texture set file": {
 		"scope": "json",
-		"prefix": ["texture_set", "newtxtset"],
+		"prefix": ["txtset_f"],
 		"body": [
 			"{\n\t\"format_version\": \"${1:1.16.100}\",",
 			"\t\"minecraft:texture_set\": {",
@@ -28,27 +28,26 @@
 	/// Create a new texture_set.json file with colors as default values. Use VS Code's color picker to adjust values
 	"Texture set colors": {
 		"scope": "json",
-		"prefix": ["texture_set_colors", "txtsetcolor"],
+		"prefix": ["txtset_c"],
 		"body": [
 			"{\n\t\"format_version\": \"${4:1.16.100}\",",
 			"\t\"minecraft:texture_set\": {",
-			"\t\t\"color\": \"${1:#000000}\",",
-			"\t\t\"metalness_emissive_roughness\": \"${2:#000000}\",",
-			"\t\t\"normal\": \"${3:#000000}\"\n\t}\n}$0"
+			"\t\t\"color\": \"${RANDOM_HEX}\",",
+			"\t\t\"metalness_emissive_roughness\": \"${RANDOM_HEX}\",",
+			"\t\t\"normal\": \"${RANDOM_HEX}\"\n\t}\n}$0"
 		],
 		"description": "texture_set.json color picker snippet"
 	},
-	/// Create a new resource pack manifest.json. Requires UUID generator. Try: https://github.com/Motivesoft/vscode-uuid-generator
 	"New resource pack": {
 		"scope": "json",
-		"prefix": ["manifest", "resource_pack", "new_resource_pack"],
+		"prefix": ["new_resource_pack"],
 		"body": [
 			"{\n\t\"format_version\": ${11:1},",
 			"\t\"header\": {\n\t\t\"name\": \"${1:Pack Name}\",",
 			"\t\t\"description\": \"${2:Description}\",",
-			"\t\t\"uuid\": \"${3:UUID}\",",
+			"\t\t\"uuid\": \"${UUID}\",",
 			"\t\t\"version\": [${4:0}, ${5:0}, ${6:1}]\n\t},",
-			"\t\"modules\": [{\n\t\t\"type\": \"resources\",\n\t\t\"uuid\": \"${7:UUID}\",",
+			"\t\"modules\": [{\n\t\t\"type\": \"resources\",\n\t\t\"uuid\": \"${UUID}\",",
 			"\t\t\"version\": [${8:0}, ${9:0}, ${10:1}]\n\t}],",
 			"\t\"capabilities\": [\"raytraced\"]\n}$0"
 		],
