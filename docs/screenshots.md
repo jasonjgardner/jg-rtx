@@ -12,3 +12,4 @@
 ![JG RTX Minecraft screenshot](https://user-images.githubusercontent.com/1903667/177017653-3532a17d-2296-444d-82cc-0c5bd98ece04.png)
 ![JG RTX Minecraft screenshot](https://user-images.githubusercontent.com/1903667/177017659-40e7ab6b-41d9-463b-bdeb-ee63f2339465.png)
 ![JG RTX Minecraft screenshot](https://user-images.githubusercontent.com/1903667/177017678-60b7e73d-7d40-487c-ac37-3a2da606ab6a.png)
+![JG RTX screenshot](https://user-images.githubusercontent.com/1903667/162947177-f8569d31-254a-4f99-9836-4b54fde6a8ca.jpg)
