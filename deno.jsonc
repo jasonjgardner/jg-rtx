@@ -23,9 +23,9 @@
     }
   },
   "tasks": {
-    "atlas": "deno run --allow-write --allow-read --allow-env ./src/atlas.ts",
-    "list": "deno run --allow-write --allow-read --allow-net ./src/texturesList.ts",
-    "mcpack": "deno run --allow-write --allow-read --allow-net ./src/mcpack.ts"
+    "atlas": "deno run --allow-write --allow-read --allow-env ./src/scripts/atlas.ts",
+    "list": "deno run --allow-write --allow-read --allow-net ./src/scripts/texturesList.ts",
+    "mcpack": "deno run --allow-write --allow-read --allow-net ./src/scripts/mcpack.ts"
   },
   "importMap": "./import_map.json"
 }
