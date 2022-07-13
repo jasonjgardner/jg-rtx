@@ -1,62 +1,75 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "Push to development resource packs",
-        "type": "shell",
-        "windows": {
-            "command": "xcopy",
-            "args": [
-                "/E",
-                "/I",
-                "/F",
-                "/C",
-                "/Q",
-                "/Y",
-                "${workspaceFolder}\\RP",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP"
-            ],
-        },
-        "group": "build",
-        "presentation": {
-          "reveal": "always",
-          "panel": "new"
-        }
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Push to development resource packs",
+      "type": "shell",
+      "windows": {
+        "command": "xcopy",
+        "args": [
+          "/E",
+          "/I",
+          "/F",
+          "/C",
+          "/Q",
+          "/Y",
+          "${workspaceFolder}\\dist\\RP",
+          "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP"
+        ]
       },
-      {
-        "label": "Pull from development resource packs",
-        "type": "shell",
-        "windows": {
-            "command": "xcopy",
-            "args": [
-                "/E",
-                "/I",
-                "/F",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP",
-                "${workspaceFolder}\\dist\\RP"
-            ],
-        },
-        "group": "build",
-        "presentation": {
-          "reveal": "always",
-          "panel": "new"
-        },
-      },
-      {
-        "label": "Remove from production",
-        "type": "shell",
-        "windows": {
-            "command": "rmdir",
-            "args": [
-                "/s",
-                "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\${workspaceFolderBasename}"
-            ],
-        },
-        "group": "build",
-        "presentation": {
-          "reveal": "always",
-          "panel": "new"
-        }
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
       }
-    ]
-  }
+    },
+    {
+      "label": "Pull from development resource packs",
+      "type": "shell",
+      "windows": {
+        "command": "xcopy",
+        "args": [
+          "/E",
+          "/I",
+          "/F",
+          "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP",
+          "${workspaceFolder}\\dist\\RP"
+        ]
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Remove from production",
+      "type": "shell",
+      "windows": {
+        "command": "rmdir",
+        "args": [
+          "/s",
+          "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\${workspaceFolderBasename}"
+        ]
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "type": "deno",
+      "command": "run",
+      "args": [
+        "--inspect-brk",
+        "--allow-read",
+        "--allow-write",
+        "--allow-net",
+        "${relativeFile}"
+      ],
+      "problemMatcher": ["$deno"],
+      "label": "deno: run current"
+    }
+  ]
+}

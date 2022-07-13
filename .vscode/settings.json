@@ -1,11 +1,20 @@
 {
-    "deno.lint": true,
-    "deno.unstable": true,
-    "editor.defaultFormatter": "denoland.vscode-deno",
-    "deno.enable": true,
-    "deno.internalDebug": true,
-    "deno.suggest.completeFunctionCalls": true,
-    "deno.codeLens.implementations": true,
-    "deno.codeLens.references": true,
-    "deno.codeLens.referencesAllFunctions": true
+  "deno.lint": true,
+  "deno.unstable": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "deno.enable": true,
+  "deno.enablePaths": ["./src"],
+  "deno.internalDebug": false,
+  "deno.suggest.completeFunctionCalls": true,
+  "deno.codeLens.implementations": true,
+  "deno.codeLens.references": true,
+  "deno.codeLens.referencesAllFunctions": true,
+  "deno.codeLens.test": true,
+  "deno.suggest.autoImports": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  },
+  "deno.config": "./deno.jsonc",
+  "files.trimFinalNewlines": true,
+  "nuxt.isNuxtApp": false
 }
