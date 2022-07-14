@@ -25,7 +25,8 @@
   "tasks": {
     "atlas": "deno run --allow-write --allow-read --allow-env ./src/scripts/atlas.ts",
     "list": "deno run --allow-write --allow-read --allow-net ./src/scripts/texturesList.ts",
-    "mcpack": "deno run --allow-write --allow-read --allow-net ./src/scripts/mcpack.ts"
+    "mcpack": "deno run --allow-write --allow-read --allow-net ./src/scripts/mcpack.ts",
+    "split-channels": "deno run --allow-write --allow-read --allow-net ./src/scripts/channels.ts"
   },
   "importMap": "./import_map.json"
 }

@@ -82,39 +82,59 @@ export async function renderTextureSetLayers(name: string) {
 }
 
 export async function parseTextureSet(name: string) {
-	const collection: string[] = [];
-
 	try {
-		const { "minecraft:texture_set": textureSet } = JSON5.parse(
-			await Deno.readTextFile(`${name}`),
-		);
+		const jsonData = await Deno.readTextFile(`${name}`);
 
-		for (const key in textureSet) {
-			const entry = textureSet[key];
-			const find = extensions.map((ext) => `${entry}.${ext}`);
-			const found = files.filter(({ name }) => find.includes(name));
+		const collection: string[] = [];
 
-			const filesFound = found.length;
-
-			if (filesFound < 1) {
-				throw Error(`Failed loading texture for entry "${entry}"`);
-			}
-
-			if (filesFound > 1) {
-				console.warn('Multiple textures found for entry "%s"', name);
-			}
-
-			const filePath = normalize(
-				found[0].path.replace(common([BASE_PATH, found[0].path]), ""),
+		try {
+			const { "minecraft:texture_set": textureSet } = JSON5.parse(
+				jsonData,
 			);
 
-			collection.push(filePath);
-		}
-	} catch (err) {
-		console.error("Failed reading texture set:\n%s\n > %s", name, err);
-	}
+			for (const key in textureSet) {
+				const entry = textureSet[key];
 
-	return collection;
+				if (Array.isArray(entry) || entry[0] === "#") {
+					continue;
+				}
+				const find = extensions.map((ext) => `${entry}.${ext}`);
+				const found = files.filter(({ name }) => find.includes(name));
+
+				const filesFound = found.length;
+
+				if (filesFound < 1) {
+					throw Error(`Failed loading texture for entry "${entry}"`);
+				}
+
+				if (filesFound > 1) {
+					console.warn(
+						'Multiple textures found for entry "%s"',
+						name,
+					);
+				}
+
+				const filePath = normalize(
+					found[0].path.replace(
+						common([BASE_PATH, found[0].path]),
+						"",
+					),
+				);
+
+				collection.push(filePath);
+			}
+		} catch (err) {
+			console.error("Failed reading texture set:\n%s\n > %s", name, err);
+		}
+
+		return collection;
+	} catch (err) {
+		if (err.kind === Deno.errors.NotFound) {
+			throw Error(`Texture set does not exist: ${name}`);
+		}
+
+		throw Error(`Failed reading texture set JSON file: ${name}`, err);
+	}
 }
 
 export async function getTexturesList() {
