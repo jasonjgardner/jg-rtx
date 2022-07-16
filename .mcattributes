@@ -1,0 +1,6 @@
+diagnose=true
+diagnose.objectives=true
+diagnose.tags=true
+diagnose.mcfunctions=true
+diagnostic.json=false
+diagnostic.lang=true
