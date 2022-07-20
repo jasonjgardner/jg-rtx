@@ -7,7 +7,7 @@ Resource pack textures were created in Substance Painter with the help of some b
 - [Chris Hodgson](https://www.artstation.com/christopherhodgson) (Alien Cracked Rocky Ground)
 - [Chris Roseman](https://www.artstation.com/topherrose) (Bookshelf, Coral Rock)
 - Janine Smith (Flowing lava)
-- Matt Dirks (Terracotta Base Texture, Bee Hive, Metal Curvy Artsy Wall Dirty)
+- Matt Dirks (Terracotta Base Texture, Bee Hive, Metal Curvy Artsy Wall Dirty, Fantasy Grass Field)
 - [das_miller](https://flickr.com/photos/das_miller/6077962895) (Dam texture)
 - Algorithmic
 - PixelSquid
