@@ -1,5 +1,4 @@
 # Exclude releases
-builds/
 *.mcpack
 *.mcworld
 *.zip
@@ -39,7 +38,6 @@ bin/
 *_CURVE.png
 *_CAV.png
 *_META.png
-*.jsx
 
 # Exclude targa files for MERs and normals
 *_normal.tga
