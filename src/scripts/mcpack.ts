@@ -11,6 +11,7 @@ import { ensureDir, walk } from "https://deno.land/std@0.147.0/fs/mod.ts";
 import { parse } from "https://deno.land/std@0.147.0/flags/mod.ts";
 import { compress } from "https://deno.land/x/zip@v1.2.3/mod.ts";
 import { getTexturesList } from "./texturesList.ts";
+import { _c } from "https://deno.land/x/json_file_change@v1.0.1/mod.ts";
 
 async function requireFilesInDir(
 	dirGlob: string,
@@ -76,7 +77,7 @@ if (options.customBlocks !== false) {
 // Inherit required files from textures list
 // This includes ONLY texture files (no JSON data)
 
-const textures = await getTexturesList(false);
+const textures = await getTexturesList();
 
 if (textures) {
 	textures.forEach((texturePath: string) => {
