@@ -1,0 +1,28 @@
+name: .mcpack
+description: Create .mcpack from repository contents
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths:
+      - 'bedrock/**'
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create packs
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          ./.github/actions/pack/build.sh
+      - name: Upload mcpack
+        uses: actions/upload-artifact@v2
+        with:
+          name: JG-RTX
+          path: dist/JG-RTX.zip

@@ -2,7 +2,24 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Push to development resource packs",
+      "label": "Push Java pack",
+      "type": "shell",
+      "windows": {
+        "command": "xcopy",
+        "args": [
+          "/E",
+          "/I",
+          "/F",
+          "/C",
+          "/Q",
+          "/Y",
+          "${workspaceFolder}\\java",
+          "${env:AppData}\\.minecraft\\resourcepacks\\${workspaceFolderBasename}"
+        ],
+      }
+    },
+    {
+      "label": "Push \"dist/\" directory to development resource packs",
       "type": "shell",
       "windows": {
         "command": "xcopy",
@@ -24,7 +41,7 @@
       }
     },
     {
-      "label": "Pull from development resource packs",
+      "label": "Pull from development resource packs into \"dev/\" directory",
       "type": "shell",
       "windows": {
         "command": "xcopy",
@@ -33,7 +50,7 @@
           "/I",
           "/F",
           "${env:LocalAppData}\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\${workspaceFolderBasename}\\RP",
-          "${workspaceFolder}\\dist\\RP"
+          "${workspaceFolder}\\dev\\RP"
         ]
       },
       "group": "build",
@@ -43,7 +60,7 @@
       }
     },
     {
-      "label": "Remove from production",
+      "label": "Remove currently installed version",
       "type": "shell",
       "windows": {
         "command": "rmdir",
@@ -59,6 +76,7 @@
       }
     },
     {
+      "label": "Deno: Run current file",
       "type": "deno",
       "command": "run",
       "args": [
@@ -68,8 +86,9 @@
         "--allow-net",
         "${relativeFile}"
       ],
-      "problemMatcher": ["$deno"],
-      "label": "deno: run current"
+      "problemMatcher": [
+        "$deno"
+      ]
     }
   ]
 }
