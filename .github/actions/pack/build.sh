@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Creating output directory..."
-rm -r dist/
 mkdir dist
 
 echo "Copying source files into output directory..."
