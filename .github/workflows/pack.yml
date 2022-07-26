@@ -17,9 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create packs
-        run: |
-          cd ${GITHUB_WORKSPACE}
-          ./.github/actions/pack/build.sh
+        run: ./.github/actions/pack/build.sh
       - name: Upload mcpack
         uses: actions/upload-artifact@v2
         with:
