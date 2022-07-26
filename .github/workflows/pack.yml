@@ -1,5 +1,4 @@
 name: .mcpack
-description: Create .mcpack from repository contents
 
 on:
   workflow_dispatch:
