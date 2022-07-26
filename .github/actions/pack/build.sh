@@ -36,5 +36,5 @@ rm -r java/
 rm -r pack/
 rm -r variety/
 
-echo "Generated packs:"
+echo "Generated:"
 ls
