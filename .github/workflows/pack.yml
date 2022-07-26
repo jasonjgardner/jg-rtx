@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - 'bedrock/**'
+      - 'java/**'
 
 jobs:
   pack:
@@ -15,11 +16,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Create packs
-        run: ./.github/actions/pack/build.sh
+        run: |
+          mkdir dist
+          cp -r bedrock/pack dist
+          cp -r bedrock/addon dist
+          cp -r bedrock/variety dist
+          cp -r java dist
+          cd dist/pack
+          zip -0 -r ../JG-RTX.mcpack .
+          cd ../addon
+          zip -0 -r ../JG-RTX.mcaddon .
+          cd ../variety
+          zip -0 -r ../JG-RTX_GlassVariety.mcpack ./glass
+          cd ../java
+          zip -0 -r ../PBR-JG.zip .
       - name: Upload mcpack
         uses: actions/upload-artifact@v2
         with:
           name: JG-RTX
-          path: dist/JG-RTX.zip
+          path: dist/*.*
