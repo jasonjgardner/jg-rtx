@@ -8,14 +8,18 @@ jobs:
     steps:
       - name: Download Mineways
         id: download-mineways
+        run: wget https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
+        shell: bash
+      - name: Extract Mineways
+        id: extract-mineways
         run: |
           mkdir dist
           mkdir bin
           cd bin
-          wsl wget https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
-          7z x .\mineways.zip
+          7z x ..\mineways.zip
       
       - name: Create terrain texture
+        id: run-mineways
         run: |
           .\mineways\TileMaker\ChannelMixer.exe -i ..\bedrock\pack\RP -o ..\dist\mineways\blocks
           .\mineways\TileMaker\TileMaker.exe -d ..\dist\mineways\blocks -o ..\dist\mineways\terrainExtJG-RTX.png
