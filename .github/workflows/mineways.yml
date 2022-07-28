@@ -6,13 +6,15 @@ jobs:
   mineways:
     runs-on: windows-latest
     steps:
-      - name: Setup Mineways
+      - name: Download Mineways
+        id: download-mineways
         run: |
           mkdir dist
           mkdir bin
           cd bin
           wsl wget https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
           7z x .\mineways.zip
+      
       - name: Create terrain texture
         run: |
           .\mineways\TileMaker\ChannelMixer.exe -i ..\bedrock\pack\RP -o ..\dist\mineways\blocks
