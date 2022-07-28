@@ -7,9 +7,9 @@ jobs:
   labPbr_256x:
     name: LabPbr-256x
     runs-on: ubuntu-latest
-    needs: [prepare_release]
+    needs: []
     env:
-      release_filename: Textureless-LabPbr-32x-v${{ github.run_number }}.zip
+      release_filename: PBR-JG-v${{ github.run_number }}.zip
     steps:
       - uses: actions/checkout@v2
       - name: Compile LabPbr-256x
