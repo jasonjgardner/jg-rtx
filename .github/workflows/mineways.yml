@@ -6,19 +6,28 @@ jobs:
   mineways:
     runs-on: windows-latest
     steps:
-      - name: Download Mineways
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: bin/mineways/TileMaker
+          key: mineways-executables
+      - name: Download and unzip Mineways
         id: download-mineways
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir ${{ github.workspace }}\bin
           cd ${{ github.workspace }}\bin
           Invoke-WebRequest -URI https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip -OutFile mineways.zip
           7z x .\mineways.zip
+          echo "$pwd\mineways\TileMaker" >> $GITHUB_PATH
+      - name: Checkout JG RTX
+        uses: actions/checkout@v3
       - name: Create terrain texture
         id: run-mineways
         run: |
           mkdir ${{ github.workspace }}\dist
-          ${{ github.workspace }}\bin\mineways\TileMaker\ChannelMixer.exe -i ${{ github.workspace }}\bedrock\pack\RP -o ${{ github.workspace }}\dist\mineways\blocks
-          ${{ github.workspace }}\bin\mineways\TileMaker\TileMaker.exe -d ${{ github.workspace }}\dist\mineways\blocks -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
+          ChannelMixer.exe -i ${{ github.workspace }}\bedrock\pack\RP -o ${{ github.workspace }}\dist\mineways\blocks
+          TileMaker.exe -d ${{ github.workspace }}\dist\mineways\blocks -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
         uses: actions/upload-artifact@v2
         with:
