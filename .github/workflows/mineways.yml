@@ -17,8 +17,8 @@ jobs:
         id: run-mineways
         run: |
           mkdir ${{ github.workspace }}\dist
-          ${{ github.workspace }}\bin\mineways\TileMaker\ChannelMixer.exe -i ${{ github.workspace }}\bin\mineways\TileMaker\bedrock\pack\RP -o ${{ github.workspace }}\bin\mineways\TileMaker\dist\mineways\blocks
-          ${{ github.workspace }}\bin\mineways\TileMaker\TileMaker.exe -d ${{ github.workspace }}\bin\mineways\TileMaker\dist\mineways\blocks -o ${{ github.workspace }}\bin\mineways\TileMaker\dist\mineways\terrainExtJG-RTX.png
+          ${{ github.workspace }}\bin\mineways\TileMaker\ChannelMixer.exe -i ${{ github.workspace }}\bedrock\pack\RP -o ${{ github.workspace }}\dist\mineways\blocks
+          ${{ github.workspace }}\bin\mineways\TileMaker\TileMaker.exe -d ${{ github.workspace }}\dist\mineways\blocks -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
         uses: actions/upload-artifact@v2
         with:
