@@ -19,7 +19,7 @@ jobs:
       - name: Create terrain texture
         id: run-mineways
         run: |
-          mkdir dist
+          mkdir ..\dist
           .\mineways\TileMaker\ChannelMixer.exe -i ..\bedrock\pack\RP -o ..\dist\mineways\blocks
           .\mineways\TileMaker\TileMaker.exe -d ..\dist\mineways\blocks -o ..\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
