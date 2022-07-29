@@ -9,19 +9,20 @@ jobs:
       - name: Download Mineways
         id: download-mineways
         run: |
-          mkdir bin
+          mkdir ${{ GITHUB_WORKSPACE }}\bin
           Invoke-WebRequest -URI https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip -OutFile bin\mineways.zip
       - name: Extract Mineways
         id: extract-mineways
         run: |
-          cd bin
+          cd ${{ GITHUB_WORKSPACE }}\bin
           7z x .\mineways.zip
       - name: Create terrain texture
         id: run-mineways
         run: |
-          mkdir ..\dist
-          .\mineways\TileMaker\ChannelMixer.exe -i ..\bedrock\pack\RP -o ..\dist\mineways\blocks
-          .\mineways\TileMaker\TileMaker.exe -d ..\dist\mineways\blocks -o ..\dist\mineways\terrainExtJG-RTX.png
+          mkdir ${{ GITHUB_WORKSPACE }}\dist
+          cd ${{ GITHUB_WORKSPACE }}\bin\mineways\TileMaker
+          ChannelMixer.exe -i ${{ GITHUB_WORKSPACE }}\bedrock\pack\RP -o ${{ GITHUB_WORKSPACE }}\dist\mineways\blocks
+          TileMaker.exe -d ${{ GITHUB_WORKSPACE }}\dist\mineways\blocks -o ${{ GITHUB_WORKSPACE }}\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
         uses: actions/upload-artifact@v2
         with:
