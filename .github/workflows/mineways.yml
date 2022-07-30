@@ -6,8 +6,7 @@ jobs:
   mineways:
     runs-on: windows-latest
     steps:
-      - name: Checkout JG RTX
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - uses: actions/cache@v3
         id: cache
         with:
@@ -23,6 +22,8 @@ jobs:
           Invoke-WebRequest -URI https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip -OutFile mineways.zip
           7z x .\mineways.zip
           echo "$pwd\mineways\TileMaker" >> $GITHUB_PATH
+          echo "### Extracted Mineways" >> $GITHUB_STEP_SUMMARY
+          echo "From `$pwd`" >> $GITHUB_STEP_SUMMARY
       - name: Create terrain texture
         id: run-mineways
         run: |
