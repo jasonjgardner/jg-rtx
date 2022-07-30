@@ -10,7 +10,7 @@ jobs:
       - uses: actions/cache@v3
         id: cache
         with:
-          path: bin\mineways\TileMaker
+          path: bin\mineways\TileMaker\*
           key: mineways-executables
       - name: Download and unzip Mineways
         id: download-mineways
@@ -23,7 +23,6 @@ jobs:
           7z x .\mineways.zip
           echo "$pwd\mineways\TileMaker" >> $GITHUB_PATH
           echo "### Extracted Mineways" >> $GITHUB_STEP_SUMMARY
-          echo "From `$pwd`" >> $GITHUB_STEP_SUMMARY
       - name: Create terrain texture
         id: run-mineways
         run: |
