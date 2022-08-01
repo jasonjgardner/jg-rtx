@@ -4,31 +4,39 @@ on:
 
 jobs:
   mineways:
+    env:
+      PACK_PATH: ${{ github.repository }}\bedrock\pack\RP
+      MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
-        id: cache
+        id: cache-mineways
         with:
-          path: bin\mineways\TileMaker\*
-          key: mineways-executables
+          path: |
+            **\bin\mineways\TileMaker\ChannelMixer.exe
+            **\bin\mineways\TileMaker\TileMaker.exe
+            **\bin\mineways\TileMaker\textures\water_normal.png
+            **\bin\mineways\TileMaker\terrainBase.png
+          key: mineways-tilemaker
+          restore-keys: |
+            mineways-
       - name: Download and unzip Mineways
         id: download-mineways
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-mineways.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           mkdir ${{ github.workspace }}\bin
           cd ${{ github.workspace }}\bin
-          Invoke-WebRequest -URI https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip -OutFile mineways.zip
+          Invoke-WebRequest -URI ${env:MINEWAYS_URL} -OutFile mineways.zip
           7z x .\mineways.zip
-          echo "$pwd\mineways\TileMaker" >> $GITHUB_PATH
           echo "### Extracted Mineways" >> $GITHUB_STEP_SUMMARY
       - name: Create terrain texture
         id: run-mineways
         run: |
           mkdir ${{ github.workspace }}\dist
           cd ${{ github.workspace }}\bin\mineways\TileMaker
-          .\ChannelMixer.exe -i ${{ github.workspace }}\jg-rtx\bedrock\pack\RP -o ${{ github.workspace }}\dist\mineways\blocks
+          .\ChannelMixer.exe -i ${env:PACK_PATH} -o ${{ github.workspace }}\dist\mineways\blocks
           .\TileMaker.exe -d ${{ github.workspace }}\dist\mineways\blocks -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
         uses: actions/upload-artifact@v2
