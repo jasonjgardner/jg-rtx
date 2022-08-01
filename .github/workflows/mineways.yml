@@ -5,7 +5,7 @@ on:
 jobs:
   mineways:
     env:
-      PACK_PATH: ${{ github.repository }}\bedrock\pack\RP
+      PACK_PATH: ${{ github.workspace }}\bedrock\pack\RP
       MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
     runs-on: windows-latest
     steps:
