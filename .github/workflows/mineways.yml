@@ -6,6 +6,7 @@ jobs:
   mineways:
     env:
       PACK_PATH: ${{ github.workspace }}\bedrock\pack\RP
+      TILE_PATH: ${{ github.workspace }}\dist\mineways\blocks
       MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
     runs-on: windows-latest
     steps:
@@ -14,13 +15,13 @@ jobs:
         id: cache-mineways
         with:
           path: |
-            **\bin\mineways\TileMaker\ChannelMixer.exe
-            **\bin\mineways\TileMaker\TileMaker.exe
-            **\bin\mineways\TileMaker\textures\water_normal.png
-            **\bin\mineways\TileMaker\terrainBase.png
+            bin\mineways\TileMaker\ChannelMixer.exe
+            bin\mineways\TileMaker\TileMaker.exe
+            bin\mineways\TileMaker\textures\water_normal.png
+            bin\mineways\TileMaker\terrainBase.png
           key: mineways-tilemaker
           restore-keys: |
-            mineways-
+            mineways-tilemaker
       - name: Download and unzip Mineways
         id: download-mineways
         if: steps.cache-mineways.outputs.cache-hit != 'true'
@@ -34,10 +35,10 @@ jobs:
       - name: Create terrain texture
         id: run-mineways
         run: |
-          mkdir ${{ github.workspace }}\dist
+          mkdir ${env:TILE_PATH}
           cd ${{ github.workspace }}\bin\mineways\TileMaker
-          .\ChannelMixer.exe -i ${env:PACK_PATH} -o ${{ github.workspace }}\dist\mineways\blocks
-          .\TileMaker.exe -d ${{ github.workspace }}\dist\mineways\blocks -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
+          .\ChannelMixer.exe -i ${env:PACK_PATH} -o ${env:TILE_PATH}
+          .\TileMaker.exe -d ${env:TILE_PATH} -o ${{ github.workspace }}\dist\mineways\terrainExtJG-RTX.png
       - name: Upload terrain texture
         uses: actions/upload-artifact@v2
         with:
