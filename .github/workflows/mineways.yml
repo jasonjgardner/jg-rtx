@@ -11,7 +11,7 @@ jobs:
       # Path to ChannelMixer output / TileMaker input
       TILE_PATH: ${{ github.workspace }}\dist\mineways\blocks
       # Path to TileMaker executables
-      TM_PATH: ${{ github.workspace }}\bin\mineways\TileMaker
+      TM_PATH: bin\mineways\TileMaker
     runs-on: windows-latest
     concurrency:
       group: ${{ github.workflow }}
@@ -22,13 +22,12 @@ jobs:
         id: cache-mineways
         with:
           path: |
-            ${{ env.TM_PATH }}/ChannelMixer.exe
-            ${{ env.TM_PATH }}/TileMaker.exe
-            ${{ env.TM_PATH }}/textures/water_normal.png
-            ${{ env.TM_PATH }}/terrainBase.png
+            ${{ env.TM_PATH }}\ChannelMixer.exe
+            ${{ env.TM_PATH }}\TileMaker.exe
+            ${{ env.TM_PATH }}\textures\water_normal.png
+            ${{ env.TM_PATH }}\terrainBase.png
           key: mineways-tilemaker
-          restore-keys: |
-            mineways-tilemaker
+          restore-keys: mineways-
       - name: Download and unzip Mineways
         id: download-mineways
         if: steps.cache-mineways.outputs.cache-hit != 'true'
@@ -39,7 +38,7 @@ jobs:
           Invoke-WebRequest -URI ${env:MINEWAYS_URL} -OutFile mineways.zip
           7z x .\mineways.zip
           echo "### Extracted Mineways" >> $env:GITHUB_STEP_SUMMARY
-          echo "${env:GITHUB_WORKSPACE}\bin\mineways\TileMaker" >> $env:GITHUB_PATH
+          echo "${env:GITHUB_WORKSPACE}\${env:TM_PATH}" >> $env:GITHUB_PATH
       - name: Create terrain texture
         id: run-mineways
         run: |
