@@ -39,6 +39,11 @@ jobs:
           7z x .\mineways.zip
           echo "### Extracted Mineways" >> $env:GITHUB_STEP_SUMMARY
           echo "${env:GITHUB_WORKSPACE}\${env:TM_PATH}" >> $env:GITHUB_PATH
+      - name: Copy Mineways textures
+        id: mineways-textures
+        shell: powershell
+        run: |
+          xcopy ${env:GITHUB_WORKSPACE}\mineways\textures\blocks ${env:TILE_PATH} /S
       - name: Create terrain texture
         id: run-mineways
         run: |
