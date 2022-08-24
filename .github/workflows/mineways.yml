@@ -6,9 +6,9 @@ env:
   # Path to Mineways executables
   TM_PATH: bin\mineways\TileMaker
   # Path to input resource pack
-  PACK_PATH: ${{ github.workspace }}\bedrock\pack\RP
+  PACK_PATH: bedrock\pack\RP
   # Path to ChannelMixer output / TileMaker input
-  TILE_PATH: ${{ github.workspace }}\dist\mineways\blocks
+  TILE_PATH: dist\mineways\blocks
 jobs:
   setup:
     runs-on: windows-latest
@@ -60,6 +60,9 @@ jobs:
   mineways:
     needs: [setup, download]
     runs-on: windows-latest
+    defaults:
+      run: 
+        shell: powershell
     steps:
       - name: ChannelMixer
         id: channelmixer
