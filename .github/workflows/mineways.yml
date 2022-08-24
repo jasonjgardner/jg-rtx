@@ -2,23 +2,35 @@ name: Mineways
 on:
   workflow_dispatch:
 
+env:
+  # Path to Mineways executables
+  TM_PATH: bin\mineways\TileMaker
+  # Path to input resource pack
+  PACK_PATH: ${{ github.workspace }}\bedrock\pack\RP
+  # Path to ChannelMixer output / TileMaker input
+  TILE_PATH: ${{ github.workspace }}\dist\mineways\blocks
 jobs:
-  mineways:
-    env:
-      MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
-      # Path to input resource pack
-      PACK_PATH: ${{ github.workspace }}\bedrock\pack\RP
-      # Path to ChannelMixer output / TileMaker input
-      TILE_PATH: ${{ github.workspace }}\dist\mineways\blocks
-      # Path to TileMaker executables
-      TM_PATH: bin\mineways\TileMaker
+  setup:
     runs-on: windows-latest
-    concurrency:
-      group: ${{ github.workflow }}
-      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
+        name: Checkout repo
+        id: checkout
+      - name: Create required directories
+        id: setup-directories
+        shell: cmd
+        run: mkdir ${env:TILE_PATH}
+      - name: Copy Mineways textures
+        id: mineways-textures
+        shell: cmd
+        run: xcopy ${env:GITHUB_WORKSPACE}\mineways\textures\blocks ${env:TILE_PATH} /S
+  download:
+    env:
+      MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
+    runs-on: windows-latest
+    steps:
       - uses: actions/cache@v3
+        name: Get Mineways executables from cache
         id: cache-mineways
         with:
           path: |
@@ -28,30 +40,42 @@ jobs:
             ${{ env.TM_PATH }}\terrainBase.png
           key: mineways-tilemaker
           restore-keys: mineways-
-      - name: Download and unzip Mineways
+      - name: Download Mineways executables
         id: download-mineways
         if: steps.cache-mineways.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          mkdir ${{ github.workspace }}\bin
-          cd ${{ github.workspace }}\bin
-          Invoke-WebRequest -URI ${env:MINEWAYS_URL} -OutFile mineways.zip
-          7z x .\mineways.zip
-          echo "### Extracted Mineways" >> $env:GITHUB_STEP_SUMMARY
-          echo "${env:GITHUB_WORKSPACE}\${env:TM_PATH}" >> $env:GITHUB_PATH
-      - name: Copy Mineways textures
-        id: mineways-textures
-        shell: powershell
+          $files = @('ChannelMixer.exe','TileMaker.exe','terrainBase.png','textures/water_normal.png')
+          $dest = ".\${env:TM_PATH}"
+
+          [System.IO.Directory]::CreateDirectory("$dest\textures")
+
+          For ($i = 0; $i -lt $files.Length; $i++) {
+              $file = $files[$i]
+              $fileUrl = "${env:MINEWAYS_URL}/$file"
+              Invoke-WebRequest -Uri ${fileUrl} -OutFile "$dest\\$file"
+          }
+  mineways:
+    needs: [setup, download]
+    runs-on: windows-latest
+    steps:
+      - name: ChannelMixer
+        id: channelmixer
+        working-directory: ${{ env.TM_PATH }}
         run: |
-          xcopy ${env:GITHUB_WORKSPACE}\mineways\textures\blocks ${env:TILE_PATH} /S
-      - name: Create terrain texture
-        id: run-mineways
-        run: |
-          mkdir $env:TILE_PATH
-          cd $env:TM_PATH
+          Write-Output "::group::ChannelMixer Log"
           .\ChannelMixer.exe -i $env:PACK_PATH -o $env:TILE_PATH
+          Write-Output "::endgroup::"
+      - name: TileMaker
+        id: tilemaker
+        working-directory: ${{ env.TM_PATH }}
+        run: |
+          Write-Output "::group::TileMaker Log"
           .\TileMaker.exe -d $env:TILE_PATH -o ${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png
+          Write-Output "::endgroup::"
       - name: Upload terrain texture
+        id: upload-terrain
+        if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
           name: terrainExtJG-RTX
