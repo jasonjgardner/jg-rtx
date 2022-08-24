@@ -66,17 +66,15 @@ jobs:
     steps:
       - name: ChannelMixer
         id: channelmixer
-        working-directory: ${{ env.TM_PATH }}
         run: |
           Write-Output "::group::ChannelMixer Log"
-          .\ChannelMixer.exe -i $env:PACK_PATH -o $env:TILE_PATH
+          "${env:TM_PATH}\ChannelMixer.exe" -i $env:PACK_PATH -o $env:TILE_PATH
           Write-Output "::endgroup::"
       - name: TileMaker
         id: tilemaker
-        working-directory: ${{ env.TM_PATH }}
         run: |
           Write-Output "::group::TileMaker Log"
-          .\TileMaker.exe -d $env:TILE_PATH -o ${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png
+          "${env:TM_PATH}\TileMaker.exe" -d $env:TILE_PATH -o ${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png
           Write-Output "::endgroup::"
       - name: Upload terrain texture
         id: upload-terrain
