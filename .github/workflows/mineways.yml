@@ -18,12 +18,14 @@ jobs:
         id: checkout
       - name: Create required directories
         id: setup-directories
-        shell: cmd
-        run: mkdir ${env:TILE_PATH}
+        shell: powershell
+        run: |
+          [System.IO.Directory]::CreateDirectory($env:TILE_PATH)
       - name: Copy Mineways textures
         id: mineways-textures
-        shell: cmd
-        run: xcopy ${env:GITHUB_WORKSPACE}\mineways\textures\blocks ${env:TILE_PATH} /S
+        shell: powershell
+        run: |
+          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:TILE_PATH -Recurse
   download:
     env:
       MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
