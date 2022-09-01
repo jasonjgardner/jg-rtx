@@ -13,7 +13,7 @@ logs
 .bridge/
 .bridge/openedFiles_*.json
 .bridge/recentFiles.json
-
+node_modules/
 bin/
 
 # Exclude assets and binaries

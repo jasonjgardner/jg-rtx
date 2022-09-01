@@ -16,5 +16,6 @@
   },
   "deno.config": "./deno.jsonc",
   "files.trimFinalNewlines": true,
-  "nuxt.isNuxtApp": false
+  "nuxt.isNuxtApp": false,
+  "cSpell.words": ["mineways", "minecraft"]
 }
