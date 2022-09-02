@@ -23,9 +23,12 @@
 
 ---
 
-## Used in [Mineways](http://mineways.com)
+## Included in [Mineways](http://mineways.com)
 
-[Mineways](https://github.com/erich666/Mineways/) [includes JG RTX](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)! Export your builds in Universal Scene Description format using Mineways and bring the results into [NVIDIA Omniverse](https://www.nvidia.com/en-us/omniverse/) or other software with USD support.
+[Mineways](https://github.com/erich666/Mineways/) now [includes JG RTX](http://www.realtimerendering.com/erich/minecraft/public/mineways/textures.html#candy)! Export your builds in Universal Scene Description format using Mineways and bring the results into [NVIDIA Omniverse Create](https://www.nvidia.com/en-us/omniverse/) or other software with USD support.
+
+> ![JG RTX textures rendered in NVIDIA Omniverse](https://user-images.githubusercontent.com/1903667/188157972-56088a5d-783a-4905-8a78-10fbebd87678.png)
+> [Medieval castle build by __jar9__](https://www.minecraft-schematics.com/schematic/8481/) in NVIDIA Omniverse Create
 
 > ![JG RTX USD test rendered in NVIDIA Omniverse](https://user-images.githubusercontent.com/1903667/143316694-f66bce34-158e-4557-aaa3-cb283b8f6ca5.jpg)
 > [JG RTX in Omniverse Create](https://photos.app.goo.gl/gSzLeFGAN5rrfjER7)
