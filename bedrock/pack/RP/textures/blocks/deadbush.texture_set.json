@@ -2,7 +2,7 @@
   "format_version": "1.16.100",
   "minecraft:texture_set": {
     "color": "deadbush",
-    "metalness_emissive_roughness": [0, 0, 200],
+    "metalness_emissive_roughness": "deadbush_mer",
     "normal": "deadbush_normal"
   }
 }
