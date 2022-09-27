@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 
 env:
+  MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
   # Path to Mineways executables
   TM_PATH: bin\mineways\TileMaker
   # Path to input resource pack
@@ -10,8 +11,11 @@ env:
   # Path to ChannelMixer output / TileMaker input
   TILE_PATH: dist\mineways\blocks
 jobs:
-  setup:
+  tilemaker:
     runs-on: windows-latest
+    defaults:
+      run: 
+        shell: powershell
     steps:
       - uses: actions/checkout@v3
         name: Checkout repo
@@ -26,11 +30,6 @@ jobs:
         shell: powershell
         run: |
           Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:TILE_PATH -Recurse
-  download:
-    env:
-      MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
-    runs-on: windows-latest
-    steps:
       - uses: actions/cache@v3
         name: Get Mineways executables from cache
         id: cache-mineways
@@ -57,24 +56,17 @@ jobs:
               $fileUrl = "${env:MINEWAYS_URL}/$file"
               Invoke-WebRequest -Uri ${fileUrl} -OutFile "$dest\\$file"
           }
-  mineways:
-    needs: [setup, download]
-    runs-on: windows-latest
-    defaults:
-      run: 
-        shell: powershell
-    steps:
       - name: ChannelMixer
         id: channelmixer
         run: |
           Write-Output "::group::ChannelMixer Log"
-          "${env:TM_PATH}\ChannelMixer.exe" -i $env:PACK_PATH -o $env:TILE_PATH
+          & "${env:TM_PATH}\ChannelMixer.exe" -i $env:PACK_PATH -o $env:TILE_PATH
           Write-Output "::endgroup::"
       - name: TileMaker
         id: tilemaker
         run: |
           Write-Output "::group::TileMaker Log"
-          "${env:TM_PATH}\TileMaker.exe" -d $env:TILE_PATH -o ${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png
+          & "${env:TM_PATH}\TileMaker.exe" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png"
           Write-Output "::endgroup::"
       - name: Upload terrain texture
         id: upload-terrain
