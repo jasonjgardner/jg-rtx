@@ -66,7 +66,7 @@ jobs:
         id: tilemaker
         run: |
           Write-Output "::group::TileMaker Log"
-          & "${env:TM_PATH}\TileMaker.exe" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png"
+          & "${env:TM_PATH}\TileMaker.exe" -i "${env:TM_PATH}\terrainBase.png" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExtJG-RTX.png"
           Write-Output "::endgroup::"
       - name: Upload terrain texture
         id: upload-terrain
