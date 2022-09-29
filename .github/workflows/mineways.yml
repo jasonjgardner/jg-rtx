@@ -68,7 +68,7 @@ jobs:
           & "${env:TM_PATH}\ChannelMixer.exe" -v -m -i $env:PACK_PATH -o $env:TILE_PATH
           Write-Output "::endgroup::"
       - name: TileMaker @ ${{ matrix.size }}
-        id: tilemaker-${{ matrix.size }}
+        id: tilemaker
         run: |
           $size = ${{ matrix.size }};
           Write-Output "::group::TileMaker Log ($size)"
