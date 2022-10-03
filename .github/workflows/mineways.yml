@@ -1,8 +1,10 @@
 name: Mineways
+run-name: Generate tiles for Mineways 
 on:
   workflow_dispatch:
 
 env:
+  TERRAIN_NAME: JG-RTX
   MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
   # Path to Mineways executables
   TM_PATH: bin\mineways\TileMaker
@@ -12,6 +14,9 @@ env:
   TILE_PATH: dist\mineways\blocks
 jobs:
   tilemaker:
+    strategy:
+      matrix:
+        size: [256, 128, 64]
     runs-on: windows-latest
     defaults:
       run: 
@@ -62,18 +67,17 @@ jobs:
           Write-Output "::group::ChannelMixer Log"
           & "${env:TM_PATH}\ChannelMixer.exe" -v -m -i $env:PACK_PATH -o $env:TILE_PATH
           Write-Output "::endgroup::"
-      - name: TileMaker
+      - name: TileMaker @ ${{ matrix.size }}
         id: tilemaker
         run: |
-          Write-Output "::group::TileMaker Log"
-          & "${env:TM_PATH}\TileMaker.exe" -v -m -i "${env:TM_PATH}\terrainBase.png" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExt_JG-RTX256.png" -t 256
-          & "${env:TM_PATH}\TileMaker.exe" -i "${env:TM_PATH}\terrainBase.png" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExt_JG-RTX128.png" -t 128
-          & "${env:TM_PATH}\TileMaker.exe" -i "${env:TM_PATH}\terrainBase.png" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExt_JG-RTX64.png" -t 64
+          $size = ${{ matrix.size }};
+          Write-Output "::group::TileMaker Log ($size)"
+          & "${env:TM_PATH}\TileMaker.exe" -v -m -i "${env:TM_PATH}\terrainBase.png" -d $env:TILE_PATH -o "${env:GITHUB_WORKSPACE}\dist\mineways\terrainExt_${env:TERRAIN_NAME}$size.png" -t $size
           Write-Output "::endgroup::"
       - name: Upload terrain texture
         id: upload-terrain
         if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
-          name: terrainExt_JG-RTX
+          name: terrainExt_${{ env.TERRAIN_NAME }}
           path: dist/mineways/*.png
