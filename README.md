@@ -15,11 +15,22 @@
 - **[Latest release](https://github.com/jasonjgardner/jg-rtx/releases)**: .mcpack is included as release asset
 - [Workflow build](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml?query=is%3Acompleted+branch%3Amain+actor%3Ajasonjgardner+event%3Apush): .mcpack included as workflow artifact. (Requires GitHub account.)
 
-## Demo
+## Screenshots / Video
 
 - [Screenshots gallery](docs/screenshots.md)
 - [Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N)
 - [Community Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGW7OnrGPV4-rKQKYo_JvuBH)
+
+### Shader Comparisons
+
+> ![PBR JG SEUS screenshot](https://user-images.githubusercontent.com/1903667/198856284-77686217-8769-4373-a07b-76cdf89cbc89.png)
+> SEUS
+
+> ![PBR JG BSL screenshot](https://user-images.githubusercontent.com/1903667/198856301-2bcf54e9-65c7-476a-a06f-c17801cefd70.png)
+> BSL
+
+> ![JG RTX RenderBender screenshot)](https://user-images.githubusercontent.com/1903667/198856313-3b7c3fb8-d755-4565-998e-41db67f97286.png)
+> RTX with [RenderBender](https://github.com/SpeedyCodes/RenderBender)
 
 ---
 
