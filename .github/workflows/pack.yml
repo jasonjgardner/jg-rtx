@@ -28,8 +28,13 @@ jobs:
         zip -0 -r ../JG-RTX.mcaddon .
         cd ../variety
         zip -0 -r ../JG-RTX_GlassVariety.mcpack ./glass
-    - name: Upload pack
+    - name: Upload Bedrock packs
       uses: actions/upload-artifact@v2
       with:
         name: JG-RTX
-        path: dist/*.*
+        path: dist/*.mc*
+    - name: Upload Java pack
+      uses: actions/upload-artifact@v2
+      with:
+        name: PBR-JG
+        path: dist/*.zip
