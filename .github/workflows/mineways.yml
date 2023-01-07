@@ -34,7 +34,7 @@ jobs:
         id: mineways-textures
         shell: powershell
         run: |
-          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:TILE_PATH -Recurse
+          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:PACK_PATH -Recurse
       - uses: actions/cache@v3
         name: Get Mineways executables from cache
         id: cache-mineways
