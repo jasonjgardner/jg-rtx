@@ -7,8 +7,8 @@
   "header": {
     "name": "JG RTX",
     "description": "Realistic 256x PBR resource pack",
-    "version": [0, 29, 0],
-    "min_engine_version": [1, 19, 50],
+    "version": [0, 30, 0],
+    "min_engine_version": [1, 19, 80],
     "uuid": "8d5b130b-71ff-4c5c-84d7-46a6024248f5"
   },
   "capabilities": ["raytraced"],
@@ -17,7 +17,7 @@
       "description": "RTX resources",
       "type": "resources",
       "uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
-      "version": [0, 29, 0]
+      "version": [0, 30, 0]
     }
   ]
 }
