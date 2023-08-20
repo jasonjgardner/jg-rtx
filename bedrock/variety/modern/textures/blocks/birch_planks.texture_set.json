@@ -1,0 +1,8 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:texture_set": {
+    "color": "birch_planks",
+    "metalness_emissive_roughness": "birch_planks_mer",
+    "normal": "birch_planks_normal"
+  }
+}
