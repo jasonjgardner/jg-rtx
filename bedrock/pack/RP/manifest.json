@@ -1,23 +1,39 @@
 {
   "format_version": 2,
   "metadata": {
-    "authors": ["Jason Gardner"],
+    "authors": [
+      "Jason Gardner"
+    ],
     "url": "https://github.com/jasonjgardner/jg-rtx/"
   },
   "header": {
     "name": "JG RTX",
     "description": "Realistic 256x PBR resource pack",
-    "version": [0, 30, 0],
-    "min_engine_version": [1, 19, 80],
+    "version": [
+      0,
+      31,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      10
+    ],
     "uuid": "8d5b130b-71ff-4c5c-84d7-46a6024248f5"
   },
-  "capabilities": ["raytraced"],
+  "capabilities": [
+    "raytraced"
+  ],
   "modules": [
     {
       "description": "RTX resources",
       "type": "resources",
       "uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
-      "version": [0, 30, 0]
+      "version": [
+        0,
+        31,
+        0
+      ]
     }
   ]
 }
