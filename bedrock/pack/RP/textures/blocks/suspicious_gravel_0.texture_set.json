@@ -1,0 +1,8 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:texture_set": {
+    "normal": "suspicious_gravel_0_normal",
+    "metalness_emissive_roughness": "suspicious_gravel_0_mer",
+    "color": "suspicious_gravel_0"
+  }
+}
