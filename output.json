@@ -1,0 +1,57 @@
+[
+    {
+        "identifier": "Converter",
+        "outputs": [
+            {
+                "identifier": "mer",
+                "label": "Metal / Emissive / Roughness",
+                "type": "image",
+                "uid": 3766378966,
+                "usages": [
+                    "mer"
+                ],
+                "value": "D:/Game Development/Minecraft/Resource Packs/JG RTX/dist/reinforced_deepslate_top_mer.png"
+            },
+            {
+                "identifier": "s",
+                "label": "labPBR Specular",
+                "type": "image",
+                "uid": 3766378982,
+                "usages": [
+                    "s"
+                ],
+                "value": "D:/Game Development/Minecraft/Resource Packs/JG RTX/dist/reinforced_deepslate_top_s.png"
+            },
+            {
+                "identifier": "color",
+                "label": "Base Color",
+                "type": "image",
+                "uid": 3766378994,
+                "usages": [
+                ],
+                "value": "D:/Game Development/Minecraft/Resource Packs/JG RTX/dist/reinforced_deepslate_top_color.png"
+            },
+            {
+                "identifier": "n",
+                "label": "Normal Map",
+                "type": "image",
+                "uid": 3766378902,
+                "usages": [
+                    "n"
+                ],
+                "value": "D:/Game Development/Minecraft/Resource Packs/JG RTX/dist/reinforced_deepslate_top_n.png"
+            },
+            {
+                "identifier": "carried",
+                "label": "Carried Texture",
+                "type": "image",
+                "uid": 3766378935,
+                "usages": [
+                    "carried"
+                ],
+                "value": "D:/Game Development/Minecraft/Resource Packs/JG RTX/dist/reinforced_deepslate_top_carried.png"
+            }
+        ]
+    }
+]
+
