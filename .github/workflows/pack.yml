@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'bedrock/**'
-      - 'java/**'
 jobs:
   assemble:
     runs-on: ubuntu-latest
@@ -16,12 +15,9 @@ jobs:
     - name: Zip directories
       run: |
         mkdir dist
-        cp -r java dist
         cp -r bedrock/pack dist
         cp -r bedrock/addon dist
         cp -r bedrock/variety dist
-        cd dist/java
-        zip -0 -r ../PBR-JG.zip .
         cd ../pack
         zip -0 -r ../JG-RTX.mcpack .
         cd ../addon
@@ -33,8 +29,3 @@ jobs:
       with:
         name: JG-RTX
         path: dist/*.mc*
-    - name: Upload Java pack
-      uses: actions/upload-artifact@v2
-      with:
-        name: PBR-JG
-        path: dist/*.zip

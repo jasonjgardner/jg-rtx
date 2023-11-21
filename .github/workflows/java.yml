@@ -1,0 +1,25 @@
+name: Java Pack
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'java/pack/**'
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Zip directories
+      run: |
+        mkdir dist
+        cp -r java/pack dist/java
+        cd dist/java
+        zip -0 -r ../PBR-JG.zip .
+    - name: Upload Java pack
+      uses: actions/upload-artifact@v2
+      with:
+        name: PBR-JG
+        path: dist/*.zip
