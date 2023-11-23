@@ -12,18 +12,25 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Zip directories
+    - name: Setup
       run: |
         mkdir dist
-        cp -r bedrock/pack dist
-        cp -r bedrock/addon dist
-        cp -r bedrock/variety dist
-        cd ../pack
-        zip -0 -r ../JG-RTX.mcpack .
-        cd ../addon
-        zip -0 -r ../JG-RTX.mcaddon .
-        cd ../variety
-        zip -0 -r ../JG-RTX_GlassVariety.mcpack ./glass
+    - name: Copy main pack
+      run: |
+        cp -r bedrock/pack/ dist
+        zip -0 -r dist/JG-RTX.mcpack dist/pack
+    - name: Copy addon pack
+      run: |
+        cp -r bedrock/addon/ dist
+        zip -0 -r dist/JG-RTX.mcaddon dist/addon
+    - name: Copy variety packs
+      run: |
+        cp -r bedrock/variety/glass/ dist/glass_variety
+        zip -0 -r dist/JG-RTX_glass.mcpack dist/glass_variety
+        cp -r bedrock/variety/modern/ dist/modern_variety
+        zip -0 -r dist/JG-RTX_modern.mcpack dist/modern_variety
+        cp -r bedrock/variety/vanilla/ dist/vanilla_variety
+        zip -0 -r dist/JG-RTX_vanilla.mcpack dist/vanilla_variety
     - name: Upload Bedrock packs
       uses: actions/upload-artifact@v2
       with:
