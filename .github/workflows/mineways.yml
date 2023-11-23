@@ -5,7 +5,7 @@ on:
 
 env:
   TERRAIN_NAME: JG-RTX
-  MINEWAYS_URL: http://www.realtimerendering.com/erich/minecraft/public/mineways/files/TileMaker
+  MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways_min.zip
   # Path to Mineways executables
   TM_PATH: bin\mineways\TileMaker
   # Path to input resource pack
@@ -13,7 +13,38 @@ env:
   # Path to ChannelMixer output / TileMaker input
   TILE_PATH: dist\mineways\blocks
 jobs:
+  download:
+    name: Download Mineways
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout repo
+        id: checkout
+      - name: Create required directories
+        id: setup-directories
+        shell: powershell
+        run: |
+          [System.IO.Directory]::CreateDirectory($env:TM_PATH)
+      - uses: actions/cache@v3
+        name: Get Mineways executables from cache
+        id: cache-mineways
+        with:
+          path: |
+            ${{ env.TM_PATH }}\ChannelMixer.exe
+            ${{ env.TM_PATH }}\TileMaker.exe
+            ${{ env.TM_PATH }}\textures\water_normal.png
+            ${{ env.TM_PATH }}\terrainBase.png
+          key: mineways-tilemaker
+          restore-keys: mineways-
+      - name: Download Mineways executables
+        id: download-mineways
+        if: steps.cache-mineways.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri $env:MINEWAYS_URL -OutFile mineways.zip
+          Expand-Archive -Path mineways.zip -DestinationPath $env:TM_PATH -Force
   tilemaker:
+    needs: download
     strategy:
       matrix:
         size: [256, 128, 64]
@@ -51,16 +82,8 @@ jobs:
         if: steps.cache-mineways.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          $files = @('ChannelMixer.exe','TileMaker.exe','terrainBase.png','textures/water_normal.png')
-          $dest = ".\${env:TM_PATH}"
-
-          [System.IO.Directory]::CreateDirectory("$dest\textures")
-
-          For ($i = 0; $i -lt $files.Length; $i++) {
-              $file = $files[$i]
-              $fileUrl = "${env:MINEWAYS_URL}/$file"
-              Invoke-WebRequest -Uri ${fileUrl} -OutFile "$dest\\$file"
-          }
+          Invoke-WebRequest -Uri $env:MINEWAYS_URL -OutFile mineways.zip
+          Expand-Archive -Path mineways.zip -DestinationPath $env:TM_PATH -Force
       - name: ChannelMixer
         id: channelmixer
         run: |
@@ -77,7 +100,7 @@ jobs:
       - name: Upload terrain texture
         id: upload-terrain
         if: ${{ success() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: terrainExt_${{ env.TERRAIN_NAME }}
           path: dist/mineways/*.png
