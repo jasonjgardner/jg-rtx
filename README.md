@@ -18,9 +18,24 @@
 
 ## Screenshots / Video
 
-- [Screenshots gallery](docs/screenshots.md)
 - [Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N)
 - [Community Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGW7OnrGPV4-rKQKYo_JvuBH)
+
+### Shader Comparison
+#### [Better RTX](https://github.com/BetterRTX/BetterRTX-Installer)
+![JG RTX with BetterRTX shader](https://github.com/jasonjgardner/jg-rtx/assets/1903667/0bc3d834-b90d-41b8-9b56-c82980b78a9d)
+
+#### Xbox Deferred Render Preview
+![JG RTX on Xbox](https://github.com/jasonjgardner/jg-rtx/assets/1903667/8c95bc05-b211-4606-ab5a-d12449779697)
+
+#### BSL
+![PBR JG with BSL Shader](https://github.com/jasonjgardner/jg-rtx/assets/1903667/4240e652-da28-4127-bb4f-e89afb827793)
+
+#### Kappa
+![PBR JG with Kappa Shader](https://github.com/jasonjgardner/jg-rtx/assets/1903667/e94455e2-cadf-4bbc-9b67-94524dec3890)
+
+#### SEUS
+![PBR JG with SEUS](https://github.com/jasonjgardner/jg-rtx/assets/1903667/608ec372-8970-4a41-8d83-4f535d7a91d3)
 
 ---
 
