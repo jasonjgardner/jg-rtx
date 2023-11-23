@@ -22,11 +22,6 @@ jobs:
       - uses: actions/checkout@v3
         name: Checkout repo
         id: checkout
-      - name: Create required directories
-        id: setup-directories
-        shell: powershell
-        run: |
-          [System.IO.Directory]::CreateDirectory($env:TM_PATH)
       - name: Generate Cache Key
         id: cache-keys
         run: echo "::set-output name=cache-key::mineways-${{ hashFiles('mineways/**') }}"
