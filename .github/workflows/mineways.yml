@@ -5,9 +5,10 @@ on:
 
 env:
   TERRAIN_NAME: JG-RTX
-  MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways_min.zip
+  MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
+  MINEWAYS_VERSION: 11.04
   # Path to Mineways executables
-  TM_PATH: bin\mineways\TileMaker
+  TM_PATH: bin/mineways/TileMaker
   # Path to input resource pack
   PACK_PATH: bedrock\pack\RP
   # Path to ChannelMixer output / TileMaker input
@@ -24,7 +25,7 @@ jobs:
         id: checkout
       - name: Generate Cache Key
         id: cache-keys
-        run: echo "::set-output name=cache-key::mineways-${{ hashFiles('mineways/**') }}"
+        run: echo "::set-output name=cache-key::mineways-${{ env.MINEWAYS_VERSION }}"
       - uses: actions/cache@v3
         name: Get Mineways executables from cache
         id: cache-mineways
