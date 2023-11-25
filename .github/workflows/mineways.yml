@@ -8,7 +8,7 @@ env:
   MINEWAYS_URL: https://erich.realtimerendering.com/minecraft/public/mineways/mineways.zip
   MINEWAYS_VERSION: 11.04
   # Path to Mineways executables
-  TM_PATH: bin/mineways/TileMaker
+  TM_PATH: bin\mineways\TileMaker
   # Path to input resource pack
   PACK_PATH: bedrock\pack\RP
   # Path to ChannelMixer output / TileMaker input
