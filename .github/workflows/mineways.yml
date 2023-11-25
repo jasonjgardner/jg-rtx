@@ -16,7 +16,10 @@ env:
 jobs:
   download:
     name: Download Mineways
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    defaults:
+      run: 
+        shell: powershell
     outputs:
       cache-key: ${{ steps.cache-keys.outputs.cache-key }}
     steps:
@@ -25,23 +28,36 @@ jobs:
         id: checkout
       - name: Generate Cache Key
         id: cache-keys
-        run: echo "::set-output name=cache-key::mineways-${{ env.MINEWAYS_VERSION }}"
+        run: Write-Host "::set-output name=cache-key::mineways-${{ env.MINEWAYS_VERSION }}"
       - uses: actions/cache@v3
         name: Get Mineways executables from cache
         id: cache-mineways
         with:
-          path: |
-            ${{ env.TM_PATH }}\ChannelMixer.exe
-            ${{ env.TM_PATH }}\TileMaker.exe
-            ${{ env.TM_PATH }}\textures\water_normal.png
-            ${{ env.TM_PATH }}\terrainBase.png
+          path: mineways.zip
           key: ${{ steps.cache-keys.outputs.cache-key }}
       - name: Download and Cache Dependency
         if: steps.cache-mineways.outputs.cache-hit != 'true'
         run: |
-          curl -L ${{ env.MINEWAYS_URL }} -o mineways.zip
-          unzip -o mineways.zip -d ${{ env.TM_PATH }}
-          rm mineways.zip
+          Invoke-WebRequest -Uri $env:MINEWAYS_URL -OutFile mineways.zip
+      - name: Create required directories
+        id: setup-directories
+        shell: powershell
+        run: |
+          $paths = @($env:TM_PATH, $env:PACK_PATH, $env:TILE_PATH, "${env:GITHUB_WORKSPACE}\dist\mineways", "${env:GITHUB_WORKSPACE}\dist\mineways\blocks")
+          foreach($path in $paths) {
+            $createdPath = [System.IO.Directory]::CreateDirectory($path)
+            if(-not (Test-Path -Path $createdPath)) {
+              Write-Output "::error::Failed to create directory $path"
+              exit 1
+            }
+          }
+      - name: Extract Mineways
+        id: extract-mineways
+        shell: powershell
+        run: |
+          Expand-Archive -Path mineways.zip -DestinationPath mineways -Force
+          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\*.exe","${env:GITHUB_WORKSPACE}\mineways\terrainBase.png" -Destination $env:TM_PATH -Force
+          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:PACK_PATH -Recurse -Force
   tilemaker:
     needs: download
     strategy:
@@ -52,28 +68,6 @@ jobs:
       run: 
         shell: powershell
     steps:
-      - uses: actions/checkout@v3
-        name: Checkout repo
-        id: checkout
-      - name: Cache Dependency
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ env.TM_PATH }}\ChannelMixer.exe
-            ${{ env.TM_PATH }}\TileMaker.exe
-            ${{ env.TM_PATH }}\textures\water_normal.png
-            ${{ env.TM_PATH }}\terrainBase.png
-          key: ${{ needs.download.outputs.cache-key }}
-      - name: Create required directories
-        id: setup-directories
-        shell: powershell
-        run: |
-          [System.IO.Directory]::CreateDirectory($env:TILE_PATH)
-      - name: Copy Mineways textures
-        id: mineways-textures
-        shell: powershell
-        run: |
-          Copy-Item -Path "${env:GITHUB_WORKSPACE}\mineways\textures\blocks" -Destination $env:PACK_PATH -Recurse -Force
       - name: ChannelMixer
         id: channelmixer
         run: |
