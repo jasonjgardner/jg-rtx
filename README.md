@@ -6,21 +6,18 @@
 
 > #### Like my work?
 >
-> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**\
-> [⭐](https://github.com/jasonjgardner/jg-rtx/stargazers "Star the repoistory on GitHub")
-> [💎 ❤️](https://www.planetminecraft.com/texture-pack/jg-rtx/ "Give diamonds and hearts on PMC")
-> [💬](https://discord.gg/zAbpu3jWeJ "Join the JG RTX Discord")
+> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**
 
 ## Download
 
 - **[Latest release](https://github.com/jasonjgardner/jg-rtx/releases)**: .mcpack is included as release asset
 - [Workflow build](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml?query=is%3Acompleted+branch%3Amain+actor%3Ajasonjgardner+event%3Apush): .mcpack included as workflow artifact. (Requires GitHub account.)
 
-### Bedrock Version
-[Planet Minecraft](https://www.planetminecraft.com/texture-pack/jg-rtx/)
-
-### Java Version
-[Planet Minecraft](https://www.planetminecraft.com/texture-pack/pbr-jg/)
+## Links
+- [JG RTX on Planet Minecraft](https://www.planetminecraft.com/texture-pack/jg-rtx/)
+- [PBR JG on Planet Minecraft](https://www.planetminecraft.com/texture-pack/pbr-jg/)
+- [Modrinth](https://modrinth.com/resourcepack/pbr-jg)
+- [Discord](https://discord.gg/zAbpu3jWeJ "Join the JG RTX Discord")
 
 ## Screenshots / Video
 
