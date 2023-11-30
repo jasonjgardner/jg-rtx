@@ -12,7 +12,7 @@
     "version": [
       0,
       32,
-      0
+      3
     ],
     "min_engine_version": [
       1,
@@ -33,7 +33,7 @@
       "version": [
         0,
         32,
-        0
+        3
       ]
     }
   ]
