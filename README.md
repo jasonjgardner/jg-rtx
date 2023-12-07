@@ -1,6 +1,6 @@
 # JG RTX
 
-**Free, open-source PBR Minecraft resource pack**
+**Free, open-source HD PBR Minecraft resource pack for Bedrock and Java**
 
 ![JG RTX cover](https://static.planetminecraft.com/files/image/minecraft/texture-pack/2022/984/15781135-minecraftscreenshot_l.jpg)
 
@@ -13,9 +13,19 @@
 - **[Latest release](https://github.com/jasonjgardner/jg-rtx/releases)**: .mcpack is included as release asset
 - [Workflow build](https://github.com/jasonjgardner/jg-rtx/actions/workflows/main.yml?query=is%3Acompleted+branch%3Amain+actor%3Ajasonjgardner+event%3Apush): .mcpack included as workflow artifact. (Requires GitHub account.)
 
+### Extras
+
+#### Bedrock
+- [Glass Variety pack](https://github.com/jasonjgardner/jg-rtx/releases/download/v0.23.1/JG-RTX_Glass-Variety.mcpack)
+
+#### Java
+- [JG Mod](https://modrinth.com/mod/jg-mod)
+- [JG Modpack](https://modrinth.com/modpack/jg-modpack)
+
 ## Links
 - [JG RTX on Planet Minecraft](https://www.planetminecraft.com/texture-pack/jg-rtx/)
 - [PBR JG on Planet Minecraft](https://www.planetminecraft.com/texture-pack/pbr-jg/)
+- [CurseForge](https://legacy.curseforge.com/minecraft/texture-packs/pbr-jg)
 - [Modrinth](https://modrinth.com/resourcepack/pbr-jg)
 - [Discord](https://discord.gg/zAbpu3jWeJ "Join the JG RTX Discord")
 
