@@ -27,6 +27,9 @@
 - [PBR JG on Planet Minecraft](https://www.planetminecraft.com/texture-pack/pbr-jg/)
 - [CurseForge](https://legacy.curseforge.com/minecraft/texture-packs/pbr-jg)
 - [Modrinth](https://modrinth.com/resourcepack/pbr-jg)
+
+### Social
+- [Instagram](https://www.instagram.com/merncurft/ "Follow @merncurft on Instagram")
 - [Discord](https://discord.gg/zAbpu3jWeJ "Join the JG RTX Discord")
 
 ## Screenshots / Video
