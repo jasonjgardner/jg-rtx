@@ -18,7 +18,8 @@ jobs:
     - name: Copy main pack
       run: |
         cp -r bedrock/pack/ dist
-        zip -0 -r dist/JG-RTX.mcpack dist/pack
+        cd dist/pack
+        zip -0 -r dist/JG-RTX.mcpack .
     - name: Copy addon pack
       run: |
         cp -r bedrock/addon/ dist
