@@ -75,7 +75,7 @@ for (const file of texturesDirContents) {
 		await Deno.readFile(file),
 	);
 
-	if (file.endsWith(".png")) {
+	if (file.endsWith(".png") && fileName.startsWith("blocks")) {
 		try {
 			const image = await Image.decode(await Deno.readFile(file));
 			const smolImage = image.resize(128, 128);
