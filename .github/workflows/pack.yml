@@ -17,8 +17,8 @@ jobs:
         mkdir dist
     - name: Copy main pack
       run: |
-        cp -r bedrock/pack/RP dist
-        (cd dist/pack/RP; zip -0 -r ../../JG-RTX.mcpack .)
+        cp -r bedrock/pack dist
+        (cd bedrock/pack; zip -0 -r ../../JG-RTX.mcpack .)
     - name: Copy addon pack
       run: |
         cp -r bedrock/addon/ dist
