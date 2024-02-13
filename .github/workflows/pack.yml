@@ -17,21 +17,20 @@ jobs:
         mkdir dist
     - name: Copy main pack
       run: |
-        cp -r bedrock/pack/ dist
-        cd dist/pack
-        zip -0 -r dist/JG-RTX.mcpack .
+        cp -r bedrock/pack/RP dist
+        (cd dist/pack/RP; zip -0 -r ../../JG-RTX.mcpack .)
     - name: Copy addon pack
       run: |
         cp -r bedrock/addon/ dist
-        zip -0 -r dist/JG-RTX.mcaddon dist/addon
+        (cd dist/addon; zip -0 -r ../JG-RTX.mcaddon .)
     - name: Copy variety packs
       run: |
         cp -r bedrock/variety/glass/ dist/glass_variety
-        zip -0 -r dist/JG-RTX_glass.mcpack dist/glass_variety
+        (cd dist/glass_variety; zip -0 -r ../JG-RTX_glass.mcpack .)
         cp -r bedrock/variety/modern/ dist/modern_variety
-        zip -0 -r dist/JG-RTX_modern.mcpack dist/modern_variety
+        (cd dist/modern_variety; zip -0 -r ../JG-RTX_modern.mcpack .)
         cp -r bedrock/variety/vanilla/ dist/vanilla_variety
-        zip -0 -r dist/JG-RTX_vanilla.mcpack dist/vanilla_variety
+        (cd dist/vanilla_variety; zip -0 -r ../JG-RTX_vanilla.mcpack .)
     - name: Upload Bedrock packs
       uses: actions/upload-artifact@v2
       with:
