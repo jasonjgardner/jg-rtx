@@ -1,4 +1,4 @@
-name: Preview Release
+name: Build Bedrock packs
 on:
   workflow_dispatch:
   push:
@@ -9,30 +9,19 @@ on:
 jobs:
   assemble:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup
-      run: |
-        mkdir dist
-    - name: Copy main pack
-      run: |
-        cp -r bedrock/pack dist
-        (cd bedrock/pack; zip -0 -r ../dist/JG-RTX.mcpack .)
-    - name: Copy addon pack
-      run: |
-        cp -r bedrock/addon/ dist
-        (cd dist/addon; zip -0 -r ../JG-RTX.mcaddon .)
-    - name: Copy variety packs
-      run: |
-        cp -r bedrock/variety/glass/ dist/glass_variety
-        (cd dist/glass_variety; zip -0 -r ../JG-RTX_glass.mcpack .)
-        cp -r bedrock/variety/modern/ dist/modern_variety
-        (cd dist/modern_variety; zip -0 -r ../JG-RTX_modern.mcpack .)
-        cp -r bedrock/variety/vanilla/ dist/vanilla_variety
-        (cd dist/vanilla_variety; zip -0 -r ../JG-RTX_vanilla.mcpack .)
-    - name: Upload Bedrock packs
-      uses: actions/upload-artifact@v2
-      with:
-        name: JG-RTX
-        path: dist/*.mc*
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+
+      - name: Run workflow script
+        run: deno run --allow-read --allow-write --allow-net --allow-env .github/workflows/scripts/createPack.ts
+
+      - name: Upload Bedrock packs
+        uses: actions/upload-artifact@v2
+        with:
+          name: JG-RTX
+          path: ./*.mc*
