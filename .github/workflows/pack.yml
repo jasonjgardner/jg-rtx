@@ -18,7 +18,7 @@ jobs:
     - name: Copy main pack
       run: |
         cp -r bedrock/pack dist
-        (cd bedrock/pack; zip -0 -r ../JG-RTX.mcpack .)
+        (cd bedrock/pack; zip -0 -r ../dist/JG-RTX.mcpack .)
     - name: Copy addon pack
       run: |
         cp -r bedrock/addon/ dist
@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: JG-RTX
-        path: /*.mc*
+        path: dist/*.mc*
