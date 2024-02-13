@@ -1,4 +1,5 @@
-import { basename, join } from "https://deno.land/std/path/mod.ts";
+#!/usr/bin/env -S deno run --allow-write --allow-read --allow-net --allow-env
+import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
 import JSZip from "https://esm.sh/jszip@3.10.1";
 import { Image } from "https://deno.land/x/imagescript@1.2.15/mod.ts";
 
@@ -20,6 +21,10 @@ async function recursiveReaddir(path: string) {
 const RP_DIR = join(Deno.cwd(), "bedrock", "pack", "RP");
 
 const rp = new JSZip();
+
+const subpacksDir = rp.folder("subpacks");
+const packDir = subpacksDir.folder("256x");
+const smolPackDir = subpacksDir.folder("128x");
 
 rp.file(
 	"manifest.json",
@@ -53,17 +58,11 @@ rp.folder("particles").file(
 	await Deno.readFile(join(RP_DIR, "particles", "cherry_petal_atlas.png")),
 );
 
-// Copy rp object into a new object to avoid modifying the original object
-const smolRp = new JSZip();
-rp.forEach((path, file) => {
-	smolRp.file(path, file.async("uint8array"));
-});
-
 const texturesSrc = join(RP_DIR, "textures");
 const texturesDirContents = await recursiveReaddir(texturesSrc);
 
-const texturesFolder = rp.folder("textures");
-const smolTexturesFolder = smolRp.folder("textures");
+const texturesFolder = packDir.folder("textures");
+const smolTexturesFolder = smolPackDir.folder("textures");
 
 for (const file of texturesDirContents) {
 	const fileName = file.replace(
@@ -93,7 +92,7 @@ for (const file of texturesDirContents) {
 		continue;
 	}
 
-	smolRp.file(
+	smolPackDir.file(
 		fileName,
 		await Deno.readFile(file),
 	);
@@ -104,9 +103,5 @@ await Deno.writeFile(
 	await rp.generateAsync({ type: "uint8array" }),
 );
 
-await Deno.writeFile(
-	join(Deno.cwd(), "JG-RTX_128x.mcpack"),
-	await smolRp.generateAsync({ type: "uint8array" }),
-);
 
 Deno.exit(0);
