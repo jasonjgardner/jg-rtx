@@ -1,11 +1,7 @@
 name: Build Bedrock packs
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'bedrock/**'
+
 jobs:
   assemble:
     runs-on: ubuntu-latest
