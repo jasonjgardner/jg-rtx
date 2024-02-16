@@ -6,7 +6,9 @@
 
 > #### Like my work?
 >
-> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**
+> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**\
+> and/or\
+> [Nominate me](https://stars.github.com/nominate/)
 
 ## Download
 
