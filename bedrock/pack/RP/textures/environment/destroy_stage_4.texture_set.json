@@ -1,8 +1,0 @@
-{
-    "format_version": "1.16.100",
-    "minecraft:texture_set": {
-        "color": "destroy_stage_4",
-        "metalness_emissive_roughness": "destroy_stage_4_mer",
-        "normal": "destroy_stage_4_normal"
-    }
-}
