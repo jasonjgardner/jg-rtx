@@ -10,9 +10,9 @@
 		"name": "JG RTX",
 		"description": "Realistic 256x PBR resource pack",
 		"version": [
+			1,
 			0,
-			32,
-			4
+			0
 		],
 		"min_engine_version": [
 			1,
@@ -31,19 +31,22 @@
 			"type": "resources",
 			"uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
 			"version": [
+				1,
 				0,
-				32,
-				4
+				0
 			]
 		}
 	],
-	"subpacks": [{
-		"folder_name": "128x",
-		"name": "128x",
-		"memory_tier": 0
-	}, {
-		"folder_name": "256x",
-		"name": "256x",
-		"memory_tier": 1
-	}]
+	"subpacks": [
+		{
+			"folder_name": "128x",
+			"name": "128x",
+			"memory_tier": 0
+		},
+		{
+			"folder_name": "256x",
+			"name": "256x",
+			"memory_tier": 1
+		}
+	]
 }

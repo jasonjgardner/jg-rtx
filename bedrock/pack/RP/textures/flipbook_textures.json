@@ -3,5 +3,10 @@
         "atlas_tile": "portal",
         "flipbook_texture": "textures/blocks/portal",
         "ticks_per_frame": 6
+    },
+    {
+        "atlas_tile": "soul_campfire",
+        "flipbook_texture": "textures/blocks/soul_campfire",
+        "ticks_per_frame": 10
     }
 ]
