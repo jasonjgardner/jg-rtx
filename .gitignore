@@ -46,3 +46,4 @@ bin/
 *_carried_normal.png
 
 src/vanilla/
+build/
