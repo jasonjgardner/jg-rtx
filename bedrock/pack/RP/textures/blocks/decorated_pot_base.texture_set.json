@@ -1,8 +1,0 @@
-{
-	"format_version": "1.16.100",
-	"minecraft:texture_set": {
-		"color": "decorated_pot_base",
-		"metalness_emissive_roughness": "decorated_pot_base_mer",
-		"normal": "decorated_pot_base_normal"
-	}
-}
