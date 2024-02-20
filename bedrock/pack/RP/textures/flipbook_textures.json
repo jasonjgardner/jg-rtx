@@ -8,5 +8,10 @@
         "atlas_tile": "soul_campfire",
         "flipbook_texture": "textures/blocks/soul_campfire",
         "ticks_per_frame": 10
+    },
+    {
+        "atlas_tile": "respawn_anchor",
+        "flipbook_texture": "textures/blocks/respawn_anchor",
+        "ticks_per_frame": 10
     }
 ]
