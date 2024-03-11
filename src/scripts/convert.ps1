@@ -3,9 +3,9 @@ $sbar = "..\src\shelf\Converter.sbsar"
 
 function ConvertTexture {
     param(
-        [Parameter(Mandatory=$true, Position=0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [string] $Path,
-        [Parameter(Mandatory=$false, Position=1)]
+        [Parameter(Mandatory = $false, Position = 1)]
         [string] $Dest
     )
 
@@ -13,9 +13,9 @@ function ConvertTexture {
 
     if (-not $dest) {
         $dest = $name
-    } else {
-        $dest = [System.IO.Path]::GetFileNameWithoutExtension($dest.ToLower())
     }
+    
+    $dest = [System.IO.Path]::GetFileNameWithoutExtension($dest.ToLower())
 
     $base = "..\bedrock\pack\RP\textures\blocks\$name`.png"
     $normal = "..\bedrock\pack\RP\textures\blocks\$name`_normal.png"
@@ -24,11 +24,11 @@ function ConvertTexture {
     $res = Start-Process "sbsrender.exe" `
         -WorkingDirectory .\dist `
         -ArgumentList `
-            "--input $sbar render", `
-            "--set-entry base@$base", `
-            "--set-entry normal@$normal",  `
-            "--set-entry mer@$mer", `
-            "--output-name $name`_{outputNodeName}" `
+        "--input $sbar render", `
+        "--set-entry base@$base", `
+        "--set-entry normal@$normal", `
+        "--set-entry mer@$mer", `
+        "--output-name $name`_{outputNodeName}" `
         -Wait -NoNewWindow -PassThru `
         -RedirectStandardOutput "output.json" `
         -RedirectStandardError "error.txt" `
