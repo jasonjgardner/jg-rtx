@@ -1,9 +1,0 @@
-{
-  "files.trimFinalNewlines": true,
-  "cSpell.words": ["mineways", "minecraft"],
-  "bun.runtime": "C:/Users/jason/scoop/apps/bun-canary/current/bun.exe",
-
-  "bun.debugTerminal.enabled": true,
-  
-  "bun.debugTerminal.stopOnEntry": false,
-}

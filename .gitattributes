@@ -1,8 +1,0 @@
-text         eol=crlf
-*.sh  text   eol=lf
-*.js         eol=lf
-*.jsx        eol=lf
-*.ts         eol=lf
-*.tsx        eol=lf
-*.png binary
-*.tga binary
