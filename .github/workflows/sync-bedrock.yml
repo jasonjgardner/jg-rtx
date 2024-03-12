@@ -1,0 +1,25 @@
+name: Bedrock Branch
+
+on:
+    push:
+        branches: [ main ]
+
+permissions: write-all
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Bedrock
+              uses: actions/checkout@v3
+              with:
+                  ref: bedrock
+                  fetch-depth: 0
+            - uses: fregante/setup-git-user@v2
+            - name: Sync main to bedrock
+              run: |
+                  git rm -rf ./RP
+                  git checkout main -- bedrock/pack/RP
+                  git mv ./bedrock/pack/RP ./RP
+                  git add ./RP
+                  git push origin bedrock
