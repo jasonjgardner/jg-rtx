@@ -19,7 +19,7 @@ jobs:
             - name: Sync main to bedrock
               run: |
                   git rm -rf ./RP
-                  git checkout main -- bedrock/pack/RP
+                  git checkout origin/main -- bedrock/pack/RP
                   git mv ./bedrock/pack/RP ./RP
                   git add ./RP
                   git push origin bedrock
