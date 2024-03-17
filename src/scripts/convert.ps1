@@ -1,5 +1,14 @@
-$javaDir = "C:\Users\jason\AppData\Roaming\.minecraft\resourcepacks\PBR-JG\assets\minecraft\textures\block"
+$javaDir = "..\java\pack\assets\minecraft\textures\block"
 $sbar = "..\src\shelf\Converter.sbsar"
+
+function GetJavaTextureNames {
+    $srcDir = "..\1.20.4\assets\minecraft\textures\block"
+
+    # Get the base name of all texture files in the source directory
+    $textures = Get-ChildItem -Path $srcDir -Filter "*.png" | ForEach-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.FullName).ToLower() }
+
+    return $textures
+}
 
 function ConvertTexture {
     param(
@@ -66,10 +75,7 @@ function ConvertTexture {
     Move-Item "$javaDir\$name`_n.png" "$javaDir\$dest`_n.png" -Force
 }
 
-# Get Java texture names from "javatextures.txt"
-$javaTextures = Get-Content ".\src\scripts\javatextures.txt"
-
-$javaTextureNames = $javaTextures | ForEach-Object { [System.IO.Path]::GetFileNameWithoutExtension($_).ToLower() }
+$javaTextureNames = GetJavaTextureNames
 
 $textureSets = Get-ChildItem -Path ".\bedrock\pack\RP\textures\blocks" -Filter "*.texture_set.json"
 
@@ -80,8 +86,12 @@ $textureSetNames = $textureSets | ForEach-Object { [System.IO.Path]::GetFileName
 $selectedTextures = $textureSetNames | Out-GridView -Title "Select texture set to convert" -OutputMode Multiple
 
 foreach ($texture in $selectedTextures) {
-    # Prompt for the Java texture name prior to conversion
-    $javaTexture = $javaTextureNames | Out-GridView -Title "Select Java texture name for $texture" -OutputMode Single
+    $javaTexture = $texture
+
+    # Prompt for the Java texture name prior to conversion if it is not found in the list
+    if (-not $javaTextureNames.Contains($texture)) {
+        $javaTexture = $javaTextureNames | Out-GridView -Title "Select Java texture name for $texture" -OutputMode Single
+    }
 
     ConvertTexture $texture -dest "$javaTexture"
 }
