@@ -3,6 +3,7 @@ name: Bedrock Branch
 on:
     push:
         branches: [ main ]
+        paths: [ 'bedrock/pack/**' ]
 
 permissions: write-all
 
