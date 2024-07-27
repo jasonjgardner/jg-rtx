@@ -5,10 +5,7 @@
 ![JG RTX cover](https://static.planetminecraft.com/files/image/minecraft/texture-pack/2022/984/15781135-minecraftscreenshot_l.jpg)
 
 > #### Like my work?
->
 > **[DONATE TO UNICEF!](https://www.unicefusa.org/)**\
-> and/or\
-> [Nominate me](https://stars.github.com/nominate/)
 
 ## Download
 
