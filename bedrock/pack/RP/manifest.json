@@ -11,13 +11,13 @@
 		"description": "Realistic PBR resource pack",
 		"version": [
 			1,
-			0,
+			1,
 			0
 		],
 		"min_engine_version": [
 			1,
-			20,
-			60
+			21,
+			2
 		],
 		"uuid": "8d5b130b-71ff-4c5c-84d7-46a6024248f5"
 	},
@@ -32,26 +32,9 @@
 			"uuid": "5367033a-ddb5-4cdf-b7d1-544ea3feb6be",
 			"version": [
 				1,
-				0,
+				1,
 				0
 			]
-		}
-	],
-	"subpacks": [
-		{
-			"folder_name": "64x",
-			"name": "64x",
-			"memory_tier": 0
-		},
-		{
-			"folder_name": "128x",
-			"name": "128x",
-			"memory_tier": 1
-		},
-		{
-			"folder_name": "256x",
-			"name": "256x",
-			"memory_tier": 2
 		}
 	]
 }
