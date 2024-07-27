@@ -1,0 +1,8 @@
+{
+  "biomes": {
+    "default": {
+      "fog_identifier": "jgrtx:fog_default",
+      "fog_color": "#e9e9e7"
+    }
+  }
+}
