@@ -5,7 +5,7 @@
 ![JG RTX cover](https://static.planetminecraft.com/files/image/minecraft/texture-pack/2022/984/15781135-minecraftscreenshot_l.jpg)
 
 > #### Like my work?
-> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**\
+> **[DONATE TO UNICEF!](https://www.unicefusa.org/)**
 
 ## Download
 
@@ -16,6 +16,7 @@
 
 #### Bedrock
 - [Glass Variety pack](https://github.com/jasonjgardner/jg-rtx/releases/download/v0.23.1/JG-RTX_Glass-Variety.mcpack)
+- [Extra Stone Bricks add-on](https://jasonjgardner.gumroad.com/l/jgrtx-extra-bricks)
 
 #### Java
 - [JG Mod](https://modrinth.com/mod/jg-mod)
@@ -32,7 +33,6 @@
 - [Discord](https://discord.gg/zAbpu3jWeJ "Join the JG RTX Discord")
 
 ## Screenshots / Video
-
 - [Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGXHHcfU4ifiWdeIYg8TNB8N)
 - [Community Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGW7OnrGPV4-rKQKYo_JvuBH)
 
