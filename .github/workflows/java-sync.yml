@@ -1,0 +1,25 @@
+name: Java Branch
+
+on:
+    push:
+        branches: [ main ]
+        paths: [ 'java/pack/**' ]
+
+permissions: write-all
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout main
+              uses: actions/checkout@v3
+              with:
+                  ref: main
+                  fetch-depth: 0
+            - name: Sync main to java
+              run: |
+                  git checkout java
+                  rsync -av java/pack ./pack
+                  git add ./pack
+                  git merge main
+                  git push origin java
