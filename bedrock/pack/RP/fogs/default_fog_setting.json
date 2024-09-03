@@ -15,7 +15,7 @@
         "fog_start": 0,
         "fog_end": 60.0,
         "fog_color": "#44aff5",
-        "render_distance_type": "fixed",
+        "render_distance_type": "fixed"
       },
       "weather": {
         "fog_start": 0.25,
