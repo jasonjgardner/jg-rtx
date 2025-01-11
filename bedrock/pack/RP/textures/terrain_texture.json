@@ -101,6 +101,34 @@
           "tint_color": "#38af4c"
         }
       ]
+    },
+    "vine": {
+      "textures": [
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#177a27"
+        },
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#85c184"
+        },
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#95bf55"
+        },
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#66d14b"
+        },
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#477345"
+        },
+        {
+          "path": "textures/blocks/vine",
+          "tint_color": "#67a482"
+        }
+      ]
     }
   }
 }
