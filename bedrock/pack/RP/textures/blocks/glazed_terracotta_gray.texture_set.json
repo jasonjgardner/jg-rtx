@@ -3,6 +3,6 @@
   "minecraft:texture_set": {
     "color": "glazed_terracotta_gray",
     "metalness_emissive_roughness": "glazed_terracotta_gray_mer",
-    "heightmap": "glazed_terracotta_gray_heightmap"
+    "normal": "glazed_terracotta_gray_normal"
   }
 }

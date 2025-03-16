@@ -1,0 +1,12 @@
+{
+  "namespace": "common",
+
+  "flying_item_renderer": {
+    "type": "custom",
+    "renderer": "flying_item_renderer",
+    "layer": 11,
+    "property_bag": {
+      "#flying_item_renderer": false
+    }
+  }
+}

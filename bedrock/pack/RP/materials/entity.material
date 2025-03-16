@@ -1,0 +1,286 @@
+{
+  "materials": {
+    "version": "1.0.0",
+
+    "entity:entity_static": {
+      "+defines": ["USE_OVERLAY"],
+      "variants": [
+        {
+          "skinning": {
+            "+defines": ["USE_SKINNING", "ALPHA_TEST"], // Switch decorated pot material from opaque to alphatest
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Normal" },
+              { "field": "UV0" }
+            ]
+          }
+        },
+        {
+          "skinning_color": {
+            "+defines": ["USE_SKINNING", "USE_OVERLAY"],
+            "+states": ["Blending"],
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Color" },
+              { "field": "Normal" },
+              { "field": "UV0" }
+            ]
+          }
+        },
+        {
+          "skinning_alphatest": {
+            "+defines": ["USE_SKINNING", "ALPHA_TEST"],
+            "+states": ["DisableCulling"],
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Normal" },
+              { "field": "UV0" }
+            ]
+          }
+        }
+      ],
+      "msaaSupport": "Both",
+      "+samplerStates": [
+        {
+          "samplerIndex": 0,
+          "textureFilter": "Point"
+        }
+      ]
+    },
+
+    "entity2:entity_static": {
+      // Copy of vanilla "entity" material
+      "+defines": ["USE_OVERLAY"],
+      "msaaSupport": "Both"
+    },
+
+    // Point all other vanilla materials to "entity2" instead of "entity"
+    "entity_nocull:entity2": {
+      "+states": ["DisableCulling"]
+    },
+
+    "entity_alphatest_one_sided:entity2": {
+      "+defines": ["ALPHA_TEST"],
+      "+samplerStates": [
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Repeat"
+        }
+      ],
+      "msaaSupport": "Both"
+    },
+
+    "entity_alphablend:entity2": {
+      "+states": ["Blending"],
+      "vertexFields": [
+        { "field": "Position" },
+        { "field": "Color" },
+        { "field": "Normal" },
+        { "field": "UV0" }
+      ],
+      "variants": [
+        {
+          "skinning": {
+            "+defines": ["USE_SKINNING"],
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Color" },
+              { "field": "Normal" },
+              { "field": "UV0" }
+            ]
+          }
+        }
+      ],
+      "msaaSupport": "Both"
+    },
+
+    "entity_emissive:entity2": {
+      "+defines": ["USE_EMISSIVE"]
+    },
+
+    "entity_emissive_alpha_one_sided:entity2": {
+      "+defines": ["ALPHA_TEST", "USE_EMISSIVE"]
+    },
+
+    "entity_custom:entity2": {
+      "+states": ["Blending"],
+      "+defines": ["ALPHA_TEST", "Blending", "USE_OVERLAY", "USE_MASK"]
+    },
+
+    "item_in_hand:entity2": {
+      "+defines": ["COLOR_BASED", "NO_TEXTURE", "ITEM_IN_HAND"],
+      "vertexFields": [
+        { "field": "Position" },
+        { "field": "Normal" },
+        { "field": "Color" },
+        { "field": "UV0" }
+      ],
+      "variants": [
+        {
+          "skinning": {
+            "+defines": ["USE_SKINNING"],
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Normal" },
+              { "field": "Color" },
+              { "field": "UV0" }
+            ]
+          }
+        }
+      ],
+      "msaaSupport": "Both"
+    },
+
+    "entity_glint:entity2": {
+      "+defines": ["GLINT"],
+      "+samplerStates": [
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Repeat"
+        }
+      ]
+    },
+
+    "entity_alphatest_multicolor_tint:entity2": {
+      "+states": ["DisableAlphaWrite"],
+      "+defines": ["ALPHA_TEST", "MULTI_COLOR_TINT"],
+      "+samplerStates": [
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Repeat"
+        }
+      ]
+    },
+
+    "beacon_beam_transparent:entity2": {
+      "+states": [
+        "Blending",
+        "DisableCulling",
+        "DisableDepthWrite",
+        "DisableAlphaWrite"
+      ],
+      "vertexShader": "shaders/color_uv.vertex",
+      "vrGeometryShader": "shaders/color_uv.geometry",
+      "fragmentShader": "shaders/color_texture.fragment",
+      "blendSrc": "SourceAlpha",
+      "blendDst": "OneMinusSrcAlpha",
+      "vertexFields": [
+        { "field": "Position" },
+        { "field": "Color" },
+        { "field": "Normal" },
+        { "field": "UV0" }
+      ],
+      "variants": [
+        {
+          "skinning": {
+            "+defines": ["USE_SKINNING"],
+            "vertexFields": [
+              { "field": "Position" },
+              { "field": "BoneId0" },
+              { "field": "Color" },
+              { "field": "Normal" },
+              { "field": "UV0" }
+            ]
+          }
+        }
+      ]
+    },
+    "entity_multitexture:entity2": {
+      "+defines": ["USE_MULTITEXTURE"],
+      "+samplerStates": [
+        {
+          "samplerIndex": 0,
+          "textureWrap": "Clamp"
+        },
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Clamp"
+        },
+        {
+          "samplerIndex": 2,
+          "textureWrap": "Clamp"
+        }
+      ]
+    },
+    "entity_multitexture_multiplicative_blend:entity2": {
+      "+states": ["DisableCulling"],
+      "+samplerStates": [
+        {
+          "samplerIndex": 0,
+          "textureWrap": "Clamp"
+        },
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Clamp"
+        }
+      ],
+      "+defines": [
+        "ALPHA_TEST",
+        "USE_COLOR_MASK",
+        "MULTIPLICATIVE_TINT",
+        "MULTIPLICATIVE_TINT_COLOR",
+        "USE_OVERLAY"
+      ]
+    },
+    "entity_lead_base:entity2": {
+      "+states": ["DisableCulling"]
+    },
+
+    "entity_dissolve_layer0:entity2": {
+      "+defines": ["TINTED_ALPHA_TEST"],
+      "+states": ["DisableColorWrite"]
+    },
+
+    "entity_dissolve_layer1:entity2": {
+      "depthFunc": "Equal",
+      "+defines": ["ALPHA_TEST"],
+      "-defines": ["USE_OVERLAY"]
+    },
+    "agent:entity2": {},
+    "bell:entity2": {},
+    "boat:entity2": {},
+    "chalkboard:entity2": {},
+    "chest:entity2": {},
+    "chicken:entity2": {},
+    "cow:entity2": {},
+    "creeper:entity2": {},
+    "enchanting_table_book:entity2": {},
+    "fox:entity2": {},
+    "leash_knot:entity2": {},
+    "llama_spit:entity2": {},
+    "mooshroom:entity2": {},
+    "pig:entity2": {},
+    "shield:entity2": {},
+    "trident:entity2": {},
+    "piston_arm:entity2": {},
+    "player:entity2": {},
+    "polar_bear:entity2": {},
+    "panda:entity2": {},
+    "rabbit:entity2": {},
+    "silverfish:entity2": {},
+    "chest_boat:entity2": {},
+    "slime_outer:entity2": {
+      "+states": ["Blending"]
+    },
+    "snow_golem:entity2": {},
+    "snow_golem_pumpkin:entity2": {},
+    "squid:entity2": {},
+    "dolphin:entity2": {},
+    "turtle:entity2": {},
+    "camera:entity2": {},
+    "experience_orb:entity2": {
+      "+defines": [
+        "USE_UV_ANIM",
+        "ALPHA_TEST",
+        "Blending",
+        "USE_OVERLAY",
+        "USE_MASK"
+      ]
+    }
+  }
+}

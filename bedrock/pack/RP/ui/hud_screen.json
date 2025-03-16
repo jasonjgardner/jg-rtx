@@ -1,0 +1,8 @@
+{
+  "namespace": "hud",
+
+  "vignette_renderer@common.ui_error_fix": {
+    "type": "label",
+    "text": ""
+  }
+}

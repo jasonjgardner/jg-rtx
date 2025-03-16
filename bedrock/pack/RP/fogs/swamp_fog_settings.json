@@ -1,0 +1,79 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:fog_settings": {
+        "description": {
+            "identifier": "jgrtx:fog_swamp"
+        },
+        "distance": {
+            "air": {
+                "fog_start": 0.99999,
+                "fog_end": 1.0,
+                "fog_color": "#a3bddb",
+                "render_distance_type": "render"
+            },
+            "water": {
+                "fog_start": 0.7,
+                "fog_end": 0.8,
+                "fog_color": "#0b4755",
+                "render_distance_type": "render"
+            },
+            "weather": {
+                "fog_start": 0.99,
+                "fog_end": 1.0,
+                "fog_color": "#595b5b",
+                "render_distance_type": "render"
+            }
+        },
+        "volumetric": {
+            "density": {
+                "air": {
+                    "max_density": 0.3,
+                    "zero_density_height": 128.0,
+                    "max_density_height": 75.0
+                },
+                "water": {
+                    "max_density": 1.0,
+                    "uniform": true
+                }
+            },
+            "media_coefficients": {
+                "air": {
+                    "scattering": [
+                        0.002,
+                        0.00175,
+                        0.001
+                    ],
+                    "absorption": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "water": {
+                    "scattering": [
+                        0.0056,
+                        0.0066,
+                        0.0022
+                    ],
+                    "absorption": [
+                        0.088,
+                        0.085,
+                        0.095
+                    ]
+                },
+                "cloud": {
+                    "scattering": [
+                        0.950,
+                        0.950,
+                        0.950
+                    ],
+                    "absorption": [
+                        0.003,
+                        0.003,
+                        0.003
+                    ]
+                }
+            }
+        }
+    }
+}

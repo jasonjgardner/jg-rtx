@@ -1,0 +1,7 @@
+{
+  "namespace": "debug_screen",
+
+  "special_render": {
+    "ignored": true
+  }
+}

@@ -1,0 +1,80 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*********************************************************/
+
+{
+  "namespace": "settings_common",
+
+  "settings_content": {
+    "type": "panel",
+    "controls": [
+		// Adding fill background color for all settings.
+		{
+      "background": {
+        "$layer|default": -1,
+        "variables": [
+          {
+            "requires": "($is_realm_slot or $realm_no_world_edit)",
+            "$layer": -2
+          }
+        ],
+        "type": "image",
+        "texture": "textures/ui/White",
+        "keep_ratio": false,
+        "size": [ "100%", "100%sm" ],
+        "color": [ 0.192, 0.196, 0.2 ], // First test: [0.239, 0.204, 0.204]
+        "offset": [ 0, 0 ],
+        "alpha": 0.25, //made transparent again
+        "layer": "$layer",
+        "anchor_from": "top_left",
+        "anchor_to": "top_left"
+      }
+		},
+
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%" ],
+          "controls": [
+            {
+              "content_panel": {
+                "type": "panel",
+                "size": [ "100%", "fill" ],
+
+                "controls": [
+                  {
+                    "common_panel@common.fullscreen_header": {
+                      "$dialog_background": "dialog_background_hollow_3"
+                    }
+                  },
+                  {
+                    "container": {
+                      "type": "panel",
+                      "size": [ "100%", "100% - 4px" ],
+                      "controls": [
+                        { "$dialog_content@$dialog_content": {} }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popup_dialog_factory": {
+          "type": "factory",
+          "control_ids": {
+            "purchase_failed": "@realms_create.popup_dialog__purchase_failed",
+            "purchase_in_progress": "@realms_create.popup_dialog__purchase_in_progress",
+            "share_by_link": "@realms_allowlist.popup_dialog__share_by_link",
+            "options_modal": "@realms_allowlist.popup_dialog__options",
+            "backups_modal": "@realms_settings.popup_dialog__backups"
+          }
+        }
+      }
+    ]
+  }
+}
