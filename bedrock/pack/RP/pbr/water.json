@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:water_settings": {
+        "description": {
+            "identifier": "jgrtx:water"
+        },
+        "particle_concentrations": {
+            "chlorophyll": 0.15,
+            "suspended_sediment": 0,
+            "cdom": 3.03
+        },
+        "waves": {
+            "enabled": true,
+            "frequency": 1.1222799998596311,
+            "octaves": 30,
+            "depth": 0.36,
+            "sampleWidth": 0.2664099998343736,
+            "speed": 6.103899999912828,
+            "shape": 1.963,
+            "pull": -0.874,
+            "mix": 0.372,
+            "frequency_scaling": 1.37,
+            "speed_scaling": 0.352
+        }
+    }
+}
