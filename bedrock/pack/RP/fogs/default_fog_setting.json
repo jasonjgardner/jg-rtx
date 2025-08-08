@@ -1,88 +1,55 @@
 {
-  "format_version": "1.16.100",
-  "minecraft:fog_settings": {
-    "description": {
-      "identifier": "jgrtx:fog_default"
-    },
-    "distance": {
-      "air": {
-        "fog_start": 0.75,
-        "fog_end": 1.0,
-        "fog_color": "#abd2ff",
-        "render_distance_type": "render"
+    "format_version": "1.21.90",
+    "minecraft:fog_settings": {
+      "description": {
+        "identifier": "jgrtx:default_fog"
       },
+       "distance": {
+        "air": {
+          "fog_start": 0.9,
+          "fog_end": 1.0,
+          "fog_color": "#ABD2FF",
+          "render_distance_type": "render"
+        },
       "water": {
-        "fog_start": 0,
-        "fog_end": 60.0,
-        "fog_color": "#44aff5",
-        "render_distance_type": "fixed"
-      },
-      "weather": {
-        "fog_start": 0.25,
-        "fog_end": 0.75,
-        "fog_color": "#686a69",
-        "render_distance_type": "render"
-      },
-      "lava": {
         "fog_start": 0.0,
-        "fog_end": 0.825,
-        "fog_color": "#76250c",
-        "render_distance_type": "fixed"
-      },
-      "lava_resistance": {
-        "fog_start": 2.0,
-        "fog_end": 4.0,
-        "fog_color": "#821c08",
-        "render_distance_type": "fixed"
+        "fog_end": 120.0,
+        "fog_color": "#1B9ED8",
+        "render_distance_type": "fixed",
+        "transition_fog": {
+          "init_fog": {
+            "fog_start": 0.0,
+            "fog_end": 30.0,
+            "fog_color": "#1B9ED8",
+            "render_distance_type": "fixed"
+          },
+          "min_percent": 0.25,
+          "mid_seconds": 5,
+          "mid_percent": 0.6,
+          "max_seconds": 12
+        }
       }
     },
     "volumetric": {
       "density": {
         "air": {
-          "max_density": 0.001,
-          "uniform": true
-        },
-        "water": {
-          "max_density": 1.0,
-          "uniform": true
+          "max_density": 0.0355,
+          "zero_density_height": 141.0,
+          "max_density_height": 78.0
         }
       },
       "media_coefficients": {
         "air": {
-          "absorption": [
-            0.1,
-            0.1,
-            0.1
-          ],
-          "scattering": [
-            0.047,
-            0.043,
-            0.031
-          ]
+          "scattering": [ 0.0223, 0.0251, 0.0293 ],
+          "absorption": [ 0.051, 0.066, 0.075 ]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.65
         },
-        "cloud": {
-          "absorption": [
-            0.9,
-            0.9,
-            0.9
-          ],
-          "scattering": [
-            0.457,
-            0.615,
-            1.0
-          ]
-        },
-        "water": {
-          "scattering": [
-            0.0075,
-            0.005,
-            0.0125
-          ],
-          "absorption": [
-            0.2,
-            0.03666,
-            0.04125
-          ]
+        "water":{
+           "henyey_greenstein_g": 0.21
         }
       }
     }

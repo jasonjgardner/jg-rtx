@@ -1,8 +1,8 @@
 {
-    "format_version": "1.16.100",
+    "format_version": "1.21.30",
     "minecraft:texture_set": {
         "color": "pale_hanging_moss_tip",
-        "metalness_emissive_roughness": "pale_hanging_moss_tip_mer",
+        "metalness_emissive_roughness_subsurface": "pale_hanging_moss_tip_mer",
         "normal": "pale_hanging_moss_tip_normal"
     }
 }

@@ -1,18 +1,27 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.70",
   "minecraft:client_biome": {
     "description": {
       "identifier": "basalt_deltas"
     },
     "components": {
       "minecraft:fog_appearance": {
-        "fog_identifier": "jgrtx:default_fog"
+        "fog_identifier": "jgrtx:delta"
       },
       "minecraft:water_appearance": {
         "surface_color": "#7c7c7c"
       },
       "minecraft:sky_color": {
-        "sky_color": "#919191"
+        "sky_color": "#232a46"
+      },
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "jgrtx:deltas_lighting"
+      },
+      "minecraft:atmosphere_identifier": {
+        "atmosphere_identifier": "jgrtx:deltas_atmosphere"
+      },
+      "minecraft:color_grading_identifier": {
+        "color_grading_identifier": "jgrtx:deltas_grading"
       }
     }
   }

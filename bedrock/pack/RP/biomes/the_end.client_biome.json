@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.70",
   "minecraft:client_biome": {
     "description": {
       "identifier": "the_end"
@@ -9,10 +9,16 @@
         "sky_color": "#7015ce"
       },
       "minecraft:fog_appearance": {
-        "fog_identifier": "jgrtx:default_fog"
+        "fog_identifier": "jgrtx:end_fog"
       },
       "minecraft:water_appearance": {
         "surface_color": "#62529e"
+      },
+      "minecraft:atmosphere_identifier": {
+        "atmosphere_identifier": "jgrtx:end_atmosphere"
+      },
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "jgrtx:end"
       }
     }
   }

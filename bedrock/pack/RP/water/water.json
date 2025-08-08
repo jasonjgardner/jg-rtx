@@ -5,30 +5,30 @@
       "identifier": "minecraft:default_water"
     },
     "particle_concentrations": {
-      "chlorophyll": 0.05000000074505806,
-      "suspended_sediment": 0,
-      "cdom": 0
+      "chlorophyll": 0.01000000074505806,
+      "suspended_sediment": 3.6,
+      "cdom": 2.3
     },
     "caustics": {
       "enabled": true,
-      "frame_length": 0.05000000074505806,
-      "texture": "",
-      "scale": 0.5,
-      "power": 2
+      "frame_length": 0.013,
+      "texture": "textures/caustics/caustics.png",
+      "scale": 0.23,
+      "power": 1
     },
     "waves": {
-      "enabled": false,
-      "frequency": 1,
-      "octaves": 28,
-      "depth": 1,
-      "sampleWidth": 0.009999999776482582,
-      "speed": 2,
-      "pull": 0.3799999952316284,
-      "mix": 0.20000000298023224,
+      "enabled": true,
+      "frequency": 1.01,
+      "octaves": 21,
+      "depth": 0.094,
+      "sampleWidth": 0.49999999776482582,
+      "speed": 2.6,
+      "pull": 0.34,
+      "mix": 0.214,
       "frequency_scaling": 1.2000000476837158,
-      "speed_scaling": 1.0299999713897705,
-      "direction_increment": 80,
-      "shape": 1.5
+      "speed_scaling": 1.1699999713897705,
+      "direction_increment": 340,
+      "shape": 2.14
     }
   }
 }

@@ -1,98 +1,47 @@
 {
-  "format_version": "1.21.40",
+  "format_version": "1.21.90",
   "minecraft:color_grading_settings": {
     "description": {
-      "identifier": "minecraft:default_color_grading"
+      "identifier": "jgrtx:default_cg"
     },
-    "color_grading": {
-      "midtones": {
-        "contrast": [
-          1.2999999523162842,
-          1.2999999523162842,
-          1.2999999523162842
-        ],
-        "gain": [
-          1,
-          1,
-          1
-        ],
-        "gamma": [
-          2.200000047683716,
-          2.200000047683716,
-          2.200000047683716
-        ],
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "saturation": [
-          1.0499999523162842,
-          1.0499999523162842,
-          1.0499999523162842
-        ]
-      },
-      "highlights": {
-        "enabled": false,
-        "highlightsMin": 1,
-        "contrast": [
-          1.2999999523162842,
-          1.2999999523162842,
-          1.2999999523162842
-        ],
-        "gain": [
-          1,
-          1,
-          1
-        ],
-        "gamma": [
-          2.200000047683716,
-          2.200000047683716,
-          2.200000047683716
-        ],
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "saturation": [
-          1.0499999523162842,
-          1.0499999523162842,
-          1.0499999523162842
-        ]
-      },
-      "shadows": {
-        "enabled": false,
-        "shadowsMax": 1,
-        "contrast": [
-          1.2999999523162842,
-          1.2999999523162842,
-          1.2999999523162842
-        ],
-        "gain": [
-          1,
-          1,
-          1
-        ],
-        "gamma": [
-          2.200000047683716,
-          2.200000047683716,
-          2.200000047683716
-        ],
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "saturation": [
-          1.0499999523162842,
-          1.0499999523162842,
-          1.0499999523162842
-        ]
-      }
+    "color_grading":{
+    "midtones": {
+      "midtonesMax": 60,
+      "contrast": [1.35, 1.35, 1.35],
+      "saturation": [1.1, 1.1, 1.1],
+      "gain": [1.04, 1.04, 1.05],
+      "offset": [0.0, 0.0, 0.0],
+      "gamma": [2.2, 2.2, 2.2]
     },
-    "tone_mapping": {
-      "operator": "generic"
+  
+"highlights":{
+    "enabled":true,
+      "highlightsMin":16,
+      "contrast": [1.15,1.15, 1.15],
+      "gain": [1.0,1.0,1.0],
+      "gamma": [2.2,2.2,2.2],
+      "offset": [0.00,0.00,0.00],
+      "saturation": [1.0,1.0,1.0]
+    },
+
+"shadows":{
+  "enabled":false,
+    "shadowsMax":0.4,
+    "contrast": [1.1,1.1,1.1],
+    "gain": [1.0,1.0,1.0],
+    "gamma": [2.2,2.2,2.2],
+    "offset": [0.0,0.0, 0.0],
+    "saturation": [1.1, 1.1, 1.1]
+    }
+  },
+  "temperature": {
+        "enabled": true,
+        "type": "white_balance",
+        "temperature": 6500.0
+    },
+
+"tone_mapping":{
+  "operator":"hable"
     }
   }
 }

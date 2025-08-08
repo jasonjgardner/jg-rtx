@@ -9,10 +9,10 @@
         "fog_identifier": "jgrtx:default_fog"
       },
       "minecraft:water_appearance": {
-        "surface_color": "#00ff00"
+        "surface_color": "#3b64a6"
       },
       "minecraft:sky_color": {
-        "sky_color": "#919191"
+        "sky_color": "#232a46"
       }
     }
   }
