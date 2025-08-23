@@ -1,0 +1,74 @@
+name: Bedrock Pack Build
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch:
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      bedrock: ${{ steps.filter.outputs.bedrock }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Paths filter
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            bedrock:
+              - 'bedrock/**'
+
+  build:
+    name: Build Bedrock packs
+    needs: changes
+    if: >
+      ${{ needs.changes.outputs.bedrock == 'true' ||
+          (github.event_name == 'push' && contains(github.event.head_commit.message, '(bedrock):')) ||
+          (github.event_name == 'pull_request' && (contains(github.event.pull_request.title, '(bedrock):') || contains(github.event.pull_request.body, '(bedrock):'))) ||
+          github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build packs (CI mode)
+        env:
+          CI: 'true'
+          # Optional overrides (comma-separated values)
+          # BEDROCK_BUILDS: 'RTX,VV'
+          # BEDROCK_SUBPACK_RES: '128,64,32'
+          # BEDROCK_DRY_RUN: 'false'
+        run: bun ./src/scripts/build-packs.ts --ci
+
+      - name: Upload .mcpack artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bedrock-mcpacks
+          path: dist/**/*.mcpack
+          if-no-files-found: warn
+
+      - name: Upload manifests
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bedrock-manifests
+          path: |
+            dist/**/manifest.json
+          if-no-files-found: warn

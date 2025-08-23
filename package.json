@@ -1,3 +1,22 @@
-{ "dependencies": { "sharp": "^0.33.3" }, "devDependencies": { "@types/bun": "latest", "@types/node": "^20.11.19" }, "name": "jg-rtx", "module": "index.ts", "type": "module", "peerDependencies": {
-  "typescript": "^5.0.0"
-} }
+{
+  "dependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/minimist": "^1.2.5",
+    "adm-zip": "^0.5.16",
+    "globby": "^14.1.0",
+    "jszip": "3.10.1",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
+    "sharp": "^0.33.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.11.19"
+  },
+  "name": "jg-rtx",
+  "module": "index.ts",
+  "type": "module",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
