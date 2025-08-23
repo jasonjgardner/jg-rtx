@@ -56,24 +56,6 @@ jobs:
           # BEDROCK_DRY_RUN: 'false'
         run: bun ./src/scripts/build-packs.ts --ci
 
-      - name: Rename .mcpack files to canonical names
-        if: success()
-        run: |
-          set -euo pipefail
-          shopt -s nullglob
-          # RTX
-          for f in dist/* RTX Subpacks.mcpack; do mv -f "$f" dist/JG-RTX.mcpack; done
-          for f in dist/* RTX 256x.mcpack;    do mv -f "$f" dist/JG-RTX_256x.mcpack; done
-          for f in dist/* RTX 128x.mcpack;    do mv -f "$f" dist/JG-RTX_128x.mcpack; done
-          for f in dist/* RTX 64x.mcpack;     do mv -f "$f" dist/JG-RTX_64x.mcpack;  done
-          for f in dist/* RTX 32x.mcpack;     do mv -f "$f" dist/JG-RTX_32x.mcpack;  done
-          # VV
-          for f in dist/* VV Subpacks.mcpack; do mv -f "$f" dist/JG-VV.mcpack; done
-          for f in dist/* VV 256x.mcpack;    do mv -f "$f" dist/JG-VV_256x.mcpack; done
-          for f in dist/* VV 128x.mcpack;    do mv -f "$f" dist/JG-VV_128x.mcpack; done
-          for f in dist/* VV 64x.mcpack;     do mv -f "$f" dist/JG-VV_64x.mcpack;  done
-          for f in dist/* VV 32x.mcpack;     do mv -f "$f" dist/JG-VV_32x.mcpack;  done
-
       - name: Upload .mcpack artifacts
         if: success()
         uses: actions/upload-artifact@v4
