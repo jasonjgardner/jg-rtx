@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:atmosphere_settings": {
+  "description": {
+    "identifier": "jgrtx:crimson_atmosphere"
+},
+ "sky_zenith_color": {
+      "0.0": [ 255, 0, 0 ],
+      "1.0": [ 255, 0, 0 ]
+    },
+    "sky_horizon_color": {
+      "0.0": [ 255, 80, 48 ],
+      "1.0": [ 255, 80, 48 ]
+    },
+   "sun_mie_strength": {
+      "0.000000": 0,
+      "1.000000": 0
+    },
+    "sun_glare_shape": {
+      "0.0": 25,
+      "1.0": 25
+      
+    },
+    "horizon_blend_stops": {
+      "min": 0.3,
+      "start": 0.700000011920929,
+      "mie_start": 0.9,
+      "max": 0.6
+    },
+    "rayleigh_strength": {
+      "0.000000": 0.25,
+      "1.000000": 0.25
+    }
+  }
+}

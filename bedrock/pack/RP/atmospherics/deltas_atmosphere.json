@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:atmosphere_settings": {
+  "description": {
+    "identifier": "jgrtx:deltas_atmosphere"
+},
+"sky_zenith_color": {
+        "0.0": [161, 121, 90],
+        "1.0": [161, 121, 90]
+      },
+      "sky_horizon_color": {
+        "0.0": [181, 101, 20],
+        "1.0": [181, 101, 20]
+      }
+    },
+    "rayleigh_strength": {
+      "0.000000": 0.15
+    },
+ "horizon_blend_stops": {
+      "min": 0.1,
+      "start": 0.800000011920929,
+      "mie_start": 0.9,
+      "max": 0.9
+    }
+}
