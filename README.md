@@ -15,6 +15,8 @@
 ### Extras
 
 #### Bedrock
+- [JG Cinematic BetterRTX Preset](https://bedrock.graphics/presets/jg-cinematic-preset)
+- [JG Cinematic BetterRTX Preset (with Near Depth of Field)](https://bedrock.graphics/presets/cinematic-betterrtx-preset-with-near-depth-of-field)
 - [Glass Variety pack](https://github.com/jasonjgardner/jg-rtx/releases/download/v0.23.1/JG-RTX_Glass-Variety.mcpack)
 - [Extra Stone Bricks add-on](https://jasonjgardner.gumroad.com/l/jgrtx-extra-bricks)
 
@@ -37,11 +39,15 @@
 - [Community Demo Reel](https://youtube.com/playlist?list=PL8PY_n6h2FGW7OnrGPV4-rKQKYo_JvuBH)
 
 ### Shader Comparison
-#### [Better RTX](https://github.com/BetterRTX/BetterRTX-Installer)
+#### [Better RTX](https://bedrock.graphics)
 ![JG RTX with BetterRTX shader](https://github.com/jasonjgardner/jg-rtx/assets/1903667/0bc3d834-b90d-41b8-9b56-c82980b78a9d)
 
-#### Xbox Deferred Render Preview
-![JG RTX on Xbox](https://github.com/jasonjgardner/jg-rtx/assets/1903667/8c95bc05-b211-4606-ab5a-d12449779697)
+(BetterRTX + ReShade)
+![JG RTX with BetterRTX and ReShade](https://github.com/user-attachments/assets/f337ce71-3e9f-4b67-9c0c-0b4e29fdc67e)
+
+#### Vibrant Visuals
+
+![JG VV screenshot](https://github.com/user-attachments/assets/646516e8-552e-4961-91bf-4f54773d1da1)
 
 #### BSL
 ![PBR JG with BSL Shader](https://github.com/jasonjgardner/jg-rtx/assets/1903667/4240e652-da28-4127-bb4f-e89afb827793)
