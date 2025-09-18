@@ -237,9 +237,9 @@ function toJSON(obj: any, minified: boolean) {
   return minified ? JSON.stringify(obj) : JSON.stringify(obj, null, 2);
 }
 
-type Variant = 'RTX' | 'VV';
+export type Variant = 'RTX' | 'VV';
 
-type BuildOptions = {
+export type BuildOptions = {
   builds: Variant[];
   outBase: string;
   zipPacks: boolean;
@@ -253,6 +253,7 @@ type BuildOptions = {
   dryRun: boolean;
   includeSubpacks: boolean;
   subpackRes: number[]; // e.g., [128,64,32]
+  textures?: string[];
 };
 
 async function promptOptions(): Promise<BuildOptions & { nameRTX: string; nameVV: string; }> {
@@ -442,9 +443,9 @@ type TexInfo = {
   mersExt?: string;
 };
 
-async function scanTextures(scope: 'blocksOnly' | 'allTextures'): Promise<TexInfo[]> {
+async function scanTextures(scope: 'blocksOnly' | 'allTextures', textures?: string[]): Promise<TexInfo[]> {
   const root = scope === 'blocksOnly' ? SRC_BLOCKS : SRC_TEXTURES;
-  const colorFiles = await globby(['**/*.{png,tga}'], {
+  let colorFiles = await globby(['**/*.{png,tga}'], {
     cwd: root,
     ignore: [
       '**/*_normal.*',
@@ -454,6 +455,11 @@ async function scanTextures(scope: 'blocksOnly' | 'allTextures'): Promise<TexInf
       '**/*.texture_set.json',
     ],
   });
+
+  if (textures) {
+    const textureSet = new Set(textures);
+    colorFiles = colorFiles.filter(file => textureSet.has(file));
+  }
 
   // For referencing JSON, extension is omitted. For conversions, prefer PNG when available.
   const preferProbe = ['png', 'tga'];
@@ -616,8 +622,9 @@ function zipLabel(variant: Variant, opts: Partial<BuildOptions> & { nameRTX?: st
   return variant === 'VV' ? 'JG RTX VV' : 'JG RTX RTX';
 }
 
-async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: string; nameVV: string; }) {
+export async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: string; nameVV: string; }): Promise<string[]> {
   const outBaseAbs = path.resolve(CWD, opts.outBase);
+  const zipPaths: string[] = [];
   const destBase = path.join(outBaseAbs, variant === 'RTX' ? 'RP-RTX' : 'RP-VV');
 
   // Prepare baseline working folder (will be reused for variants)
@@ -630,7 +637,7 @@ async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: st
   // Determine scope: VV -> all textures, RTX -> blocks only
   const scope: 'blocksOnly' | 'allTextures' = variant === 'VV' ? 'allTextures' : 'blocksOnly';
   const baseSubdir = scope === 'blocksOnly' ? path.join('textures', 'blocks') : 'textures';
-  const items = await scanTextures(scope);
+  const items = await scanTextures(scope, opts.textures);
 
   let count = 0; let warnMER = 0; let warnMERS = 0; let bothNM = 0;
   for (const t of items) {
@@ -711,6 +718,7 @@ async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: st
       const zipPath = path.join(outBaseAbs, `${label} 256x.mcpack`);
       await zipPack(destBase, zipPath);
       console.log(`[${variant}] Wrote ${zipPath}`);
+      zipPaths.push(zipPath);
     }
   }
 
@@ -733,6 +741,7 @@ async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: st
         const zipPath = path.join(outBaseAbs, `${label} Subpacks.mcpack`);
         await zipPack(destSP, zipPath);
         console.log(`[${variant}] Wrote ${zipPath}`);
+        zipPaths.push(zipPath);
       }
     }
   }
@@ -757,8 +766,31 @@ async function buildVariant(variant: Variant, opts: BuildOptions & { nameRTX: st
       const zipPath = path.join(outBaseAbs, `${label} ${r}x.mcpack`);
       await zipPack(destR, zipPath);
       console.log(`[${variant}] Wrote ${zipPath}`);
+      zipPaths.push(zipPath);
     }
   }
+  return zipPaths;
+}
+
+export async function runBuilds(opts: BuildOptions & { nameRTX: string; nameVV: string; }): Promise<string[]> {
+  console.log(`\nSource: ${SRC_RP}`);
+  console.log(`Scope: RTX=blocksOnly, VV=allTextures (auto)`);
+  console.log(`Builds: ${opts.builds.join(', ')}`);
+  console.log(`Output: ${path.resolve(CWD, opts.outBase)}`);
+  console.log(opts.dryRun ? '\n-- DRY RUN --\n' : '\n-- BUILDING --\n');
+
+  const allZipPaths: string[] = [];
+  for (const b of opts.builds as Variant[]) {
+    const zipPaths = await buildVariant(b, opts);
+    allZipPaths.push(...zipPaths);
+  }
+
+  if (opts.dryRun) {
+    console.log('\nDry run complete. Re-run and disable dry-run to write files.');
+  } else {
+    console.log('\nDone.');
+  }
+  return allZipPaths;
 }
 
 async function main() {
@@ -770,21 +802,10 @@ async function main() {
   const ciMode = process.env.CI === 'true' || process.argv.includes('--ci');
   const opts = ciMode ? await optionsFromArgs() : await promptOptions();
 
-  console.log(`\nSource: ${SRC_RP}`);
-  console.log(`Scope: RTX=blocksOnly, VV=allTextures (auto)`);
-  console.log(`Builds: ${opts.builds.join(', ')}`);
-  console.log(`Output: ${path.resolve(CWD, opts.outBase)}`);
-  console.log(opts.dryRun ? '\n-- DRY RUN --\n' : '\n-- BUILDING --\n');
-
-  for (const b of opts.builds as Variant[]) {
-    await buildVariant(b, opts);
-  }
-
-  if (opts.dryRun) {
-    console.log('\nDry run complete. Re-run and disable dry-run to write files.');
-  } else {
-    console.log('\nDone.');
-  }
+  await runBuilds(opts);
 }
 
-main().catch(err => { console.error(err); process.exit(1); });
+// Execute main only when run as a script
+if (import.meta.main) {
+  main().catch(err => { console.error(err); process.exit(1); });
+}
