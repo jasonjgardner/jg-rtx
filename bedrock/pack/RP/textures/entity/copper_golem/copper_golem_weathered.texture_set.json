@@ -1,0 +1,8 @@
+{
+	"format_version": "1.21.30",
+	"minecraft:texture_set": {
+		"color": "copper_golem_weathered",
+		"metalness_emissive_roughness": "copper_golem_weathered_mer",
+		"normal": "copper_golem_weathered_normal"
+	}
+}
