@@ -1,0 +1,11 @@
+{
+    "format_version": "1.21.30",
+    "minecraft:texture_set": {
+        "color": "copper_golem_eyes",
+        "metalness_emissive_roughness": [
+            0,
+            250,
+            150
+        ]
+    }
+}
