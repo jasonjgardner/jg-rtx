@@ -1,0 +1,8 @@
+{
+    "format_version": "1.21.30",
+    "minecraft:texture_set": {
+        "color": "ender",
+        "metalness_emissive_roughness": "ender_mer",
+        "normal": "ender_normal"
+    }
+}
