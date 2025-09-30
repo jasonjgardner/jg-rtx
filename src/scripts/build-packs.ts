@@ -484,7 +484,7 @@ async function scanTextures(scope: 'blocksOnly' | 'allTextures'): Promise<TexInf
 }
 
 function buildTextureSetRecord(variant: Variant, t: TexInfo, opts: BuildOptions) {
-  const format_version = variant === 'RTX' ? '1.16.100' : '1.21.30';
+  const format_version = '1.21.30';
   const body: Record<string, any> = { color: t.base };
 
   // Normal vs heightmap: prefer normal by default
