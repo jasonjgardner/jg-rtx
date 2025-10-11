@@ -1,0 +1,119 @@
+name: Publish Bedrock Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'bedrock/pack/RP/manifest.json'
+
+jobs:
+  check-version:
+    name: Check version and prepare release
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ steps.version_check.outputs.should_release }}
+      version: ${{ steps.version_check.outputs.version }}
+      tag: ${{ steps.version_check.outputs.tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Check version and compare with tags
+        id: version_check
+        run: |
+          # Read version from manifest.json
+          VERSION=$(bun -e "const m = require('./bedrock/pack/RP/manifest.json'); console.log(m.header.version.join('.'))")
+          echo "Manifest version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
+          
+          # Get latest git tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          
+          # Remove 'v' prefix for comparison
+          LATEST_VERSION=${LATEST_TAG#v}
+          
+          # Compare versions
+          if [ "$VERSION" = "$LATEST_VERSION" ]; then
+            echo "Version $VERSION already released"
+            echo "should_release=false" >> $GITHUB_OUTPUT
+          else
+            # Simple version comparison (assumes semantic versioning)
+            NEWER=$(printf '%s\n%s\n' "$LATEST_VERSION" "$VERSION" | sort -V | tail -n1)
+            if [ "$NEWER" = "$VERSION" ] && [ "$VERSION" != "$LATEST_VERSION" ]; then
+              echo "New version detected: $VERSION > $LATEST_VERSION"
+              echo "should_release=true" >> $GITHUB_OUTPUT
+            else
+              echo "Version $VERSION is not higher than $LATEST_VERSION"
+              echo "should_release=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+  build:
+    name: Build Bedrock packs
+    needs: check-version
+    if: needs.check-version.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build packs (CI mode)
+        env:
+          CI: 'true'
+        run: bun ./src/scripts/build-packs.ts --ci
+
+      - name: Upload .mcpack artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bedrock-mcpacks
+          path: dist/**/*.mcpack
+          if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: [check-version, build]
+    if: needs.check-version.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: bedrock-mcpacks
+          path: ./release-assets
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.check-version.outputs.tag }}
+          name: JG RTX Bedrock ${{ needs.check-version.outputs.version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ./release-assets/**/*.mcpack
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
