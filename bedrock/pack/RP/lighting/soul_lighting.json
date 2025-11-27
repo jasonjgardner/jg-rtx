@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:lighting_settings": {
+    "description": {
+      "identifier": "jgrtx:soul_lighting"
+    },
+    "directional_lights": {
+      "orbital": {
+        "sun": {
+          "illuminance": 0.0,
+          "color": [0, 0, 0]
+        },
+        "moon": {
+          "illuminance": 0.0,
+          "color": [0, 0, 0]
+        },
+        "orbital_offset_degrees": 0.0
+      },
+      "flash": {
+        "illuminance": 0.0,
+        "color": [0, 0, 0]
+      }
+    },
+    "emissive": {
+      "desaturation": 0.06
+    },
+    "ambient": {
+      "illuminance": 1.4,
+      "color": [80, 200, 180]
+    },
+    "sky": {
+      "intensity": 0.1
+    }
+  }
+}
