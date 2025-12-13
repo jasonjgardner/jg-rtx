@@ -1,19 +1,19 @@
-  {
-    "format_version": "1.21.40",
-    "minecraft:client_biome": {
-      "description": {
-        "identifier": "cherry_grove"
+{
+  "format_version": "1.21.130",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "cherry_grove"
+    },
+    "components": {
+      "minecraft:fog_appearance": {
+        "fog_identifier": "jgrtx:cherry"
       },
-      "components": {
-        "minecraft:fog_appearance": {
-          "fog_identifier": "jgrtx:cherry"
-        },
-        "minecraft:water_appearance": {
-          "surface_color": "#7c7c7c"
-        },
-        "minecraft:sky_color": {
-          "sky_color": "#232a46"
-        }
+      "minecraft:water_appearance": {
+        "surface_color": "#7c7c7c"
+      },
+      "minecraft:sky_color": {
+        "sky_color": "#232a46"
       }
     }
   }
+}

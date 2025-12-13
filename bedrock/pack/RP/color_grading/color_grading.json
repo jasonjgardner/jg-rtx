@@ -4,44 +4,40 @@
     "description": {
       "identifier": "jgrtx:default_cg"
     },
-    "color_grading":{
-    "midtones": {
-      "midtonesMax": 60,
-      "contrast": [1.35, 1.35, 1.35],
-      "saturation": [1.1, 1.1, 1.1],
-      "gain": [1.04, 1.04, 1.05],
-      "offset": [0.0, 0.0, 0.0],
-      "gamma": [2.2, 2.2, 2.2]
-    },
-  
-"highlights":{
-    "enabled":true,
-      "highlightsMin":16,
-      "contrast": [1.15,1.15, 1.15],
-      "gain": [1.0,1.0,1.0],
-      "gamma": [2.2,2.2,2.2],
-      "offset": [0.00,0.00,0.00],
-      "saturation": [1.0,1.0,1.0]
-    },
-
-"shadows":{
-  "enabled":false,
-    "shadowsMax":0.4,
-    "contrast": [1.1,1.1,1.1],
-    "gain": [1.0,1.0,1.0],
-    "gamma": [2.2,2.2,2.2],
-    "offset": [0.0,0.0, 0.0],
-    "saturation": [1.1, 1.1, 1.1]
-    }
-  },
-  "temperature": {
+    "color_grading": {
+      "midtones": {
+        "contrast": [1.25, 1.25, 1.25],
+        "saturation": [1.08, 1.08, 1.08],
+        "gain": [1.02, 1.02, 1.03],
+        "offset": [0.0, 0.0, 0.0],
+        "gamma": [2.2, 2.2, 2.2]
+      },
+      "highlights": {
+        "enabled": true,
+        "highlightsMin": 2.5,
+        "contrast": [1.1, 1.1, 1.1],
+        "gain": [0.98, 0.98, 0.99],
+        "gamma": [2.2, 2.2, 2.2],
+        "offset": [0.0, 0.0, 0.0],
+        "saturation": [0.95, 0.95, 0.95]
+      },
+      "shadows": {
+        "enabled": true,
+        "shadowsMax": 0.35,
+        "contrast": [1.15, 1.15, 1.15],
+        "gain": [1.05, 1.05, 1.08],
+        "gamma": [2.25, 2.25, 2.25],
+        "offset": [0.01, 0.01, 0.02],
+        "saturation": [1.12, 1.12, 1.12]
+      },
+      "temperature": {
         "enabled": true,
         "type": "white_balance",
-        "temperature": 6500.0
+        "temperature": 6200.0
+      }
     },
-
-"tone_mapping":{
-  "operator":"hable"
+    "tone_mapping": {
+      "operator": "aces"
     }
   }
 }

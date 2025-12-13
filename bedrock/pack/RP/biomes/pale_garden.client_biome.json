@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
       "identifier": "pale_garden"
@@ -15,11 +15,11 @@
         "sky_color": "#505050"
       },
       "minecraft:foliage_appearance": {
-          "color": "#5c6557"
-        },
+        "color": "#5c6557"
+      },
       "minecraft:grass_appearance": {
-           "color": "#5c6557"
-        },
+        "color": "#5c6557"
+      },
       "minecraft:atmosphere_identifier": {
         "atmosphere_identifier": "jgrtx:pale_atmosphere"
       },
