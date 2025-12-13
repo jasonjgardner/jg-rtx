@@ -1,0 +1,85 @@
+name: Publish Java Release
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Git tag to publish (example: v0.32.4)"
+        required: true
+        type: string
+      version_type:
+        description: Version type
+        required: true
+        default: release
+        type: choice
+        options:
+          - release
+          - beta
+          - alpha
+      changelog:
+        description: Changelog text (optional)
+        required: false
+        default: ""
+        type: string
+      game_versions:
+        description: Newline-separated supported Minecraft versions
+        required: true
+        default: |
+          1.19.4
+          1.20.1
+          1.21
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+          fetch-depth: 0
+
+      - name: Build Java pack
+        run: |
+          mkdir -p dist
+          cp -r java/pack dist/java
+          cd dist/java
+          zip -0 -r ../PBR-JG.zip .
+
+      - name: Publish to Modrinth and CurseForge (Release)
+        if: ${{ github.event_name == 'release' }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: F2D7CupJ
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-id: 947373
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          files: dist/PBR-JG.zip
+          loaders: minecraft
+          game-versions: |
+            1.19.4
+            1.20.1
+            1.21
+          version-type: ${{ github.event.release.prerelease && 'beta' || 'release' }}
+
+      - name: Publish to Modrinth and CurseForge (Manual)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: F2D7CupJ
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-id: 947373
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          files: dist/PBR-JG.zip
+          loaders: minecraft
+          game-versions: ${{ inputs.game_versions }}
+          version: ${{ inputs.tag }}
+          name: PBR JG ${{ inputs.tag }}
+          version-type: ${{ inputs.version_type }}
+          changelog: ${{ inputs.changelog }}

@@ -1,6 +1,10 @@
 {
   "pack": {
     "pack_format": 34,
+    "supported_formats": {
+      "min_inclusive": 34,
+      "max_inclusive": 69
+    },
     "description": "Java conversion of JG RTX resource pack\n256x @ LabPBR-1.3"
   }
 }
