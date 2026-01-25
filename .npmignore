@@ -1,0 +1,8 @@
+# Ignore everything except the npx installer
+*
+
+# Include only the installer
+!src/npx/index.mjs
+!package.json
+!README.md
+!LICENSE
