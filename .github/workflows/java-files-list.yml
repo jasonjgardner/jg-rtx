@@ -1,0 +1,44 @@
+name: Generate Java files.txt
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'java/pack/**'
+      - '!java/pack/files.txt'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate files.txt
+        run: |
+          cd java/pack
+          find . -type f ! -name 'files.txt' | sed 's|^\./||' | sort > files.txt
+          echo "Generated files.txt with $(wc -l < files.txt) entries"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet java/pack/files.txt; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit files.txt
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add java/pack/files.txt
+          git commit -m "chore(java): Update files.txt"
+          git push

@@ -1,0 +1,44 @@
+name: Generate Bedrock contents.json
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'bedrock/pack/RP/**'
+      - '!bedrock/pack/RP/contents.json'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Generate contents.json
+        run: bun ./src/scripts/contents.ts
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet bedrock/pack/RP/contents.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit contents.json
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bedrock/pack/RP/contents.json
+          git commit -m "chore(bedrock): Update contents.json"
+          git push

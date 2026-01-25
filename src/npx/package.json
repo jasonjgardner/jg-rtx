@@ -1,0 +1,29 @@
+{
+  "name": "jg-rtx",
+  "version": "1.0.0",
+  "description": "JG RTX Resource Pack Installer for Minecraft Bedrock and Java Edition",
+  "type": "module",
+  "bin": {
+    "jg-rtx": "./index.mjs"
+  },
+  "files": [
+    "index.mjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonjgardner/jg-rtx.git"
+  },
+  "keywords": [
+    "minecraft",
+    "resource-pack",
+    "rtx",
+    "pbr",
+    "bedrock",
+    "java"
+  ],
+  "author": "Jason J. Gardner",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
