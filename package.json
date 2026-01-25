@@ -1,5 +1,14 @@
 {
-  "dependencies": {
+  "scripts": {
+    "convert": "bun ./src/scripts/convert.ts",
+    "java-convert": "bun ./src/scripts/java-convert.ts",
+    "mineways": "bun ./src/scripts/mineways.ts",
+    "mineways:ci": "bun ./src/scripts/mineways.ts --ci"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/bun": "latest",
+    "@types/node": "^20.11.19",
     "@types/adm-zip": "^0.5.7",
     "@types/minimist": "^1.2.5",
     "adm-zip": "^0.5.16",
@@ -10,20 +19,12 @@
     "sharp": "^0.33.3",
     "targadactyl": "^2.0.1"
   },
-  "scripts": {
-    "convert": "bun ./src/scripts/convert.ts",
-    "java-convert": "bun ./src/scripts/java-convert.ts",
-    "mineways": "bun ./src/scripts/mineways.ts",
-    "mineways:ci": "bun ./src/scripts/mineways.ts --ci"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/node": "^20.11.19"
-  },
   "name": "jg-rtx",
-  "module": "index.ts",
   "type": "module",
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+  "bin": {
+    "jg-rtx": "./src/npx/index.mjs"
+  },
+  "files": [
+    "./src/npx/index.mjs"
+  ]
 }
