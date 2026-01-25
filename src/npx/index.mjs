@@ -213,6 +213,55 @@ async function installJava() {
   }
 }
 
+async function installMineways() {
+  console.log('\nDownloading Mineways textures...\n');
+
+  const defaultPath = process.cwd();
+  const inputPath = await prompt(`Enter installation path (default: ${defaultPath}): `);
+  const installPath = inputPath || defaultPath;
+
+  console.log('Fetching file list...');
+  const allFiles = await getBedrockFileList();
+
+  const blockTextures = allFiles.filter((file) => {
+    if (!file.startsWith('textures/blocks/')) return false;
+    const ext = file.split('.').pop()?.toLowerCase();
+    return ext === 'png' || ext === 'tga';
+  });
+
+  if (blockTextures.length === 0) {
+    console.log('No block textures found.');
+    return;
+  }
+
+  console.log(`Found ${blockTextures.length} block textures to download.`);
+  console.log(`Installing to: ${installPath}\n`);
+
+  const progress = createProgressBar(blockTextures.length);
+  let errors = 0;
+
+  for (const file of blockTextures) {
+    const fileUrl = `${CDN_BASE}/${BEDROCK_RP_PATH}/${file}`;
+    const destPath = join(installPath, file);
+
+    try {
+      await downloadFile(fileUrl, destPath);
+    } catch {
+      errors++;
+    }
+    progress.increment();
+  }
+
+  progress.finish();
+
+  if (errors > 0) {
+    console.log(`\nCompleted with ${errors} errors.`);
+  } else {
+    console.log(`\nSuccessfully downloaded Mineways textures to:`);
+    console.log(join(installPath, 'textures', 'blocks'));
+  }
+}
+
 async function main() {
   console.log('╔════════════════════════════════════════╗');
   console.log('║       JG RTX Resource Pack Installer       ║');
@@ -221,6 +270,7 @@ async function main() {
   const edition = await promptChoice('Which edition would you like to install?', [
     { label: 'Bedrock Edition', value: 'bedrock', description: 'RTX & Vibrant Visuals support' },
     { label: 'Java Edition', value: 'java', description: 'Standard PBR textures' },
+    { label: 'Mineways', value: 'mineways', description: 'Block textures only (.png/.tga)' },
   ]);
 
   if (edition === 'bedrock') {
@@ -229,6 +279,8 @@ async function main() {
       { label: 'Vibrant Visuals', value: 'VV', description: 'Stylized PBR without raytracing' },
     ]);
     await installBedrock(variant);
+  } else if (edition === 'mineways') {
+    await installMineways();
   } else {
     await installJava();
   }

@@ -1,0 +1,27 @@
+{
+  "name": "jg-rtx-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "convert": "bun ./convert.ts",
+    "java-convert": "bun ./java-convert.ts",
+    "mineways": "bun ./mineways.ts",
+    "mineways:ci": "bun ./mineways.ts --ci",
+    "contents": "bun ./contents.ts",
+    "build": "bun ./build-packs.ts"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/bun": "latest",
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^20.11.19",
+    "adm-zip": "^0.5.16",
+    "globby": "^14.1.0",
+    "jszip": "3.10.1",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
+    "sharp": "^0.33.3",
+    "targadactyl": "^2.0.1",
+    "typescript": "^5.0.0"
+  }
+}

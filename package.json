@@ -1,30 +1,29 @@
 {
-  "scripts": {
-    "convert": "bun ./src/scripts/convert.ts",
-    "java-convert": "bun ./src/scripts/java-convert.ts",
-    "mineways": "bun ./src/scripts/mineways.ts",
-    "mineways:ci": "bun ./src/scripts/mineways.ts --ci"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/bun": "latest",
-    "@types/node": "^20.11.19",
-    "@types/adm-zip": "^0.5.7",
-    "@types/minimist": "^1.2.5",
-    "adm-zip": "^0.5.16",
-    "globby": "^14.1.0",
-    "jszip": "3.10.1",
-    "minimist": "^1.2.8",
-    "prompts": "^2.4.2",
-    "sharp": "^0.33.3",
-    "targadactyl": "^2.0.1"
-  },
   "name": "jg-rtx",
+  "version": "1.0.0",
+  "description": "JG RTX Resource Pack Installer for Minecraft Bedrock and Java Edition",
   "type": "module",
   "bin": {
     "jg-rtx": "./src/npx/index.mjs"
   },
   "files": [
-    "./src/npx/index.mjs"
-  ]
+    "src/npx/index.mjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonjgardner/jg-rtx.git"
+  },
+  "keywords": [
+    "minecraft",
+    "resource-pack",
+    "rtx",
+    "pbr",
+    "bedrock",
+    "java"
+  ],
+  "author": "Jason J. Gardner",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
