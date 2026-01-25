@@ -1,0 +1,26 @@
+{
+    "version": "1.0",
+    "description": "labPBR Preview Shader",
+    "entry": "shade",
+    "fragment": "labpbr.glsl",
+    "uniforms": [
+        {
+            "name": "specular_texture",
+            "type": "sampler2D",
+            "default": "white",
+            "description": "Specular Texture (_s)"
+        },
+        {
+            "name": "normal_texture",
+            "type": "sampler2D",
+            "default": "normal",
+            "description": "Normal Texture (_n)"
+        },
+        {
+            "name": "albedo_color",
+            "type": "vec4",
+            "default": [1.0, 1.0, 1.0, 1.0],
+            "description": "Albedo Color"
+        }
+    ]
+}

@@ -7,7 +7,14 @@
     "jszip": "3.10.1",
     "minimist": "^1.2.8",
     "prompts": "^2.4.2",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.3",
+    "targadactyl": "^2.0.1"
+  },
+  "scripts": {
+    "convert": "bun ./src/scripts/convert.ts",
+    "java-convert": "bun ./src/scripts/java-convert.ts",
+    "mineways": "bun ./src/scripts/mineways.ts",
+    "mineways:ci": "bun ./src/scripts/mineways.ts --ci"
   },
   "devDependencies": {
     "@types/bun": "latest",
