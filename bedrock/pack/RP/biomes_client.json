@@ -1,205 +1,205 @@
 {
   "biomes": {
     "default": {
-      "fog_identifier": "jgrtx:fog_default",
+      "fog_identifier": "jgrtx:default_fog",
       "fog_color": "#e9e9e7",
       "water_surface_color": "#306f9f",
       "water_surface_transparency": 1.0
     },
     "plains": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:plains"
     },
     "sunflower_plains": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:plains"
     },
     "desert": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:desert"
     },
     "extreme_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:hills"
     },
     "forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:forest"
     },
     "flower_forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:forest"
     },
     "taiga": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "taiga_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "river": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:river"
     },
     "frozen_river": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:river"
     },
     "ice_plains": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "ice_plains_spikes": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "ice_mountains": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "mushroom_island": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:mushroom_island"
     },
     "mushroom_island_shore": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:mushroom_island"
     },
     "beach": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:beach"
     },
     "desert_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:desert"
     },
     "forest_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:forest"
     },
     "taiga_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "extreme_hills_edge": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:hills"
     },
     "jungle": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "bamboo_jungle": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "jungle_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "jungle_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "bamboo_jungle_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "jungle_edge": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:jungle"
     },
     "stone_beach": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:beach"
     },
     "cold_beach": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "birch_forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:forest"
     },
     "birch_forest_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:forest"
     },
     "roofed_forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:dark_forest"
     },
     "cold_taiga": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "cold_taiga_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "cold_taiga_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:snowy"
     },
     "mega_taiga": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "mega_spruce_taiga": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "mega_taiga_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "mega_spruce_taiga_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "mega_taiga_hills": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:taiga"
     },
     "extreme_hills_plus_trees": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:hills"
     },
     "extreme_hills_plus_trees_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:hills"
     },
     "extreme_hills_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:hills"
     },
     "savanna": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:savanna"
     },
     "savanna_plateau": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:savanna"
     },
     "savanna_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:savanna"
     },
     "mesa": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:badlands"
     },
     "mesa_bryce": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:badlands"
     },
     "mesa_mutated": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:badlands"
     },
     "mesa_plateau_stone": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:badlands"
     },
     "mesa_plateau": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:badlands"
     },
     "ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:ocean"
     },
     "deep_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:ocean"
     },
     "warm_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:warm_ocean"
     },
     "deep_warm_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:warm_ocean"
     },
     "lukewarm_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:lukewarm_ocean"
     },
     "deep_lukewarm_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:lukewarm_ocean"
     },
     "cold_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:cold_ocean"
     },
     "deep_cold_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:cold_ocean"
     },
     "frozen_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:frozen_ocean"
     },
     "deep_frozen_ocean": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:frozen_ocean"
     },
     "warped_forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:warped"
     },
     "crimson_forest": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:crimson"
     },
     "soulsand_valley": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:soulsand_valley"
     },
     "basalt_deltas": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:delta"
     },
     "cherry_grove": {
-      "fog_identifier": "jgrtx:fog_default"
+      "fog_identifier": "jgrtx:cherry"
     },
     "swampland": {
       "water_surface_color": "#4c6559",
@@ -211,7 +211,7 @@
     },
     "mangrove_swamp": {
       "water_surface_color": "#617b64",
-      "fog_identifier": "jgrtx:fog_swamp"
+      "fog_identifier": "jgrtx:mangrove"
     }
   }
 }

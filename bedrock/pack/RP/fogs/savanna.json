@@ -1,0 +1,36 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:savanna"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.85,
+        "fog_end": 1.0,
+        "fog_color": "#EBDFBE",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.035,
+          "zero_density_height": 170.0,
+          "max_density_height": 68.0
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.028, 0.026, 0.02],
+          "absorption": [0.024, 0.034, 0.05]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.7
+        }
+      }
+    }
+  }
+}

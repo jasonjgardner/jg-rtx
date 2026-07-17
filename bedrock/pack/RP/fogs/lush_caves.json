@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:lush_caves"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.8,
+        "fog_end": 1.0,
+        "fog_color": "#86A98E",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.06,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.02, 0.028, 0.022],
+          "absorption": [0.045, 0.028, 0.05]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.6
+        }
+      }
+    }
+  }
+}

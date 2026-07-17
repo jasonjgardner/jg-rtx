@@ -5,6 +5,9 @@
       "identifier": "jungle_hills"
     },
     "components": {
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "jgrtx:global"
+      },
       "minecraft:fog_appearance": {
         "fog_identifier": "jgrtx:jungle"
       },

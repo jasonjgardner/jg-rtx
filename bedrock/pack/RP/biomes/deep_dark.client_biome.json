@@ -5,8 +5,11 @@
       "identifier": "deep_dark"
     },
     "components": {
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "jgrtx:global"
+      },
       "minecraft:fog_appearance": {
-        "fog_identifier": "jgrtx:default_fog"
+        "fog_identifier": "jgrtx:deep_dark"
       },
       "minecraft:water_appearance": {
         "surface_color": "#7c7c7c"

@@ -5,8 +5,11 @@
       "identifier": "taiga_hills"
     },
     "components": {
+      "minecraft:lighting_identifier": {
+        "lighting_identifier": "jgrtx:global"
+      },
       "minecraft:fog_appearance": {
-        "fog_identifier": "jgrtx:default_fog"
+        "fog_identifier": "jgrtx:taiga"
       },
       "minecraft:water_appearance": {
         "surface_color": "#236583"

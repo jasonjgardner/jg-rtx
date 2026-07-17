@@ -1,0 +1,36 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:mushroom_island"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.84,
+        "fog_end": 1.0,
+        "fog_color": "#C9B6C4",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.04,
+          "zero_density_height": 140.0,
+          "max_density_height": 60.0
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.025, 0.02, 0.025],
+          "absorption": [0.032, 0.048, 0.038]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.65
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:dripstone"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.82,
+        "fog_end": 1.0,
+        "fog_color": "#A08D78",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.05,
+          "uniform": true
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.022, 0.02, 0.017],
+          "absorption": [0.038, 0.044, 0.054]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.6
+        }
+      }
+    }
+  }
+}

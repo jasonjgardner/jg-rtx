@@ -1,0 +1,36 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:taiga"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.88,
+        "fog_end": 1.0,
+        "fog_color": "#B8CCD6",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.038,
+          "zero_density_height": 160.0,
+          "max_density_height": 72.0
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.018, 0.023, 0.026],
+          "absorption": [0.03, 0.032, 0.036]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.7
+        }
+      }
+    }
+  }
+}

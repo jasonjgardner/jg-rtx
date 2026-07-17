@@ -14,13 +14,13 @@
       "water": {
         "fog_start": 0.0,
         "fog_end": 85.0,
-        "fog_color": "#1890C8",
+        "fog_color": "#2FA0CE",
         "render_distance_type": "fixed",
         "transition_fog": {
           "init_fog": {
             "fog_start": 0.0,
             "fog_end": 18.0,
-            "fog_color": "#1890C8",
+            "fog_color": "#2FA0CE",
             "render_distance_type": "fixed"
           },
           "min_percent": 0.15,
@@ -38,7 +38,7 @@
           "max_density_height": 64.0
         },
         "water": {
-          "max_density": 0.18,
+          "max_density": 0.22,
           "uniform": true
         }
       },
@@ -48,8 +48,8 @@
           "absorption": [0.035, 0.045, 0.055]
         },
         "water": {
-          "scattering": [0.015, 0.018, 0.024],
-          "absorption": [0.18, 0.065, 0.072]
+          "scattering": [0.03, 0.04, 0.048],
+          "absorption": [0.12, 0.042, 0.046]
         }
       },
       "henyey_greenstein_g": {
@@ -57,7 +57,7 @@
           "henyey_greenstein_g": 0.72
         },
         "water": {
-          "henyey_greenstein_g": 0.15
+          "henyey_greenstein_g": 0.5
         }
       }
     }

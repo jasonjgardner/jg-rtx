@@ -1,0 +1,36 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "jgrtx:dark_forest"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.86,
+        "fog_end": 1.0,
+        "fog_color": "#A3B4A9",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "air": {
+          "max_density": 0.045,
+          "zero_density_height": 130.0,
+          "max_density_height": 72.0
+        }
+      },
+      "media_coefficients": {
+        "air": {
+          "scattering": [0.02, 0.023, 0.021],
+          "absorption": [0.03, 0.033, 0.038]
+        }
+      },
+      "henyey_greenstein_g": {
+        "air": {
+          "henyey_greenstein_g": 0.7
+        }
+      }
+    }
+  }
+}
