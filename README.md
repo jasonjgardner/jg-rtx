@@ -10,7 +10,9 @@ entirely in the browser against textures served from jsDelivr.
 - **A page per block.** Blocks that use different textures per face — logs,
   pillars, grass — keep one slug and show each face separately.
 - **3D previews** rendered with `threejs-minecraft-bedrock-rtx-loader`, using
-  the pack's real MER/MERS and normal maps.
+  the pack's real MER/MERS and normal maps. Orbit with a drag, zoom with the
+  wheel, and reset the framing with a button; the idle spin stops as soon as
+  you take hold of the camera, and your angle survives swapping a variety.
 - **Texture varieties** can be swapped in per texture set and are reflected
   live in the preview.
 - **Power-of-two resizing**, globally or per texture.

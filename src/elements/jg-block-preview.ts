@@ -11,7 +11,13 @@
  * their PBR maps — far more structure than attributes should hold.
  */
 
-import { mountPreview, BOX_FACE_ORDER, type IFacePlan, type IPreview } from "../lib/preview3d";
+import {
+  mountPreview,
+  BOX_FACE_ORDER,
+  type ICameraState,
+  type IFacePlan,
+  type IPreview,
+} from "../lib/preview3d";
 import { getState, subscribe } from "../stores/customization";
 import type { BlockFace, ITextureSet, IVariety } from "../lib/types";
 
@@ -58,15 +64,27 @@ export class JgBlockPreview extends HTMLElement {
   #resizeObserver: ResizeObserver | null = null;
   #unsubscribe: (() => void) | null = null;
   #stage: HTMLElement | null = null;
+  #reset: HTMLButtonElement | null = null;
+  #camera: ICameraState | null = null;
   #pending = false;
 
   connectedCallback(): void {
     this.#data = this.#readPayload();
     if (!this.#data) return;
 
-    this.#stage = document.createElement("div");
-    this.#stage.className = "jg-block-preview__stage";
-    this.append(this.#stage);
+    // The stage and controls are server-rendered where possible, so the button
+    // is a real button with real keyboard semantics. Fall back to creating a
+    // stage when the element is used without that markup.
+    this.#stage = this.querySelector<HTMLElement>("[data-preview-stage]");
+
+    if (!this.#stage) {
+      this.#stage = document.createElement("div");
+      this.#stage.dataset.previewStage = "";
+      this.append(this.#stage);
+    }
+
+    this.#reset = this.querySelector<HTMLButtonElement>("[data-preview-reset]");
+    this.#reset?.addEventListener("click", this.#onReset);
 
     this.#observer = new IntersectionObserver(
       (entries) => {
@@ -93,6 +111,7 @@ export class JgBlockPreview extends HTMLElement {
     this.#unsubscribe?.();
     this.#controller?.abort();
     this.#preview?.dispose();
+    this.#reset?.removeEventListener("click", this.#onReset);
 
     this.#observer = null;
     this.#resizeObserver = null;
@@ -100,6 +119,12 @@ export class JgBlockPreview extends HTMLElement {
     this.#controller = null;
     this.#preview = null;
   }
+
+  /** Return the camera to its default framing and resume the idle spin. */
+  #onReset = (): void => {
+    this.#preview?.resetCamera();
+    this.#camera = this.#preview?.cameraState() ?? null;
+  };
 
   /** Parse the embedded JSON payload, tolerating a missing or malformed one. */
   #readPayload(): IPreviewData | null {
@@ -166,6 +191,11 @@ export class JgBlockPreview extends HTMLElement {
     this.#pending = true;
 
     this.#controller?.abort();
+
+    // Carry the current view into the rebuild, so choosing a variety swaps the
+    // texture without snapping the camera back to its starting angle.
+    this.#camera = this.#preview?.cameraState() ?? this.#camera;
+
     this.#preview?.dispose();
     this.#preview = null;
 
@@ -175,7 +205,12 @@ export class JgBlockPreview extends HTMLElement {
     this.dataset.state = "loading";
 
     try {
-      const preview = await mountPreview(stage, this.#plan(data), controller.signal);
+      const preview = await mountPreview(
+        stage,
+        this.#plan(data),
+        controller.signal,
+        this.#camera ?? undefined,
+      );
 
       // A newer build may have started while this one awaited.
       if (controller.signal.aborted) {

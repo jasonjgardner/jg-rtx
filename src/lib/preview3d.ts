@@ -23,6 +23,7 @@ import {
   Texture,
   WebGLRenderer,
 } from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { createBedrockMaterial } from "threejs-minecraft-bedrock-rtx-loader";
 import { loadBitmap, tintBitmap } from "./decode";
@@ -56,13 +57,34 @@ export interface IFacePlan {
   readonly tint?: string | null;
 }
 
+/** Camera placement, so a view survives being rebuilt. */
+export interface ICameraState {
+  /** Camera position in world space. */
+  readonly position: readonly [number, number, number];
+  /** Point the camera orbits and looks at. */
+  readonly target: readonly [number, number, number];
+  /** Whether idle auto-rotation is still running. */
+  readonly autoRotate: boolean;
+}
+
 /** Handle for driving and disposing a preview. */
 export interface IPreview {
   /** Resize the renderer to the container's current box. */
   resize: () => void;
+  /** Return the camera to its framing and resume auto-rotation. */
+  resetCamera: () => void;
+  /** Capture the current view so a rebuild can restore it. */
+  cameraState: () => ICameraState;
   /** Release GPU resources and stop the render loop. */
   dispose: () => void;
 }
+
+/** Default camera placement — a three-quarter view showing three faces. */
+const HOME_POSITION: readonly [number, number, number] = [2.1, 1.7, 2.4];
+
+/** How close and how far the viewer may zoom, in block widths. */
+const MIN_DISTANCE = 1.35;
+const MAX_DISTANCE = 8;
 
 /** Textures that animate, with the data needed to advance them. */
 interface IAnimated {
@@ -164,13 +186,16 @@ const buildMaterial = async (
  * @param container Element to render into; sized by CSS.
  * @param plan Texture sets and the box face indices each one covers.
  * @param signal Abort signal that cancels texture loading.
- * @returns A handle for resizing and disposal.
+ * @param initial View to restore, so swapping a variety does not throw away
+ *   the angle the viewer had chosen.
+ * @returns A handle for resizing, camera control and disposal.
  * @throws If WebGL is unavailable or any texture fails to load.
  */
 export const mountPreview = async (
   container: HTMLElement,
   plan: readonly IFacePlan[],
   signal: AbortSignal,
+  initial?: ICameraState,
 ): Promise<IPreview> => {
   const renderer = new WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -178,7 +203,7 @@ export const mountPreview = async (
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(35, 1, 0.1, 100);
-  camera.position.set(2.1, 1.7, 2.4);
+  camera.position.set(...HOME_POSITION);
   camera.lookAt(0, 0, 0);
 
   // A neutral indoor environment gives metals and rough surfaces something to
@@ -220,6 +245,40 @@ export const mountPreview = async (
   renderer.domElement.style.blockSize = "100%";
   renderer.domElement.style.display = "block";
 
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.minDistance = MIN_DISTANCE;
+  controls.maxDistance = MAX_DISTANCE;
+  // Panning a single centred block only loses it off-screen.
+  controls.enablePan = false;
+  controls.autoRotateSpeed = 1.1;
+
+  // `saveState` captures the home framing *before* any restore below, so the
+  // reset button always returns to the default view rather than to whatever
+  // angle happened to be restored from a previous build.
+  controls.saveState();
+
+  controls.autoRotate = !reduced && (initial?.autoRotate ?? true);
+
+  if (initial) {
+    camera.position.set(...initial.position);
+    controls.target.set(...initial.target);
+  }
+
+  controls.update();
+
+  // Any deliberate interaction ends the idle spin; fighting the camera while
+  // dragging it is the single most irritating thing an auto-rotating preview
+  // can do.
+  const stopAutoRotate = (): void => {
+    controls.autoRotate = false;
+  };
+
+  controls.addEventListener("start", stopAutoRotate);
+
   const resize = (): void => {
     const { clientWidth, clientHeight } = container;
     if (clientWidth === 0 || clientHeight === 0) return;
@@ -231,8 +290,6 @@ export const mountPreview = async (
 
   resize();
 
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   let frame = 0;
   let last = performance.now();
   let elapsed = 0;
@@ -241,15 +298,18 @@ export const mountPreview = async (
     const delta = now - last;
     last = now;
 
-    if (!reduced) {
-      elapsed += delta;
-      mesh.rotation.y = elapsed * 0.0003;
-    }
+    // Flipbook timing follows the same reduced-motion rule as the 2D tiles:
+    // hold frame zero rather than animate.
+    if (!reduced) elapsed += delta;
 
     animated.forEach(({ texture, frames, frameDuration }) => {
       const index = Math.floor(elapsed / frameDuration) % frames;
       texture.offset.setY(index / frames);
     });
+
+    // Drives both damping and auto-rotation, so it must run every frame.
+    // Seconds, not milliseconds — auto-rotate speed is defined per second.
+    controls.update(delta / 1000);
 
     renderer.render(scene, camera);
     frame = requestAnimationFrame(tick);
@@ -259,8 +319,22 @@ export const mountPreview = async (
 
   return {
     resize,
+
+    resetCamera: () => {
+      controls.reset();
+      controls.autoRotate = !reduced;
+    },
+
+    cameraState: () => ({
+      position: [camera.position.x, camera.position.y, camera.position.z],
+      target: [controls.target.x, controls.target.y, controls.target.z],
+      autoRotate: controls.autoRotate,
+    }),
+
     dispose: () => {
       cancelAnimationFrame(frame);
+      controls.removeEventListener("start", stopAutoRotate);
+      controls.dispose();
       geometry.dispose();
       materials.forEach((material) => material?.dispose());
       animated.forEach(({ texture }) => texture.dispose());

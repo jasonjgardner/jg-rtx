@@ -68,6 +68,11 @@ const varietyCount = Object.keys(usedVarieties).length;
   <div class="split">
     <jg-block-preview>
       <script type="application/json" set:html={payload} />
+      <div class="preview__stage" data-preview-stage></div>
+      <div class="preview__toolbar">
+        <p class="preview__hint">Drag to orbit · scroll to zoom</p>
+        <button type="button" data-preview-reset>Reset view</button>
+      </div>
     </jg-block-preview>
 
     <div class="summary card">
@@ -131,17 +136,43 @@ const varietyCount = Object.keys(usedVarieties).length;
     position: relative;
   }
 
-  jg-block-preview :global(.jg-block-preview__stage) {
+  .preview__stage {
     aspect-ratio: 4 / 3;
     inline-size: 100%;
     max-block-size: 60svh;
+    /* OrbitControls sets this itself on the canvas, but declaring it on the
+       stage stops a drag that starts on the padding from scrolling the page. */
+    touch-action: none;
+  }
+
+  .preview__toolbar {
+    align-items: center;
+    border-block-start: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+  }
+
+  .preview__hint {
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  /* The controls do nothing until the scene exists, so keep them out of the
+     tab order until then rather than offering a button that cannot work. */
+  jg-block-preview:not([data-state="ready"]) .preview__toolbar {
+    visibility: hidden;
   }
 
   jg-block-preview[data-state="loading"]::after {
     color: var(--muted);
     content: "Loading preview…";
     font-size: 0.8125rem;
-    inset-block-end: 0.5rem;
+    inset-block-end: 3rem;
     inset-inline-start: 0.75rem;
     position: absolute;
   }
@@ -150,7 +181,7 @@ const varietyCount = Object.keys(usedVarieties).length;
     color: var(--muted);
     content: "3D preview unavailable";
     font-size: 0.8125rem;
-    inset-block-end: 0.5rem;
+    inset-block-end: 3rem;
     inset-inline-start: 0.75rem;
     position: absolute;
   }
