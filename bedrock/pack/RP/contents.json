@@ -307,34 +307,100 @@
       "path": "color_grading/soul_color_grading.json"
     },
     {
+      "path": "fogs/alpine.json"
+    },
+    {
+      "path": "fogs/badlands.json"
+    },
+    {
       "path": "fogs/basalt_deltas.json"
+    },
+    {
+      "path": "fogs/beach.json"
     },
     {
       "path": "fogs/cherry_fog.json"
     },
     {
+      "path": "fogs/cold_ocean.json"
+    },
+    {
       "path": "fogs/crimson_forest.json"
+    },
+    {
+      "path": "fogs/dark_forest.json"
+    },
+    {
+      "path": "fogs/deep_dark.json"
     },
     {
       "path": "fogs/default_fog_setting.json"
     },
     {
+      "path": "fogs/desert.json"
+    },
+    {
+      "path": "fogs/dripstone_caves.json"
+    },
+    {
       "path": "fogs/end.json"
+    },
+    {
+      "path": "fogs/forest.json"
+    },
+    {
+      "path": "fogs/frozen_ocean.json"
     },
     {
       "path": "fogs/hell.json"
     },
     {
+      "path": "fogs/hills.json"
+    },
+    {
       "path": "fogs/jungle.json"
     },
     {
+      "path": "fogs/lukewarm_ocean.json"
+    },
+    {
+      "path": "fogs/lush_caves.json"
+    },
+    {
+      "path": "fogs/mangrove_swamp.json"
+    },
+    {
+      "path": "fogs/mushroom_island.json"
+    },
+    {
+      "path": "fogs/ocean.json"
+    },
+    {
       "path": "fogs/pale_garden.json"
+    },
+    {
+      "path": "fogs/plains.json"
+    },
+    {
+      "path": "fogs/river.json"
+    },
+    {
+      "path": "fogs/savanna.json"
+    },
+    {
+      "path": "fogs/snowy.json"
     },
     {
       "path": "fogs/soulsand_valley.json"
     },
     {
       "path": "fogs/swamp_fog_settings.json"
+    },
+    {
+      "path": "fogs/taiga.json"
+    },
+    {
+      "path": "fogs/warm_ocean.json"
     },
     {
       "path": "fogs/warped_forest.json"
@@ -2329,6 +2395,18 @@
       "path": "textures/blocks/chiseled_bookshelf_top.texture_set.json"
     },
     {
+      "path": "textures/blocks/chiseled_cinnabar_mer.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_cinnabar_normal.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_cinnabar.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_cinnabar.texture_set.json"
+    },
+    {
       "path": "textures/blocks/chiseled_copper_mer.png"
     },
     {
@@ -2378,6 +2456,18 @@
     },
     {
       "path": "textures/blocks/chiseled_resin_bricks.texture_set.json"
+    },
+    {
+      "path": "textures/blocks/chiseled_sulfur_mer.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_sulfur_normal.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_sulfur.png"
+    },
+    {
+      "path": "textures/blocks/chiseled_sulfur.texture_set.json"
     },
     {
       "path": "textures/blocks/chiseled_tuff_bricks_mer.png"
@@ -2462,6 +2552,30 @@
     },
     {
       "path": "textures/blocks/chorus_plant.texture_set.json"
+    },
+    {
+      "path": "textures/blocks/cinnabar_bricks_mer.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar_bricks_normal.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar_bricks.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar_bricks.texture_set.json"
+    },
+    {
+      "path": "textures/blocks/cinnabar_mer.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar_normal.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar.png"
+    },
+    {
+      "path": "textures/blocks/cinnabar.texture_set.json"
     },
     {
       "path": "textures/blocks/clay_mer.png"
@@ -4721,6 +4835,9 @@
     },
     {
       "path": "textures/blocks/deepslate/polished_deepslate.texture_set.json"
+    },
+    {
+      "path": "textures/blocks/diamond_block_mer.png"
     },
     {
       "path": "textures/blocks/diamond_block_mers.tga"
@@ -9475,6 +9592,18 @@
       "path": "textures/blocks/polished_blackstone.texture_set.json"
     },
     {
+      "path": "textures/blocks/polished_cinnabar_mer.png"
+    },
+    {
+      "path": "textures/blocks/polished_cinnabar_normal.png"
+    },
+    {
+      "path": "textures/blocks/polished_cinnabar.png"
+    },
+    {
+      "path": "textures/blocks/polished_cinnabar.texture_set.json"
+    },
+    {
       "path": "textures/blocks/polished_tuff_mer.png"
     },
     {
@@ -12020,6 +12149,18 @@
     },
     {
       "path": "textures/blocks/structure_void.texture_set.json"
+    },
+    {
+      "path": "textures/blocks/sulfur_bricks_mer.png"
+    },
+    {
+      "path": "textures/blocks/sulfur_bricks_normal.png"
+    },
+    {
+      "path": "textures/blocks/sulfur_bricks.png"
+    },
+    {
+      "path": "textures/blocks/sulfur_bricks.texture_set.json"
     },
     {
       "path": "textures/blocks/suspicious_gravel_0_mer.png"
