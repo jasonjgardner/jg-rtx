@@ -14,6 +14,7 @@ import {
   AmbientLight,
   BoxGeometry,
   DirectionalLight,
+  DoubleSide,
   Mesh,
   NearestFilter,
   PerspectiveCamera,
@@ -26,7 +27,13 @@ import {
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { createBedrockMaterial } from "threejs-minecraft-bedrock-rtx-loader";
-import { loadBitmap, tintBitmap } from "./decode";
+import {
+  classifyAlpha,
+  compositeBitmaps,
+  loadBitmap,
+  tintBitmap,
+  type AlphaMode,
+} from "./decode";
 import type { BlockFace, IFlipbook, ITextureFile, ITextureSet } from "./types";
 import { fileUrl } from "./cdn";
 
@@ -55,6 +62,12 @@ export interface IFacePlan {
    * authored greyscale and only look right once this is applied.
    */
   readonly tint?: string | null;
+  /**
+   * Texture to composite this face over when it turns out to be a tinted
+   * cutout overlay rather than a complete texture — see `compositeBitmaps`.
+   * Supplying it is not enough on its own; the overlay test still has to pass.
+   */
+  readonly underlay?: ITextureSet | undefined;
 }
 
 /** Camera placement, so a view survives being rebuilt. */
@@ -134,16 +147,54 @@ const toTexture = (
 };
 
 /**
+ * Configure a material for the transparency its colour map calls for.
+ *
+ * Both non-opaque modes get `DoubleSide` so the block's far interior is visible
+ * through the near face, which is how Minecraft renders glass and leaves — with
+ * back-face culling you would see straight through to the background instead,
+ * and a glass block would lose its opposite frame entirely.
+ *
+ * Blend also disables depth writes. Otherwise the near face would occlude the
+ * far one, and the glass would show the background through it rather than the
+ * rest of the block.
+ *
+ * @param material Material to configure, mutated in place.
+ * @param mode Transparency classification of the colour map.
+ */
+const applyAlphaMode = (
+  material: { transparent: boolean; depthWrite: boolean; alphaTest: number; side: number; needsUpdate: boolean },
+  mode: AlphaMode,
+): void => {
+  if (mode === "opaque") return;
+
+  material.side = DoubleSide;
+
+  // A hard on/off mask: discard the transparent texels and stay in the opaque
+  // pass, which keeps depth sorting exact and costs nothing.
+  if (mode === "cutout") {
+    material.alphaTest = 0.5;
+    material.needsUpdate = true;
+    return;
+  }
+
+  material.transparent = true;
+  material.depthWrite = false;
+  material.needsUpdate = true;
+};
+
+/**
  * Load every file in a set and build its material.
  *
  * @param set Texture set to realise.
  * @param tint Biome tint to multiply over the colour map, if any.
+ * @param underlay Texture to composite beneath a tinted cutout overlay.
  * @param signal Abort signal for the fetches.
  * @param animated Collector for textures needing per-frame advancement.
  */
 const buildMaterial = async (
   set: ITextureSet,
   tint: string | null | undefined,
+  underlay: ITextureSet | undefined,
   signal: AbortSignal,
   animated: IAnimated[],
 ): Promise<Awaited<ReturnType<typeof createBedrockMaterial>>> => {
@@ -152,16 +203,40 @@ const buildMaterial = async (
     .filter((entry): entry is readonly [typeof entry[0], ITextureFile] =>
       entry[1] !== undefined);
 
+  // Set by the colour map as it loads; the other maps do not affect blending.
+  let alphaMode: AlphaMode = "opaque";
+
   const loaded = await Promise.all(
     roles.map(async ([role, file]) => {
       // Pre-flipped; see toTexture for why Texture.flipY cannot do this.
       const decoded = await loadBitmap(fileUrl(file, set.origin), file.ext, signal, true);
 
+      if (role === "color") alphaMode = classifyAlpha(decoded);
+
       // Only the colour map is tinted — multiplying a biome colour into a
       // normal or MER map would corrupt the PBR data it encodes.
-      const bitmap = role === "color" && typeof tint === "string"
+      const tinted = role === "color" && typeof tint === "string"
         ? await tintBitmap(decoded, tint)
         : decoded;
+
+      // A tinted cutout is the signature of Bedrock's overlay textures: grass
+      // ships the tinted grass alone and expects the engine to lay it over
+      // dirt. Flatten the two so the face reads as one opaque texture.
+      const overlaid = role === "color" && alphaMode === "cutout" && underlay
+        ? await compositeBitmaps(
+            await loadBitmap(
+              fileUrl(underlay.color, underlay.origin),
+              underlay.color.ext,
+              signal,
+              true,
+            ),
+            tinted,
+          )
+        : tinted;
+
+      if (role === "color" && overlaid !== tinted) alphaMode = "opaque";
+
+      const bitmap = overlaid;
 
       const texture = toTexture(bitmap, set.flipbook, role === "color");
 
@@ -177,7 +252,10 @@ const buildMaterial = async (
     }),
   );
 
-  return createBedrockMaterial(Object.fromEntries(loaded));
+  const material = createBedrockMaterial(Object.fromEntries(loaded));
+  applyAlphaMode(material, alphaMode);
+
+  return material;
 };
 
 /**
@@ -221,7 +299,8 @@ export const mountPreview = async (
   const animated: IAnimated[] = [];
 
   const materials = await Promise.all(
-    plan.map((entry) => buildMaterial(entry.set, entry.tint, signal, animated)),
+    plan.map((entry) =>
+      buildMaterial(entry.set, entry.tint, entry.underlay, signal, animated)),
   );
 
   // Map each of the six box groups onto the material for the set covering it.

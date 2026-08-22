@@ -104,6 +104,88 @@ export const bytesToBitmap = async (
 };
 
 /**
+ * How a texture's alpha channel should be rendered.
+ *
+ * These are Bedrock's three render methods. Vanilla `blocks.json` does not
+ * declare which one a block uses — it is engine behaviour, and only *custom*
+ * blocks state it via `material_instances.render_method` — so it is derived
+ * from the texture instead.
+ *
+ * The tell is **not** whether partial alpha exists: cutout textures are
+ * routinely anti-aliased, so their edges carry a thin band of partial values.
+ * What separates the two is whether *fully transparent* pixels dominate. A
+ * cutout is mostly holes with soft edges; a blended surface has no holes at
+ * all, only partial coverage.
+ *
+ * | texture           | a = 0 | 0 < a < 255 | mode   |
+ * | ----------------- | ----- | ----------- | ------ |
+ * | `stone`           |     — |           — | opaque |
+ * | `leaves_oak`      | 35.6% |          0% | cutout |
+ * | `grass_side.tga`  | 40.9% |        0.7% | cutout |
+ * | `tallgrass.tga`   | 66.8% |       10.7% | cutout |
+ * | `glass`           |    0% |       90.7% | blend  |
+ * | `glass_pane_top`  |    0% |        5.0% | blend  |
+ */
+export type AlphaMode = "opaque" | "cutout" | "blend";
+
+/**
+ * Rows examined when classifying. Flipbook strips run to 8192px tall, and every
+ * frame of an animation shares the same alpha character, so reading the whole
+ * strip would allocate megabytes to learn nothing extra.
+ */
+const ALPHA_MAX_ROWS = 1024;
+
+/** Upper bound on sampled pixels, for unusually wide textures. */
+const ALPHA_SAMPLE_CAP = 1 << 18;
+
+/**
+ * Classify a colour texture's transparency.
+ *
+ * @param bitmap Decoded colour map.
+ * @returns `opaque` when nothing is transparent, `cutout` when fully
+ *   transparent pixels outnumber partial ones, otherwise `blend`.
+ */
+export const classifyAlpha = (bitmap: ImageBitmap): AlphaMode => {
+  const height = Math.min(bitmap.height, ALPHA_MAX_ROWS);
+  const canvas = new OffscreenCanvas(bitmap.width, height);
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+
+  // Without a context there is nothing to inspect; opaque is the safe default
+  // because it never hides geometry that should be visible.
+  if (!context) return "opaque";
+
+  context.imageSmoothingEnabled = false;
+  context.drawImage(bitmap, 0, 0);
+
+  const { data } = context.getImageData(0, 0, bitmap.width, height);
+  const pixels = data.length / 4;
+  const stride = Math.max(1, Math.ceil(pixels / ALPHA_SAMPLE_CAP));
+
+  let holes = 0;
+  let partials = 0;
+
+  // An indexed loop rather than an array method: this walks up to 262k pixels
+  // per texture, and `filter`/`reduce` over a typed array would allocate an
+  // intermediate for every one of them.
+  for (let index = 0; index < pixels; index += stride) {
+    const alpha = data[index * 4 + 3] ?? 255;
+
+    if (alpha === 255) continue;
+
+    if (alpha === 0) {
+      holes += 1;
+      continue;
+    }
+
+    partials += 1;
+  }
+
+  if (holes === 0 && partials === 0) return "opaque";
+
+  return holes > partials ? "cutout" : "blend";
+};
+
+/**
  * Multiply a colour over a bitmap, preserving its alpha.
  *
  * Biome tints cannot be applied through the material: the RTX loader's fragment
@@ -143,6 +225,44 @@ export const tintBitmap = async (
   context.drawImage(bitmap, 0, 0);
 
   bitmap.close();
+
+  return createImageBitmap(canvas);
+};
+
+/**
+ * Draw one bitmap over another, producing a single flattened image.
+ *
+ * This is Bedrock's grass-overlay model. `grass_side` is not a complete
+ * texture: it is opaque for its top ~60% and fully transparent below, because
+ * the engine composites the tinted grass over the dirt texture rather than
+ * shipping a combined one. Rendering it alone cuts the dirt away entirely.
+ *
+ * Flattening at the bitmap level keeps the result a single opaque texture, so
+ * the cube needs no extra geometry and no transparency sorting.
+ *
+ * @param base Underlying image, e.g. dirt. Closed by this function.
+ * @param overlay Image drawn on top, e.g. tinted grass. Closed by this function.
+ * @returns A new composited bitmap sized to `base`.
+ */
+export const compositeBitmaps = async (
+  base: ImageBitmap,
+  overlay: ImageBitmap,
+): Promise<ImageBitmap> => {
+  const { width, height } = base;
+  const canvas = new OffscreenCanvas(width, height);
+  const context = canvas.getContext("2d");
+
+  if (!context) {
+    overlay.close();
+    return base;
+  }
+
+  context.imageSmoothingEnabled = false;
+  context.drawImage(base, 0, 0);
+  context.drawImage(overlay, 0, 0, width, height);
+
+  base.close();
+  overlay.close();
 
   return createImageBitmap(canvas);
 };

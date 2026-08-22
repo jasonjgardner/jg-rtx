@@ -140,6 +140,31 @@ export class JgBlockPreview extends HTMLElement {
   }
 
   /**
+   * Pick the texture a tinted face should be composited over, if any.
+   *
+   * Bedrock's grass-family blocks ship the tinted overlay alone — `grass_side`
+   * is opaque for its top 60% and empty below — and rely on the engine to lay
+   * it over the block's base texture. The block's own `down` face is that base
+   * (grass, mycelium and podzol all sit on `dirt`).
+   *
+   * The guard is deliberately tight: only tinted faces qualify, and only when
+   * the base is a genuinely different texture. Without that second test a vine,
+   * which is tinted and cut out on every face including `down`, would be
+   * composited over itself and lose its transparency.
+   *
+   * @param data The embedded payload.
+   * @param setId Texture set of the face being planned.
+   * @returns The base texture set, or `undefined` to leave the face alone.
+   */
+  #underlayFor(data: IPreviewData, setId: string): ITextureSet | undefined {
+    const baseId = data.faces.down;
+
+    if (baseId === null || baseId === setId) return undefined;
+
+    return data.sets[baseId];
+  }
+
+  /**
    * Resolve the current selection into a face plan: one entry per distinct
    * texture set, listing the box face indices it covers.
    */
@@ -172,12 +197,15 @@ export class JgBlockPreview extends HTMLElement {
       const varietyId = selected[setId];
       const variety = varietyId === undefined ? undefined : data.varieties[varietyId];
 
+      const tint = variety ? null : tintBySet.get(setId) ?? null;
+
       return [{
         set: applyVariety(base, variety),
         faces: bySet.get(setId) ?? [],
         // A chosen variety brings its own colour, so a biome tint that suited
         // the pack default would wrongly recolour it.
-        tint: variety ? null : tintBySet.get(setId) ?? null,
+        tint,
+        underlay: tint === null ? undefined : this.#underlayFor(data, setId),
       }];
     });
   }
