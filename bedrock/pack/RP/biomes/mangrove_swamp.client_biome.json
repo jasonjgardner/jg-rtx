@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "mangrove_swamp"
+      "identifier": "minecraft:mangrove_swamp"
     },
     "components": {
       "minecraft:lighting_identifier": {

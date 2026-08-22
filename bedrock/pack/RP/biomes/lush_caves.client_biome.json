@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "lush_caves"
+      "identifier": "minecraft:lush_caves"
     },
     "components": {
       "minecraft:lighting_identifier": {

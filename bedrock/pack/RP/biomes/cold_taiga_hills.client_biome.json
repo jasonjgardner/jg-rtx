@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "cold_taiga_hills"
+      "identifier": "minecraft:cold_taiga_hills"
     },
     "components": {
       "minecraft:lighting_identifier": {

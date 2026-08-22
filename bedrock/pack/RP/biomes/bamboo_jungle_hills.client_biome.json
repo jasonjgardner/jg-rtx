@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "bamboo_jungle_hills"
+      "identifier": "minecraft:bamboo_jungle_hills"
     },
     "components": {
       "minecraft:lighting_identifier": {

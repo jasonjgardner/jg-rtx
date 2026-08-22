@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "JG RTX Resource Pack Installer for Minecraft Bedrock and Java Edition",
   "type": "module",
+  "workspaces": [
+    "src/scripts"
+  ],
   "bin": {
     "jg-rtx": "./src/npx/index.mjs"
   },

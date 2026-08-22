@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "extreme_hills_plus_trees"
+      "identifier": "minecraft:extreme_hills_plus_trees"
     },
     "components": {
       "minecraft:lighting_identifier": {

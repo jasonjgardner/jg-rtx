@@ -2,7 +2,7 @@
   "format_version": "1.21.70",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "warped_forest"
+      "identifier": "minecraft:warped_forest"
     },
     "components": {
       "minecraft:fog_appearance": {

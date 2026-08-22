@@ -2,7 +2,7 @@
   "format_version": "1.21.70",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "the_end"
+      "identifier": "minecraft:the_end"
     },
     "components": {
       "minecraft:sky_color": {

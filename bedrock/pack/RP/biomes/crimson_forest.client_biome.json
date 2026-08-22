@@ -2,7 +2,7 @@
   "format_version": "1.21.70",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "crimson_forest"
+      "identifier": "minecraft:crimson_forest"
     },
     "components": {
       "minecraft:fog_appearance": {

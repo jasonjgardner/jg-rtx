@@ -2,7 +2,7 @@
   "format_version": "1.21.130",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "flower_forest"
+      "identifier": "minecraft:flower_forest"
     },
     "components": {
       "minecraft:lighting_identifier": {
