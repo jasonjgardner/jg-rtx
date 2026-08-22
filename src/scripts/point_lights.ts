@@ -1,0 +1,2 @@
+// Iterate through all blocks to extract the primary emissive color and convert it into a list of point lights
+// To get the emissive color, extract the emissive level channel from the _mer file and use it as a mask to extract the primary emissive color from the base color texture
