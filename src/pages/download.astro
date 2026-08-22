@@ -1,0 +1,197 @@
+---
+/**
+ * Pack builder.
+ *
+ * The whole build runs in the browser: a worker pool pulls every file from
+ * jsDelivr, rescales what needs rescaling, and `client-zip` streams the result
+ * to disk. Nothing is uploaded and no server is involved.
+ */
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import inventory from "../data/pack-files.json";
+import meta from "../data/meta.json";
+import { RESIZE_STEPS, formatBytes } from "../lib/resize";
+
+const sets = (await getCollection("sets")).map((entry) => entry.data);
+const varieties = (await getCollection("varieties")).map((entry) => entry.data);
+
+const payload = JSON.stringify({ inventory, sets, varieties });
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout title="Download" description="Build a customized JG RTX resource pack in your browser.">
+  <h1>Build a pack</h1>
+  <p class="muted">
+    Every file is fetched from the CDN and zipped locally — nothing is uploaded.
+    A full-resolution build is {formatBytes(meta.packBytes)} across
+    {meta.packFileCount} files, so pick a smaller resolution unless you want the
+    complete pack.
+  </p>
+
+  <jg-download-panel data-state="idle">
+    <script type="application/json" set:html={payload} />
+
+    <div class="card options">
+      <label class="field">
+        <span>Pack name</span>
+        <input id="pack-name" type="text" value="JG RTX (Custom)" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Resolution for all textures</span>
+        <select id="resolution">
+          <option value="">Native (256px)</option>
+          {RESIZE_STEPS.filter((size) => size < 256).map((size) => (
+            <option value={size}>{size}px</option>
+          ))}
+        </select>
+      </label>
+
+      <p id="changes" class="muted"></p>
+
+      <dl class="stats">
+        <div>
+          <dt>Estimated size</dt>
+          <dd id="estimate">—</dd>
+        </div>
+        <div>
+          <dt>Files</dt>
+          <dd id="file-count">—</dd>
+        </div>
+      </dl>
+
+      <p id="warning" class="warning" hidden>
+        This build is large. It will take a while and transfer several hundred
+        megabytes. Choosing 64px or 32px shrinks it dramatically.
+      </p>
+
+      <div class="actions">
+        <button id="build" type="button">Build pack</button>
+        <button id="cancel" type="button" hidden>Cancel</button>
+      </div>
+
+      <p id="message" class="message" hidden></p>
+    </div>
+
+    <div id="progress-panel" class="card progress-panel" hidden>
+      <progress id="progress" value="0" max="1"></progress>
+      <p id="status" class="muted"></p>
+      <p id="current" class="muted current"></p>
+      <p id="failures" class="warning" hidden></p>
+    </div>
+  </jg-download-panel>
+
+  <h2>Prebuilt packs</h2>
+  <p class="muted">
+    If you do not need customizations, the published releases are already built
+    at every resolution and download far faster than a browser build.
+  </p>
+  <p>
+    <a href="https://github.com/jasonjgardner/jg-rtx/releases/latest" rel="noopener">
+      JG RTX releases on GitHub →
+    </a>
+  </p>
+
+  <h2>Installing</h2>
+  <ol class="muted">
+    <li>Open the downloaded <code>.mcpack</code> — Minecraft imports it automatically.</li>
+    <li>In a world's settings, add the pack under <strong>Resource Packs</strong>.</li>
+    <li>
+      The pack is given fresh identifiers on every build, so a customized pack
+      sits alongside the published one rather than replacing it.
+    </li>
+  </ol>
+
+  <p class="muted"><a href={`${base}/blocks`}>← Customize more blocks</a></p>
+</Layout>
+
+<style>
+  .options {
+    display: grid;
+    gap: 0.875rem;
+    margin-block: 1rem;
+    max-inline-size: 34rem;
+  }
+
+  .field {
+    display: grid;
+    font-size: 0.875rem;
+    gap: 0.25rem;
+  }
+
+  .field input {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: inherit;
+    font: inherit;
+    padding-block: 0.375rem;
+    padding-inline: 0.625rem;
+  }
+
+  .stats {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+  }
+
+  .stats dt {
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .stats dd {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .warning {
+    background-color: color-mix(in oklab, orange 18%, transparent);
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    margin: 0;
+    padding: 0.5rem 0.625rem;
+  }
+
+  .message {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .message[data-tone="ok"] {
+    color: light-dark(#1a7f37, #6fdc8c);
+  }
+
+  .message[data-tone="error"] {
+    color: light-dark(#a33, #f88);
+  }
+
+  .progress-panel {
+    display: grid;
+    gap: 0.5rem;
+    max-inline-size: 34rem;
+  }
+
+  .progress-panel progress {
+    inline-size: 100%;
+  }
+
+  .current {
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  import "../elements/jg-download-panel";
+</script>

@@ -1,0 +1,61 @@
+---
+/**
+ * Base document shell.
+ *
+ * Every page renders as static HTML; interactivity is added by custom elements
+ * that hydrate themselves, so no framework runtime is shipped.
+ */
+import "../styles/global.css";
+import meta from "../data/meta.json";
+
+interface Props {
+  /** Page title, shown before the site name. */
+  title: string;
+  /** Meta description for the page. */
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+/** Join the configured base path with a route, avoiding a doubled slash. */
+const href = (path: string): string => `${base.replace(/\/$/, "")}${path}`;
+
+const generated = new Date(meta.generatedAt).toISOString().slice(0, 10);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · JG RTX</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" href={href("/favicon.svg")} type="image/svg+xml" />
+    <!-- Warm the CDN connection: every preview and the pack build stream from it. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  </head>
+  <body>
+    <header class="site-header">
+      <strong><a href={href("/")}>JG RTX</a></strong>
+      <nav>
+        <a href={href("/blocks")}>Blocks</a>
+        <a href={href("/download")}>Download</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <slot />
+    </main>
+
+    <footer class="site-footer shell">
+      <p>
+        Catalog generated {generated} from
+        <code>jasonjgardner/jg-rtx@{meta.packRef}</code> and
+        <code>Mojang/bedrock-samples@{meta.vanillaRef}</code>.
+        {meta.counts.blocks} blocks, {meta.counts.sets} texture sets,
+        {meta.counts.varieties} varieties.
+      </p>
+    </footer>
+  </body>
+</html>

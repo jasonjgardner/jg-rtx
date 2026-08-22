@@ -1,0 +1,178 @@
+---
+/**
+ * Block preview and customization page.
+ *
+ * One slug per block, even when its faces differ. `groupFaces` collapses the
+ * six faces into the distinct texture sets behind them, so a log renders as
+ * "Top & bottom" and "Sides" rather than six rows, and each group carries its
+ * own variety picker and resolution control.
+ */
+import Layout from "../../layouts/Layout.astro";
+import FaceGroup from "../../components/FaceGroup.astro";
+import { getCollection } from "astro:content";
+import { getSetsById, getVarietiesBySet, groupFaces } from "../../lib/catalog";
+import type { ITextureSet, IVariety } from "../../lib/types";
+
+export async function getStaticPaths() {
+  const blocks = await getCollection("blocks");
+
+  return blocks.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { block: entry.data },
+  }));
+}
+
+const { block } = Astro.props;
+
+const sets = await getSetsById();
+const varietiesBySet = await getVarietiesBySet();
+const groups = groupFaces(block.faces);
+
+/** Sets and varieties this page needs, embedded for the 3D preview. */
+const usedSets = Object.fromEntries(
+  block.sets
+    .map((setId) => [setId, sets.get(setId)] as const)
+    .filter((entry): entry is readonly [string, ITextureSet] => entry[1] !== undefined),
+);
+
+const usedVarieties = Object.fromEntries(
+  block.sets
+    .flatMap((setId) => varietiesBySet.get(setId) ?? [])
+    .map((variety) => [variety.id, variety] as const),
+) as Record<string, IVariety>;
+
+const payload = JSON.stringify({
+  faces: block.faces,
+  tints: block.tints,
+  sets: usedSets,
+  varieties: usedVarieties,
+});
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const varietyCount = Object.keys(usedVarieties).length;
+---
+
+<Layout title={block.name} description={`Preview and customize ${block.name} in the JG RTX resource pack.`}>
+  <p class="crumbs"><a href={`${base}/blocks`}>← All blocks</a></p>
+
+  <header class="head">
+    <h1>{block.name}</h1>
+    <p class="muted">
+      <code>{block.id}</code>
+      {block.sound && <> · sound <code>{block.sound}</code></>}
+      {block.coverage === "vanilla" && <> · <span class="tag">vanilla textures</span></>}
+      {block.coverage === "mixed" && <> · <span class="tag">partially covered</span></>}
+    </p>
+  </header>
+
+  <div class="split">
+    <jg-block-preview>
+      <script type="application/json" set:html={payload} />
+    </jg-block-preview>
+
+    <div class="summary card">
+      <h2>Faces</h2>
+      <dl class="faces">
+        {groups.map((group) => (
+          <>
+            <dt>{group.label}</dt>
+            <dd><code>{group.setId.replace("textures/blocks/", "")}</code></dd>
+          </>
+        ))}
+      </dl>
+      {varietyCount > 0 && (
+        <p class="muted">
+          {varietyCount} {varietyCount === 1 ? "variety" : "varieties"} available below.
+        </p>
+      )}
+    </div>
+  </div>
+
+  <h2>Textures</h2>
+  {groups.map((group) => (
+    <FaceGroup
+      group={group}
+      set={sets.get(group.setId)}
+      varieties={varietiesBySet.get(group.setId) ?? []}
+    />
+  ))}
+</Layout>
+
+<style>
+  .crumbs {
+    margin-block-end: 0.5rem;
+  }
+
+  .head {
+    margin-block-end: 1rem;
+  }
+
+  .split {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 1fr;
+    margin-block-end: 2rem;
+  }
+
+  /* A viewport query rather than a container query: `.split` is the page's own
+     top-level grid, so there is no containment context above it to query. */
+  @media (min-width: 48rem) {
+    .split {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+  }
+
+  jg-block-preview {
+    background-color: light-dark(#eaeaee, #17171b);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: block;
+    overflow: hidden;
+    position: relative;
+  }
+
+  jg-block-preview :global(.jg-block-preview__stage) {
+    aspect-ratio: 4 / 3;
+    inline-size: 100%;
+    max-block-size: 60svh;
+  }
+
+  jg-block-preview[data-state="loading"]::after {
+    color: var(--muted);
+    content: "Loading preview…";
+    font-size: 0.8125rem;
+    inset-block-end: 0.5rem;
+    inset-inline-start: 0.75rem;
+    position: absolute;
+  }
+
+  jg-block-preview[data-state="error"]::after {
+    color: var(--muted);
+    content: "3D preview unavailable";
+    font-size: 0.8125rem;
+    inset-block-end: 0.5rem;
+    inset-inline-start: 0.75rem;
+    position: absolute;
+  }
+
+  .faces {
+    display: grid;
+    gap: 0.25rem 0.75rem;
+    grid-template-columns: auto 1fr;
+    margin: 0;
+  }
+
+  .faces dt {
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+
+  .faces dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+</style>
+
+<script>
+  import "../../elements/jg-block-preview";
+</script>

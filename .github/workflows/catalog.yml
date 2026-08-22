@@ -1,0 +1,93 @@
+name: Refresh catalog
+
+# Regenerates `src/data/*.json` from the pack and commits it to the `pages`
+# branch, which then triggers a deploy.
+#
+# This is separate from the deploy because it is the expensive half: it needs a
+# real checkout of `bedrock/` from `main` (~550 MB) to read every texture's
+# dimensions and byte size. Deploys read the committed result instead, so only
+# this workflow pays that cost.
+
+on:
+  # Run from the Actions tab after changing textures on `main`.
+  workflow_dispatch:
+    inputs:
+      vanilla:
+        description: >-
+          Also check out Mojang/bedrock-samples for exact vanilla dimensions and
+          flipbook data. Slower; without it the GitHub trees API is used.
+        type: boolean
+        default: false
+  schedule:
+    # Weekly, so upstream vanilla changes are picked up without intervention.
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalog
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site (pages branch)
+        uses: actions/checkout@v4
+        with:
+          ref: pages
+
+      - name: Check out the pack (main branch)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: .jg-rtx
+          # Only the pack and variety trees are read; the rest of the repo
+          # (mineways.zip alone is 240 MB) is not needed.
+          sparse-checkout: |
+            bedrock/pack/RP
+            bedrock/variety
+          sparse-checkout-cone-mode: true
+
+      - name: Check out vanilla samples
+        if: ${{ inputs.vanilla }}
+        uses: actions/checkout@v4
+        with:
+          repository: Mojang/bedrock-samples
+          ref: main
+          path: .bedrock-samples
+          sparse-checkout: resource_pack
+          sparse-checkout-cone-mode: true
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+
+      - name: Generate catalog
+        run: |
+          if [ "${{ inputs.vanilla }}" = "true" ]; then
+            bun run scripts/generate-catalog.ts --src .jg-rtx --vanilla .bedrock-samples
+          else
+            bun run scripts/generate-catalog.ts --src .jg-rtx
+          fi
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # `generatedAt` changes every run, so compare everything else first to
+          # avoid a commit (and a deploy) on every schedule tick.
+          if git diff --quiet -- src/data/blocks.json src/data/sets.json \
+               src/data/varieties.json src/data/pack-files.json; then
+            echo "Catalog content unchanged; skipping commit."
+            git checkout -- src/data/meta.json || true
+            exit 0
+          fi
+
+          git add src/data
+          git commit -m "chore(catalog): refresh from pack"
+          git push origin pages

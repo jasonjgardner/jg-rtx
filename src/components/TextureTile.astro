@@ -1,0 +1,37 @@
+---
+/**
+ * Renders a `<jg-texture-tile>` for one texture file.
+ *
+ * The custom element handles TGA decoding, flipbook animation and lazy loading;
+ * this component's job is only to turn catalog data into its attributes.
+ */
+import { fileUrl } from "../lib/cdn";
+import type { IFlipbook, ITextureFile, TextureOrigin } from "../lib/types";
+
+interface Props {
+  /** File to preview. */
+  texture: ITextureFile;
+  /** Repository serving the file. */
+  origin?: TextureOrigin;
+  /** Animation metadata, when the texture is a flipbook strip. */
+  flipbook?: IFlipbook | undefined;
+  /** Accessible label. */
+  label: string;
+}
+
+const { texture, origin = "jg", flipbook, label } = Astro.props;
+---
+
+<jg-texture-tile
+  src={fileUrl(texture, origin)}
+  ext={texture.ext}
+  width={texture.width}
+  height={texture.height}
+  frames={flipbook?.frames ?? 1}
+  ticks={flipbook?.ticksPerFrame ?? 1}
+  label={label}
+></jg-texture-tile>
+
+<script>
+  import "../elements/jg-texture-tile";
+</script>

@@ -1,0 +1,31 @@
+{
+  "name": "jg-rtx-github-pages",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "catalog": "bun run scripts/generate-catalog.ts"
+  },
+  "dependencies": {
+    "astro": "^7.2.4",
+    "client-zip": "^2.5.0",
+    "targadactyl": "^2.2.0",
+    "three": "^0.185.1",
+    "three-custom-shader-material": "^6.4.0",
+    "threejs-minecraft-bedrock-rtx-loader": "^0.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/bun": "^1.4.0",
+    "@types/three": "^0.185.0",
+    "typescript": "^6"
+  }
+}

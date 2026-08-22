@@ -1,0 +1,76 @@
+---
+/**
+ * Landing page. Orients the visitor and links into the two real workflows:
+ * browsing blocks, and building a pack.
+ */
+import Layout from "../layouts/Layout.astro";
+import meta from "../data/meta.json";
+import { formatBytes } from "../lib/resize";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout
+  title="Customize"
+  description="Preview, customize and download the JG RTX resource pack for Minecraft Bedrock."
+>
+  <h1>JG RTX</h1>
+  <p>
+    An HD PBR resource pack for Minecraft Bedrock. Preview any block, swap in
+    texture varieties, choose a resolution, and build a pack in your browser.
+  </p>
+
+  <div class="tiles">
+    <a class="card tile" href={`${base}/blocks`}>
+      <h2>Browse blocks</h2>
+      <p class="muted">
+        {meta.counts.blocks} blocks with per-face previews. Logs, pillars and
+        grass show each face separately while sharing one page.
+      </p>
+    </a>
+
+    <a class="card tile" href={`${base}/download`}>
+      <h2>Build a pack</h2>
+      <p class="muted">
+        {meta.packFileCount} files, {formatBytes(meta.packBytes)} at full
+        resolution. Downscale to 128×, 64×, 32× or 16× to shrink it.
+      </p>
+    </a>
+  </div>
+
+  <h2>How resizing works</h2>
+  <p class="muted">
+    Textures are authored at 256px. Choosing a smaller size scales both axes by
+    the same factor, so animated textures keep their frames — a 256×8192
+    flipbook becomes 64×2048 at 64×, not a squashed square.
+  </p>
+
+  <h2>Where textures come from</h2>
+  <p class="muted">
+    Previews stream from jsDelivr. Blocks JG RTX overrides are served from the
+    pack itself; anything it does not override falls back to Mojang's vanilla
+    sample pack, so every block has something to show.
+  </p>
+</Layout>
+
+<style>
+  .tiles {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    margin-block: 1.5rem;
+  }
+
+  .tile {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .tile:hover {
+    border-color: var(--accent);
+  }
+
+  .tile h2 {
+    font-size: 1.125rem;
+  }
+</style>

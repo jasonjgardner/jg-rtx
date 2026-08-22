@@ -1,0 +1,116 @@
+---
+/**
+ * Block index — every block that resolves to at least one texture.
+ *
+ * The list is rendered statically and filtered client-side. With ~1200 entries
+ * that stays fast, and every tile lazy-loads its texture, so the CDN is only
+ * hit for what actually scrolls into view.
+ */
+import Layout from "../../layouts/Layout.astro";
+import BlockCard from "../../components/BlockCard.astro";
+import { getSetsById } from "../../lib/catalog";
+import { getCollection } from "astro:content";
+
+const blocks = (await getCollection("blocks")).map((entry) => entry.data);
+const sets = await getSetsById();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout title="Blocks" description="Browse every block in the JG RTX resource pack.">
+  <h1>Blocks</h1>
+  <p class="muted">
+    {blocks.length} blocks. Pick one to preview its faces, swap in a variety, or
+    set its resolution.
+  </p>
+
+  <div class="filters">
+    <label>
+      <span class="visually-hidden">Filter blocks by name</span>
+      <input id="filter" type="search" placeholder="Filter by name…" autocomplete="off" />
+    </label>
+    <label>
+      <span class="visually-hidden">Filter by coverage</span>
+      <select id="coverage">
+        <option value="">All blocks</option>
+        <option value="jg">JG RTX textures</option>
+        <option value="mixed">Partially covered</option>
+        <option value="vanilla">Vanilla only</option>
+      </select>
+    </label>
+    <output id="count" class="muted"></output>
+  </div>
+
+  <div class="grid" id="results">
+    {blocks.map((block) => (
+      <BlockCard
+        block={block}
+        set={sets.get(block.sets[0] ?? "")}
+        href={`${base}/blocks/${block.slug}`}
+      />
+    ))}
+  </div>
+
+  <p id="empty" class="muted" hidden>No blocks match that filter.</p>
+</Layout>
+
+<style>
+  .filters {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block: 1rem;
+  }
+
+  input[type="search"] {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: inherit;
+    font: inherit;
+    min-inline-size: 14rem;
+    padding-block: 0.375rem;
+    padding-inline: 0.625rem;
+  }
+</style>
+
+<script>
+  /**
+   * Client-side filtering over the statically rendered grid.
+   *
+   * Cards carry `data-name` and `data-coverage`, so filtering is a class toggle
+   * with no re-render and no data refetch.
+   */
+  const filter = document.querySelector<HTMLInputElement>("#filter");
+  const coverage = document.querySelector<HTMLSelectElement>("#coverage");
+  const results = document.querySelector<HTMLElement>("#results");
+  const count = document.querySelector<HTMLOutputElement>("#count");
+  const empty = document.querySelector<HTMLElement>("#empty");
+
+  const cards = [...(results?.querySelectorAll<HTMLElement>(".block-card") ?? [])];
+
+  /** Apply both filters and update the result count. */
+  const apply = (): void => {
+    const term = (filter?.value ?? "").trim().toLowerCase();
+    const wanted = coverage?.value ?? "";
+
+    const visible = cards.reduce((shown, card) => {
+      const name = card.dataset.name ?? "";
+      const matchesTerm = term.length === 0 || name.includes(term);
+      const matchesCoverage = wanted.length === 0 || card.dataset.coverage === wanted;
+      const show = matchesTerm && matchesCoverage;
+
+      card.hidden = !show;
+
+      return shown + (show ? 1 : 0);
+    }, 0);
+
+    if (count) count.textContent = `${visible} of ${cards.length}`;
+    if (empty) empty.hidden = visible > 0;
+  };
+
+  filter?.addEventListener("input", apply);
+  coverage?.addEventListener("change", apply);
+  apply();
+</script>
