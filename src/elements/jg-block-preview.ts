@@ -20,7 +20,13 @@ import {
 import { isBlockShape, type BlockShapeId } from "../lib/blockShapes";
 import type { ColormapId } from "../lib/colormap";
 import { getState, subscribe } from "../stores/customization";
-import { BLOCK_FACES, type BlockFace, type ITextureSet, type IVariety } from "../lib/types";
+import {
+  BLOCK_FACES,
+  type BlockFace,
+  type ITextureSet,
+  type ITextureVersion,
+  type IVariety,
+} from "../lib/types";
 
 /** The payload embedded by the block page. */
 interface IPreviewData {
@@ -32,6 +38,8 @@ interface IPreviewData {
   readonly shape: BlockShapeId;
   /** Biome colormap that tints this block, when one applies. */
   readonly colormap?: ColormapId;
+  /** Previous designs per texture-set id, newest first. */
+  readonly history?: Readonly<Record<string, readonly ITextureVersion[]>>;
 }
 
 /**
@@ -197,7 +205,7 @@ export class JgBlockPreview extends HTMLElement {
    * texture set, listing the block faces it covers.
    */
   #plan(data: IPreviewData): IFacePlan[] {
-    const { varieties: selected } = getState();
+    const { varieties: selected, versions: selectedVersions } = getState();
     const order: string[] = [];
     const bySet = new Map<string, BlockFace[]>();
     const tintBySet = new Map<string, string | null>();
@@ -227,9 +235,17 @@ export class JgBlockPreview extends HTMLElement {
 
       const tint = variety ? null : tintBySet.get(setId) ?? null;
 
+      // A variety replaces the texture outright, so a historical revision of
+      // the pack's own design no longer applies to it.
+      const commit = variety ? undefined : selectedVersions[setId];
+      const version = commit === undefined
+        ? undefined
+        : data.history?.[setId]?.find((entry) => entry.commit === commit);
+
       return [{
         set: applyVariety(base, variety),
         faces: bySet.get(setId) ?? [],
+        version,
         // A chosen variety brings its own colour, so a biome tint that suited
         // the pack default would wrongly recolour it.
         tint,

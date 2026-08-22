@@ -157,6 +157,30 @@ export interface IVariety {
   readonly heightmap?: ITextureFile;
 }
 
+/**
+ * One previous design of a texture, taken from the pack's git history.
+ *
+ * Identified by the commit that *introduced* the image. Revisions are deduped
+ * by blob hash, so a commit that merely moved a file is not offered as a
+ * separate design.
+ */
+export interface ITextureVersion {
+  /** Full commit SHA — jsDelivr serves any path at any commit. */
+  readonly commit: string;
+  /** Abbreviated SHA, for display. */
+  readonly short: string;
+  /** Commit timestamp, Unix seconds. */
+  readonly date: number;
+  /** Commit subject line. */
+  readonly subject: string;
+  /**
+   * Path of the colour map *at that commit*. The 2022 reorganization moved
+   * textures from `bedrock/RP/` to `bedrock/pack/RP/`, so this cannot be
+   * derived from the current path.
+   */
+  readonly path: string;
+}
+
 /** Everything the site needs, emitted as one file per top-level key. */
 export interface ICatalog {
   readonly blocks: readonly IBlockEntry[];

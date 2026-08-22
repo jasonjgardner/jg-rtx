@@ -27,6 +27,12 @@ export interface ICustomizationState {
   readonly sizes: Readonly<Record<string, number>>;
   /** Per-texture-set variety selections, keyed by set id. */
   readonly varieties: Readonly<Record<string, string>>;
+  /**
+   * Per-texture-set historical revisions, keyed by set id, valued by the full
+   * commit SHA. Only the commit is stored; the revision's path is looked up
+   * from the catalog, so localStorage stays small.
+   */
+  readonly versions: Readonly<Record<string, string>>;
 }
 
 /** The empty selection. */
@@ -34,6 +40,7 @@ const EMPTY: ICustomizationState = {
   globalSize: null,
   sizes: {},
   varieties: {},
+  versions: {},
 };
 
 /**
@@ -59,7 +66,13 @@ const coerce = (value: unknown): ICustomizationState => {
     ),
   );
 
-  return { globalSize, sizes, varieties };
+  const versions = Object.fromEntries(
+    Object.entries(raw.versions ?? {}).filter(
+      (entry): entry is [string, string] => typeof entry[1] === "string",
+    ),
+  );
+
+  return { globalSize, sizes, varieties, versions };
 };
 
 /** Read persisted state. Returns the empty selection during SSR. */
@@ -149,6 +162,21 @@ export const setVariety = (setId: string, varietyId: string | null): void => {
   });
 };
 
+/**
+ * Select a historical revision for one texture set.
+ *
+ * @param setId Texture set id.
+ * @param sha Full commit SHA, or `null` to restore the current design.
+ */
+export const setVersion = (setId: string, sha: string | null): void => {
+  const { [setId]: _removed, ...rest } = state.versions;
+
+  commit({
+    ...state,
+    versions: sha === null ? rest : { ...rest, [setId]: sha },
+  });
+};
+
 /** Clear every customization. */
 export const reset = (): void => commit(EMPTY);
 
@@ -172,4 +200,5 @@ export const effectiveSize = (
 export const changeCount = (next: ICustomizationState = state): number =>
   Object.keys(next.sizes).length +
   Object.keys(next.varieties).length +
+  Object.keys(next.versions).length +
   (next.globalSize === null ? 0 : 1);

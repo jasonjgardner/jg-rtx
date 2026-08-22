@@ -10,7 +10,8 @@
 import TextureTile from "./TextureTile.astro";
 import { resizeOptionsFor } from "../lib/resize";
 import type { IFaceGroup } from "../lib/catalog";
-import type { ITextureSet, IVariety, TextureRole } from "../lib/types";
+import type { ITextureSet, ITextureVersion, IVariety, TextureRole } from "../lib/types";
+import { commitUrl } from "../lib/cdn";
 
 interface Props {
   /** The faces sharing this texture set. */
@@ -19,9 +20,15 @@ interface Props {
   set: ITextureSet | undefined;
   /** Varieties that can replace it. */
   varieties: IVariety[];
+  /** Previous designs of this texture, newest first. */
+  versions?: ITextureVersion[];
 }
 
-const { group, set, varieties } = Astro.props;
+const { group, set, varieties, versions = [] } = Astro.props;
+
+/** Format a commit timestamp as a plain date. */
+const asDate = (seconds: number): string =>
+  new Date(seconds * 1000).toISOString().slice(0, 10);
 
 /** PBR maps to show alongside the colour map, in a fixed order. */
 const ROLES: readonly { role: TextureRole; label: string }[] = [
@@ -93,6 +100,46 @@ const nativeWidth = set?.color.width ?? 0;
           <span class="muted note">Already at the smallest offered size.</span>
         )}
       </div>
+
+      {versions.length > 0 && (
+        <jg-version-picker set-id={group.setId}>
+          <fieldset class="face-group__versions">
+            <legend>Design history</legend>
+            <label class="variety">
+              <input type="radio" name={`version:${group.setId}`} value="" checked />
+              <span class="variety__swatch">
+                <TextureTile
+                  texture={set.color}
+                  origin={set.origin}
+                  flipbook={set.flipbook}
+                  label={`${shortName} current design`}
+                />
+              </span>
+              <span class="version__meta">
+                <strong>Current</strong>
+                <span class="muted">on <code>main</code></span>
+              </span>
+            </label>
+            {versions.map((version) => (
+              <label class="variety">
+                <input type="radio" name={`version:${group.setId}`} value={version.commit} />
+                <span class="variety__swatch">
+                  <jg-texture-tile
+                    src={commitUrl(version.path, version.commit)}
+                    ext={version.path.endsWith(".tga") ? "tga" : "png"}
+                    label={`${shortName} as of ${version.short}`}
+                  ></jg-texture-tile>
+                </span>
+                <span class="version__meta">
+                  <strong>{asDate(version.date)}</strong>
+                  <span class="muted" title={version.subject}>{version.subject}</span>
+                  <code class="muted">{version.short}</code>
+                </span>
+              </label>
+            ))}
+          </fieldset>
+        </jg-version-picker>
+      )}
 
       {varieties.length > 0 && (
         <jg-variety-picker set-id={group.setId}>
@@ -177,6 +224,33 @@ const nativeWidth = set?.color.width ?? 0;
     font-size: 0.8125rem;
   }
 
+  .face-group__versions {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    margin-block-start: 0.875rem;
+  }
+
+  .face-group__versions legend {
+    font-size: 0.8125rem;
+    padding-inline: 0.375rem;
+  }
+
+  .version__meta {
+    display: grid;
+    font-size: 0.75rem;
+    gap: 0.0625rem;
+    min-inline-size: 0;
+  }
+
+  .version__meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .face-group__varieties {
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -213,4 +287,6 @@ const nativeWidth = set?.color.width ?? 0;
 <script>
   import "../elements/jg-resize-control";
   import "../elements/jg-variety-picker";
+  import "../elements/jg-version-picker";
+  import "../elements/jg-texture-tile";
 </script>

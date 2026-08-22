@@ -19,6 +19,8 @@ entirely in the browser against textures served from jsDelivr.
 - **Bedrock alpha modes** derived per texture: opaque, cutout, or blend.
 - **Texture varieties** can be swapped in per texture set and are reflected
   live in the preview.
+- **Design history** — every previous version of a texture from the pack's git
+  history, selectable in place of the current one.
 - **Power-of-two resizing**, globally or per texture.
 - **In-browser pack builds** that stream a `.mcpack` straight to disk.
 
@@ -50,7 +52,7 @@ checkout to read exact vanilla dimensions instead of the API listing.
 | `bun run dev` | Dev server (backgrounds itself; `astro dev stop` to halt) |
 | `bun run build` | Production build to `dist/` |
 | `bun run check` | Type check (needs TypeScript 6.x — see below) |
-| `bun test` | Run the geometry tests |
+| `bun test` | Run the geometry, shape-rule and history tests |
 
 ## How it fits together
 
@@ -136,6 +138,32 @@ is visible in `src/data/blocks.json` and the rules are testable. Ordering in
 matched before the `_slab` rule, and `_wall$` deliberately misses
 `oak_wall_sign`. Plants are an explicit list because their names share no
 common ending. The preview offers a picker to override the guess.
+
+## Design history
+
+Each block texture lists its previous designs, taken from the pack's git log,
+and any of them can be selected instead of the current one — in the preview and
+in a generated pack. Old files are fetched from jsDelivr by commit SHA, which
+serves any path at any commit.
+
+Two details make the data trustworthy:
+
+- **Revisions are deduped by blob hash, not by commit.** `brick.png` appears in
+  five commits, but two share a blob because the 2022 "Repo reorganization" was
+  a pure move. Brick has three previous designs, not four, and the commit kept
+  for each is the one that *introduced* the image.
+- **Each revision stores its own path.** That same reorganization moved block
+  textures from `bedrock/RP/` to `bedrock/pack/RP/`, so a 2022 revision cannot
+  be fetched at today's path.
+
+Only the colour map is substituted in a pack build. The preview also tries the
+revision's PBR companions and falls back to today's files, which is safe there
+because a 404 is recoverable — `_mers` maps did not exist before 2022.
+
+**History is not regenerated in CI.** The pack's git history is ~10 GB, so the
+catalog workflow checks out shallow; the generator detects that and preserves
+the committed `history.json` rather than emitting an empty one. Refresh it from
+a full local clone.
 
 ## Deployment
 

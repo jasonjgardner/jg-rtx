@@ -99,4 +99,24 @@ const varieties = defineCollection({
   }),
 });
 
-export const collections = { blocks, sets, varieties };
+/**
+ * Previous designs of a texture, from the pack's git history. Present only for
+ * JG RTX's own textures; vanilla fallbacks live in another repository.
+ */
+const history = defineCollection({
+  loader: file("src/data/history.json"),
+  schema: z.object({
+    id: z.string(),
+    versions: z.array(
+      z.object({
+        commit: z.string().length(40),
+        short: z.string(),
+        date: z.number().int().positive(),
+        subject: z.string(),
+        path: z.string(),
+      }),
+    ),
+  }),
+});
+
+export const collections = { blocks, sets, varieties, history };

@@ -32,9 +32,12 @@ import {
   compositeBitmaps,
   isGreyscale,
   loadBitmap,
+  loadFirstBitmap,
   tintBitmap,
   type AlphaMode,
 } from "./decode";
+import { versionUrls } from "./versions";
+import type { ITextureVersion } from "./types";
 import { colormapTint, type ColormapId } from "./colormap";
 import type { BlockFace, IFlipbook, ITextureFile, ITextureSet } from "./types";
 import { buildShapeGeometry } from "./blockGeometry";
@@ -72,6 +75,12 @@ export interface IFacePlan {
    * Supplying it is not enough on its own; the overlay test still has to pass.
    */
   readonly underlay?: ITextureSet | undefined;
+  /**
+   * Historical revision to render instead of the current design. Its companion
+   * maps are best-effort: `_mers` did not exist before 2022, so a companion
+   * that 404s falls back to today's file rather than failing the texture.
+   */
+  readonly version?: ITextureVersion | undefined;
 }
 
 /** Camera placement, so a view survives being rebuilt. */
@@ -231,6 +240,7 @@ const applyAlphaMode = (
  * @param tint Biome tint to multiply over the colour map, if any.
  * @param colormap Colormap to fall back to when no explicit tint is declared.
  * @param underlay Texture to composite beneath a tinted cutout overlay.
+ * @param version Historical revision to render instead of the current design.
  * @param signal Abort signal for the fetches.
  * @param animated Collector for textures needing per-frame advancement.
  */
@@ -239,6 +249,7 @@ const buildMaterial = async (
   tint: string | null | undefined,
   colormap: ColormapId | undefined,
   underlay: ITextureSet | undefined,
+  version: ITextureVersion | undefined,
   signal: AbortSignal,
   animated: IAnimated[],
 ): Promise<Awaited<ReturnType<typeof createBedrockMaterial>>> => {
@@ -253,7 +264,14 @@ const buildMaterial = async (
   const loaded = await Promise.all(
     roles.map(async ([role, file]) => {
       // Pre-flipped; see toTexture for why Texture.flipY cannot do this.
-      const decoded = await loadBitmap(fileUrl(file, set.origin), file.ext, signal, true);
+      const decoded = version
+        ? await loadFirstBitmap(
+            versionUrls(set, role, version),
+            file.ext,
+            signal,
+            true,
+          )
+        : await loadBitmap(fileUrl(file, set.origin), file.ext, signal, true);
 
       if (role === "color") alphaMode = classifyAlpha(decoded);
 
@@ -360,6 +378,7 @@ export const mountPreview = async (
         entry.tint,
         entry.colormap,
         entry.underlay,
+        entry.version,
         signal,
         animated,
       )),

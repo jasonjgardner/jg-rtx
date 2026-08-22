@@ -7,7 +7,7 @@
  */
 
 import { getCollection } from "astro:content";
-import type { ITextureSet, IVariety, BlockFace } from "./types";
+import type { ITextureSet, ITextureVersion, IVariety, BlockFace } from "./types";
 
 /** A texture set as stored in the `sets` collection. */
 export type SetRecord = ITextureSet;
@@ -46,6 +46,20 @@ export const getVarietiesBySet = async (): Promise<Map<string, VarietyRecord[]>>
     existing.push(variety);
     return grouped;
   }, new Map<string, VarietyRecord[]>());
+};
+
+/**
+ * Index previous designs by the texture set they belong to.
+ *
+ * @returns Revisions keyed by set id, newest first. Sets with no history are
+ *   absent rather than present-and-empty.
+ */
+export const getHistoryBySet = async (): Promise<Map<string, ITextureVersion[]>> => {
+  const entries = await getCollection("history");
+
+  return new Map(
+    entries.map((entry) => [entry.data.id, entry.data.versions as ITextureVersion[]]),
+  );
 };
 
 /** A group of faces that share one texture set. */

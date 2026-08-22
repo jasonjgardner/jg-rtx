@@ -38,12 +38,15 @@ jobs:
 
       - name: Verify the catalog is present
         run: |
-          for file in blocks sets varieties meta pack-files; do
+          for file in blocks sets varieties meta pack-files history; do
             if [ ! -s "src/data/$file.json" ]; then
               echo "::error::src/data/$file.json is missing or empty. Run the 'Refresh catalog' workflow."
               exit 1
             fi
           done
+
+      - name: Test
+        run: bun test
 
       - name: Type check
         run: bunx astro check

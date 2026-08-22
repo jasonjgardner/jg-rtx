@@ -10,9 +10,9 @@
 import Layout from "../../layouts/Layout.astro";
 import FaceGroup from "../../components/FaceGroup.astro";
 import { getCollection } from "astro:content";
-import { getSetsById, getVarietiesBySet, groupFaces } from "../../lib/catalog";
+import { getHistoryBySet, getSetsById, getVarietiesBySet, groupFaces } from "../../lib/catalog";
 import { BLOCK_SHAPES } from "../../lib/blockShapes";
-import type { ITextureSet, IVariety } from "../../lib/types";
+import type { ITextureSet, ITextureVersion, IVariety } from "../../lib/types";
 
 export async function getStaticPaths() {
   const blocks = await getCollection("blocks");
@@ -27,6 +27,7 @@ const { block } = Astro.props;
 
 const sets = await getSetsById();
 const varietiesBySet = await getVarietiesBySet();
+const historyBySet = await getHistoryBySet();
 const groups = groupFaces(block.faces);
 
 /** Sets and varieties this page needs, embedded for the 3D preview. */
@@ -42,6 +43,14 @@ const usedVarieties = Object.fromEntries(
     .map((variety) => [variety.id, variety] as const),
 ) as Record<string, IVariety>;
 
+/** Only this block's revisions travel to the client, not the whole history. */
+const usedHistory = Object.fromEntries(
+  block.sets
+    .map((setId) => [setId, historyBySet.get(setId)] as const)
+    .filter((entry): entry is readonly [string, ITextureVersion[]] =>
+      entry[1] !== undefined),
+);
+
 const payload = JSON.stringify({
   faces: block.faces,
   tints: block.tints,
@@ -49,6 +58,7 @@ const payload = JSON.stringify({
   colormap: block.colormap,
   sets: usedSets,
   varieties: usedVarieties,
+  history: usedHistory,
 });
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -110,6 +120,7 @@ const varietyCount = Object.keys(usedVarieties).length;
       group={group}
       set={sets.get(group.setId)}
       varieties={varietiesBySet.get(group.setId) ?? []}
+      versions={historyBySet.get(group.setId) ?? []}
     />
   ))}
 </Layout>

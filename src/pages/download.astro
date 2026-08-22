@@ -14,8 +14,9 @@ import { RESIZE_STEPS, formatBytes } from "../lib/resize";
 
 const sets = (await getCollection("sets")).map((entry) => entry.data);
 const varieties = (await getCollection("varieties")).map((entry) => entry.data);
+const history = (await getCollection("history")).map((entry) => entry.data);
 
-const payload = JSON.stringify({ inventory, sets, varieties });
+const payload = JSON.stringify({ inventory, sets, varieties, history });
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---

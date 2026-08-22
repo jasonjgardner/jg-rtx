@@ -368,6 +368,42 @@ export const loadBitmap = async (
 };
 
 /**
+ * Load the first URL that resolves, in order.
+ *
+ * Historical revisions need this: a texture's `_mers` companion did not exist
+ * before the 2022 "Extracted MER channels" commit, so an older revision's
+ * companion URL legitimately 404s and the current file should stand in rather
+ * than the whole texture failing.
+ *
+ * @param urls Candidate URLs, most preferred first.
+ * @param ext Container format.
+ * @param signal Optional abort signal.
+ * @param flipY Pre-flip vertically; see {@link bytesToBitmap}.
+ * @throws If every candidate fails.
+ */
+export const loadFirstBitmap = async (
+  urls: readonly string[],
+  ext: TextureExt,
+  signal?: AbortSignal,
+  flipY = false,
+): Promise<ImageBitmap> => {
+  const failures: string[] = [];
+
+  for (const url of urls) {
+    try {
+      return await loadBitmap(url, ext, signal, flipY);
+    } catch (error) {
+      // An abort is the caller going away, not a missing file; stop trying.
+      if (signal?.aborted) throw error;
+
+      failures.push(url);
+    }
+  }
+
+  throw new Error(`No candidate resolved: ${failures.join(", ")}`);
+};
+
+/**
  * Produce a browser-displayable object URL for any supported container.
  *
  * PNGs pass through untouched. TGAs are decoded and re-encoded as PNG so they

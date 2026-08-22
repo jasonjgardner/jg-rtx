@@ -7,6 +7,14 @@ name: Refresh catalog
 # real checkout of `bedrock/` from `main` (~550 MB) to read every texture's
 # dimensions and byte size. Deploys read the committed result instead, so only
 # this workflow pays that cost.
+#
+# Texture *history* is deliberately not regenerated here. Reading it needs the
+# pack's full git history, which is ~10 GB — more than a runner should pull for
+# a routine refresh. The checkout below is shallow, the generator detects that,
+# and `src/data/history.json` is preserved as committed. Regenerate it locally
+# with a full clone and commit the result:
+#
+#   bun run catalog -- --src "../JG RTX"
 
 on:
   # Run from the Actions tab after changing textures on `main`.
@@ -49,6 +57,8 @@ jobs:
             bedrock/pack/RP
             bedrock/variety
           sparse-checkout-cone-mode: true
+          # Shallow on purpose: the full history is ~10 GB. See the note above.
+          fetch-depth: 1
 
       - name: Check out vanilla samples
         if: ${{ inputs.vanilla }}

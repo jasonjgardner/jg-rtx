@@ -22,6 +22,7 @@ import { isAbsolute, join, resolve } from "node:path";
 import { readFile } from "node:fs/promises";
 import { resolveBlocks } from "./lib/blocks";
 import { loadFlipbookTicks } from "./lib/flipbooks";
+import { collectHistory, hasGitHistory, type IHistoryEntry } from "./lib/history";
 import { parseJsonc } from "./lib/jsonc";
 import { scanPackFiles } from "./lib/packFiles";
 import { fetchVanillaListing, setsFromListing } from "./lib/remoteSets";
@@ -104,6 +105,22 @@ const loadVanillaSets = async (
   return setsFromListing(listing);
 };
 
+/**
+ * Load the committed history so a run without git history leaves it intact.
+ *
+ * A shallow CI checkout cannot read revisions; regenerating from one would
+ * silently delete every previous design the site offers.
+ */
+const readExistingHistory = async (): Promise<IHistoryEntry[]> => {
+  const raw = await readFile(join(OUT_DIR, "history.json"), "utf8").catch(() => null);
+
+  if (raw === null) return [];
+
+  console.log("  history: preserving the committed file (no git history available)");
+
+  return JSON.parse(raw) as IHistoryEntry[];
+};
+
 /** Write one JSON file, pretty-printed only when small enough to stay readable. */
 const writeJson = async (name: string, value: unknown): Promise<number> => {
   const text = JSON.stringify(value);
@@ -168,6 +185,22 @@ const main = async (): Promise<void> => {
     .filter((set): set is ITextureSet => set !== undefined)
     .sort((left, right) => left.id.localeCompare(right.id));
 
+  // Previous designs, read from the pack's git log. Only JG RTX's own textures
+  // have history here; vanilla ones live in another repository.
+  //
+  // The pack's history is ~10 GB, so CI checks out shallow and cannot produce
+  // this. In that case the committed file is preserved rather than overwritten
+  // with an empty one, which would silently delete every previous design.
+  const colorFiles = new Map(
+    sets
+      .filter((set) => set.origin === "jg")
+      .map((set) => [set.id, set.color.file] as const),
+  );
+
+  const history = await hasGitHistory(src)
+    ? await collectHistory(src, colorFiles)
+    : await readExistingHistory();
+
   const catalog: ICatalog = {
     blocks,
     sets,
@@ -194,6 +227,7 @@ const main = async (): Promise<void> => {
     writeJson("varieties.json", catalog.varieties),
     writeJson("meta.json", catalog.meta),
     writeJson("pack-files.json", inventory),
+    writeJson("history.json", history),
   ]);
 
   const total = sizes.reduce((sum, size) => sum + size, 0);
@@ -211,6 +245,10 @@ const main = async (): Promise<void> => {
       `${byCoverage.mixed ?? 0} mixed, ${byCoverage.vanilla ?? 0} vanilla)`,
   );
   console.log(`  varieties: ${varieties.length}`);
+  console.log(
+    `  history: ${history.length} textures with previous designs, ` +
+      `${history.reduce((sum, entry) => sum + entry.versions.length, 0)} revisions`,
+  );
   console.log(
     `  pack files: ${inventory.textures.length} textures + ` +
       `${inventory.other.length} other, ${(packBytes / 1024 ** 2).toFixed(0)} MB at source`,

@@ -18,10 +18,10 @@
  */
 
 import { makeZip } from "client-zip";
-import { repoUrl, textureUrl } from "./cdn";
+import { commitUrl, repoUrl, textureUrl } from "./cdn";
 import type { ITextureJob, WorkerMessage } from "../workers/texture.worker";
 import type { ICustomizationState } from "../stores/customization";
-import type { ITextureSet, IVariety } from "./types";
+import type { ITextureSet, ITextureVersion, IVariety } from "./types";
 
 /** One file in the source pack. */
 export interface IPackFile {
@@ -56,6 +56,8 @@ export interface IBuildOptions {
   readonly sets: ReadonlyMap<string, ITextureSet>;
   /** Varieties, so a selection can substitute its files. */
   readonly varieties: ReadonlyMap<string, IVariety>;
+  /** Previous designs per texture-set id, so a chosen revision can be emitted. */
+  readonly history: ReadonlyMap<string, readonly ITextureVersion[]>;
   readonly state: ICustomizationState;
   /** Name written into the pack manifest. */
   readonly packName: string;
@@ -148,6 +150,47 @@ const buildReplacements = (
         target: null,
         bytes: 0,
       });
+    });
+  });
+
+  return replacements;
+};
+
+/**
+ * Map pack file paths to a selected historical revision.
+ *
+ * Only the colour map is substituted. A revision's PBR companions can be
+ * fetched from the same commit in the preview because a 404 there is
+ * recoverable, but a pack build must not ship a file that might not exist —
+ * so the companions stay at their current versions.
+ *
+ * A variety takes precedence: it replaces the texture outright, which makes a
+ * previous revision of the pack's own design meaningless for that set.
+ */
+const buildVersionReplacements = (
+  sets: ReadonlyMap<string, ITextureSet>,
+  history: ReadonlyMap<string, readonly ITextureVersion[]>,
+  state: ICustomizationState,
+): Map<string, IPlannedFile> => {
+  const replacements = new Map<string, IPlannedFile>();
+
+  Object.entries(state.versions).forEach(([setId, commit]) => {
+    if (state.varieties[setId] !== undefined) return;
+
+    const set = sets.get(setId);
+    const version = history.get(setId)?.find((entry) => entry.commit === commit);
+
+    if (!set || !version) return;
+
+    const stem = set.color.file.replace(/\.(png|tga)$/i, "");
+    const extension = version.path.toLowerCase().endsWith(".tga") ? "tga" : "png";
+
+    replacements.set(set.color.file, {
+      path: `${stem}.${extension}`,
+      url: commitUrl(version.path, version.commit),
+      ext: extension,
+      target: null,
+      bytes: 0,
     });
   });
 
@@ -276,8 +319,13 @@ interface IZipEntry {
  */
 const planFiles = (options: IBuildOptions): IPlannedFile[] => {
   const sizes = buildSizeMap(options.sets, options.state);
-  const replacements = buildReplacements(options.sets, options.varieties, options.state);
   const global = options.state.globalSize;
+
+  // Varieties win over revisions, matching the preview's precedence.
+  const replacements = new Map([
+    ...buildVersionReplacements(options.sets, options.history, options.state),
+    ...buildReplacements(options.sets, options.varieties, options.state),
+  ]);
 
   const textures = options.inventory.textures.map((entry) => {
     const replacement = replacements.get(entry.file);

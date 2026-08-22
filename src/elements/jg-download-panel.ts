@@ -20,13 +20,14 @@ import {
   subscribe,
   type ICustomizationState,
 } from "../stores/customization";
-import type { ITextureSet, IVariety } from "../lib/types";
+import type { ITextureSet, ITextureVersion, IVariety } from "../lib/types";
 
 /** The payload embedded by the download page. */
 interface IDownloadData {
   readonly inventory: IPackInventory;
   readonly sets: readonly ITextureSet[];
   readonly varieties: readonly IVariety[];
+  readonly history: readonly { readonly id: string; readonly versions: readonly ITextureVersion[] }[];
 }
 
 /** Size above which the UI warns before starting a multi-hundred-MB transfer. */
@@ -41,6 +42,7 @@ export class JgDownloadPanel extends HTMLElement {
   #data: IDownloadData | null = null;
   #sets = new Map<string, ITextureSet>();
   #varieties = new Map<string, IVariety>();
+  #history = new Map<string, readonly ITextureVersion[]>();
   #controller: AbortController | null = null;
   #unsubscribe: (() => void) | null = null;
   #building = false;
@@ -51,6 +53,9 @@ export class JgDownloadPanel extends HTMLElement {
 
     this.#sets = new Map(this.#data.sets.map((set) => [set.id, set]));
     this.#varieties = new Map(this.#data.varieties.map((variety) => [variety.id, variety]));
+    this.#history = new Map(
+      (this.#data.history ?? []).map((entry) => [entry.id, entry.versions]),
+    );
 
     this.querySelector("#build")?.addEventListener("click", this.#onBuild);
     this.querySelector("#cancel")?.addEventListener("click", this.#onCancel);
@@ -275,6 +280,7 @@ export class JgDownloadPanel extends HTMLElement {
           inventory: this.#data.inventory,
           sets: this.#sets,
           varieties: this.#varieties,
+          history: this.#history,
           state: getState(),
           packName,
           signal: this.#controller.signal,

@@ -46,6 +46,20 @@ export const textureUrl = (file: string, origin: TextureOrigin = "jg"): string =
 export const repoUrl = (file: string): string => `${JG_REPO_BASE}${file}`;
 
 /**
+ * Resolve a repo path at a specific commit.
+ *
+ * jsDelivr serves any path at any full commit SHA, which is what makes previous
+ * designs viewable without checking out ~10 GB of history. The path has to be
+ * the one that existed *at that commit* — the 2022 reorganization moved block
+ * textures from `bedrock/RP/` to `bedrock/pack/RP/`.
+ *
+ * @param file Repo-relative path as it was at that commit.
+ * @param commit Full 40-character commit SHA.
+ */
+export const commitUrl = (file: string, commit: string): string =>
+  `https://cdn.jsdelivr.net/gh/jasonjgardner/jg-rtx@${commit}/${file}`;
+
+/**
  * URL for any {@link ITextureFile}. Variety files are stored repo-relative and
  * are detected by their `bedrock/` prefix; everything else is pack-relative.
  *

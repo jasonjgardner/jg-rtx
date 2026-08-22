@@ -46,6 +46,9 @@ bun run catalog -- --src "../JG RTX"
 - **Tinting is decided from the texture, not a block list.** `blockShapes.ts`
   says which colormap *would* apply; `isGreyscale` in `decode.ts` decides
   whether it actually does, so already-coloured leaves are never repainted.
+- **`src/data/history.json` cannot be regenerated in CI.** The pack's history
+  is ~10 GB, so CI checks out shallow and the generator preserves the committed
+  file. Refresh it from a full local clone and commit the result.
 - **Run `bun test` after touching `blockGeometry.ts` or the shape rules.** Inverted winding still
   renders a convincing solid shape (you see the far walls), so it will not show
   up in a screenshot — the tests check it explicitly.
