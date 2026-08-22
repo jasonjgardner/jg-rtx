@@ -9247,6 +9247,9 @@
       "path": "textures/blocks/pitcher_crop_bottom_mer.png"
     },
     {
+      "path": "textures/blocks/pitcher_crop_bottom_normal_pom.png"
+    },
+    {
       "path": "textures/blocks/pitcher_crop_bottom_normal.png"
     },
     {
@@ -9307,6 +9310,9 @@
       "path": "textures/blocks/pitcher_crop_side_mer.png"
     },
     {
+      "path": "textures/blocks/pitcher_crop_side_normal_pom.png"
+    },
+    {
       "path": "textures/blocks/pitcher_crop_side_normal.png"
     },
     {
@@ -9317,6 +9323,9 @@
     },
     {
       "path": "textures/blocks/pitcher_crop_top_mer.png"
+    },
+    {
+      "path": "textures/blocks/pitcher_crop_top_normal_pom.png"
     },
     {
       "path": "textures/blocks/pitcher_crop_top_normal.png"
