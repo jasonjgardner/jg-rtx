@@ -43,6 +43,9 @@ bun run catalog -- --src "../JG RTX"
   several texture sets and their PBR maps.
 - **`hidden` is how panels toggle.** A component rule that sets `display` will
   defeat it unless the global `[hidden]` override stays in place.
+- **Run `bun test` after touching `blockGeometry.ts`.** Inverted winding still
+  renders a convincing solid shape (you see the far walls), so it will not show
+  up in a screenshot — the tests check it explicitly.
 - **Shape rules are order-sensitive.** `SHAPE_RULES` in `blockShapes.ts` takes
   the first match, so `_double_slab` must precede `_slab`. Re-run
   `bun run catalog` after changing them.

@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "catalog": "bun run scripts/generate-catalog.ts"
+    "catalog": "bun run scripts/generate-catalog.ts",
+    "test": "bun test"
   },
   "dependencies": {
     "astro": "^7.2.4",

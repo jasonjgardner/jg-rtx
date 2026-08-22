@@ -199,8 +199,13 @@ const emitFace = (
     [u0, v1],
   ];
 
-  // Two triangles: 0-1-2 and 0-2-3.
-  [0, 1, 2, 0, 2, 3].forEach((index) => {
+  // Two triangles, wound 0-2-1 and 0-3-2. The corners are listed clockwise as
+  // seen from outside the face, but three.js treats counter-clockwise as
+  // front-facing, so visiting them in reverse is what makes the outside of the
+  // shape the visible side. Winding them forwards culls every near face and
+  // draws the far ones instead — which still reads as solid on a deep shape
+  // like stairs, but shows a shallow button as a hollow tray.
+  [0, 2, 1, 0, 3, 2].forEach((index) => {
     const corner = corners[index];
     const uv = cornerUvs[index];
     if (!corner || !uv) return;

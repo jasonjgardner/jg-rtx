@@ -50,6 +50,7 @@ checkout to read exact vanilla dimensions instead of the API listing.
 | `bun run dev` | Dev server (backgrounds itself; `astro dev stop` to halt) |
 | `bun run build` | Production build to `dist/` |
 | `bun run check` | Type check (needs TypeScript 6.x — see below) |
+| `bun test` | Run the geometry tests |
 
 ## How it fits together
 
@@ -110,6 +111,12 @@ The eleven presets are the common vanilla voxel shapes, taken from
 [bedrock.graphics](https://bedrock.graphics) and bundled as `.geo.json` under
 `src/data/block-shapes/`. All eleven together are ~5 KB, so they are imported
 rather than fetched and switching shapes never touches the network.
+
+Winding is covered by tests, because getting it wrong is nearly invisible: a
+backwards-wound closed box still renders a solid silhouette under back-face
+culling — it just draws its *far* walls instead of its near ones. Stairs and
+torches looked right that way through a whole review pass, and only a shallow
+button gave it away by appearing as a hollow tray.
 
 A block's shape is resolved from its identifier at catalog time, so the choice
 is visible in `src/data/blocks.json` and the rules are testable. Ordering in

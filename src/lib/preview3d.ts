@@ -21,6 +21,7 @@ import {
   Scene,
   SRGBColorSpace,
   Texture,
+  Vector3,
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -365,10 +366,20 @@ export const mountPreview = async (
 
   // Frame to the shape that was actually built, not to a nominal block, so a
   // torch or a button is not previewed as a speck in the middle of the canvas.
-  const radius = geometry.boundingSphere?.radius ?? 0;
-  const home = frameDistance(radius, fov);
+  //
+  // Shapes keep their real placement within the block — a button sits on the
+  // ground, a torch stands up from it — so the orbit centre is the shape's own
+  // centre rather than the block origin. Aiming at the origin would push a
+  // button to the bottom edge of the canvas.
+  const sphere = geometry.boundingSphere;
+  const focus = sphere?.center ?? new Vector3(0, 0, 0);
+  const offset = frameDistance(sphere?.radius ?? 0, fov);
 
-  camera.position.set(...home);
+  camera.position.set(
+    focus.x + offset[0],
+    focus.y + offset[1],
+    focus.z + offset[2],
+  );
 
   container.append(renderer.domElement);
   renderer.domElement.style.inlineSize = "100%";
@@ -384,7 +395,7 @@ export const mountPreview = async (
   // Zoom limits are relative to the framing distance rather than absolute:
   // a fixed floor tuned for a full block would forbid getting anywhere near a
   // torch, which is already framed closer than that floor.
-  const homeDistance = Math.hypot(...home);
+  const homeDistance = Math.hypot(...offset);
   controls.minDistance = homeDistance * MIN_DISTANCE_FACTOR;
   controls.maxDistance = homeDistance * MAX_DISTANCE_FACTOR;
 
@@ -392,9 +403,12 @@ export const mountPreview = async (
   controls.enablePan = false;
   controls.autoRotateSpeed = 1.1;
 
-  // `saveState` captures the home framing *before* any restore below, so the
-  // reset button always returns to the default view rather than to whatever
-  // angle happened to be restored from a previous build.
+  controls.target.copy(focus);
+  controls.update();
+
+  // `saveState` captures the home framing — including the target just set —
+  // *before* any restore below, so the reset button always returns to the
+  // default view rather than to whatever angle a previous build left behind.
   controls.saveState();
 
   controls.autoRotate = !reduced && (initial?.autoRotate ?? true);
