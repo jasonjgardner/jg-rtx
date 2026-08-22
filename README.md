@@ -13,6 +13,10 @@ entirely in the browser against textures served from jsDelivr.
   the pack's real MER/MERS and normal maps. Orbit with a drag, zoom with the
   wheel, and reset the framing with a button; the idle spin stops as soon as
   you take hold of the camera, and your angle survives swapping a variety.
+- **Real voxel shapes** — torches, stairs, slabs, carpets and crossed plant
+  planes rather than a cube for everything. A third of the catalog is not a
+  full block.
+- **Bedrock alpha modes** derived per texture: opaque, cutout, or blend.
 - **Texture varieties** can be swapped in per texture set and are reflected
   live in the preview.
 - **Power-of-two resizing**, globally or per texture.
@@ -90,8 +94,29 @@ to a file.
 - **Resized TGAs stay TGA.** Bedrock resolves texture references without an
   extension, so emitting a PNG beside the original name makes resolution
   ambiguous.
+- **Shape presets carry per-face UVs, not one atlas mapping.** bedrock.graphics'
+  `build-geometry.ts` maps a single texture across a whole model; here each
+  Minecraft face direction has its own texture set, so `blockGeometry.ts`
+  buckets faces into material groups by direction instead. Bedrock measures V
+  downward and three.js upward, which is why V is flipped when reading a
+  preset's UVs — that is what makes a slab sample the *lower* half of its side
+  texture.
 - **`astro check` needs TypeScript 6.x.** The native 7.x compiler does not yet
   expose the programmatic API the checker uses.
+
+## Block shapes
+
+The eleven presets are the common vanilla voxel shapes, taken from
+[bedrock.graphics](https://bedrock.graphics) and bundled as `.geo.json` under
+`src/data/block-shapes/`. All eleven together are ~5 KB, so they are imported
+rather than fetched and switching shapes never touches the network.
+
+A block's shape is resolved from its identifier at catalog time, so the choice
+is visible in `src/data/blocks.json` and the rules are testable. Ordering in
+`SHAPE_RULES` matters: `acacia_double_slab` is a *full* block and has to be
+matched before the `_slab` rule, and `_wall$` deliberately misses
+`oak_wall_sign`. Plants are an explicit list because their names share no
+common ending. The preview offers a picker to override the guess.
 
 ## Deployment
 

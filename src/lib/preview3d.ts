@@ -12,7 +12,6 @@
 import {
   ACESFilmicToneMapping,
   AmbientLight,
-  BoxGeometry,
   DirectionalLight,
   DoubleSide,
   Mesh,
@@ -35,28 +34,24 @@ import {
   type AlphaMode,
 } from "./decode";
 import type { BlockFace, IFlipbook, ITextureFile, ITextureSet } from "./types";
+import { buildShapeGeometry } from "./blockGeometry";
+import type { BlockShapeId } from "./blockShapes";
+import { SHAPE_PRESETS } from "./shapePresets";
 import { fileUrl } from "./cdn";
-
-/**
- * three.js `BoxGeometry` assigns material groups in the order
- * `+X, -X, +Y, -Y, +Z, -Z`. Mapped onto Minecraft's face names, that is:
- */
-export const BOX_FACE_ORDER: readonly BlockFace[] = [
-  "east",
-  "west",
-  "up",
-  "down",
-  "south",
-  "north",
-] as const;
 
 /** Real-time duration of one Minecraft tick, in milliseconds. */
 const TICK_MS = 50;
 
-/** A texture set paired with the face indices that use it. */
+/** A texture set paired with the block faces that use it. */
 export interface IFacePlan {
   readonly set: ITextureSet;
-  readonly faces: readonly number[];
+  /**
+   * Minecraft face directions this set covers. Named rather than indexed
+   * because a shape preset draws whichever faces it likes — a carpet has no
+   * north face, crossed planes have only north and south — so the mapping from
+   * direction to material has to survive geometry that is not a cube.
+   */
+  readonly faces: readonly BlockFace[];
   /**
    * Biome tint multiplied over the colour map, or `null`. Grass and foliage are
    * authored greyscale and only look right once this is applied.
@@ -92,12 +87,50 @@ export interface IPreview {
   dispose: () => void;
 }
 
-/** Default camera placement — a three-quarter view showing three faces. */
+/**
+ * Default camera direction — a three-quarter view showing three faces. Scaled
+ * to the shape's size by {@link frameDistance}, so a torch is not previewed
+ * from the distance a full block needs.
+ */
 const HOME_POSITION: readonly [number, number, number] = [2.1, 1.7, 2.4];
 
-/** How close and how far the viewer may zoom, in block widths. */
-const MIN_DISTANCE = 1.35;
-const MAX_DISTANCE = 8;
+/** Fraction of the viewport the shape should occupy. */
+const FRAMING_MARGIN = 1.25;
+
+/**
+ * Scale the home camera direction so a shape of the given radius fills the view.
+ *
+ * Presets vary enormously — a full block spans the whole cube while a button is
+ * a few pixels tall — so a fixed camera distance either shrinks small shapes to
+ * specks or clips large ones.
+ *
+ * @param radius Bounding-sphere radius of the geometry, in block units.
+ * @param fovDegrees Vertical field of view.
+ * @returns The camera position for that shape.
+ */
+const frameDistance = (
+  radius: number,
+  fovDegrees: number,
+): [number, number, number] => {
+  const safeRadius = radius > 0 ? radius : 0.87;
+  const fitDistance = (safeRadius * FRAMING_MARGIN) /
+    Math.sin((fovDegrees / 2) * (Math.PI / 180));
+
+  // HOME_POSITION is a direction plus a length tuned for a full block; rescale
+  // it to the distance this shape actually needs, keeping the same angle.
+  const homeLength = Math.hypot(...HOME_POSITION);
+  const scale = fitDistance / homeLength;
+
+  return [
+    HOME_POSITION[0] * scale,
+    HOME_POSITION[1] * scale,
+    HOME_POSITION[2] * scale,
+  ];
+};
+
+/** Zoom limits, as multiples of the shape's framing distance. */
+const MIN_DISTANCE_FACTOR = 0.45;
+const MAX_DISTANCE_FACTOR = 4;
 
 /** Textures that animate, with the data needed to advance them. */
 interface IAnimated {
@@ -262,7 +295,8 @@ const buildMaterial = async (
  * Mount a rotating, lit preview cube into a container.
  *
  * @param container Element to render into; sized by CSS.
- * @param plan Texture sets and the box face indices each one covers.
+ * @param plan Texture sets and the block faces each one covers.
+ * @param shape Voxel shape preset to render.
  * @param signal Abort signal that cancels texture loading.
  * @param initial View to restore, so swapping a variety does not throw away
  *   the angle the viewer had chosen.
@@ -272,6 +306,7 @@ const buildMaterial = async (
 export const mountPreview = async (
   container: HTMLElement,
   plan: readonly IFacePlan[],
+  shape: BlockShapeId,
   signal: AbortSignal,
   initial?: ICameraState,
 ): Promise<IPreview> => {
@@ -279,9 +314,9 @@ export const mountPreview = async (
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = ACESFilmicToneMapping;
 
+  const fov = 35;
   const scene = new Scene();
-  const camera = new PerspectiveCamera(35, 1, 0.1, 100);
-  camera.position.set(...HOME_POSITION);
+  const camera = new PerspectiveCamera(fov, 1, 0.1, 100);
   camera.lookAt(0, 0, 0);
 
   // A neutral indoor environment gives metals and rough surfaces something to
@@ -303,21 +338,37 @@ export const mountPreview = async (
       buildMaterial(entry.set, entry.tint, entry.underlay, signal, animated)),
   );
 
-  // Map each of the six box groups onto the material for the set covering it.
-  const byFace = new Map<number, number>();
+  const planIndexByFace = new Map<BlockFace, number>();
   plan.forEach((entry, index) => {
-    entry.faces.forEach((face) => byFace.set(face, index));
+    entry.faces.forEach((face) => planIndexByFace.set(face, index));
   });
 
-  const geometry = new BoxGeometry(1, 1, 1);
-  const ordered = BOX_FACE_ORDER.map((_, index) => materials[byFace.get(index) ?? 0]);
+  // The preset decides which faces exist; `faceOrder` reports the directions
+  // behind each material group, in group order.
+  const { geometry, faceOrder, flat } = buildShapeGeometry(SHAPE_PRESETS[shape]);
 
-  const mesh = new Mesh(
-    geometry,
-    ordered.filter((material): material is NonNullable<typeof material> =>
-      material !== undefined),
-  );
+  // Planes have no back face to cull to, so they would disappear from behind
+  // whenever the texture is opaque enough to stay single-sided.
+  if (flat) {
+    materials.forEach((material) => {
+      material.side = DoubleSide;
+      material.needsUpdate = true;
+    });
+  }
+
+  const ordered = faceOrder
+    .map((face) => materials[planIndexByFace.get(face) ?? 0])
+    .filter((material): material is NonNullable<typeof material> => material !== undefined);
+
+  const mesh = new Mesh(geometry, ordered);
   scene.add(mesh);
+
+  // Frame to the shape that was actually built, not to a nominal block, so a
+  // torch or a button is not previewed as a speck in the middle of the canvas.
+  const radius = geometry.boundingSphere?.radius ?? 0;
+  const home = frameDistance(radius, fov);
+
+  camera.position.set(...home);
 
   container.append(renderer.domElement);
   renderer.domElement.style.inlineSize = "100%";
@@ -329,9 +380,15 @@ export const mountPreview = async (
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
-  controls.minDistance = MIN_DISTANCE;
-  controls.maxDistance = MAX_DISTANCE;
-  // Panning a single centred block only loses it off-screen.
+
+  // Zoom limits are relative to the framing distance rather than absolute:
+  // a fixed floor tuned for a full block would forbid getting anywhere near a
+  // torch, which is already framed closer than that floor.
+  const homeDistance = Math.hypot(...home);
+  controls.minDistance = homeDistance * MIN_DISTANCE_FACTOR;
+  controls.maxDistance = homeDistance * MAX_DISTANCE_FACTOR;
+
+  // Panning a single centred shape only loses it off-screen.
   controls.enablePan = false;
   controls.autoRotateSpeed = 1.1;
 

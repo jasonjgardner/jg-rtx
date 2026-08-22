@@ -6,6 +6,8 @@
  * them in one place means the generator and the site can never drift.
  */
 
+import type { BlockShapeId } from "./blockShapes";
+
 /** Image containers that appear in the pack. Bedrock reads both. */
 export type TextureExt = "png" | "tga";
 
@@ -116,6 +118,11 @@ export interface IBlockEntry {
   readonly uniform: boolean;
   /** `jg` when JG RTX overrides every face, `vanilla` when none, else `mixed`. */
   readonly coverage: "jg" | "vanilla" | "mixed";
+  /**
+   * Voxel shape the block previews as. Resolved from the identifier so it is
+   * inspectable in the catalog; viewers can override it in the preview.
+   */
+  readonly shape: BlockShapeId;
 }
 
 /**

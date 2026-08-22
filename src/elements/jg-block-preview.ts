@@ -13,13 +13,13 @@
 
 import {
   mountPreview,
-  BOX_FACE_ORDER,
   type ICameraState,
   type IFacePlan,
   type IPreview,
 } from "../lib/preview3d";
+import { isBlockShape, type BlockShapeId } from "../lib/blockShapes";
 import { getState, subscribe } from "../stores/customization";
-import type { BlockFace, ITextureSet, IVariety } from "../lib/types";
+import { BLOCK_FACES, type BlockFace, type ITextureSet, type IVariety } from "../lib/types";
 
 /** The payload embedded by the block page. */
 interface IPreviewData {
@@ -27,6 +27,8 @@ interface IPreviewData {
   readonly tints: Readonly<Record<BlockFace, string | null>>;
   readonly sets: Readonly<Record<string, ITextureSet>>;
   readonly varieties: Readonly<Record<string, IVariety>>;
+  /** Shape resolved for this block at catalog time. */
+  readonly shape: BlockShapeId;
 }
 
 /**
@@ -65,6 +67,8 @@ export class JgBlockPreview extends HTMLElement {
   #unsubscribe: (() => void) | null = null;
   #stage: HTMLElement | null = null;
   #reset: HTMLButtonElement | null = null;
+  #shapePicker: HTMLSelectElement | null = null;
+  #shape: BlockShapeId = "full_block";
   #camera: ICameraState | null = null;
   #pending = false;
 
@@ -85,6 +89,14 @@ export class JgBlockPreview extends HTMLElement {
 
     this.#reset = this.querySelector<HTMLButtonElement>("[data-preview-reset]");
     this.#reset?.addEventListener("click", this.#onReset);
+
+    this.#shape = this.#data.shape;
+    this.#shapePicker = this.querySelector<HTMLSelectElement>("[data-preview-shape]");
+
+    if (this.#shapePicker) {
+      this.#shapePicker.value = this.#shape;
+      this.#shapePicker.addEventListener("change", this.#onShape);
+    }
 
     this.#observer = new IntersectionObserver(
       (entries) => {
@@ -112,6 +124,7 @@ export class JgBlockPreview extends HTMLElement {
     this.#controller?.abort();
     this.#preview?.dispose();
     this.#reset?.removeEventListener("click", this.#onReset);
+    this.#shapePicker?.removeEventListener("change", this.#onShape);
 
     this.#observer = null;
     this.#resizeObserver = null;
@@ -124,6 +137,18 @@ export class JgBlockPreview extends HTMLElement {
   #onReset = (): void => {
     this.#preview?.resetCamera();
     this.#camera = this.#preview?.cameraState() ?? null;
+  };
+
+  /**
+   * Switch the voxel shape. The catalog's guess is right for most blocks, but
+   * it is a guess from the identifier, so the viewer can correct it.
+   */
+  #onShape = (event: Event): void => {
+    const target = event.target;
+    if (!(target instanceof HTMLSelectElement) || !isBlockShape(target.value)) return;
+
+    this.#shape = target.value;
+    void this.#build();
   };
 
   /** Parse the embedded JSON payload, tolerating a missing or malformed one. */
@@ -166,15 +191,15 @@ export class JgBlockPreview extends HTMLElement {
 
   /**
    * Resolve the current selection into a face plan: one entry per distinct
-   * texture set, listing the box face indices it covers.
+   * texture set, listing the block faces it covers.
    */
   #plan(data: IPreviewData): IFacePlan[] {
     const { varieties: selected } = getState();
     const order: string[] = [];
-    const bySet = new Map<string, number[]>();
+    const bySet = new Map<string, BlockFace[]>();
     const tintBySet = new Map<string, string | null>();
 
-    BOX_FACE_ORDER.forEach((face, index) => {
+    BLOCK_FACES.forEach((face) => {
       const setId = data.faces[face];
       if (setId === null) return;
 
@@ -182,12 +207,12 @@ export class JgBlockPreview extends HTMLElement {
 
       if (!existing) {
         order.push(setId);
-        bySet.set(setId, [index]);
+        bySet.set(setId, [face]);
         tintBySet.set(setId, data.tints?.[face] ?? null);
         return;
       }
 
-      existing.push(index);
+      existing.push(face);
     });
 
     return order.flatMap((setId) => {
@@ -236,6 +261,7 @@ export class JgBlockPreview extends HTMLElement {
       const preview = await mountPreview(
         stage,
         this.#plan(data),
+        this.#shape,
         controller.signal,
         this.#camera ?? undefined,
       );

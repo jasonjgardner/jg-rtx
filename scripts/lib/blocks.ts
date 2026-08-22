@@ -16,6 +16,7 @@
 
 import type { IBlockEntry, ITextureSet, BlockFace } from "../../src/lib/types";
 import { BLOCK_FACES } from "../../src/lib/types";
+import { shapeForBlock } from "../../src/lib/blockShapes";
 import type {
   IVanillaBlock,
   TerrainTextureData,
@@ -254,6 +255,7 @@ export const resolveBlocks = (
         uniform: sets.length === 1,
         coverage:
           jgCount === sets.length ? "jg" : jgCount === 0 ? "vanilla" : "mixed",
+        shape: shapeForBlock(id),
       } satisfies IBlockEntry;
     })
     .filter((entry) => entry.sets.length > 0)

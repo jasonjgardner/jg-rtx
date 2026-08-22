@@ -29,6 +29,7 @@ bun run catalog -- --src "../JG RTX"
   must not import Node builtins.
 - `src/elements/` — Web Components. All client interactivity lives here.
 - `src/workers/` — the texture worker used by the pack builder.
+- `src/data/block-shapes/` — bundled `.geo.json` voxel shape presets.
 
 ## Rules worth knowing before editing
 
@@ -42,6 +43,9 @@ bun run catalog -- --src "../JG RTX"
   several texture sets and their PBR maps.
 - **`hidden` is how panels toggle.** A component rule that sets `display` will
   defeat it unless the global `[hidden]` override stays in place.
+- **Shape rules are order-sensitive.** `SHAPE_RULES` in `blockShapes.ts` takes
+  the first match, so `_double_slab` must precede `_slab`. Re-run
+  `bun run catalog` after changing them.
 - `astro check` requires TypeScript 6.x; the native 7.x compiler does not
   expose the API it needs.
 

@@ -11,6 +11,7 @@ import Layout from "../../layouts/Layout.astro";
 import FaceGroup from "../../components/FaceGroup.astro";
 import { getCollection } from "astro:content";
 import { getSetsById, getVarietiesBySet, groupFaces } from "../../lib/catalog";
+import { BLOCK_SHAPES } from "../../lib/blockShapes";
 import type { ITextureSet, IVariety } from "../../lib/types";
 
 export async function getStaticPaths() {
@@ -44,6 +45,7 @@ const usedVarieties = Object.fromEntries(
 const payload = JSON.stringify({
   faces: block.faces,
   tints: block.tints,
+  shape: block.shape,
   sets: usedSets,
   varieties: usedVarieties,
 });
@@ -70,6 +72,14 @@ const varietyCount = Object.keys(usedVarieties).length;
       <script type="application/json" set:html={payload} />
       <div class="preview__stage" data-preview-stage></div>
       <div class="preview__toolbar">
+        <label class="preview__shape">
+          <span class="visually-hidden">Block shape</span>
+          <select data-preview-shape>
+            {BLOCK_SHAPES.map((option) => (
+              <option value={option.id}>{option.label}</option>
+            ))}
+          </select>
+        </label>
         <p class="preview__hint">Drag to orbit · scroll to zoom</p>
         <button type="button" data-preview-reset>Reset view</button>
       </div>
@@ -160,6 +170,12 @@ const varietyCount = Object.keys(usedVarieties).length;
     color: var(--muted);
     font-size: 0.75rem;
     margin: 0;
+    margin-inline-end: auto;
+  }
+
+  .preview__shape select {
+    font-size: 0.8125rem;
+    padding-block: 0.25rem;
   }
 
   /* The controls do nothing until the scene exists, so keep them out of the

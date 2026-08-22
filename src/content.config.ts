@@ -51,6 +51,19 @@ const blocks = defineCollection({
     sets: z.array(z.string()),
     uniform: z.boolean(),
     coverage: z.enum(["jg", "vanilla", "mixed"]),
+    shape: z.enum([
+      "full_block",
+      "cross",
+      "slab",
+      "stairs",
+      "carpet",
+      "pressure_plate",
+      "button",
+      "fence",
+      "wall",
+      "trapdoor",
+      "torch",
+    ]),
   }),
 });
 
