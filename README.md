@@ -88,7 +88,19 @@ to a file.
 - **Biome tints can't go through the material.** The RTX loader's fragment
   shader assigns `csm_DiffuseColor = texture2D(uColor, uv)` outright, so
   `material.color` never reaches the output. Grass and foliage are greyscale
-  and are tinted by baking `overlay_color` into the pixels instead.
+  and are tinted by baking the colour into the pixels instead.
+- **Leaves are tinted from a colormap, not from `terrain_texture.json`.** Grass
+  declares an `overlay_color` there; leaves declare nothing and are coloured by
+  the engine from `textures/colormap/*.png`. `leaves_jungle` is *literally*
+  greyscale (mean saturation 0.000), so without sampling that colormap it
+  previews as a white cube. Whether a tint is applied is decided from the
+  texture's own saturation, so `cherry_leaves` (0.288) and `azalea_leaves`
+  (0.555) keep the colour they ship with.
+- **Cutouts are not "mostly holes".** Alpha classification cannot key off
+  whether holes outnumber partially transparent pixels: `leaves_jungle` is
+  12.2% holes against 15.1% anti-aliased edge, because its leaf silhouettes
+  have an enormous perimeter. What separates cutout from blend is whether the
+  texture punches holes *at all*.
 - **Flipbooks must scale on both axes.** `fire_0` is a 256×8192 strip of
   thirty-two 256px frames. Downscaling to a square would destroy the animation;
   at 64px it must become 64×2048.

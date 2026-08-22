@@ -7,6 +7,7 @@
  */
 
 import type { BlockShapeId } from "./blockShapes";
+import type { ColormapId } from "./colormap";
 
 /** Image containers that appear in the pack. Bedrock reads both. */
 export type TextureExt = "png" | "tga";
@@ -123,6 +124,12 @@ export interface IBlockEntry {
    * inspectable in the catalog; viewers can override it in the preview.
    */
   readonly shape: BlockShapeId;
+  /**
+   * Biome colormap that tints this block, when one applies. Leaves are
+   * authored greyscale and coloured by the engine from `textures/colormap/`;
+   * `terrain_texture.json` says nothing about them.
+   */
+  readonly colormap?: ColormapId;
 }
 
 /**

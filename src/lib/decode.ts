@@ -111,16 +111,22 @@ export const bytesToBitmap = async (
  * blocks state it via `material_instances.render_method` — so it is derived
  * from the texture instead.
  *
- * The tell is **not** whether partial alpha exists: cutout textures are
- * routinely anti-aliased, so their edges carry a thin band of partial values.
- * What separates the two is whether *fully transparent* pixels dominate. A
- * cutout is mostly holes with soft edges; a blended surface has no holes at
- * all, only partial coverage.
+ * The tell is **not** whether partial alpha exists — cutout textures are
+ * routinely anti-aliased, so their edges carry a band of partial values — and
+ * it is not whether holes *outnumber* those partials either. A finely detailed
+ * cutout can carry more edge pixels than hole pixels: `leaves_jungle` is 12.2%
+ * holes against 15.1% partial, because its leaf silhouettes have an enormous
+ * perimeter.
+ *
+ * What actually separates them is whether the texture punches holes at all. A
+ * cutout uses `a = 0` as a mask; a blended surface never does, having only
+ * partial coverage across its whole area.
  *
  * | texture           | a = 0 | 0 < a < 255 | mode   |
  * | ----------------- | ----- | ----------- | ------ |
  * | `stone`           |     — |           — | opaque |
  * | `leaves_oak`      | 35.6% |          0% | cutout |
+ * | `leaves_jungle`   | 12.2% |       15.1% | cutout |
  * | `grass_side.tga`  | 40.9% |        0.7% | cutout |
  * | `tallgrass.tga`   | 66.8% |       10.7% | cutout |
  * | `glass`           |    0% |       90.7% | blend  |
@@ -137,6 +143,22 @@ const ALPHA_MAX_ROWS = 1024;
 
 /** Upper bound on sampled pixels, for unusually wide textures. */
 const ALPHA_SAMPLE_CAP = 1 << 18;
+
+/**
+ * Share of fully transparent pixels above which a texture counts as a cutout.
+ * Real masks are percentages of the image; the smallest observed in the pack is
+ * `leaves_jungle` at 12.2%, and no blended texture has any holes at all.
+ */
+const HOLE_THRESHOLD = 0.01;
+
+/**
+ * Mean saturation below which a colour map is treated as un-tinted greyscale.
+ * Measured across the pack's leaves: the greyscale ones sit at 0.000–0.055,
+ * while textures that already carry their own colour — `mangrove_leaves`
+ * (0.104), `pale_oak_leaves` (0.177), `cherry_leaves` (0.288),
+ * `azalea_leaves` (0.555) — sit well above it.
+ */
+const GREYSCALE_THRESHOLD = 0.08;
 
 /**
  * Classify a colour texture's transparency.
@@ -182,7 +204,61 @@ export const classifyAlpha = (bitmap: ImageBitmap): AlphaMode => {
 
   if (holes === 0 && partials === 0) return "opaque";
 
-  return holes > partials ? "cutout" : "blend";
+  // A small tolerance rather than `holes > 0`, so a handful of stray fully
+  // transparent texels in an otherwise blended texture cannot flip it.
+  const sampled = Math.ceil(pixels / stride);
+
+  return holes / sampled > HOLE_THRESHOLD ? "cutout" : "blend";
+};
+
+/**
+ * Report whether a colour map ships without colour of its own.
+ *
+ * Bedrock tints foliage from a colormap, and the textures that expect it are
+ * authored greyscale. Others already carry their colour — cherry blossom is
+ * pink, azalea is two-tone — and multiplying a green over those would ruin
+ * them. Measuring saturation decides it from the texture rather than from a
+ * hand-maintained list of which blocks are tinted.
+ *
+ * @param bitmap Decoded colour map.
+ * @returns `true` when the image is essentially greyscale.
+ */
+export const isGreyscale = (bitmap: ImageBitmap): boolean => {
+  const height = Math.min(bitmap.height, ALPHA_MAX_ROWS);
+  const canvas = new OffscreenCanvas(bitmap.width, height);
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+
+  // Unknown means "leave it alone", which can only preserve the texture.
+  if (!context) return false;
+
+  context.imageSmoothingEnabled = false;
+  context.drawImage(bitmap, 0, 0);
+
+  const { data } = context.getImageData(0, 0, bitmap.width, height);
+  const pixels = data.length / 4;
+  const stride = Math.max(1, Math.ceil(pixels / ALPHA_SAMPLE_CAP));
+
+  let total = 0;
+  let counted = 0;
+
+  for (let index = 0; index < pixels; index += stride) {
+    const offset = index * 4;
+
+    // Transparent texels carry meaningless colour; including them would drag
+    // the average toward zero and call every cutout greyscale.
+    if ((data[offset + 3] ?? 0) < 128) continue;
+
+    const red = data[offset] ?? 0;
+    const green = data[offset + 1] ?? 0;
+    const blue = data[offset + 2] ?? 0;
+    const max = Math.max(red, green, blue);
+    const min = Math.min(red, green, blue);
+
+    total += max === 0 ? 0 : (max - min) / max;
+    counted += 1;
+  }
+
+  return counted === 0 ? false : total / counted < GREYSCALE_THRESHOLD;
 };
 
 /**

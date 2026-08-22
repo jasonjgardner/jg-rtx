@@ -30,10 +30,12 @@ import { createBedrockMaterial } from "threejs-minecraft-bedrock-rtx-loader";
 import {
   classifyAlpha,
   compositeBitmaps,
+  isGreyscale,
   loadBitmap,
   tintBitmap,
   type AlphaMode,
 } from "./decode";
+import { colormapTint, type ColormapId } from "./colormap";
 import type { BlockFace, IFlipbook, ITextureFile, ITextureSet } from "./types";
 import { buildShapeGeometry } from "./blockGeometry";
 import type { BlockShapeId } from "./blockShapes";
@@ -58,6 +60,12 @@ export interface IFacePlan {
    * authored greyscale and only look right once this is applied.
    */
   readonly tint?: string | null;
+  /**
+   * Biome colormap to tint from when no explicit tint is declared. Leaves are
+   * the case: `terrain_texture.json` gives them no `overlay_color`, and they
+   * are authored greyscale expecting the engine to colour them.
+   */
+  readonly colormap?: ColormapId | undefined;
   /**
    * Texture to composite this face over when it turns out to be a tinted
    * cutout overlay rather than a complete texture — see `compositeBitmaps`.
@@ -221,6 +229,7 @@ const applyAlphaMode = (
  *
  * @param set Texture set to realise.
  * @param tint Biome tint to multiply over the colour map, if any.
+ * @param colormap Colormap to fall back to when no explicit tint is declared.
  * @param underlay Texture to composite beneath a tinted cutout overlay.
  * @param signal Abort signal for the fetches.
  * @param animated Collector for textures needing per-frame advancement.
@@ -228,6 +237,7 @@ const applyAlphaMode = (
 const buildMaterial = async (
   set: ITextureSet,
   tint: string | null | undefined,
+  colormap: ColormapId | undefined,
   underlay: ITextureSet | undefined,
   signal: AbortSignal,
   animated: IAnimated[],
@@ -247,10 +257,19 @@ const buildMaterial = async (
 
       if (role === "color") alphaMode = classifyAlpha(decoded);
 
+      // An explicit `overlay_color` wins; otherwise fall back to the block's
+      // biome colormap, but only when the texture is actually greyscale.
+      // Cherry blossom and azalea ship their own colour and must be left alone.
+      const effectiveTint = typeof tint === "string"
+        ? tint
+        : role === "color" && colormap !== undefined && isGreyscale(decoded)
+          ? await colormapTint(colormap)
+          : null;
+
       // Only the colour map is tinted — multiplying a biome colour into a
       // normal or MER map would corrupt the PBR data it encodes.
-      const tinted = role === "color" && typeof tint === "string"
-        ? await tintBitmap(decoded, tint)
+      const tinted = role === "color" && typeof effectiveTint === "string"
+        ? await tintBitmap(decoded, effectiveTint)
         : decoded;
 
       // A tinted cutout is the signature of Bedrock's overlay textures: grass
@@ -336,7 +355,14 @@ export const mountPreview = async (
 
   const materials = await Promise.all(
     plan.map((entry) =>
-      buildMaterial(entry.set, entry.tint, entry.underlay, signal, animated)),
+      buildMaterial(
+        entry.set,
+        entry.tint,
+        entry.colormap,
+        entry.underlay,
+        signal,
+        animated,
+      )),
   );
 
   const planIndexByFace = new Map<BlockFace, number>();

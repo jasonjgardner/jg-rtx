@@ -43,7 +43,10 @@ bun run catalog -- --src "../JG RTX"
   several texture sets and their PBR maps.
 - **`hidden` is how panels toggle.** A component rule that sets `display` will
   defeat it unless the global `[hidden]` override stays in place.
-- **Run `bun test` after touching `blockGeometry.ts`.** Inverted winding still
+- **Tinting is decided from the texture, not a block list.** `blockShapes.ts`
+  says which colormap *would* apply; `isGreyscale` in `decode.ts` decides
+  whether it actually does, so already-coloured leaves are never repainted.
+- **Run `bun test` after touching `blockGeometry.ts` or the shape rules.** Inverted winding still
   renders a convincing solid shape (you see the far walls), so it will not show
   up in a screenshot — the tests check it explicitly.
 - **Shape rules are order-sensitive.** `SHAPE_RULES` in `blockShapes.ts` takes

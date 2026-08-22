@@ -12,6 +12,8 @@
  * browser. Viewers can still override the choice per block in the preview.
  */
 
+import type { ColormapId } from "./colormap";
+
 /** Identifier of a bundled shape preset, matching its `.geo.json` file stem. */
 export type BlockShapeId =
   | "full_block"
@@ -157,3 +159,28 @@ export const shapeForBlock = (id: string): BlockShapeId => {
 /** Whether a shape id names a bundled preset. */
 export const isBlockShape = (value: string): value is BlockShapeId =>
   BLOCK_SHAPES.some((shape) => shape.id === value);
+
+/**
+ * Which biome colormap tints a block, if any.
+ *
+ * `terrain_texture.json` declares an `overlay_color` for grass but says nothing
+ * about leaves — Bedrock colours those from `textures/colormap/*.png`, and the
+ * textures are authored greyscale in expectation of it. Birch and spruce read
+ * from their own near-constant maps rather than the shared foliage one, which
+ * is why they are named separately here.
+ *
+ * This only says which map *would* apply. Whether it is actually used is
+ * decided from the texture: a colour map that already carries its own colour —
+ * cherry blossom, azalea — is left alone. See `isGreyscale`.
+ *
+ * @param id Block identifier without its `minecraft:` prefix.
+ * @returns The colormap name, or `undefined` when the block is not tinted.
+ */
+export const colormapForBlock = (id: string): ColormapId | undefined => {
+  if (id === "birch_leaves") return "birch";
+  if (id === "spruce_leaves") return "evergreen";
+  if (id.endsWith("_leaves") || id === "leaves" || id === "leaves2") return "foliage";
+  if (id === "vine" || id === "weeping_vines" || id === "cave_vines") return "foliage";
+
+  return undefined;
+};

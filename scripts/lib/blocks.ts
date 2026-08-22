@@ -16,7 +16,7 @@
 
 import type { IBlockEntry, ITextureSet, BlockFace } from "../../src/lib/types";
 import { BLOCK_FACES } from "../../src/lib/types";
-import { shapeForBlock } from "../../src/lib/blockShapes";
+import { colormapForBlock, shapeForBlock } from "../../src/lib/blockShapes";
 import type {
   IVanillaBlock,
   TerrainTextureData,
@@ -256,6 +256,7 @@ export const resolveBlocks = (
         coverage:
           jgCount === sets.length ? "jg" : jgCount === 0 ? "vanilla" : "mixed",
         shape: shapeForBlock(id),
+        ...(colormapForBlock(id) ? { colormap: colormapForBlock(id) } : {}),
       } satisfies IBlockEntry;
     })
     .filter((entry) => entry.sets.length > 0)

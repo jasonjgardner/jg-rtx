@@ -18,6 +18,7 @@ import {
   type IPreview,
 } from "../lib/preview3d";
 import { isBlockShape, type BlockShapeId } from "../lib/blockShapes";
+import type { ColormapId } from "../lib/colormap";
 import { getState, subscribe } from "../stores/customization";
 import { BLOCK_FACES, type BlockFace, type ITextureSet, type IVariety } from "../lib/types";
 
@@ -29,6 +30,8 @@ interface IPreviewData {
   readonly varieties: Readonly<Record<string, IVariety>>;
   /** Shape resolved for this block at catalog time. */
   readonly shape: BlockShapeId;
+  /** Biome colormap that tints this block, when one applies. */
+  readonly colormap?: ColormapId;
 }
 
 /**
@@ -230,6 +233,9 @@ export class JgBlockPreview extends HTMLElement {
         // A chosen variety brings its own colour, so a biome tint that suited
         // the pack default would wrongly recolour it.
         tint,
+        // A variety supplies its own colour, so neither the declared tint nor
+        // the colormap should recolour it.
+        colormap: variety ? undefined : data.colormap,
         underlay: tint === null ? undefined : this.#underlayFor(data, setId),
       }];
     });

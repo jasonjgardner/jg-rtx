@@ -64,6 +64,7 @@ const blocks = defineCollection({
       "trapdoor",
       "torch",
     ]),
+    colormap: z.enum(["foliage", "grass", "birch", "evergreen"]).optional(),
   }),
 });
 
